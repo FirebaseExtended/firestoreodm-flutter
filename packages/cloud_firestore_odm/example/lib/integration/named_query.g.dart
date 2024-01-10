@@ -11,6 +11,7 @@ part of 'named_query.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, require_trailing_commas, prefer_single_quotes, prefer_double_quotes, use_super_parameters, duplicate_ignore
 // ignore_for_file: type=lint
+// ignore_for_file: invalid_use_of_internal_member
 
 class _Sentinel {
   const _Sentinel();
@@ -480,8 +481,8 @@ class _$ConflictQuery extends QueryReference<Conflict, ConflictQuerySnapshot>
 
   ConflictQuery whereFieldPath(
     FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
     Object? isLessThan,
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
@@ -513,12 +514,12 @@ class _$ConflictQuery extends QueryReference<Conflict, ConflictQuerySnapshot>
   }
 
   ConflictQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -542,12 +543,12 @@ class _$ConflictQuery extends QueryReference<Conflict, ConflictQuerySnapshot>
   }
 
   ConflictQuery whereNumber({
-    num? isEqualTo,
-    num? isNotEqualTo,
-    num? isLessThan,
-    num? isLessThanOrEqualTo,
-    num? isGreaterThan,
-    num? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<num>? whereIn,
     List<num>? whereNotIn,
@@ -556,23 +557,23 @@ class _$ConflictQuery extends QueryReference<Conflict, ConflictQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$ConflictFieldMap['number']!,
-        isEqualTo: isEqualTo != null
-            ? _$ConflictPerFieldToJson.number(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$ConflictPerFieldToJson.number(isNotEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$ConflictPerFieldToJson.number(isEqualTo as num)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$ConflictPerFieldToJson.number(isNotEqualTo as num)
+            : notSetQueryParam,
         isLessThan: isLessThan != null
-            ? _$ConflictPerFieldToJson.number(isLessThan)
+            ? _$ConflictPerFieldToJson.number(isLessThan as num)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$ConflictPerFieldToJson.number(isLessThanOrEqualTo)
+            ? _$ConflictPerFieldToJson.number(isLessThanOrEqualTo as num)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$ConflictPerFieldToJson.number(isGreaterThan)
+            ? _$ConflictPerFieldToJson.number(isGreaterThan as num)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$ConflictPerFieldToJson.number(isGreaterThanOrEqualTo)
+            ? _$ConflictPerFieldToJson.number(isGreaterThanOrEqualTo as num)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$ConflictPerFieldToJson.number(e)),

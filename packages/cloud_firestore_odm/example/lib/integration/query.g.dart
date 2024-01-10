@@ -11,6 +11,7 @@ part of 'query.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, require_trailing_commas, prefer_single_quotes, prefer_double_quotes, use_super_parameters, duplicate_ignore
 // ignore_for_file: type=lint
+// ignore_for_file: invalid_use_of_internal_member
 
 class _Sentinel {
   const _Sentinel();
@@ -470,8 +471,8 @@ class _$DurationQueryQuery
 
   DurationQueryQuery whereFieldPath(
     FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
     Object? isLessThan,
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
@@ -503,12 +504,12 @@ class _$DurationQueryQuery
   }
 
   DurationQueryQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -532,12 +533,12 @@ class _$DurationQueryQuery
   }
 
   DurationQueryQuery whereDuration({
-    Duration? isEqualTo,
-    Duration? isNotEqualTo,
-    Duration? isLessThan,
-    Duration? isLessThanOrEqualTo,
-    Duration? isGreaterThan,
-    Duration? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<Duration>? whereIn,
     List<Duration>? whereNotIn,
@@ -546,23 +547,25 @@ class _$DurationQueryQuery
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$DurationQueryFieldMap['duration']!,
-        isEqualTo: isEqualTo != null
-            ? _$DurationQueryPerFieldToJson.duration(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$DurationQueryPerFieldToJson.duration(isNotEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$DurationQueryPerFieldToJson.duration(isEqualTo as Duration)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$DurationQueryPerFieldToJson.duration(isNotEqualTo as Duration)
+            : notSetQueryParam,
         isLessThan: isLessThan != null
-            ? _$DurationQueryPerFieldToJson.duration(isLessThan)
+            ? _$DurationQueryPerFieldToJson.duration(isLessThan as Duration)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$DurationQueryPerFieldToJson.duration(isLessThanOrEqualTo)
+            ? _$DurationQueryPerFieldToJson
+                .duration(isLessThanOrEqualTo as Duration)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$DurationQueryPerFieldToJson.duration(isGreaterThan)
+            ? _$DurationQueryPerFieldToJson.duration(isGreaterThan as Duration)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$DurationQueryPerFieldToJson.duration(isGreaterThanOrEqualTo)
+            ? _$DurationQueryPerFieldToJson
+                .duration(isGreaterThanOrEqualTo as Duration)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$DurationQueryPerFieldToJson.duration(e)),
@@ -1265,8 +1268,8 @@ class _$DateTimeQueryQuery
 
   DateTimeQueryQuery whereFieldPath(
     FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
     Object? isLessThan,
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
@@ -1298,12 +1301,12 @@ class _$DateTimeQueryQuery
   }
 
   DateTimeQueryQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -1327,12 +1330,12 @@ class _$DateTimeQueryQuery
   }
 
   DateTimeQueryQuery whereTime({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<DateTime>? whereIn,
     List<DateTime>? whereNotIn,
@@ -1341,23 +1344,25 @@ class _$DateTimeQueryQuery
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$DateTimeQueryFieldMap['time']!,
-        isEqualTo: isEqualTo != null
-            ? _$DateTimeQueryPerFieldToJson.time(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$DateTimeQueryPerFieldToJson.time(isNotEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$DateTimeQueryPerFieldToJson.time(isEqualTo as DateTime)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$DateTimeQueryPerFieldToJson.time(isNotEqualTo as DateTime)
+            : notSetQueryParam,
         isLessThan: isLessThan != null
-            ? _$DateTimeQueryPerFieldToJson.time(isLessThan)
+            ? _$DateTimeQueryPerFieldToJson.time(isLessThan as DateTime)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$DateTimeQueryPerFieldToJson.time(isLessThanOrEqualTo)
+            ? _$DateTimeQueryPerFieldToJson
+                .time(isLessThanOrEqualTo as DateTime)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$DateTimeQueryPerFieldToJson.time(isGreaterThan)
+            ? _$DateTimeQueryPerFieldToJson.time(isGreaterThan as DateTime)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$DateTimeQueryPerFieldToJson.time(isGreaterThanOrEqualTo)
+            ? _$DateTimeQueryPerFieldToJson
+                .time(isGreaterThanOrEqualTo as DateTime)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$DateTimeQueryPerFieldToJson.time(e)),
@@ -2062,8 +2067,8 @@ class _$TimestampQueryQuery
 
   TimestampQueryQuery whereFieldPath(
     FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
     Object? isLessThan,
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
@@ -2095,12 +2100,12 @@ class _$TimestampQueryQuery
   }
 
   TimestampQueryQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -2124,12 +2129,12 @@ class _$TimestampQueryQuery
   }
 
   TimestampQueryQuery whereTime({
-    Timestamp? isEqualTo,
-    Timestamp? isNotEqualTo,
-    Timestamp? isLessThan,
-    Timestamp? isLessThanOrEqualTo,
-    Timestamp? isGreaterThan,
-    Timestamp? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<Timestamp>? whereIn,
     List<Timestamp>? whereNotIn,
@@ -2138,23 +2143,25 @@ class _$TimestampQueryQuery
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$TimestampQueryFieldMap['time']!,
-        isEqualTo: isEqualTo != null
-            ? _$TimestampQueryPerFieldToJson.time(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$TimestampQueryPerFieldToJson.time(isNotEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$TimestampQueryPerFieldToJson.time(isEqualTo as Timestamp)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$TimestampQueryPerFieldToJson.time(isNotEqualTo as Timestamp)
+            : notSetQueryParam,
         isLessThan: isLessThan != null
-            ? _$TimestampQueryPerFieldToJson.time(isLessThan)
+            ? _$TimestampQueryPerFieldToJson.time(isLessThan as Timestamp)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$TimestampQueryPerFieldToJson.time(isLessThanOrEqualTo)
+            ? _$TimestampQueryPerFieldToJson
+                .time(isLessThanOrEqualTo as Timestamp)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$TimestampQueryPerFieldToJson.time(isGreaterThan)
+            ? _$TimestampQueryPerFieldToJson.time(isGreaterThan as Timestamp)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$TimestampQueryPerFieldToJson.time(isGreaterThanOrEqualTo)
+            ? _$TimestampQueryPerFieldToJson
+                .time(isGreaterThanOrEqualTo as Timestamp)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$TimestampQueryPerFieldToJson.time(e)),
@@ -2860,8 +2867,8 @@ class _$GeoPointQueryQuery
 
   GeoPointQueryQuery whereFieldPath(
     FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
     Object? isLessThan,
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
@@ -2893,12 +2900,12 @@ class _$GeoPointQueryQuery
   }
 
   GeoPointQueryQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -2922,12 +2929,12 @@ class _$GeoPointQueryQuery
   }
 
   GeoPointQueryQuery wherePoint({
-    GeoPoint? isEqualTo,
-    GeoPoint? isNotEqualTo,
-    GeoPoint? isLessThan,
-    GeoPoint? isLessThanOrEqualTo,
-    GeoPoint? isGreaterThan,
-    GeoPoint? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<GeoPoint>? whereIn,
     List<GeoPoint>? whereNotIn,
@@ -2936,23 +2943,25 @@ class _$GeoPointQueryQuery
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$GeoPointQueryFieldMap['point']!,
-        isEqualTo: isEqualTo != null
-            ? _$GeoPointQueryPerFieldToJson.point(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$GeoPointQueryPerFieldToJson.point(isNotEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$GeoPointQueryPerFieldToJson.point(isEqualTo as GeoPoint)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$GeoPointQueryPerFieldToJson.point(isNotEqualTo as GeoPoint)
+            : notSetQueryParam,
         isLessThan: isLessThan != null
-            ? _$GeoPointQueryPerFieldToJson.point(isLessThan)
+            ? _$GeoPointQueryPerFieldToJson.point(isLessThan as GeoPoint)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GeoPointQueryPerFieldToJson.point(isLessThanOrEqualTo)
+            ? _$GeoPointQueryPerFieldToJson
+                .point(isLessThanOrEqualTo as GeoPoint)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GeoPointQueryPerFieldToJson.point(isGreaterThan)
+            ? _$GeoPointQueryPerFieldToJson.point(isGreaterThan as GeoPoint)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GeoPointQueryPerFieldToJson.point(isGreaterThanOrEqualTo)
+            ? _$GeoPointQueryPerFieldToJson
+                .point(isGreaterThanOrEqualTo as GeoPoint)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$GeoPointQueryPerFieldToJson.point(e)),
@@ -3670,8 +3679,8 @@ class _$DocumentReferenceQueryQuery extends QueryReference<
 
   DocumentReferenceQueryQuery whereFieldPath(
     FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
     Object? isLessThan,
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
@@ -3703,12 +3712,12 @@ class _$DocumentReferenceQueryQuery extends QueryReference<
   }
 
   DocumentReferenceQueryQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -3732,12 +3741,12 @@ class _$DocumentReferenceQueryQuery extends QueryReference<
   }
 
   DocumentReferenceQueryQuery whereRef({
-    DocumentReference<Map<String, dynamic>>? isEqualTo,
-    DocumentReference<Map<String, dynamic>>? isNotEqualTo,
-    DocumentReference<Map<String, dynamic>>? isLessThan,
-    DocumentReference<Map<String, dynamic>>? isLessThanOrEqualTo,
-    DocumentReference<Map<String, dynamic>>? isGreaterThan,
-    DocumentReference<Map<String, dynamic>>? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<DocumentReference<Map<String, dynamic>>>? whereIn,
     List<DocumentReference<Map<String, dynamic>>>? whereNotIn,
@@ -3746,23 +3755,29 @@ class _$DocumentReferenceQueryQuery extends QueryReference<
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$DocumentReferenceQueryFieldMap['ref']!,
-        isEqualTo: isEqualTo != null
-            ? _$DocumentReferenceQueryPerFieldToJson.ref(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$DocumentReferenceQueryPerFieldToJson.ref(isNotEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$DocumentReferenceQueryPerFieldToJson
+                .ref(isEqualTo as DocumentReference<Map<String, dynamic>>)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$DocumentReferenceQueryPerFieldToJson
+                .ref(isNotEqualTo as DocumentReference<Map<String, dynamic>>)
+            : notSetQueryParam,
         isLessThan: isLessThan != null
-            ? _$DocumentReferenceQueryPerFieldToJson.ref(isLessThan)
+            ? _$DocumentReferenceQueryPerFieldToJson
+                .ref(isLessThan as DocumentReference<Map<String, dynamic>>)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$DocumentReferenceQueryPerFieldToJson.ref(isLessThanOrEqualTo)
+            ? _$DocumentReferenceQueryPerFieldToJson.ref(
+                isLessThanOrEqualTo as DocumentReference<Map<String, dynamic>>)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$DocumentReferenceQueryPerFieldToJson.ref(isGreaterThan)
+            ? _$DocumentReferenceQueryPerFieldToJson
+                .ref(isGreaterThan as DocumentReference<Map<String, dynamic>>)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$DocumentReferenceQueryPerFieldToJson.ref(isGreaterThanOrEqualTo)
+            ? _$DocumentReferenceQueryPerFieldToJson.ref(isGreaterThanOrEqualTo
+                as DocumentReference<Map<String, dynamic>>)
             : null,
         isNull: isNull,
         whereIn:

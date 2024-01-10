@@ -11,6 +11,7 @@ part of 'movie.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, require_trailing_commas, prefer_single_quotes, prefer_double_quotes, use_super_parameters, duplicate_ignore
 // ignore_for_file: type=lint
+// ignore_for_file: invalid_use_of_internal_member
 
 class _Sentinel {
   const _Sentinel();
@@ -789,8 +790,8 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
 
   MovieQuery whereFieldPath(
     FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
     Object? isLessThan,
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
@@ -822,12 +823,12 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
   }
 
   MovieQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -851,12 +852,12 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
   }
 
   MovieQuery wherePoster({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -865,22 +866,23 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$MovieFieldMap['poster']!,
-        isEqualTo:
-            isEqualTo != null ? _$MoviePerFieldToJson.poster(isEqualTo) : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$MoviePerFieldToJson.poster(isNotEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.poster(isEqualTo as String)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.poster(isNotEqualTo as String)
+            : notSetQueryParam,
         isLessThan: isLessThan != null
-            ? _$MoviePerFieldToJson.poster(isLessThan)
+            ? _$MoviePerFieldToJson.poster(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.poster(isLessThanOrEqualTo)
+            ? _$MoviePerFieldToJson.poster(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$MoviePerFieldToJson.poster(isGreaterThan)
+            ? _$MoviePerFieldToJson.poster(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.poster(isGreaterThanOrEqualTo)
+            ? _$MoviePerFieldToJson.poster(isGreaterThanOrEqualTo as String)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.poster(e)),
@@ -891,12 +893,12 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
   }
 
   MovieQuery whereLikes({
-    int? isEqualTo,
-    int? isNotEqualTo,
-    int? isLessThan,
-    int? isLessThanOrEqualTo,
-    int? isGreaterThan,
-    int? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<int>? whereIn,
     List<int>? whereNotIn,
@@ -905,21 +907,23 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$MovieFieldMap['likes']!,
-        isEqualTo:
-            isEqualTo != null ? _$MoviePerFieldToJson.likes(isEqualTo) : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$MoviePerFieldToJson.likes(isNotEqualTo)
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.likes(isEqualTo as int)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.likes(isNotEqualTo as int)
+            : notSetQueryParam,
+        isLessThan: isLessThan != null
+            ? _$MoviePerFieldToJson.likes(isLessThan as int)
             : null,
-        isLessThan:
-            isLessThan != null ? _$MoviePerFieldToJson.likes(isLessThan) : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.likes(isLessThanOrEqualTo)
+            ? _$MoviePerFieldToJson.likes(isLessThanOrEqualTo as int)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$MoviePerFieldToJson.likes(isGreaterThan)
+            ? _$MoviePerFieldToJson.likes(isGreaterThan as int)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.likes(isGreaterThanOrEqualTo)
+            ? _$MoviePerFieldToJson.likes(isGreaterThanOrEqualTo as int)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.likes(e)),
@@ -930,12 +934,12 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
   }
 
   MovieQuery whereTitle({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -944,21 +948,23 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$MovieFieldMap['title']!,
-        isEqualTo:
-            isEqualTo != null ? _$MoviePerFieldToJson.title(isEqualTo) : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$MoviePerFieldToJson.title(isNotEqualTo)
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.title(isEqualTo as String)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.title(isNotEqualTo as String)
+            : notSetQueryParam,
+        isLessThan: isLessThan != null
+            ? _$MoviePerFieldToJson.title(isLessThan as String)
             : null,
-        isLessThan:
-            isLessThan != null ? _$MoviePerFieldToJson.title(isLessThan) : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.title(isLessThanOrEqualTo)
+            ? _$MoviePerFieldToJson.title(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$MoviePerFieldToJson.title(isGreaterThan)
+            ? _$MoviePerFieldToJson.title(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.title(isGreaterThanOrEqualTo)
+            ? _$MoviePerFieldToJson.title(isGreaterThanOrEqualTo as String)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.title(e)),
@@ -969,12 +975,12 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
   }
 
   MovieQuery whereYear({
-    int? isEqualTo,
-    int? isNotEqualTo,
-    int? isLessThan,
-    int? isLessThanOrEqualTo,
-    int? isGreaterThan,
-    int? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<int>? whereIn,
     List<int>? whereNotIn,
@@ -983,21 +989,23 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$MovieFieldMap['year']!,
-        isEqualTo:
-            isEqualTo != null ? _$MoviePerFieldToJson.year(isEqualTo) : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$MoviePerFieldToJson.year(isNotEqualTo)
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.year(isEqualTo as int)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.year(isNotEqualTo as int)
+            : notSetQueryParam,
+        isLessThan: isLessThan != null
+            ? _$MoviePerFieldToJson.year(isLessThan as int)
             : null,
-        isLessThan:
-            isLessThan != null ? _$MoviePerFieldToJson.year(isLessThan) : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.year(isLessThanOrEqualTo)
+            ? _$MoviePerFieldToJson.year(isLessThanOrEqualTo as int)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$MoviePerFieldToJson.year(isGreaterThan)
+            ? _$MoviePerFieldToJson.year(isGreaterThan as int)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.year(isGreaterThanOrEqualTo)
+            ? _$MoviePerFieldToJson.year(isGreaterThanOrEqualTo as int)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.year(e)),
@@ -1008,12 +1016,12 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
   }
 
   MovieQuery whereRuntime({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -1022,22 +1030,23 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$MovieFieldMap['runtime']!,
-        isEqualTo:
-            isEqualTo != null ? _$MoviePerFieldToJson.runtime(isEqualTo) : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$MoviePerFieldToJson.runtime(isNotEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.runtime(isEqualTo as String)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.runtime(isNotEqualTo as String)
+            : notSetQueryParam,
         isLessThan: isLessThan != null
-            ? _$MoviePerFieldToJson.runtime(isLessThan)
+            ? _$MoviePerFieldToJson.runtime(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.runtime(isLessThanOrEqualTo)
+            ? _$MoviePerFieldToJson.runtime(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$MoviePerFieldToJson.runtime(isGreaterThan)
+            ? _$MoviePerFieldToJson.runtime(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.runtime(isGreaterThanOrEqualTo)
+            ? _$MoviePerFieldToJson.runtime(isGreaterThanOrEqualTo as String)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.runtime(e)),
@@ -1048,12 +1057,12 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
   }
 
   MovieQuery whereRated({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -1062,21 +1071,23 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$MovieFieldMap['rated']!,
-        isEqualTo:
-            isEqualTo != null ? _$MoviePerFieldToJson.rated(isEqualTo) : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$MoviePerFieldToJson.rated(isNotEqualTo)
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.rated(isEqualTo as String)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.rated(isNotEqualTo as String)
+            : notSetQueryParam,
+        isLessThan: isLessThan != null
+            ? _$MoviePerFieldToJson.rated(isLessThan as String)
             : null,
-        isLessThan:
-            isLessThan != null ? _$MoviePerFieldToJson.rated(isLessThan) : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.rated(isLessThanOrEqualTo)
+            ? _$MoviePerFieldToJson.rated(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$MoviePerFieldToJson.rated(isGreaterThan)
+            ? _$MoviePerFieldToJson.rated(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.rated(isGreaterThanOrEqualTo)
+            ? _$MoviePerFieldToJson.rated(isGreaterThanOrEqualTo as String)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.rated(e)),
@@ -1087,39 +1098,43 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
   }
 
   MovieQuery whereGenre({
-    List<String>? isEqualTo,
-    List<String>? isNotEqualTo,
-    List<String>? isLessThan,
-    List<String>? isLessThanOrEqualTo,
-    List<String>? isGreaterThan,
-    List<String>? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
-    String? arrayContains,
+    Object? arrayContains = notSetQueryParam,
     List<String>? arrayContainsAny,
   }) {
     return _$MovieQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$MovieFieldMap['genre']!,
-        isEqualTo:
-            isEqualTo != null ? _$MoviePerFieldToJson.genre(isEqualTo) : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$MoviePerFieldToJson.genre(isNotEqualTo)
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.genre(isEqualTo as List<String>?)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.genre(isNotEqualTo as List<String>?)
+            : notSetQueryParam,
+        isLessThan: isLessThan != null
+            ? _$MoviePerFieldToJson.genre(isLessThan as List<String>?)
             : null,
-        isLessThan:
-            isLessThan != null ? _$MoviePerFieldToJson.genre(isLessThan) : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.genre(isLessThanOrEqualTo)
+            ? _$MoviePerFieldToJson.genre(isLessThanOrEqualTo as List<String>?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$MoviePerFieldToJson.genre(isGreaterThan)
+            ? _$MoviePerFieldToJson.genre(isGreaterThan as List<String>?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.genre(isGreaterThanOrEqualTo)
+            ? _$MoviePerFieldToJson
+                .genre(isGreaterThanOrEqualTo as List<String>?)
             : null,
         isNull: isNull,
         arrayContains: arrayContains != null
-            ? (_$MoviePerFieldToJson.genre([arrayContains]) as List?)!.single
+            ? (_$MoviePerFieldToJson.genre([arrayContains as String]) as List?)!
+                .single
             : null,
         arrayContainsAny: arrayContainsAny != null
             ? _$MoviePerFieldToJson.genre(arrayContainsAny) as Iterable<Object>?
@@ -1130,39 +1145,42 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
   }
 
   MovieQuery whereTags({
-    Set<String>? isEqualTo,
-    Set<String>? isNotEqualTo,
-    Set<String>? isLessThan,
-    Set<String>? isLessThanOrEqualTo,
-    Set<String>? isGreaterThan,
-    Set<String>? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
-    String? arrayContains,
+    Object? arrayContains = notSetQueryParam,
     Set<String>? arrayContainsAny,
   }) {
     return _$MovieQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$MovieFieldMap['tags']!,
-        isEqualTo:
-            isEqualTo != null ? _$MoviePerFieldToJson.tags(isEqualTo) : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$MoviePerFieldToJson.tags(isNotEqualTo)
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.tags(isEqualTo as Set<String>?)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$MoviePerFieldToJson.tags(isNotEqualTo as Set<String>?)
+            : notSetQueryParam,
+        isLessThan: isLessThan != null
+            ? _$MoviePerFieldToJson.tags(isLessThan as Set<String>?)
             : null,
-        isLessThan:
-            isLessThan != null ? _$MoviePerFieldToJson.tags(isLessThan) : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.tags(isLessThanOrEqualTo)
+            ? _$MoviePerFieldToJson.tags(isLessThanOrEqualTo as Set<String>?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$MoviePerFieldToJson.tags(isGreaterThan)
+            ? _$MoviePerFieldToJson.tags(isGreaterThan as Set<String>?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$MoviePerFieldToJson.tags(isGreaterThanOrEqualTo)
+            ? _$MoviePerFieldToJson.tags(isGreaterThanOrEqualTo as Set<String>?)
             : null,
         isNull: isNull,
         arrayContains: arrayContains != null
-            ? (_$MoviePerFieldToJson.tags({arrayContains}) as List?)!.single
+            ? (_$MoviePerFieldToJson.tags({arrayContains as String}) as List?)!
+                .single
             : null,
         arrayContainsAny: arrayContainsAny != null
             ? _$MoviePerFieldToJson.tags(arrayContainsAny) as Iterable<Object>?
@@ -2421,8 +2439,8 @@ class _$CommentQuery extends QueryReference<Comment, CommentQuerySnapshot>
 
   CommentQuery whereFieldPath(
     FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
     Object? isLessThan,
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
@@ -2454,12 +2472,12 @@ class _$CommentQuery extends QueryReference<Comment, CommentQuerySnapshot>
   }
 
   CommentQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -2483,12 +2501,12 @@ class _$CommentQuery extends QueryReference<Comment, CommentQuerySnapshot>
   }
 
   CommentQuery whereAuthorName({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -2497,23 +2515,24 @@ class _$CommentQuery extends QueryReference<Comment, CommentQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$CommentFieldMap['authorName']!,
-        isEqualTo: isEqualTo != null
-            ? _$CommentPerFieldToJson.authorName(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$CommentPerFieldToJson.authorName(isNotEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$CommentPerFieldToJson.authorName(isEqualTo as String)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$CommentPerFieldToJson.authorName(isNotEqualTo as String)
+            : notSetQueryParam,
         isLessThan: isLessThan != null
-            ? _$CommentPerFieldToJson.authorName(isLessThan)
+            ? _$CommentPerFieldToJson.authorName(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$CommentPerFieldToJson.authorName(isLessThanOrEqualTo)
+            ? _$CommentPerFieldToJson.authorName(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$CommentPerFieldToJson.authorName(isGreaterThan)
+            ? _$CommentPerFieldToJson.authorName(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$CommentPerFieldToJson.authorName(isGreaterThanOrEqualTo)
+            ? _$CommentPerFieldToJson
+                .authorName(isGreaterThanOrEqualTo as String)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$CommentPerFieldToJson.authorName(e)),
@@ -2525,12 +2544,12 @@ class _$CommentQuery extends QueryReference<Comment, CommentQuerySnapshot>
   }
 
   CommentQuery whereMessage({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = null,
+    Object? isLessThanOrEqualTo = null,
+    Object? isGreaterThan = null,
+    Object? isGreaterThanOrEqualTo = null,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -2539,23 +2558,23 @@ class _$CommentQuery extends QueryReference<Comment, CommentQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$CommentFieldMap['message']!,
-        isEqualTo: isEqualTo != null
-            ? _$CommentPerFieldToJson.message(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$CommentPerFieldToJson.message(isNotEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$CommentPerFieldToJson.message(isEqualTo as String)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$CommentPerFieldToJson.message(isNotEqualTo as String)
+            : notSetQueryParam,
         isLessThan: isLessThan != null
-            ? _$CommentPerFieldToJson.message(isLessThan)
+            ? _$CommentPerFieldToJson.message(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$CommentPerFieldToJson.message(isLessThanOrEqualTo)
+            ? _$CommentPerFieldToJson.message(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$CommentPerFieldToJson.message(isGreaterThan)
+            ? _$CommentPerFieldToJson.message(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$CommentPerFieldToJson.message(isGreaterThanOrEqualTo)
+            ? _$CommentPerFieldToJson.message(isGreaterThanOrEqualTo as String)
             : null,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$CommentPerFieldToJson.message(e)),

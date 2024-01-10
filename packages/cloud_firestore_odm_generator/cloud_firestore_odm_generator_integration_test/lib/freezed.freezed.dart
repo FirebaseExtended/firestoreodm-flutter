@@ -152,7 +152,7 @@ class _$PersonImpl implements _Person {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PersonImpl &&
@@ -301,7 +301,7 @@ class _$PublicRedirected2Impl implements PublicRedirected2 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PublicRedirected2Impl &&
