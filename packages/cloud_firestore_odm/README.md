@@ -9,14 +9,14 @@ To learn more about Firebase Cloud Firestore, please visit the [Firebase website
 
 ## Getting Started
 
-To get started with Cloud Firestore for Flutter, please [see the documentation](https://github.com/firebase/flutterfire/tree/master/packages/cloud_firestore_odm/doc).
+To get started with Cloud Firestore for Flutter, please [see the documentation](https://github.com/firebaseextended/firestoreodm-flutter/tree/main/docs).
 
 ## Issues and feedback
 
-Please file FlutterFire specific issues, bugs, or feature requests in our [issue tracker](https://github.com/firebase/flutterfire/issues/new).
+Please file FlutterFire specific issues, bugs, or feature requests in our [issue tracker](https://github.com/firebaseextended/firestoreodm-flutter/issues/new).
 
 Plugin issues that are not specific to FlutterFire can be filed in the [Flutter issue tracker](https://github.com/flutter/flutter/issues/new).
 
 To contribute a change to this plugin,
-please review our [contribution guide](https://github.com/firebase/flutterfire/blob/master/CONTRIBUTING.md)
-and open a [pull request](https://github.com/firebase/flutterfire/pulls).
+please review our [contribution guide](https://github.com/firebaseextended/firestoreodm-flutter/blob/main/docs/contributing.md)
+and open a [pull request](https://github.com/firebaseextended/firestoreodm-flutter/pulls).

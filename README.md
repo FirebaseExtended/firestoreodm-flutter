@@ -34,7 +34,7 @@ That is done by adding the following to your `pubspec.yaml`:
 
 ```yaml
 environment:
-  sdk: '>=2.18.0 <4.0.0'
+  sdk: ">=2.18.0 <4.0.0"
 ```
 
 ### 2. FlutterFire Initialization
@@ -76,7 +76,6 @@ flutter pub add --dev json_serializable
 
 ## 5. Enable `create_field_map` and `create_per_field_to_json` of `json_serializable`
 
-
 For the ODM to work, it is necessary to enable the `create_field_map` and `create_per_field_to_json` of `json_serializable`.  
 This can be done by creating a `build.yaml` file next to your `pubspec.yaml` and
 paste the following:
@@ -90,7 +89,6 @@ targets:
           create_field_map: true
           create_per_field_to_json: true
 ```
-
 
 This will enable `create_field_map` and `create_per_field_to_json` for the entire project.
 
@@ -108,10 +106,10 @@ Once installed, read the documentation on [defining models](./doc/defining-model
 
 ## Issues and feedback
 
-Please file FlutterFire specific issues, bugs, or feature requests in our [issue tracker](https://github.com/firebase/flutterfire/issues/new).
+Please file FlutterFire specific issues, bugs, or feature requests in our [issue tracker](https://github.com/firebaseextended/firestoreodm-flutter/issues/new).
 
 Plugin issues that are not specific to FlutterFire can be filed in the [Flutter issue tracker](https://github.com/flutter/flutter/issues/new).
 
 To contribute a change to this plugin,
-please review our [contribution guide](https://github.com/firebase/flutterfire/blob/master/CONTRIBUTING.md)
-and open a [pull request](https://github.com/firebase/flutterfire/pulls).
+please review our [contribution guide](https://github.com/firebaseextended/firestoreodm-flutter/blob/main/docs/contributing.md)
+and open a [pull request](https://github.com/firebaseextended/firestoreodm-flutter/pulls).
