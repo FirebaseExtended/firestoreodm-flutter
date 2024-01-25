@@ -1,3 +1,7 @@
+## Unreleased build
+
+- Update generated code to support recent Firestore query changes
+
 ## 1.0.0-dev.82
 
  - Update a dependency to the latest release.

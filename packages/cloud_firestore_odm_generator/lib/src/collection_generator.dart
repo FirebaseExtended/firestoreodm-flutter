@@ -28,12 +28,16 @@ class QueryingField {
     this.type, {
     required this.field,
     required this.updatable,
+    required this.whereDoc,
+    required this.orderByDoc,
   });
 
   final String name;
   final DartType type;
   final String field;
   final bool updatable;
+  final String whereDoc;
+  final String orderByDoc;
 }
 
 class Data {

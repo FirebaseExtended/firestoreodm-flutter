@@ -331,6 +331,110 @@ abstract class EnumsQuery implements QueryReference<Enums, EnumsQuerySnapshot> {
   @override
   EnumsQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  EnumsQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  EnumsQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  EnumsQuery whereId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  EnumsQuery whereEnumValue({
+    TestEnum? isEqualTo,
+    TestEnum? isNotEqualTo,
+    TestEnum? isLessThan,
+    TestEnum? isLessThanOrEqualTo,
+    TestEnum? isGreaterThan,
+    TestEnum? isGreaterThanOrEqualTo,
+    List<TestEnum>? whereIn,
+    List<TestEnum>? whereNotIn,
+    bool? isNull,
+  });
+
+  EnumsQuery whereNullableEnumValue({
+    TestEnum? isEqualTo,
+    TestEnum? isNotEqualTo,
+    TestEnum? isLessThan,
+    TestEnum? isLessThanOrEqualTo,
+    TestEnum? isGreaterThan,
+    TestEnum? isGreaterThanOrEqualTo,
+    List<TestEnum?>? whereIn,
+    List<TestEnum?>? whereNotIn,
+    bool? isNull,
+  });
+
+  EnumsQuery whereEnumList({
+    List<TestEnum>? isEqualTo,
+    List<TestEnum>? isNotEqualTo,
+    List<TestEnum>? isLessThan,
+    List<TestEnum>? isLessThanOrEqualTo,
+    List<TestEnum>? isGreaterThan,
+    List<TestEnum>? isGreaterThanOrEqualTo,
+    TestEnum? arrayContains,
+    List<TestEnum>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  EnumsQuery whereNullableEnumList({
+    List<TestEnum>? isEqualTo,
+    List<TestEnum>? isNotEqualTo,
+    List<TestEnum>? isLessThan,
+    List<TestEnum>? isLessThanOrEqualTo,
+    List<TestEnum>? isGreaterThan,
+    List<TestEnum>? isGreaterThanOrEqualTo,
+    TestEnum? arrayContains,
+    List<TestEnum>? arrayContainsAny,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -352,115 +456,16 @@ abstract class EnumsQuery implements QueryReference<Enums, EnumsQuerySnapshot> {
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   EnumsQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     EnumsDocumentSnapshot? startAtDocument,
     EnumsDocumentSnapshot? endAtDocument,
     EnumsDocumentSnapshot? endBeforeDocument,
     EnumsDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  EnumsQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  EnumsQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  EnumsQuery whereId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  EnumsQuery whereEnumValue({
-    TestEnum? isEqualTo,
-    TestEnum? isNotEqualTo,
-    TestEnum? isLessThan,
-    TestEnum? isLessThanOrEqualTo,
-    TestEnum? isGreaterThan,
-    TestEnum? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<TestEnum>? whereIn,
-    List<TestEnum>? whereNotIn,
-  });
-  EnumsQuery whereNullableEnumValue({
-    TestEnum? isEqualTo,
-    TestEnum? isNotEqualTo,
-    TestEnum? isLessThan,
-    TestEnum? isLessThanOrEqualTo,
-    TestEnum? isGreaterThan,
-    TestEnum? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<TestEnum?>? whereIn,
-    List<TestEnum?>? whereNotIn,
-  });
-  EnumsQuery whereEnumList({
-    List<TestEnum>? isEqualTo,
-    List<TestEnum>? isNotEqualTo,
-    List<TestEnum>? isLessThan,
-    List<TestEnum>? isLessThanOrEqualTo,
-    List<TestEnum>? isGreaterThan,
-    List<TestEnum>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    TestEnum? arrayContains,
-    List<TestEnum>? arrayContainsAny,
-  });
-  EnumsQuery whereNullableEnumList({
-    List<TestEnum>? isEqualTo,
-    List<TestEnum>? isNotEqualTo,
-    List<TestEnum>? isLessThan,
-    List<TestEnum>? isLessThanOrEqualTo,
-    List<TestEnum>? isGreaterThan,
-    List<TestEnum>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    TestEnum? arrayContains,
-    List<TestEnum>? arrayContainsAny,
   });
 
   EnumsQuery orderByDocumentId({
@@ -577,8 +582,326 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
     );
   }
 
+  @override
+  EnumsQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EnumsQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EnumsQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EnumsQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EnumsQuery whereId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EnumsQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$EnumsFieldMap['id']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$EnumsPerFieldToJson.id(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$EnumsPerFieldToJson.id(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$EnumsPerFieldToJson.id(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$EnumsPerFieldToJson.id(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$EnumsPerFieldToJson.id(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$EnumsPerFieldToJson.id(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$EnumsPerFieldToJson.id(e)),
+        whereNotIn: whereNotIn?.map((e) => _$EnumsPerFieldToJson.id(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EnumsQuery whereEnumValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<TestEnum>? whereIn,
+    List<TestEnum>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EnumsQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$EnumsFieldMap['enumValue']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$EnumsPerFieldToJson.enumValue(isEqualTo as TestEnum)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$EnumsPerFieldToJson.enumValue(isNotEqualTo as TestEnum)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$EnumsPerFieldToJson.enumValue(isLessThan as TestEnum)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$EnumsPerFieldToJson.enumValue(isLessThanOrEqualTo as TestEnum)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$EnumsPerFieldToJson.enumValue(isGreaterThan as TestEnum)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$EnumsPerFieldToJson
+                .enumValue(isGreaterThanOrEqualTo as TestEnum)
+            : null,
+        whereIn: whereIn?.map((e) => _$EnumsPerFieldToJson.enumValue(e)),
+        whereNotIn: whereNotIn?.map((e) => _$EnumsPerFieldToJson.enumValue(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EnumsQuery whereNullableEnumValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<TestEnum?>? whereIn,
+    List<TestEnum?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EnumsQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$EnumsFieldMap['nullableEnumValue']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$EnumsPerFieldToJson.nullableEnumValue(isEqualTo as TestEnum?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$EnumsPerFieldToJson.nullableEnumValue(isNotEqualTo as TestEnum?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$EnumsPerFieldToJson.nullableEnumValue(isLessThan as TestEnum?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$EnumsPerFieldToJson
+                .nullableEnumValue(isLessThanOrEqualTo as TestEnum?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$EnumsPerFieldToJson
+                .nullableEnumValue(isGreaterThan as TestEnum?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$EnumsPerFieldToJson
+                .nullableEnumValue(isGreaterThanOrEqualTo as TestEnum?)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$EnumsPerFieldToJson.nullableEnumValue(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$EnumsPerFieldToJson.nullableEnumValue(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EnumsQuery whereEnumList({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    List<TestEnum>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$EnumsQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$EnumsFieldMap['enumList']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$EnumsPerFieldToJson.enumList(isEqualTo as List<TestEnum>)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$EnumsPerFieldToJson.enumList(isNotEqualTo as List<TestEnum>)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$EnumsPerFieldToJson.enumList(isLessThan as List<TestEnum>)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$EnumsPerFieldToJson
+                .enumList(isLessThanOrEqualTo as List<TestEnum>)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$EnumsPerFieldToJson.enumList(isGreaterThan as List<TestEnum>)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$EnumsPerFieldToJson
+                .enumList(isGreaterThanOrEqualTo as List<TestEnum>)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$EnumsPerFieldToJson.enumList([arrayContains as TestEnum])
+                    as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$EnumsPerFieldToJson.enumList(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EnumsQuery whereNullableEnumList({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    List<TestEnum>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$EnumsQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$EnumsFieldMap['nullableEnumList']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$EnumsPerFieldToJson
+                .nullableEnumList(isEqualTo as List<TestEnum>?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$EnumsPerFieldToJson
+                .nullableEnumList(isNotEqualTo as List<TestEnum>?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$EnumsPerFieldToJson
+                .nullableEnumList(isLessThan as List<TestEnum>?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$EnumsPerFieldToJson
+                .nullableEnumList(isLessThanOrEqualTo as List<TestEnum>?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$EnumsPerFieldToJson
+                .nullableEnumList(isGreaterThan as List<TestEnum>?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$EnumsPerFieldToJson
+                .nullableEnumList(isGreaterThanOrEqualTo as List<TestEnum>?)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$EnumsPerFieldToJson
+                    .nullableEnumList([arrayContains as TestEnum]) as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$EnumsPerFieldToJson.nullableEnumList(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   EnumsQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -642,6 +965,7 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$EnumsQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -649,302 +973,7 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
     );
   }
 
-  EnumsQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$EnumsQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EnumsQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$EnumsQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EnumsQuery whereId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$EnumsQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$EnumsFieldMap['id']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$EnumsPerFieldToJson.id(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$EnumsPerFieldToJson.id(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$EnumsPerFieldToJson.id(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$EnumsPerFieldToJson.id(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$EnumsPerFieldToJson.id(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$EnumsPerFieldToJson.id(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$EnumsPerFieldToJson.id(e)),
-        whereNotIn: whereNotIn?.map((e) => _$EnumsPerFieldToJson.id(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EnumsQuery whereEnumValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<TestEnum>? whereIn,
-    List<TestEnum>? whereNotIn,
-  }) {
-    return _$EnumsQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$EnumsFieldMap['enumValue']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$EnumsPerFieldToJson.enumValue(isEqualTo as TestEnum)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$EnumsPerFieldToJson.enumValue(isNotEqualTo as TestEnum)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$EnumsPerFieldToJson.enumValue(isLessThan as TestEnum)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$EnumsPerFieldToJson.enumValue(isLessThanOrEqualTo as TestEnum)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$EnumsPerFieldToJson.enumValue(isGreaterThan as TestEnum)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$EnumsPerFieldToJson
-                .enumValue(isGreaterThanOrEqualTo as TestEnum)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$EnumsPerFieldToJson.enumValue(e)),
-        whereNotIn: whereNotIn?.map((e) => _$EnumsPerFieldToJson.enumValue(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EnumsQuery whereNullableEnumValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<TestEnum?>? whereIn,
-    List<TestEnum?>? whereNotIn,
-  }) {
-    return _$EnumsQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$EnumsFieldMap['nullableEnumValue']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$EnumsPerFieldToJson.nullableEnumValue(isEqualTo as TestEnum?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$EnumsPerFieldToJson.nullableEnumValue(isNotEqualTo as TestEnum?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$EnumsPerFieldToJson.nullableEnumValue(isLessThan as TestEnum?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$EnumsPerFieldToJson
-                .nullableEnumValue(isLessThanOrEqualTo as TestEnum?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$EnumsPerFieldToJson
-                .nullableEnumValue(isGreaterThan as TestEnum?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$EnumsPerFieldToJson
-                .nullableEnumValue(isGreaterThanOrEqualTo as TestEnum?)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$EnumsPerFieldToJson.nullableEnumValue(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$EnumsPerFieldToJson.nullableEnumValue(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EnumsQuery whereEnumList({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<TestEnum>? arrayContainsAny,
-  }) {
-    return _$EnumsQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$EnumsFieldMap['enumList']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$EnumsPerFieldToJson.enumList(isEqualTo as List<TestEnum>)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$EnumsPerFieldToJson.enumList(isNotEqualTo as List<TestEnum>)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$EnumsPerFieldToJson.enumList(isLessThan as List<TestEnum>)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$EnumsPerFieldToJson
-                .enumList(isLessThanOrEqualTo as List<TestEnum>)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$EnumsPerFieldToJson.enumList(isGreaterThan as List<TestEnum>)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$EnumsPerFieldToJson
-                .enumList(isGreaterThanOrEqualTo as List<TestEnum>)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$EnumsPerFieldToJson.enumList([arrayContains as TestEnum])
-                    as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$EnumsPerFieldToJson.enumList(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EnumsQuery whereNullableEnumList({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<TestEnum>? arrayContainsAny,
-  }) {
-    return _$EnumsQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$EnumsFieldMap['nullableEnumList']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$EnumsPerFieldToJson
-                .nullableEnumList(isEqualTo as List<TestEnum>?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$EnumsPerFieldToJson
-                .nullableEnumList(isNotEqualTo as List<TestEnum>?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$EnumsPerFieldToJson
-                .nullableEnumList(isLessThan as List<TestEnum>?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$EnumsPerFieldToJson
-                .nullableEnumList(isLessThanOrEqualTo as List<TestEnum>?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$EnumsPerFieldToJson
-                .nullableEnumList(isGreaterThan as List<TestEnum>?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$EnumsPerFieldToJson
-                .nullableEnumList(isGreaterThanOrEqualTo as List<TestEnum>?)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$EnumsPerFieldToJson
-                    .nullableEnumList([arrayContains as TestEnum]) as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$EnumsPerFieldToJson.nullableEnumList(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   EnumsQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1017,6 +1046,7 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
     );
   }
 
+  @override
   EnumsQuery orderById({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1089,6 +1119,7 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
     );
   }
 
+  @override
   EnumsQuery orderByEnumValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1161,6 +1192,7 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
     );
   }
 
+  @override
   EnumsQuery orderByNullableEnumValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1233,6 +1265,7 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
     );
   }
 
+  @override
   EnumsQuery orderByEnumList({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1305,6 +1338,7 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
     );
   }
 
+  @override
   EnumsQuery orderByNullableEnumList({
     bool descending = false,
     Object? startAt = _sentinel,

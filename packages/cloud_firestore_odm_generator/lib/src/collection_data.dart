@@ -237,8 +237,55 @@ represents the content of the collection must be in the same file.
           ?.name,
       queryableFields: [
         QueryingField(
+          'fieldPath',
+          whereDoc: '''
+  /// Perform a where query based on a [FieldPath].
+  /// 
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  /// 
+  /// If possible, instead use the more explicit variant of where queries:
+  /// 
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  /// 
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```''',
+          orderByDoc: '''
+  /// Perform an order query based on a [FieldPath].
+  /// 
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  /// 
+  /// If possible, instead use the more explicit variant of order queries:
+  /// 
+  /// **AVOID**:
+  /// ```dart
+  /// collection.orderByFieldPath(
+  ///   FieldPath.fromString('title'),
+  ///   startAt: 'title',
+  /// );
+  /// ```
+  /// 
+  /// **PREFER**:
+  /// ```dart
+  /// collection.orderByTitle(startAt: 'title');
+  /// ```''',
+          annotatedElement.library!.typeProvider.objectType,
+          field: 'fieldPath',
+          updatable: false,
+        ),
+        QueryingField(
           'documentId',
           annotatedElement.library!.typeProvider.stringType,
+          whereDoc: '', // Inherited
+          orderByDoc: '', // Inherited
           field: 'FieldPath.documentId',
           updatable: false,
         ),
@@ -254,6 +301,8 @@ represents the content of the collection must be in the same file.
               (f) => QueryingField(
                 f.name,
                 f.type,
+                whereDoc: '',
+                orderByDoc: '',
                 updatable: true,
                 field: "${generatedJsonTypePrefix}FieldMap['${f.name}']!",
               ),

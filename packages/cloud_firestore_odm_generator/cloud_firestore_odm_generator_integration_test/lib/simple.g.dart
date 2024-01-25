@@ -236,6 +236,62 @@ abstract class IgnoredGetterQuery
   @override
   IgnoredGetterQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  IgnoredGetterQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  IgnoredGetterQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  IgnoredGetterQuery whereValue({
+    int? isEqualTo,
+    int? isNotEqualTo,
+    int? isLessThan,
+    int? isLessThanOrEqualTo,
+    int? isGreaterThan,
+    int? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -257,71 +313,16 @@ abstract class IgnoredGetterQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   IgnoredGetterQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     IgnoredGetterDocumentSnapshot? startAtDocument,
     IgnoredGetterDocumentSnapshot? endAtDocument,
     IgnoredGetterDocumentSnapshot? endBeforeDocument,
     IgnoredGetterDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  IgnoredGetterQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  IgnoredGetterQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  IgnoredGetterQuery whereValue({
-    int? isEqualTo,
-    int? isNotEqualTo,
-    int? isLessThan,
-    int? isLessThanOrEqualTo,
-    int? isGreaterThan,
-    int? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<int>? whereIn,
-    List<int>? whereNotIn,
   });
 
   IgnoredGetterQuery orderByDocumentId({
@@ -395,8 +396,123 @@ class _$IgnoredGetterQuery
     );
   }
 
+  @override
+  IgnoredGetterQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$IgnoredGetterQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  IgnoredGetterQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$IgnoredGetterQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  IgnoredGetterQuery whereValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$IgnoredGetterQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$IgnoredGetterFieldMap['value']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$IgnoredGetterPerFieldToJson.value(isEqualTo as int)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$IgnoredGetterPerFieldToJson.value(isNotEqualTo as int)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$IgnoredGetterPerFieldToJson.value(isLessThan as int)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$IgnoredGetterPerFieldToJson.value(isLessThanOrEqualTo as int)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$IgnoredGetterPerFieldToJson.value(isGreaterThan as int)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$IgnoredGetterPerFieldToJson.value(isGreaterThanOrEqualTo as int)
+            : null,
+        whereIn: whereIn?.map((e) => _$IgnoredGetterPerFieldToJson.value(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$IgnoredGetterPerFieldToJson.value(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   IgnoredGetterQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -460,6 +576,7 @@ class _$IgnoredGetterQuery
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$IgnoredGetterQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -467,111 +584,7 @@ class _$IgnoredGetterQuery
     );
   }
 
-  IgnoredGetterQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$IgnoredGetterQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  IgnoredGetterQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$IgnoredGetterQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  IgnoredGetterQuery whereValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<int>? whereIn,
-    List<int>? whereNotIn,
-  }) {
-    return _$IgnoredGetterQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$IgnoredGetterFieldMap['value']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$IgnoredGetterPerFieldToJson.value(isEqualTo as int)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$IgnoredGetterPerFieldToJson.value(isNotEqualTo as int)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$IgnoredGetterPerFieldToJson.value(isLessThan as int)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$IgnoredGetterPerFieldToJson.value(isLessThanOrEqualTo as int)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$IgnoredGetterPerFieldToJson.value(isGreaterThan as int)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$IgnoredGetterPerFieldToJson.value(isGreaterThanOrEqualTo as int)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$IgnoredGetterPerFieldToJson.value(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$IgnoredGetterPerFieldToJson.value(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   IgnoredGetterQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -644,6 +657,7 @@ class _$IgnoredGetterQuery
     );
   }
 
+  @override
   IgnoredGetterQuery orderByValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1020,6 +1034,62 @@ abstract class ModelQuery implements QueryReference<Model, ModelQuerySnapshot> {
   @override
   ModelQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  ModelQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  ModelQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  ModelQuery whereValue({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -1041,71 +1111,16 @@ abstract class ModelQuery implements QueryReference<Model, ModelQuerySnapshot> {
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   ModelQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     ModelDocumentSnapshot? startAtDocument,
     ModelDocumentSnapshot? endAtDocument,
     ModelDocumentSnapshot? endBeforeDocument,
     ModelDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  ModelQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  ModelQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  ModelQuery whereValue({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
   });
 
   ModelQuery orderByDocumentId({
@@ -1174,8 +1189,122 @@ class _$ModelQuery extends QueryReference<Model, ModelQuerySnapshot>
     );
   }
 
+  @override
+  ModelQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ModelQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ModelQuery whereValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ModelFieldMap['value']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ModelPerFieldToJson.value(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ModelPerFieldToJson.value(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ModelPerFieldToJson.value(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ModelPerFieldToJson.value(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ModelPerFieldToJson.value(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ModelPerFieldToJson.value(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$ModelPerFieldToJson.value(e)),
+        whereNotIn: whereNotIn?.map((e) => _$ModelPerFieldToJson.value(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   ModelQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -1239,6 +1368,7 @@ class _$ModelQuery extends QueryReference<Model, ModelQuerySnapshot>
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$ModelQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -1246,110 +1376,7 @@ class _$ModelQuery extends QueryReference<Model, ModelQuerySnapshot>
     );
   }
 
-  ModelQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$ModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  ModelQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$ModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  ModelQuery whereValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$ModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$ModelFieldMap['value']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$ModelPerFieldToJson.value(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$ModelPerFieldToJson.value(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$ModelPerFieldToJson.value(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$ModelPerFieldToJson.value(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$ModelPerFieldToJson.value(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$ModelPerFieldToJson.value(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$ModelPerFieldToJson.value(e)),
-        whereNotIn: whereNotIn?.map((e) => _$ModelPerFieldToJson.value(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   ModelQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1422,6 +1449,7 @@ class _$ModelQuery extends QueryReference<Model, ModelQuerySnapshot>
     );
   }
 
+  @override
   ModelQuery orderByValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2110,6 +2138,206 @@ abstract class NestedQuery
   @override
   NestedQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  NestedQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  NestedQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  NestedQuery whereValue({
+    Nested? isEqualTo,
+    Nested? isNotEqualTo,
+    Nested? isLessThan,
+    Nested? isLessThanOrEqualTo,
+    Nested? isGreaterThan,
+    Nested? isGreaterThanOrEqualTo,
+    List<Nested?>? whereIn,
+    List<Nested?>? whereNotIn,
+    bool? isNull,
+  });
+
+  NestedQuery whereSimple({
+    int? isEqualTo,
+    int? isNotEqualTo,
+    int? isLessThan,
+    int? isLessThanOrEqualTo,
+    int? isGreaterThan,
+    int? isGreaterThanOrEqualTo,
+    List<int?>? whereIn,
+    List<int?>? whereNotIn,
+    bool? isNull,
+  });
+
+  NestedQuery whereValueList({
+    List<Nested>? isEqualTo,
+    List<Nested>? isNotEqualTo,
+    List<Nested>? isLessThan,
+    List<Nested>? isLessThanOrEqualTo,
+    List<Nested>? isGreaterThan,
+    List<Nested>? isGreaterThanOrEqualTo,
+    Nested? arrayContains,
+    List<Nested>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  NestedQuery whereBoolList({
+    List<bool>? isEqualTo,
+    List<bool>? isNotEqualTo,
+    List<bool>? isLessThan,
+    List<bool>? isLessThanOrEqualTo,
+    List<bool>? isGreaterThan,
+    List<bool>? isGreaterThanOrEqualTo,
+    bool? arrayContains,
+    List<bool>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  NestedQuery whereStringList({
+    List<String>? isEqualTo,
+    List<String>? isNotEqualTo,
+    List<String>? isLessThan,
+    List<String>? isLessThanOrEqualTo,
+    List<String>? isGreaterThan,
+    List<String>? isGreaterThanOrEqualTo,
+    String? arrayContains,
+    List<String>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  NestedQuery whereNumList({
+    List<num>? isEqualTo,
+    List<num>? isNotEqualTo,
+    List<num>? isLessThan,
+    List<num>? isLessThanOrEqualTo,
+    List<num>? isGreaterThan,
+    List<num>? isGreaterThanOrEqualTo,
+    num? arrayContains,
+    List<num>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  NestedQuery whereObjectList({
+    List<Object?>? isEqualTo,
+    List<Object?>? isNotEqualTo,
+    List<Object?>? isLessThan,
+    List<Object?>? isLessThanOrEqualTo,
+    List<Object?>? isGreaterThan,
+    List<Object?>? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  NestedQuery whereDynamicList({
+    List<dynamic>? isEqualTo,
+    List<dynamic>? isNotEqualTo,
+    List<dynamic>? isLessThan,
+    List<dynamic>? isLessThanOrEqualTo,
+    List<dynamic>? isGreaterThan,
+    List<dynamic>? isGreaterThanOrEqualTo,
+    dynamic arrayContains,
+    List<dynamic>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  NestedQuery whereBoolSet({
+    Set<bool>? isEqualTo,
+    Set<bool>? isNotEqualTo,
+    Set<bool>? isLessThan,
+    Set<bool>? isLessThanOrEqualTo,
+    Set<bool>? isGreaterThan,
+    Set<bool>? isGreaterThanOrEqualTo,
+    bool? arrayContains,
+    Set<bool>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  NestedQuery whereEnumValue({
+    TestEnum? isEqualTo,
+    TestEnum? isNotEqualTo,
+    TestEnum? isLessThan,
+    TestEnum? isLessThanOrEqualTo,
+    TestEnum? isGreaterThan,
+    TestEnum? isGreaterThanOrEqualTo,
+    List<TestEnum>? whereIn,
+    List<TestEnum>? whereNotIn,
+    bool? isNull,
+  });
+
+  NestedQuery whereNullableEnumValue({
+    TestEnum? isEqualTo,
+    TestEnum? isNotEqualTo,
+    TestEnum? isLessThan,
+    TestEnum? isLessThanOrEqualTo,
+    TestEnum? isGreaterThan,
+    TestEnum? isGreaterThanOrEqualTo,
+    List<TestEnum?>? whereIn,
+    List<TestEnum?>? whereNotIn,
+    bool? isNull,
+  });
+
+  NestedQuery whereEnumList({
+    List<TestEnum>? isEqualTo,
+    List<TestEnum>? isNotEqualTo,
+    List<TestEnum>? isLessThan,
+    List<TestEnum>? isLessThanOrEqualTo,
+    List<TestEnum>? isGreaterThan,
+    List<TestEnum>? isGreaterThanOrEqualTo,
+    TestEnum? arrayContains,
+    List<TestEnum>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  NestedQuery whereNullableEnumList({
+    List<TestEnum>? isEqualTo,
+    List<TestEnum>? isNotEqualTo,
+    List<TestEnum>? isLessThan,
+    List<TestEnum>? isLessThanOrEqualTo,
+    List<TestEnum>? isGreaterThan,
+    List<TestEnum>? isGreaterThanOrEqualTo,
+    TestEnum? arrayContains,
+    List<TestEnum>? arrayContainsAny,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -2131,203 +2359,16 @@ abstract class NestedQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   NestedQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     NestedDocumentSnapshot? startAtDocument,
     NestedDocumentSnapshot? endAtDocument,
     NestedDocumentSnapshot? endBeforeDocument,
     NestedDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  NestedQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  NestedQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  NestedQuery whereValue({
-    Nested? isEqualTo,
-    Nested? isNotEqualTo,
-    Nested? isLessThan,
-    Nested? isLessThanOrEqualTo,
-    Nested? isGreaterThan,
-    Nested? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<Nested?>? whereIn,
-    List<Nested?>? whereNotIn,
-  });
-  NestedQuery whereSimple({
-    int? isEqualTo,
-    int? isNotEqualTo,
-    int? isLessThan,
-    int? isLessThanOrEqualTo,
-    int? isGreaterThan,
-    int? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<int?>? whereIn,
-    List<int?>? whereNotIn,
-  });
-  NestedQuery whereValueList({
-    List<Nested>? isEqualTo,
-    List<Nested>? isNotEqualTo,
-    List<Nested>? isLessThan,
-    List<Nested>? isLessThanOrEqualTo,
-    List<Nested>? isGreaterThan,
-    List<Nested>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    Nested? arrayContains,
-    List<Nested>? arrayContainsAny,
-  });
-  NestedQuery whereBoolList({
-    List<bool>? isEqualTo,
-    List<bool>? isNotEqualTo,
-    List<bool>? isLessThan,
-    List<bool>? isLessThanOrEqualTo,
-    List<bool>? isGreaterThan,
-    List<bool>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    bool? arrayContains,
-    List<bool>? arrayContainsAny,
-  });
-  NestedQuery whereStringList({
-    List<String>? isEqualTo,
-    List<String>? isNotEqualTo,
-    List<String>? isLessThan,
-    List<String>? isLessThanOrEqualTo,
-    List<String>? isGreaterThan,
-    List<String>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    String? arrayContains,
-    List<String>? arrayContainsAny,
-  });
-  NestedQuery whereNumList({
-    List<num>? isEqualTo,
-    List<num>? isNotEqualTo,
-    List<num>? isLessThan,
-    List<num>? isLessThanOrEqualTo,
-    List<num>? isGreaterThan,
-    List<num>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    num? arrayContains,
-    List<num>? arrayContainsAny,
-  });
-  NestedQuery whereObjectList({
-    List<Object?>? isEqualTo,
-    List<Object?>? isNotEqualTo,
-    List<Object?>? isLessThan,
-    List<Object?>? isLessThanOrEqualTo,
-    List<Object?>? isGreaterThan,
-    List<Object?>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-  });
-  NestedQuery whereDynamicList({
-    List<dynamic>? isEqualTo,
-    List<dynamic>? isNotEqualTo,
-    List<dynamic>? isLessThan,
-    List<dynamic>? isLessThanOrEqualTo,
-    List<dynamic>? isGreaterThan,
-    List<dynamic>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    dynamic arrayContains,
-    List<dynamic>? arrayContainsAny,
-  });
-  NestedQuery whereBoolSet({
-    Set<bool>? isEqualTo,
-    Set<bool>? isNotEqualTo,
-    Set<bool>? isLessThan,
-    Set<bool>? isLessThanOrEqualTo,
-    Set<bool>? isGreaterThan,
-    Set<bool>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    bool? arrayContains,
-    Set<bool>? arrayContainsAny,
-  });
-  NestedQuery whereEnumValue({
-    TestEnum? isEqualTo,
-    TestEnum? isNotEqualTo,
-    TestEnum? isLessThan,
-    TestEnum? isLessThanOrEqualTo,
-    TestEnum? isGreaterThan,
-    TestEnum? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<TestEnum>? whereIn,
-    List<TestEnum>? whereNotIn,
-  });
-  NestedQuery whereNullableEnumValue({
-    TestEnum? isEqualTo,
-    TestEnum? isNotEqualTo,
-    TestEnum? isLessThan,
-    TestEnum? isLessThanOrEqualTo,
-    TestEnum? isGreaterThan,
-    TestEnum? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<TestEnum?>? whereIn,
-    List<TestEnum?>? whereNotIn,
-  });
-  NestedQuery whereEnumList({
-    List<TestEnum>? isEqualTo,
-    List<TestEnum>? isNotEqualTo,
-    List<TestEnum>? isLessThan,
-    List<TestEnum>? isLessThanOrEqualTo,
-    List<TestEnum>? isGreaterThan,
-    List<TestEnum>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    TestEnum? arrayContains,
-    List<TestEnum>? arrayContainsAny,
-  });
-  NestedQuery whereNullableEnumList({
-    List<TestEnum>? isEqualTo,
-    List<TestEnum>? isNotEqualTo,
-    List<TestEnum>? isLessThan,
-    List<TestEnum>? isLessThanOrEqualTo,
-    List<TestEnum>? isGreaterThan,
-    List<TestEnum>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    TestEnum? arrayContains,
-    List<TestEnum>? arrayContainsAny,
   });
 
   NestedQuery orderByDocumentId({
@@ -2540,8 +2581,739 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
+  NestedQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<Nested?>? whereIn,
+    List<Nested?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['value']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.value(isEqualTo as Nested?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.value(isNotEqualTo as Nested?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.value(isLessThan as Nested?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson.value(isLessThanOrEqualTo as Nested?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson.value(isGreaterThan as Nested?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson.value(isGreaterThanOrEqualTo as Nested?)
+            : null,
+        whereIn: whereIn?.map((e) => _$NestedPerFieldToJson.value(e)),
+        whereNotIn: whereNotIn?.map((e) => _$NestedPerFieldToJson.value(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereSimple({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<int?>? whereIn,
+    List<int?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['simple']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.simple(isEqualTo as int?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.simple(isNotEqualTo as int?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.simple(isLessThan as int?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson.simple(isLessThanOrEqualTo as int?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson.simple(isGreaterThan as int?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson.simple(isGreaterThanOrEqualTo as int?)
+            : null,
+        whereIn: whereIn?.map((e) => _$NestedPerFieldToJson.simple(e)),
+        whereNotIn: whereNotIn?.map((e) => _$NestedPerFieldToJson.simple(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereValueList({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    List<Nested>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['valueList']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.valueList(isEqualTo as List<Nested>?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.valueList(isNotEqualTo as List<Nested>?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.valueList(isLessThan as List<Nested>?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .valueList(isLessThanOrEqualTo as List<Nested>?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson.valueList(isGreaterThan as List<Nested>?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .valueList(isGreaterThanOrEqualTo as List<Nested>?)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$NestedPerFieldToJson.valueList([arrayContains as Nested])
+                    as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$NestedPerFieldToJson.valueList(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereBoolList({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    List<bool>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['boolList']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.boolList(isEqualTo as List<bool>?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.boolList(isNotEqualTo as List<bool>?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.boolList(isLessThan as List<bool>?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .boolList(isLessThanOrEqualTo as List<bool>?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson.boolList(isGreaterThan as List<bool>?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .boolList(isGreaterThanOrEqualTo as List<bool>?)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$NestedPerFieldToJson.boolList([arrayContains as bool])
+                    as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$NestedPerFieldToJson.boolList(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereStringList({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    List<String>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['stringList']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.stringList(isEqualTo as List<String>?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.stringList(isNotEqualTo as List<String>?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.stringList(isLessThan as List<String>?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .stringList(isLessThanOrEqualTo as List<String>?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson.stringList(isGreaterThan as List<String>?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .stringList(isGreaterThanOrEqualTo as List<String>?)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$NestedPerFieldToJson.stringList([arrayContains as String])
+                    as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$NestedPerFieldToJson.stringList(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereNumList({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    List<num>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['numList']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.numList(isEqualTo as List<num>?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.numList(isNotEqualTo as List<num>?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.numList(isLessThan as List<num>?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson.numList(isLessThanOrEqualTo as List<num>?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson.numList(isGreaterThan as List<num>?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .numList(isGreaterThanOrEqualTo as List<num>?)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$NestedPerFieldToJson.numList([arrayContains as num]) as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$NestedPerFieldToJson.numList(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereObjectList({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    List<Object?>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['objectList']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.objectList(isEqualTo as List<Object?>?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.objectList(isNotEqualTo as List<Object?>?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.objectList(isLessThan as List<Object?>?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .objectList(isLessThanOrEqualTo as List<Object?>?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson.objectList(isGreaterThan as List<Object?>?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .objectList(isGreaterThanOrEqualTo as List<Object?>?)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$NestedPerFieldToJson.objectList([arrayContains]) as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$NestedPerFieldToJson.objectList(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereDynamicList({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    List<dynamic>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['dynamicList']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.dynamicList(isEqualTo as List<dynamic>?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.dynamicList(isNotEqualTo as List<dynamic>?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.dynamicList(isLessThan as List<dynamic>?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .dynamicList(isLessThanOrEqualTo as List<dynamic>?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson
+                .dynamicList(isGreaterThan as List<dynamic>?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .dynamicList(isGreaterThanOrEqualTo as List<dynamic>?)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$NestedPerFieldToJson.dynamicList([arrayContains as dynamic])
+                    as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$NestedPerFieldToJson.dynamicList(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereBoolSet({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    Set<bool>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['boolSet']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.boolSet(isEqualTo as Set<bool>?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.boolSet(isNotEqualTo as Set<bool>?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.boolSet(isLessThan as Set<bool>?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson.boolSet(isLessThanOrEqualTo as Set<bool>?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson.boolSet(isGreaterThan as Set<bool>?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .boolSet(isGreaterThanOrEqualTo as Set<bool>?)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$NestedPerFieldToJson.boolSet({arrayContains as bool})
+                    as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$NestedPerFieldToJson.boolSet(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereEnumValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<TestEnum>? whereIn,
+    List<TestEnum>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['enumValue']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.enumValue(isEqualTo as TestEnum)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.enumValue(isNotEqualTo as TestEnum)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.enumValue(isLessThan as TestEnum)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson.enumValue(isLessThanOrEqualTo as TestEnum)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson.enumValue(isGreaterThan as TestEnum)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .enumValue(isGreaterThanOrEqualTo as TestEnum)
+            : null,
+        whereIn: whereIn?.map((e) => _$NestedPerFieldToJson.enumValue(e)),
+        whereNotIn: whereNotIn?.map((e) => _$NestedPerFieldToJson.enumValue(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereNullableEnumValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<TestEnum?>? whereIn,
+    List<TestEnum?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['nullableEnumValue']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.nullableEnumValue(isEqualTo as TestEnum?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson
+                .nullableEnumValue(isNotEqualTo as TestEnum?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.nullableEnumValue(isLessThan as TestEnum?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .nullableEnumValue(isLessThanOrEqualTo as TestEnum?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson
+                .nullableEnumValue(isGreaterThan as TestEnum?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .nullableEnumValue(isGreaterThanOrEqualTo as TestEnum?)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$NestedPerFieldToJson.nullableEnumValue(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$NestedPerFieldToJson.nullableEnumValue(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereEnumList({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    List<TestEnum>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['enumList']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.enumList(isEqualTo as List<TestEnum>)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson.enumList(isNotEqualTo as List<TestEnum>)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson.enumList(isLessThan as List<TestEnum>)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .enumList(isLessThanOrEqualTo as List<TestEnum>)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson.enumList(isGreaterThan as List<TestEnum>)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .enumList(isGreaterThanOrEqualTo as List<TestEnum>)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$NestedPerFieldToJson.enumList([arrayContains as TestEnum])
+                    as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$NestedPerFieldToJson.enumList(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  NestedQuery whereNullableEnumList({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    List<TestEnum>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$NestedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$NestedFieldMap['nullableEnumList']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$NestedPerFieldToJson
+                .nullableEnumList(isEqualTo as List<TestEnum>?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$NestedPerFieldToJson
+                .nullableEnumList(isNotEqualTo as List<TestEnum>?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$NestedPerFieldToJson
+                .nullableEnumList(isLessThan as List<TestEnum>?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .nullableEnumList(isLessThanOrEqualTo as List<TestEnum>?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$NestedPerFieldToJson
+                .nullableEnumList(isGreaterThan as List<TestEnum>?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$NestedPerFieldToJson
+                .nullableEnumList(isGreaterThanOrEqualTo as List<TestEnum>?)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$NestedPerFieldToJson
+                    .nullableEnumList([arrayContains as TestEnum]) as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$NestedPerFieldToJson.nullableEnumList(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   NestedQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -2605,6 +3377,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$NestedQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -2612,691 +3385,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
-  NestedQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<Nested?>? whereIn,
-    List<Nested?>? whereNotIn,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['value']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.value(isEqualTo as Nested?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.value(isNotEqualTo as Nested?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.value(isLessThan as Nested?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson.value(isLessThanOrEqualTo as Nested?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson.value(isGreaterThan as Nested?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson.value(isGreaterThanOrEqualTo as Nested?)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$NestedPerFieldToJson.value(e)),
-        whereNotIn: whereNotIn?.map((e) => _$NestedPerFieldToJson.value(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereSimple({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<int?>? whereIn,
-    List<int?>? whereNotIn,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['simple']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.simple(isEqualTo as int?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.simple(isNotEqualTo as int?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.simple(isLessThan as int?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson.simple(isLessThanOrEqualTo as int?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson.simple(isGreaterThan as int?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson.simple(isGreaterThanOrEqualTo as int?)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$NestedPerFieldToJson.simple(e)),
-        whereNotIn: whereNotIn?.map((e) => _$NestedPerFieldToJson.simple(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereValueList({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<Nested>? arrayContainsAny,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['valueList']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.valueList(isEqualTo as List<Nested>?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.valueList(isNotEqualTo as List<Nested>?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.valueList(isLessThan as List<Nested>?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .valueList(isLessThanOrEqualTo as List<Nested>?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson.valueList(isGreaterThan as List<Nested>?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .valueList(isGreaterThanOrEqualTo as List<Nested>?)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$NestedPerFieldToJson.valueList([arrayContains as Nested])
-                    as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$NestedPerFieldToJson.valueList(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereBoolList({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<bool>? arrayContainsAny,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['boolList']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.boolList(isEqualTo as List<bool>?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.boolList(isNotEqualTo as List<bool>?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.boolList(isLessThan as List<bool>?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .boolList(isLessThanOrEqualTo as List<bool>?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson.boolList(isGreaterThan as List<bool>?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .boolList(isGreaterThanOrEqualTo as List<bool>?)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$NestedPerFieldToJson.boolList([arrayContains as bool])
-                    as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$NestedPerFieldToJson.boolList(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereStringList({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<String>? arrayContainsAny,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['stringList']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.stringList(isEqualTo as List<String>?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.stringList(isNotEqualTo as List<String>?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.stringList(isLessThan as List<String>?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .stringList(isLessThanOrEqualTo as List<String>?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson.stringList(isGreaterThan as List<String>?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .stringList(isGreaterThanOrEqualTo as List<String>?)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$NestedPerFieldToJson.stringList([arrayContains as String])
-                    as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$NestedPerFieldToJson.stringList(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereNumList({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<num>? arrayContainsAny,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['numList']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.numList(isEqualTo as List<num>?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.numList(isNotEqualTo as List<num>?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.numList(isLessThan as List<num>?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson.numList(isLessThanOrEqualTo as List<num>?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson.numList(isGreaterThan as List<num>?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .numList(isGreaterThanOrEqualTo as List<num>?)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$NestedPerFieldToJson.numList([arrayContains as num]) as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$NestedPerFieldToJson.numList(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereObjectList({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<Object?>? arrayContainsAny,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['objectList']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.objectList(isEqualTo as List<Object?>?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.objectList(isNotEqualTo as List<Object?>?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.objectList(isLessThan as List<Object?>?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .objectList(isLessThanOrEqualTo as List<Object?>?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson.objectList(isGreaterThan as List<Object?>?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .objectList(isGreaterThanOrEqualTo as List<Object?>?)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$NestedPerFieldToJson.objectList([arrayContains]) as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$NestedPerFieldToJson.objectList(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereDynamicList({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<dynamic>? arrayContainsAny,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['dynamicList']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.dynamicList(isEqualTo as List<dynamic>?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.dynamicList(isNotEqualTo as List<dynamic>?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.dynamicList(isLessThan as List<dynamic>?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .dynamicList(isLessThanOrEqualTo as List<dynamic>?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson
-                .dynamicList(isGreaterThan as List<dynamic>?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .dynamicList(isGreaterThanOrEqualTo as List<dynamic>?)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$NestedPerFieldToJson.dynamicList([arrayContains as dynamic])
-                    as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$NestedPerFieldToJson.dynamicList(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereBoolSet({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    Set<bool>? arrayContainsAny,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['boolSet']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.boolSet(isEqualTo as Set<bool>?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.boolSet(isNotEqualTo as Set<bool>?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.boolSet(isLessThan as Set<bool>?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson.boolSet(isLessThanOrEqualTo as Set<bool>?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson.boolSet(isGreaterThan as Set<bool>?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .boolSet(isGreaterThanOrEqualTo as Set<bool>?)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$NestedPerFieldToJson.boolSet({arrayContains as bool})
-                    as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$NestedPerFieldToJson.boolSet(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereEnumValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<TestEnum>? whereIn,
-    List<TestEnum>? whereNotIn,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['enumValue']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.enumValue(isEqualTo as TestEnum)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.enumValue(isNotEqualTo as TestEnum)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.enumValue(isLessThan as TestEnum)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson.enumValue(isLessThanOrEqualTo as TestEnum)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson.enumValue(isGreaterThan as TestEnum)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .enumValue(isGreaterThanOrEqualTo as TestEnum)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$NestedPerFieldToJson.enumValue(e)),
-        whereNotIn: whereNotIn?.map((e) => _$NestedPerFieldToJson.enumValue(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereNullableEnumValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<TestEnum?>? whereIn,
-    List<TestEnum?>? whereNotIn,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['nullableEnumValue']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.nullableEnumValue(isEqualTo as TestEnum?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson
-                .nullableEnumValue(isNotEqualTo as TestEnum?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.nullableEnumValue(isLessThan as TestEnum?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .nullableEnumValue(isLessThanOrEqualTo as TestEnum?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson
-                .nullableEnumValue(isGreaterThan as TestEnum?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .nullableEnumValue(isGreaterThanOrEqualTo as TestEnum?)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$NestedPerFieldToJson.nullableEnumValue(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$NestedPerFieldToJson.nullableEnumValue(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereEnumList({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<TestEnum>? arrayContainsAny,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['enumList']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.enumList(isEqualTo as List<TestEnum>)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson.enumList(isNotEqualTo as List<TestEnum>)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson.enumList(isLessThan as List<TestEnum>)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .enumList(isLessThanOrEqualTo as List<TestEnum>)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson.enumList(isGreaterThan as List<TestEnum>)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .enumList(isGreaterThanOrEqualTo as List<TestEnum>)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$NestedPerFieldToJson.enumList([arrayContains as TestEnum])
-                    as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$NestedPerFieldToJson.enumList(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  NestedQuery whereNullableEnumList({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<TestEnum>? arrayContainsAny,
-  }) {
-    return _$NestedQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$NestedFieldMap['nullableEnumList']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson
-                .nullableEnumList(isEqualTo as List<TestEnum>?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$NestedPerFieldToJson
-                .nullableEnumList(isNotEqualTo as List<TestEnum>?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$NestedPerFieldToJson
-                .nullableEnumList(isLessThan as List<TestEnum>?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .nullableEnumList(isLessThanOrEqualTo as List<TestEnum>?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$NestedPerFieldToJson
-                .nullableEnumList(isGreaterThan as List<TestEnum>?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$NestedPerFieldToJson
-                .nullableEnumList(isGreaterThanOrEqualTo as List<TestEnum>?)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$NestedPerFieldToJson
-                    .nullableEnumList([arrayContains as TestEnum]) as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$NestedPerFieldToJson.nullableEnumList(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   NestedQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -3369,6 +3458,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -3441,6 +3531,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderBySimple({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -3513,6 +3604,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByValueList({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -3585,6 +3677,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByBoolList({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -3657,6 +3750,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByStringList({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -3729,6 +3823,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByNumList({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -3801,6 +3896,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByObjectList({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -3873,6 +3969,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByDynamicList({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -3945,6 +4042,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByBoolSet({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -4017,6 +4115,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByEnumValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -4089,6 +4188,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByNullableEnumValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -4162,6 +4262,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByEnumList({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -4234,6 +4335,7 @@ class _$NestedQuery extends QueryReference<Nested, NestedQuerySnapshot>
     );
   }
 
+  @override
   NestedQuery orderByNullableEnumList({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -4555,6 +4657,50 @@ abstract class EmptyModelQuery
   @override
   EmptyModelQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  EmptyModelQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  EmptyModelQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -4576,60 +4722,16 @@ abstract class EmptyModelQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   EmptyModelQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     EmptyModelDocumentSnapshot? startAtDocument,
     EmptyModelDocumentSnapshot? endAtDocument,
     EmptyModelDocumentSnapshot? endBeforeDocument,
     EmptyModelDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  EmptyModelQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  EmptyModelQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
   });
 
   EmptyModelQuery orderByDocumentId({
@@ -4691,8 +4793,78 @@ class _$EmptyModelQuery
     );
   }
 
+  @override
+  EmptyModelQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EmptyModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  EmptyModelQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$EmptyModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   EmptyModelQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -4756,6 +4928,7 @@ class _$EmptyModelQuery
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$EmptyModelQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -4763,69 +4936,7 @@ class _$EmptyModelQuery
     );
   }
 
-  EmptyModelQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$EmptyModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  EmptyModelQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$EmptyModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   EmptyModelQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -5208,6 +5319,62 @@ abstract class OptionalJsonQuery
   @override
   OptionalJsonQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  OptionalJsonQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  OptionalJsonQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OptionalJsonQuery whereValue({
+    int? isEqualTo,
+    int? isNotEqualTo,
+    int? isLessThan,
+    int? isLessThanOrEqualTo,
+    int? isGreaterThan,
+    int? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -5229,71 +5396,16 @@ abstract class OptionalJsonQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   OptionalJsonQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     OptionalJsonDocumentSnapshot? startAtDocument,
     OptionalJsonDocumentSnapshot? endAtDocument,
     OptionalJsonDocumentSnapshot? endBeforeDocument,
     OptionalJsonDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  OptionalJsonQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  OptionalJsonQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OptionalJsonQuery whereValue({
-    int? isEqualTo,
-    int? isNotEqualTo,
-    int? isLessThan,
-    int? isLessThanOrEqualTo,
-    int? isGreaterThan,
-    int? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<int>? whereIn,
-    List<int>? whereNotIn,
   });
 
   OptionalJsonQuery orderByDocumentId({
@@ -5367,8 +5479,123 @@ class _$OptionalJsonQuery
     );
   }
 
+  @override
+  OptionalJsonQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OptionalJsonQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OptionalJsonQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OptionalJsonQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OptionalJsonQuery whereValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OptionalJsonQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$OptionalJsonFieldMap['value']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$OptionalJsonPerFieldToJson.value(isEqualTo as int)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$OptionalJsonPerFieldToJson.value(isNotEqualTo as int)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$OptionalJsonPerFieldToJson.value(isLessThan as int)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$OptionalJsonPerFieldToJson.value(isLessThanOrEqualTo as int)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$OptionalJsonPerFieldToJson.value(isGreaterThan as int)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$OptionalJsonPerFieldToJson.value(isGreaterThanOrEqualTo as int)
+            : null,
+        whereIn: whereIn?.map((e) => _$OptionalJsonPerFieldToJson.value(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$OptionalJsonPerFieldToJson.value(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   OptionalJsonQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -5432,6 +5659,7 @@ class _$OptionalJsonQuery
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$OptionalJsonQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -5439,111 +5667,7 @@ class _$OptionalJsonQuery
     );
   }
 
-  OptionalJsonQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$OptionalJsonQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OptionalJsonQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OptionalJsonQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OptionalJsonQuery whereValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<int>? whereIn,
-    List<int>? whereNotIn,
-  }) {
-    return _$OptionalJsonQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$OptionalJsonFieldMap['value']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$OptionalJsonPerFieldToJson.value(isEqualTo as int)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$OptionalJsonPerFieldToJson.value(isNotEqualTo as int)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$OptionalJsonPerFieldToJson.value(isLessThan as int)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$OptionalJsonPerFieldToJson.value(isLessThanOrEqualTo as int)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$OptionalJsonPerFieldToJson.value(isGreaterThan as int)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$OptionalJsonPerFieldToJson.value(isGreaterThanOrEqualTo as int)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$OptionalJsonPerFieldToJson.value(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$OptionalJsonPerFieldToJson.value(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   OptionalJsonQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -5616,6 +5740,7 @@ class _$OptionalJsonQuery
     );
   }
 
+  @override
   OptionalJsonQuery orderByValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -5997,6 +6122,62 @@ abstract class MixedJsonQuery
   @override
   MixedJsonQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  MixedJsonQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  MixedJsonQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  MixedJsonQuery whereValue({
+    int? isEqualTo,
+    int? isNotEqualTo,
+    int? isLessThan,
+    int? isLessThanOrEqualTo,
+    int? isGreaterThan,
+    int? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -6018,71 +6199,16 @@ abstract class MixedJsonQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   MixedJsonQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     MixedJsonDocumentSnapshot? startAtDocument,
     MixedJsonDocumentSnapshot? endAtDocument,
     MixedJsonDocumentSnapshot? endBeforeDocument,
     MixedJsonDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  MixedJsonQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  MixedJsonQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  MixedJsonQuery whereValue({
-    int? isEqualTo,
-    int? isNotEqualTo,
-    int? isLessThan,
-    int? isLessThanOrEqualTo,
-    int? isGreaterThan,
-    int? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<int>? whereIn,
-    List<int>? whereNotIn,
   });
 
   MixedJsonQuery orderByDocumentId({
@@ -6153,8 +6279,122 @@ class _$MixedJsonQuery extends QueryReference<MixedJson, MixedJsonQuerySnapshot>
     );
   }
 
+  @override
+  MixedJsonQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$MixedJsonQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  MixedJsonQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$MixedJsonQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  MixedJsonQuery whereValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$MixedJsonQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$MixedJsonFieldMap['value']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$MixedJsonPerFieldToJson.value(isEqualTo as int)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$MixedJsonPerFieldToJson.value(isNotEqualTo as int)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$MixedJsonPerFieldToJson.value(isLessThan as int)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$MixedJsonPerFieldToJson.value(isLessThanOrEqualTo as int)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$MixedJsonPerFieldToJson.value(isGreaterThan as int)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$MixedJsonPerFieldToJson.value(isGreaterThanOrEqualTo as int)
+            : null,
+        whereIn: whereIn?.map((e) => _$MixedJsonPerFieldToJson.value(e)),
+        whereNotIn: whereNotIn?.map((e) => _$MixedJsonPerFieldToJson.value(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   MixedJsonQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -6218,6 +6458,7 @@ class _$MixedJsonQuery extends QueryReference<MixedJson, MixedJsonQuerySnapshot>
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$MixedJsonQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -6225,110 +6466,7 @@ class _$MixedJsonQuery extends QueryReference<MixedJson, MixedJsonQuerySnapshot>
     );
   }
 
-  MixedJsonQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$MixedJsonQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  MixedJsonQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$MixedJsonQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  MixedJsonQuery whereValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<int>? whereIn,
-    List<int>? whereNotIn,
-  }) {
-    return _$MixedJsonQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$MixedJsonFieldMap['value']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$MixedJsonPerFieldToJson.value(isEqualTo as int)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$MixedJsonPerFieldToJson.value(isNotEqualTo as int)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$MixedJsonPerFieldToJson.value(isLessThan as int)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$MixedJsonPerFieldToJson.value(isLessThanOrEqualTo as int)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$MixedJsonPerFieldToJson.value(isGreaterThan as int)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$MixedJsonPerFieldToJson.value(isGreaterThanOrEqualTo as int)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$MixedJsonPerFieldToJson.value(e)),
-        whereNotIn: whereNotIn?.map((e) => _$MixedJsonPerFieldToJson.value(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   MixedJsonQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -6401,6 +6539,7 @@ class _$MixedJsonQuery extends QueryReference<MixedJson, MixedJsonQuerySnapshot>
     );
   }
 
+  @override
   MixedJsonQuery orderByValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -6843,6 +6982,74 @@ abstract class RootQuery implements QueryReference<Root, RootQuerySnapshot> {
   @override
   RootQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  RootQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  RootQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  RootQuery whereNonNullable({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  RootQuery whereNullable({
+    int? isEqualTo,
+    int? isNotEqualTo,
+    int? isLessThan,
+    int? isLessThanOrEqualTo,
+    int? isGreaterThan,
+    int? isGreaterThanOrEqualTo,
+    List<int?>? whereIn,
+    List<int?>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -6864,82 +7071,16 @@ abstract class RootQuery implements QueryReference<Root, RootQuerySnapshot> {
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   RootQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     RootDocumentSnapshot? startAtDocument,
     RootDocumentSnapshot? endAtDocument,
     RootDocumentSnapshot? endBeforeDocument,
     RootDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  RootQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  RootQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  RootQuery whereNonNullable({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  RootQuery whereNullable({
-    int? isEqualTo,
-    int? isNotEqualTo,
-    int? isLessThan,
-    int? isLessThanOrEqualTo,
-    int? isGreaterThan,
-    int? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<int?>? whereIn,
-    List<int?>? whereNotIn,
   });
 
   RootQuery orderByDocumentId({
@@ -7020,8 +7161,166 @@ class _$RootQuery extends QueryReference<Root, RootQuerySnapshot>
     );
   }
 
+  @override
+  RootQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$RootQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  RootQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$RootQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  RootQuery whereNonNullable({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$RootQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$RootFieldMap['nonNullable']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$RootPerFieldToJson.nonNullable(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$RootPerFieldToJson.nonNullable(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$RootPerFieldToJson.nonNullable(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$RootPerFieldToJson.nonNullable(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$RootPerFieldToJson.nonNullable(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$RootPerFieldToJson.nonNullable(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$RootPerFieldToJson.nonNullable(e)),
+        whereNotIn: whereNotIn?.map((e) => _$RootPerFieldToJson.nonNullable(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  RootQuery whereNullable({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<int?>? whereIn,
+    List<int?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$RootQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$RootFieldMap['nullable']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$RootPerFieldToJson.nullable(isEqualTo as int?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$RootPerFieldToJson.nullable(isNotEqualTo as int?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$RootPerFieldToJson.nullable(isLessThan as int?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$RootPerFieldToJson.nullable(isLessThanOrEqualTo as int?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$RootPerFieldToJson.nullable(isGreaterThan as int?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$RootPerFieldToJson.nullable(isGreaterThanOrEqualTo as int?)
+            : null,
+        whereIn: whereIn?.map((e) => _$RootPerFieldToJson.nullable(e)),
+        whereNotIn: whereNotIn?.map((e) => _$RootPerFieldToJson.nullable(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   RootQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -7085,6 +7384,7 @@ class _$RootQuery extends QueryReference<Root, RootQuerySnapshot>
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$RootQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -7092,151 +7392,7 @@ class _$RootQuery extends QueryReference<Root, RootQuerySnapshot>
     );
   }
 
-  RootQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$RootQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  RootQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$RootQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  RootQuery whereNonNullable({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$RootQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$RootFieldMap['nonNullable']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$RootPerFieldToJson.nonNullable(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$RootPerFieldToJson.nonNullable(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$RootPerFieldToJson.nonNullable(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$RootPerFieldToJson.nonNullable(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$RootPerFieldToJson.nonNullable(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$RootPerFieldToJson.nonNullable(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$RootPerFieldToJson.nonNullable(e)),
-        whereNotIn: whereNotIn?.map((e) => _$RootPerFieldToJson.nonNullable(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  RootQuery whereNullable({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<int?>? whereIn,
-    List<int?>? whereNotIn,
-  }) {
-    return _$RootQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$RootFieldMap['nullable']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$RootPerFieldToJson.nullable(isEqualTo as int?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$RootPerFieldToJson.nullable(isNotEqualTo as int?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$RootPerFieldToJson.nullable(isLessThan as int?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$RootPerFieldToJson.nullable(isLessThanOrEqualTo as int?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$RootPerFieldToJson.nullable(isGreaterThan as int?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$RootPerFieldToJson.nullable(isGreaterThanOrEqualTo as int?)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$RootPerFieldToJson.nullable(e)),
-        whereNotIn: whereNotIn?.map((e) => _$RootPerFieldToJson.nullable(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   RootQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -7309,6 +7465,7 @@ class _$RootQuery extends QueryReference<Root, RootQuerySnapshot>
     );
   }
 
+  @override
   RootQuery orderByNonNullable({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -7381,6 +7538,7 @@ class _$RootQuery extends QueryReference<Root, RootQuerySnapshot>
     );
   }
 
+  @override
   RootQuery orderByNullable({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -7799,6 +7957,74 @@ abstract class SubQuery implements QueryReference<Sub, SubQuerySnapshot> {
   @override
   SubQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  SubQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  SubQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  SubQuery whereNonNullable({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  SubQuery whereNullable({
+    int? isEqualTo,
+    int? isNotEqualTo,
+    int? isLessThan,
+    int? isLessThanOrEqualTo,
+    int? isGreaterThan,
+    int? isGreaterThanOrEqualTo,
+    List<int?>? whereIn,
+    List<int?>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -7820,82 +8046,16 @@ abstract class SubQuery implements QueryReference<Sub, SubQuerySnapshot> {
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   SubQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     SubDocumentSnapshot? startAtDocument,
     SubDocumentSnapshot? endAtDocument,
     SubDocumentSnapshot? endBeforeDocument,
     SubDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  SubQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  SubQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  SubQuery whereNonNullable({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  SubQuery whereNullable({
-    int? isEqualTo,
-    int? isNotEqualTo,
-    int? isLessThan,
-    int? isLessThanOrEqualTo,
-    int? isGreaterThan,
-    int? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<int?>? whereIn,
-    List<int?>? whereNotIn,
   });
 
   SubQuery orderByDocumentId({
@@ -7976,8 +8136,166 @@ class _$SubQuery extends QueryReference<Sub, SubQuerySnapshot>
     );
   }
 
+  @override
+  SubQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$SubQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SubQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$SubQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SubQuery whereNonNullable({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$SubQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SubFieldMap['nonNullable']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$SubPerFieldToJson.nonNullable(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$SubPerFieldToJson.nonNullable(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$SubPerFieldToJson.nonNullable(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$SubPerFieldToJson.nonNullable(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$SubPerFieldToJson.nonNullable(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$SubPerFieldToJson.nonNullable(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$SubPerFieldToJson.nonNullable(e)),
+        whereNotIn: whereNotIn?.map((e) => _$SubPerFieldToJson.nonNullable(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SubQuery whereNullable({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<int?>? whereIn,
+    List<int?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$SubQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SubFieldMap['nullable']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$SubPerFieldToJson.nullable(isEqualTo as int?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$SubPerFieldToJson.nullable(isNotEqualTo as int?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$SubPerFieldToJson.nullable(isLessThan as int?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$SubPerFieldToJson.nullable(isLessThanOrEqualTo as int?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$SubPerFieldToJson.nullable(isGreaterThan as int?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$SubPerFieldToJson.nullable(isGreaterThanOrEqualTo as int?)
+            : null,
+        whereIn: whereIn?.map((e) => _$SubPerFieldToJson.nullable(e)),
+        whereNotIn: whereNotIn?.map((e) => _$SubPerFieldToJson.nullable(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   SubQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -8041,6 +8359,7 @@ class _$SubQuery extends QueryReference<Sub, SubQuerySnapshot>
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$SubQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -8048,151 +8367,7 @@ class _$SubQuery extends QueryReference<Sub, SubQuerySnapshot>
     );
   }
 
-  SubQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$SubQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  SubQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$SubQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  SubQuery whereNonNullable({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$SubQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$SubFieldMap['nonNullable']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$SubPerFieldToJson.nonNullable(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$SubPerFieldToJson.nonNullable(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$SubPerFieldToJson.nonNullable(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$SubPerFieldToJson.nonNullable(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$SubPerFieldToJson.nonNullable(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$SubPerFieldToJson.nonNullable(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$SubPerFieldToJson.nonNullable(e)),
-        whereNotIn: whereNotIn?.map((e) => _$SubPerFieldToJson.nonNullable(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  SubQuery whereNullable({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<int?>? whereIn,
-    List<int?>? whereNotIn,
-  }) {
-    return _$SubQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$SubFieldMap['nullable']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$SubPerFieldToJson.nullable(isEqualTo as int?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$SubPerFieldToJson.nullable(isNotEqualTo as int?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$SubPerFieldToJson.nullable(isLessThan as int?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$SubPerFieldToJson.nullable(isLessThanOrEqualTo as int?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$SubPerFieldToJson.nullable(isGreaterThan as int?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$SubPerFieldToJson.nullable(isGreaterThanOrEqualTo as int?)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$SubPerFieldToJson.nullable(e)),
-        whereNotIn: whereNotIn?.map((e) => _$SubPerFieldToJson.nullable(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   SubQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -8265,6 +8440,7 @@ class _$SubQuery extends QueryReference<Sub, SubQuerySnapshot>
     );
   }
 
+  @override
   SubQuery orderByNonNullable({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -8337,6 +8513,7 @@ class _$SubQuery extends QueryReference<Sub, SubQuerySnapshot>
     );
   }
 
+  @override
   SubQuery orderByNullable({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -8735,6 +8912,62 @@ abstract class AsCamelCaseQuery
   @override
   AsCamelCaseQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  AsCamelCaseQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  AsCamelCaseQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  AsCamelCaseQuery whereValue({
+    num? isEqualTo,
+    num? isNotEqualTo,
+    num? isLessThan,
+    num? isLessThanOrEqualTo,
+    num? isGreaterThan,
+    num? isGreaterThanOrEqualTo,
+    List<num>? whereIn,
+    List<num>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -8756,71 +8989,16 @@ abstract class AsCamelCaseQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   AsCamelCaseQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     AsCamelCaseDocumentSnapshot? startAtDocument,
     AsCamelCaseDocumentSnapshot? endAtDocument,
     AsCamelCaseDocumentSnapshot? endBeforeDocument,
     AsCamelCaseDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  AsCamelCaseQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  AsCamelCaseQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  AsCamelCaseQuery whereValue({
-    num? isEqualTo,
-    num? isNotEqualTo,
-    num? isLessThan,
-    num? isLessThanOrEqualTo,
-    num? isGreaterThan,
-    num? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<num>? whereIn,
-    List<num>? whereNotIn,
   });
 
   AsCamelCaseQuery orderByDocumentId({
@@ -8894,8 +9072,123 @@ class _$AsCamelCaseQuery
     );
   }
 
+  @override
+  AsCamelCaseQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AsCamelCaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AsCamelCaseQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AsCamelCaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AsCamelCaseQuery whereValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<num>? whereIn,
+    List<num>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AsCamelCaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$AsCamelCaseFieldMap['value']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$AsCamelCasePerFieldToJson.value(isEqualTo as num)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$AsCamelCasePerFieldToJson.value(isNotEqualTo as num)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$AsCamelCasePerFieldToJson.value(isLessThan as num)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$AsCamelCasePerFieldToJson.value(isLessThanOrEqualTo as num)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$AsCamelCasePerFieldToJson.value(isGreaterThan as num)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$AsCamelCasePerFieldToJson.value(isGreaterThanOrEqualTo as num)
+            : null,
+        whereIn: whereIn?.map((e) => _$AsCamelCasePerFieldToJson.value(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$AsCamelCasePerFieldToJson.value(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   AsCamelCaseQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -8959,6 +9252,7 @@ class _$AsCamelCaseQuery
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$AsCamelCaseQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -8966,111 +9260,7 @@ class _$AsCamelCaseQuery
     );
   }
 
-  AsCamelCaseQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$AsCamelCaseQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  AsCamelCaseQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$AsCamelCaseQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  AsCamelCaseQuery whereValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<num>? whereIn,
-    List<num>? whereNotIn,
-  }) {
-    return _$AsCamelCaseQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$AsCamelCaseFieldMap['value']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$AsCamelCasePerFieldToJson.value(isEqualTo as num)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$AsCamelCasePerFieldToJson.value(isNotEqualTo as num)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$AsCamelCasePerFieldToJson.value(isLessThan as num)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$AsCamelCasePerFieldToJson.value(isLessThanOrEqualTo as num)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$AsCamelCasePerFieldToJson.value(isGreaterThan as num)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$AsCamelCasePerFieldToJson.value(isGreaterThanOrEqualTo as num)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$AsCamelCasePerFieldToJson.value(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$AsCamelCasePerFieldToJson.value(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   AsCamelCaseQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -9143,6 +9333,7 @@ class _$AsCamelCaseQuery
     );
   }
 
+  @override
   AsCamelCaseQuery orderByValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -9547,6 +9738,62 @@ abstract class CustomSubNameQuery
   @override
   CustomSubNameQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  CustomSubNameQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  CustomSubNameQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  CustomSubNameQuery whereValue({
+    num? isEqualTo,
+    num? isNotEqualTo,
+    num? isLessThan,
+    num? isLessThanOrEqualTo,
+    num? isGreaterThan,
+    num? isGreaterThanOrEqualTo,
+    List<num>? whereIn,
+    List<num>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -9568,71 +9815,16 @@ abstract class CustomSubNameQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   CustomSubNameQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     CustomSubNameDocumentSnapshot? startAtDocument,
     CustomSubNameDocumentSnapshot? endAtDocument,
     CustomSubNameDocumentSnapshot? endBeforeDocument,
     CustomSubNameDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  CustomSubNameQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  CustomSubNameQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  CustomSubNameQuery whereValue({
-    num? isEqualTo,
-    num? isNotEqualTo,
-    num? isLessThan,
-    num? isLessThanOrEqualTo,
-    num? isGreaterThan,
-    num? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<num>? whereIn,
-    List<num>? whereNotIn,
   });
 
   CustomSubNameQuery orderByDocumentId({
@@ -9706,8 +9898,123 @@ class _$CustomSubNameQuery
     );
   }
 
+  @override
+  CustomSubNameQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$CustomSubNameQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  CustomSubNameQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$CustomSubNameQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  CustomSubNameQuery whereValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<num>? whereIn,
+    List<num>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$CustomSubNameQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$CustomSubNameFieldMap['value']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$CustomSubNamePerFieldToJson.value(isEqualTo as num)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$CustomSubNamePerFieldToJson.value(isNotEqualTo as num)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$CustomSubNamePerFieldToJson.value(isLessThan as num)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$CustomSubNamePerFieldToJson.value(isLessThanOrEqualTo as num)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$CustomSubNamePerFieldToJson.value(isGreaterThan as num)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$CustomSubNamePerFieldToJson.value(isGreaterThanOrEqualTo as num)
+            : null,
+        whereIn: whereIn?.map((e) => _$CustomSubNamePerFieldToJson.value(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$CustomSubNamePerFieldToJson.value(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   CustomSubNameQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -9771,6 +10078,7 @@ class _$CustomSubNameQuery
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$CustomSubNameQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -9778,111 +10086,7 @@ class _$CustomSubNameQuery
     );
   }
 
-  CustomSubNameQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$CustomSubNameQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  CustomSubNameQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$CustomSubNameQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  CustomSubNameQuery whereValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<num>? whereIn,
-    List<num>? whereNotIn,
-  }) {
-    return _$CustomSubNameQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$CustomSubNameFieldMap['value']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$CustomSubNamePerFieldToJson.value(isEqualTo as num)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$CustomSubNamePerFieldToJson.value(isNotEqualTo as num)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$CustomSubNamePerFieldToJson.value(isLessThan as num)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$CustomSubNamePerFieldToJson.value(isLessThanOrEqualTo as num)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$CustomSubNamePerFieldToJson.value(isGreaterThan as num)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$CustomSubNamePerFieldToJson.value(isGreaterThanOrEqualTo as num)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$CustomSubNamePerFieldToJson.value(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$CustomSubNamePerFieldToJson.value(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   CustomSubNameQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -9955,6 +10159,7 @@ class _$CustomSubNameQuery
     );
   }
 
+  @override
   CustomSubNameQuery orderByValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -10364,6 +10569,62 @@ abstract class ThisIsACustomPrefixQuery
   @override
   ThisIsACustomPrefixQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  ThisIsACustomPrefixQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  ThisIsACustomPrefixQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  ThisIsACustomPrefixQuery whereValue({
+    num? isEqualTo,
+    num? isNotEqualTo,
+    num? isLessThan,
+    num? isLessThanOrEqualTo,
+    num? isGreaterThan,
+    num? isGreaterThanOrEqualTo,
+    List<num>? whereIn,
+    List<num>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -10385,71 +10646,16 @@ abstract class ThisIsACustomPrefixQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   ThisIsACustomPrefixQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     ThisIsACustomPrefixDocumentSnapshot? startAtDocument,
     ThisIsACustomPrefixDocumentSnapshot? endAtDocument,
     ThisIsACustomPrefixDocumentSnapshot? endBeforeDocument,
     ThisIsACustomPrefixDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  ThisIsACustomPrefixQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  ThisIsACustomPrefixQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  ThisIsACustomPrefixQuery whereValue({
-    num? isEqualTo,
-    num? isNotEqualTo,
-    num? isLessThan,
-    num? isLessThanOrEqualTo,
-    num? isGreaterThan,
-    num? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<num>? whereIn,
-    List<num>? whereNotIn,
   });
 
   ThisIsACustomPrefixQuery orderByDocumentId({
@@ -10524,8 +10730,126 @@ class _$ThisIsACustomPrefixQuery
     );
   }
 
+  @override
+  ThisIsACustomPrefixQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ThisIsACustomPrefixQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ThisIsACustomPrefixQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ThisIsACustomPrefixQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ThisIsACustomPrefixQuery whereValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<num>? whereIn,
+    List<num>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ThisIsACustomPrefixQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$CustomClassPrefixFieldMap['value']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$CustomClassPrefixPerFieldToJson.value(isEqualTo as num)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$CustomClassPrefixPerFieldToJson.value(isNotEqualTo as num)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$CustomClassPrefixPerFieldToJson.value(isLessThan as num)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$CustomClassPrefixPerFieldToJson
+                .value(isLessThanOrEqualTo as num)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$CustomClassPrefixPerFieldToJson.value(isGreaterThan as num)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$CustomClassPrefixPerFieldToJson
+                .value(isGreaterThanOrEqualTo as num)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$CustomClassPrefixPerFieldToJson.value(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$CustomClassPrefixPerFieldToJson.value(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   ThisIsACustomPrefixQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -10589,6 +10913,7 @@ class _$ThisIsACustomPrefixQuery
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$ThisIsACustomPrefixQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -10596,114 +10921,7 @@ class _$ThisIsACustomPrefixQuery
     );
   }
 
-  ThisIsACustomPrefixQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$ThisIsACustomPrefixQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  ThisIsACustomPrefixQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$ThisIsACustomPrefixQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  ThisIsACustomPrefixQuery whereValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<num>? whereIn,
-    List<num>? whereNotIn,
-  }) {
-    return _$ThisIsACustomPrefixQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$CustomClassPrefixFieldMap['value']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$CustomClassPrefixPerFieldToJson.value(isEqualTo as num)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$CustomClassPrefixPerFieldToJson.value(isNotEqualTo as num)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$CustomClassPrefixPerFieldToJson.value(isLessThan as num)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$CustomClassPrefixPerFieldToJson
-                .value(isLessThanOrEqualTo as num)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$CustomClassPrefixPerFieldToJson.value(isGreaterThan as num)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$CustomClassPrefixPerFieldToJson
-                .value(isGreaterThanOrEqualTo as num)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$CustomClassPrefixPerFieldToJson.value(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$CustomClassPrefixPerFieldToJson.value(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   ThisIsACustomPrefixQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -10776,6 +10994,7 @@ class _$ThisIsACustomPrefixQuery
     );
   }
 
+  @override
   ThisIsACustomPrefixQuery orderByValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -11173,6 +11392,62 @@ abstract class ExplicitPathQuery
   @override
   ExplicitPathQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  ExplicitPathQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  ExplicitPathQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  ExplicitPathQuery whereValue({
+    num? isEqualTo,
+    num? isNotEqualTo,
+    num? isLessThan,
+    num? isLessThanOrEqualTo,
+    num? isGreaterThan,
+    num? isGreaterThanOrEqualTo,
+    List<num>? whereIn,
+    List<num>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -11194,71 +11469,16 @@ abstract class ExplicitPathQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   ExplicitPathQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     ExplicitPathDocumentSnapshot? startAtDocument,
     ExplicitPathDocumentSnapshot? endAtDocument,
     ExplicitPathDocumentSnapshot? endBeforeDocument,
     ExplicitPathDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  ExplicitPathQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  ExplicitPathQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  ExplicitPathQuery whereValue({
-    num? isEqualTo,
-    num? isNotEqualTo,
-    num? isLessThan,
-    num? isLessThanOrEqualTo,
-    num? isGreaterThan,
-    num? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<num>? whereIn,
-    List<num>? whereNotIn,
   });
 
   ExplicitPathQuery orderByDocumentId({
@@ -11332,8 +11552,123 @@ class _$ExplicitPathQuery
     );
   }
 
+  @override
+  ExplicitPathQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ExplicitPathQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ExplicitPathQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ExplicitPathQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ExplicitPathQuery whereValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<num>? whereIn,
+    List<num>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ExplicitPathQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ExplicitPathFieldMap['value']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ExplicitPathPerFieldToJson.value(isEqualTo as num)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ExplicitPathPerFieldToJson.value(isNotEqualTo as num)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ExplicitPathPerFieldToJson.value(isLessThan as num)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ExplicitPathPerFieldToJson.value(isLessThanOrEqualTo as num)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ExplicitPathPerFieldToJson.value(isGreaterThan as num)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ExplicitPathPerFieldToJson.value(isGreaterThanOrEqualTo as num)
+            : null,
+        whereIn: whereIn?.map((e) => _$ExplicitPathPerFieldToJson.value(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$ExplicitPathPerFieldToJson.value(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   ExplicitPathQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -11397,6 +11732,7 @@ class _$ExplicitPathQuery
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$ExplicitPathQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -11404,111 +11740,7 @@ class _$ExplicitPathQuery
     );
   }
 
-  ExplicitPathQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$ExplicitPathQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  ExplicitPathQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$ExplicitPathQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  ExplicitPathQuery whereValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<num>? whereIn,
-    List<num>? whereNotIn,
-  }) {
-    return _$ExplicitPathQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$ExplicitPathFieldMap['value']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$ExplicitPathPerFieldToJson.value(isEqualTo as num)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$ExplicitPathPerFieldToJson.value(isNotEqualTo as num)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$ExplicitPathPerFieldToJson.value(isLessThan as num)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$ExplicitPathPerFieldToJson.value(isLessThanOrEqualTo as num)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$ExplicitPathPerFieldToJson.value(isGreaterThan as num)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$ExplicitPathPerFieldToJson.value(isGreaterThanOrEqualTo as num)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$ExplicitPathPerFieldToJson.value(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$ExplicitPathPerFieldToJson.value(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   ExplicitPathQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -11581,6 +11813,7 @@ class _$ExplicitPathQuery
     );
   }
 
+  @override
   ExplicitPathQuery orderByValue({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -11986,6 +12219,62 @@ abstract class ExplicitSubPathQuery
   @override
   ExplicitSubPathQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  ExplicitSubPathQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  ExplicitSubPathQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  ExplicitSubPathQuery whereValue({
+    num? isEqualTo,
+    num? isNotEqualTo,
+    num? isLessThan,
+    num? isLessThanOrEqualTo,
+    num? isGreaterThan,
+    num? isGreaterThanOrEqualTo,
+    List<num>? whereIn,
+    List<num>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -12007,71 +12296,16 @@ abstract class ExplicitSubPathQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   ExplicitSubPathQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     ExplicitSubPathDocumentSnapshot? startAtDocument,
     ExplicitSubPathDocumentSnapshot? endAtDocument,
     ExplicitSubPathDocumentSnapshot? endBeforeDocument,
     ExplicitSubPathDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  ExplicitSubPathQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  ExplicitSubPathQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  ExplicitSubPathQuery whereValue({
-    num? isEqualTo,
-    num? isNotEqualTo,
-    num? isLessThan,
-    num? isLessThanOrEqualTo,
-    num? isGreaterThan,
-    num? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<num>? whereIn,
-    List<num>? whereNotIn,
   });
 
   ExplicitSubPathQuery orderByDocumentId({
@@ -12145,8 +12379,124 @@ class _$ExplicitSubPathQuery
     );
   }
 
+  @override
+  ExplicitSubPathQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ExplicitSubPathQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ExplicitSubPathQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ExplicitSubPathQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ExplicitSubPathQuery whereValue({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<num>? whereIn,
+    List<num>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ExplicitSubPathQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ExplicitSubPathFieldMap['value']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ExplicitSubPathPerFieldToJson.value(isEqualTo as num)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ExplicitSubPathPerFieldToJson.value(isNotEqualTo as num)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ExplicitSubPathPerFieldToJson.value(isLessThan as num)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ExplicitSubPathPerFieldToJson.value(isLessThanOrEqualTo as num)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ExplicitSubPathPerFieldToJson.value(isGreaterThan as num)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ExplicitSubPathPerFieldToJson
+                .value(isGreaterThanOrEqualTo as num)
+            : null,
+        whereIn: whereIn?.map((e) => _$ExplicitSubPathPerFieldToJson.value(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$ExplicitSubPathPerFieldToJson.value(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   ExplicitSubPathQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -12210,6 +12560,7 @@ class _$ExplicitSubPathQuery
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$ExplicitSubPathQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -12217,112 +12568,7 @@ class _$ExplicitSubPathQuery
     );
   }
 
-  ExplicitSubPathQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$ExplicitSubPathQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  ExplicitSubPathQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$ExplicitSubPathQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  ExplicitSubPathQuery whereValue({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<num>? whereIn,
-    List<num>? whereNotIn,
-  }) {
-    return _$ExplicitSubPathQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$ExplicitSubPathFieldMap['value']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$ExplicitSubPathPerFieldToJson.value(isEqualTo as num)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$ExplicitSubPathPerFieldToJson.value(isNotEqualTo as num)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$ExplicitSubPathPerFieldToJson.value(isLessThan as num)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$ExplicitSubPathPerFieldToJson.value(isLessThanOrEqualTo as num)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$ExplicitSubPathPerFieldToJson.value(isGreaterThan as num)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$ExplicitSubPathPerFieldToJson
-                .value(isGreaterThanOrEqualTo as num)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$ExplicitSubPathPerFieldToJson.value(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$ExplicitSubPathPerFieldToJson.value(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   ExplicitSubPathQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -12395,6 +12641,7 @@ class _$ExplicitSubPathQuery
     );
   }
 
+  @override
   ExplicitSubPathQuery orderByValue({
     bool descending = false,
     Object? startAt = _sentinel,
