@@ -1,5 +1,5 @@
 name: cloud_firestore_odm_example
-version: 1.0.0-dev.1
+version: 1.0.0-dev.2
 publish_to: none
 
 environment:
@@ -7,7 +7,7 @@ environment:
 
 dependencies:
   cloud_firestore: ^4.14.0
-  cloud_firestore_odm: ^1.0.0-dev.82
+  cloud_firestore_odm: ^1.0.0-dev.83
   firebase_core: ^2.24.2
   flutter:
     sdk: flutter
