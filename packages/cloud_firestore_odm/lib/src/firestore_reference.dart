@@ -76,6 +76,11 @@ abstract class FirestoreDocumentReference<Model,
     transaction.delete(reference);
   }
 
+  /// Deletes the document using the batch API.
+  void batchDelete(WriteBatch batch) {
+    batch.delete(reference);
+  }
+
   /// Sets data on the document, overwriting any existing data. If the document
   /// does not yet exist, it will be created.
   ///
@@ -95,6 +100,18 @@ abstract class FirestoreDocumentReference<Model,
     SetOptions? setOptions,
   ]) {
     transaction.set(reference, model, setOptions);
+  }
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  void batchSet(
+    WriteBatch batch,
+    Model model, [
+    SetOptions? setOptions,
+  ]) {
+    batch.set(reference, model, setOptions);
   }
 
   /// Reads the document referred to by this DocumentReference.

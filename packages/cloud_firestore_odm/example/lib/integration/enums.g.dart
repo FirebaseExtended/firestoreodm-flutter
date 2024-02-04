@@ -159,6 +159,23 @@ abstract class EnumsDocumentReference
     List<TestEnum>? nullableEnumList,
     FieldValue nullableEnumListFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    String id,
+    FieldValue idFieldValue,
+    TestEnum enumValue,
+    FieldValue enumValueFieldValue,
+    TestEnum? nullableEnumValue,
+    FieldValue nullableEnumValueFieldValue,
+    List<TestEnum> enumList,
+    FieldValue enumListFieldValue,
+    List<TestEnum>? nullableEnumList,
+    FieldValue nullableEnumListFieldValue,
+  });
 }
 
 class _$EnumsDocumentReference
@@ -310,6 +327,68 @@ class _$EnumsDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? id = _sentinel,
+    FieldValue? idFieldValue,
+    Object? enumValue = _sentinel,
+    FieldValue? enumValueFieldValue,
+    Object? nullableEnumValue = _sentinel,
+    FieldValue? nullableEnumValueFieldValue,
+    Object? enumList = _sentinel,
+    FieldValue? enumListFieldValue,
+    Object? nullableEnumList = _sentinel,
+    FieldValue? nullableEnumListFieldValue,
+  }) {
+    assert(
+      id == _sentinel || idFieldValue == null,
+      "Cannot specify both id and idFieldValue",
+    );
+    assert(
+      enumValue == _sentinel || enumValueFieldValue == null,
+      "Cannot specify both enumValue and enumValueFieldValue",
+    );
+    assert(
+      nullableEnumValue == _sentinel || nullableEnumValueFieldValue == null,
+      "Cannot specify both nullableEnumValue and nullableEnumValueFieldValue",
+    );
+    assert(
+      enumList == _sentinel || enumListFieldValue == null,
+      "Cannot specify both enumList and enumListFieldValue",
+    );
+    assert(
+      nullableEnumList == _sentinel || nullableEnumListFieldValue == null,
+      "Cannot specify both nullableEnumList and nullableEnumListFieldValue",
+    );
+    final json = {
+      if (id != _sentinel)
+        _$EnumsFieldMap['id']!: _$EnumsPerFieldToJson.id(id as String),
+      if (idFieldValue != null) _$EnumsFieldMap['id']!: idFieldValue,
+      if (enumValue != _sentinel)
+        _$EnumsFieldMap['enumValue']!:
+            _$EnumsPerFieldToJson.enumValue(enumValue as TestEnum),
+      if (enumValueFieldValue != null)
+        _$EnumsFieldMap['enumValue']!: enumValueFieldValue,
+      if (nullableEnumValue != _sentinel)
+        _$EnumsFieldMap['nullableEnumValue']!: _$EnumsPerFieldToJson
+            .nullableEnumValue(nullableEnumValue as TestEnum?),
+      if (nullableEnumValueFieldValue != null)
+        _$EnumsFieldMap['nullableEnumValue']!: nullableEnumValueFieldValue,
+      if (enumList != _sentinel)
+        _$EnumsFieldMap['enumList']!:
+            _$EnumsPerFieldToJson.enumList(enumList as List<TestEnum>),
+      if (enumListFieldValue != null)
+        _$EnumsFieldMap['enumList']!: enumListFieldValue,
+      if (nullableEnumList != _sentinel)
+        _$EnumsFieldMap['nullableEnumList']!: _$EnumsPerFieldToJson
+            .nullableEnumList(nullableEnumList as List<TestEnum>?),
+      if (nullableEnumListFieldValue != null)
+        _$EnumsFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
