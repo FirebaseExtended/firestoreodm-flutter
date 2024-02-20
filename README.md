@@ -102,7 +102,7 @@ class MyModel {...}
 
 ## Next Steps
 
-Once installed, read the documentation on [defining models](./doc/defining-models.md).
+Once installed, read the documentation on [defining models](./docs/defining-models.md).
 
 ## Issues and feedback
 
