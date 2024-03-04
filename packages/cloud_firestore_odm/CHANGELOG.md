@@ -1,3 +1,7 @@
+## Unreleased build
+
+- Bumped minimum cloud_firestore version to `4.15.0`
+
 ## 1.0.0-dev.83 - 2024-01-25
 
 - Update generated code to support recent Firestore query changes
