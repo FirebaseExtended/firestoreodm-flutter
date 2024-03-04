@@ -318,7 +318,7 @@ class ${data.queryReferenceImplName}
                         )
                         .toString(),
                   )
-                : sentinelObjectWhereType,
+                : objectWhereType,
             map: (name) {
               final itemType = field.name == 'fieldPath'
                   ? field.type.toString()

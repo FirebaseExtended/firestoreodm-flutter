@@ -797,7 +797,7 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
     Object? isGreaterThanOrEqualTo,
-    Object? arrayContains = _sentinel,
+    Object? arrayContains,
     List<TestEnum>? arrayContainsAny,
     bool? isNull,
   }) {
@@ -850,7 +850,7 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
     Object? isGreaterThanOrEqualTo,
-    Object? arrayContains = _sentinel,
+    Object? arrayContains,
     List<TestEnum>? arrayContainsAny,
     bool? isNull,
   }) {

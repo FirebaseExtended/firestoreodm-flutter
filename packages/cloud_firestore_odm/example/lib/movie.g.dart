@@ -1065,7 +1065,7 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
     Object? isGreaterThanOrEqualTo,
-    Object? arrayContains = _sentinel,
+    Object? arrayContains,
     List<String>? arrayContainsAny,
     bool? isNull,
   }) {
@@ -1115,7 +1115,7 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
     Object? isGreaterThanOrEqualTo,
-    Object? arrayContains = _sentinel,
+    Object? arrayContains,
     Set<String>? arrayContainsAny,
     bool? isNull,
   }) {

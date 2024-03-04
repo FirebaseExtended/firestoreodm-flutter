@@ -34,7 +34,7 @@ class FirestoreBuilder<Snapshot> extends StatefulWidget {
     Widget? child,
   ) builder;
 
-  /// An optional child for performance optimisation when a part of the
+  /// An optional child for performance optimization when a part of the
   /// tree is not built based on [ref].
   final Widget? child;
 
