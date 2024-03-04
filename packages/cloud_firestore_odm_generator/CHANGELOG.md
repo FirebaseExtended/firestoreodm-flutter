@@ -1,4 +1,4 @@
-## Unreleased build
+## 1.0.0-dev.84 - 2024-03-04
 
 - Fixed `whereField(arrayContains)` no-longer working
 
