@@ -29,7 +29,7 @@ extension on MovieQuery {
         return whereGenre(arrayContainsAny: ['family']);
 
       case MovieQueryType.sciFi:
-        return whereGenre(arrayContainsAny: ['sci-Fi']);
+        return whereGenre(arrayContainsAny: ['sci-fi']);
 
       case MovieQueryType.likesAsc:
       case MovieQueryType.likesDesc:
