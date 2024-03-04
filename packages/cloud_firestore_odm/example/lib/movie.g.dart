@@ -754,8 +754,8 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -786,8 +786,8 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -830,8 +830,8 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.poster(e)),
         whereNotIn: whereNotIn?.map((e) => _$MoviePerFieldToJson.poster(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -874,8 +874,8 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.likes(e)),
         whereNotIn: whereNotIn?.map((e) => _$MoviePerFieldToJson.likes(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -918,8 +918,8 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.title(e)),
         whereNotIn: whereNotIn?.map((e) => _$MoviePerFieldToJson.title(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -962,8 +962,8 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.year(e)),
         whereNotIn: whereNotIn?.map((e) => _$MoviePerFieldToJson.year(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1006,8 +1006,8 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.runtime(e)),
         whereNotIn: whereNotIn?.map((e) => _$MoviePerFieldToJson.runtime(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1050,8 +1050,8 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
         whereIn: whereIn?.map((e) => _$MoviePerFieldToJson.rated(e)),
         whereNotIn: whereNotIn?.map((e) => _$MoviePerFieldToJson.rated(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1100,8 +1100,8 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
             ? _$MoviePerFieldToJson.genre(arrayContainsAny) as Iterable<Object>?
             : null,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1149,8 +1149,8 @@ class _$MovieQuery extends QueryReference<Movie, MovieQuerySnapshot>
             ? _$MoviePerFieldToJson.tags(arrayContainsAny) as Iterable<Object>?
             : null,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -2446,8 +2446,8 @@ class _$CommentQuery extends QueryReference<Comment, CommentQuerySnapshot>
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -2478,8 +2478,8 @@ class _$CommentQuery extends QueryReference<Comment, CommentQuerySnapshot>
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -2524,8 +2524,8 @@ class _$CommentQuery extends QueryReference<Comment, CommentQuerySnapshot>
         whereNotIn:
             whereNotIn?.map((e) => _$CommentPerFieldToJson.authorName(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -2568,8 +2568,8 @@ class _$CommentQuery extends QueryReference<Comment, CommentQuerySnapshot>
         whereIn: whereIn?.map((e) => _$CommentPerFieldToJson.message(e)),
         whereNotIn: whereNotIn?.map((e) => _$CommentPerFieldToJson.message(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );

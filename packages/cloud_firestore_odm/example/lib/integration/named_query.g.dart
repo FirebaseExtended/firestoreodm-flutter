@@ -438,8 +438,8 @@ class _$ConflictQuery extends QueryReference<Conflict, ConflictQuerySnapshot>
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -470,8 +470,8 @@ class _$ConflictQuery extends QueryReference<Conflict, ConflictQuerySnapshot>
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -514,8 +514,8 @@ class _$ConflictQuery extends QueryReference<Conflict, ConflictQuerySnapshot>
         whereIn: whereIn?.map((e) => _$ConflictPerFieldToJson.number(e)),
         whereNotIn: whereNotIn?.map((e) => _$ConflictPerFieldToJson.number(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );

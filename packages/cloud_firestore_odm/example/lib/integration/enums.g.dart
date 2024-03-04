@@ -612,8 +612,8 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -644,8 +644,8 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -688,8 +688,8 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
         whereIn: whereIn?.map((e) => _$EnumsPerFieldToJson.id(e)),
         whereNotIn: whereNotIn?.map((e) => _$EnumsPerFieldToJson.id(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -733,8 +733,8 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
         whereIn: whereIn?.map((e) => _$EnumsPerFieldToJson.enumValue(e)),
         whereNotIn: whereNotIn?.map((e) => _$EnumsPerFieldToJson.enumValue(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -782,8 +782,8 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
         whereNotIn:
             whereNotIn?.map((e) => _$EnumsPerFieldToJson.nullableEnumValue(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -835,8 +835,8 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
                 as Iterable<Object>?
             : null,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -892,8 +892,8 @@ class _$EnumsQuery extends QueryReference<Enums, EnumsQuerySnapshot>
                 as Iterable<Object>?
             : null,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );

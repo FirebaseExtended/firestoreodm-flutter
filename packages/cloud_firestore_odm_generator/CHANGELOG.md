@@ -1,3 +1,7 @@
+## 1.0.0-dev.85 - 2024-03-04
+
+- Fixed the ODM incorrectly passing `isNull` to Firestore `where` queries.
+
 ## 1.0.0-dev.84 - 2024-03-04
 
 - Fixed `whereField(arrayContains)` no-longer working
