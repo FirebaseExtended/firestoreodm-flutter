@@ -146,6 +146,15 @@ abstract class IgnoredGetterDocumentReference
     int value,
     FieldValue valueFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    int value,
+    FieldValue valueFieldValue,
+  });
 }
 
 class _$IgnoredGetterDocumentReference extends FirestoreDocumentReference<
@@ -214,6 +223,26 @@ class _$IgnoredGetterDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? value = _sentinel,
+    FieldValue? valueFieldValue,
+  }) {
+    assert(
+      value == _sentinel || valueFieldValue == null,
+      "Cannot specify both value and valueFieldValue",
+    );
+    final json = {
+      if (value != _sentinel)
+        _$IgnoredGetterFieldMap['value']!:
+            _$IgnoredGetterPerFieldToJson.value(value as int),
+      if (valueFieldValue != null)
+        _$IgnoredGetterFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -950,6 +979,15 @@ abstract class ModelDocumentReference
     String value,
     FieldValue valueFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    String value,
+    FieldValue valueFieldValue,
+  });
 }
 
 class _$ModelDocumentReference
@@ -1013,6 +1051,24 @@ class _$ModelDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? value = _sentinel,
+    FieldValue? valueFieldValue,
+  }) {
+    assert(
+      value == _sentinel || valueFieldValue == null,
+      "Cannot specify both value and valueFieldValue",
+    );
+    final json = {
+      if (value != _sentinel)
+        _$ModelFieldMap['value']!: _$ModelPerFieldToJson.value(value as String),
+      if (valueFieldValue != null) _$ModelFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -1787,6 +1843,39 @@ abstract class NestedDocumentReference
     List<TestEnum>? nullableEnumList,
     FieldValue nullableEnumListFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    Nested? value,
+    FieldValue valueFieldValue,
+    int? simple,
+    FieldValue simpleFieldValue,
+    List<Nested>? valueList,
+    FieldValue valueListFieldValue,
+    List<bool>? boolList,
+    FieldValue boolListFieldValue,
+    List<String>? stringList,
+    FieldValue stringListFieldValue,
+    List<num>? numList,
+    FieldValue numListFieldValue,
+    List<Object?>? objectList,
+    FieldValue objectListFieldValue,
+    List<dynamic>? dynamicList,
+    FieldValue dynamicListFieldValue,
+    Set<bool>? boolSet,
+    FieldValue boolSetFieldValue,
+    TestEnum enumValue,
+    FieldValue enumValueFieldValue,
+    TestEnum? nullableEnumValue,
+    FieldValue nullableEnumValueFieldValue,
+    List<TestEnum> enumList,
+    FieldValue enumListFieldValue,
+    List<TestEnum>? nullableEnumList,
+    FieldValue nullableEnumListFieldValue,
+  });
 }
 
 class _$NestedDocumentReference
@@ -2116,6 +2205,157 @@ class _$NestedDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? value = _sentinel,
+    FieldValue? valueFieldValue,
+    Object? simple = _sentinel,
+    FieldValue? simpleFieldValue,
+    Object? valueList = _sentinel,
+    FieldValue? valueListFieldValue,
+    Object? boolList = _sentinel,
+    FieldValue? boolListFieldValue,
+    Object? stringList = _sentinel,
+    FieldValue? stringListFieldValue,
+    Object? numList = _sentinel,
+    FieldValue? numListFieldValue,
+    Object? objectList = _sentinel,
+    FieldValue? objectListFieldValue,
+    Object? dynamicList = _sentinel,
+    FieldValue? dynamicListFieldValue,
+    Object? boolSet = _sentinel,
+    FieldValue? boolSetFieldValue,
+    Object? enumValue = _sentinel,
+    FieldValue? enumValueFieldValue,
+    Object? nullableEnumValue = _sentinel,
+    FieldValue? nullableEnumValueFieldValue,
+    Object? enumList = _sentinel,
+    FieldValue? enumListFieldValue,
+    Object? nullableEnumList = _sentinel,
+    FieldValue? nullableEnumListFieldValue,
+  }) {
+    assert(
+      value == _sentinel || valueFieldValue == null,
+      "Cannot specify both value and valueFieldValue",
+    );
+    assert(
+      simple == _sentinel || simpleFieldValue == null,
+      "Cannot specify both simple and simpleFieldValue",
+    );
+    assert(
+      valueList == _sentinel || valueListFieldValue == null,
+      "Cannot specify both valueList and valueListFieldValue",
+    );
+    assert(
+      boolList == _sentinel || boolListFieldValue == null,
+      "Cannot specify both boolList and boolListFieldValue",
+    );
+    assert(
+      stringList == _sentinel || stringListFieldValue == null,
+      "Cannot specify both stringList and stringListFieldValue",
+    );
+    assert(
+      numList == _sentinel || numListFieldValue == null,
+      "Cannot specify both numList and numListFieldValue",
+    );
+    assert(
+      objectList == _sentinel || objectListFieldValue == null,
+      "Cannot specify both objectList and objectListFieldValue",
+    );
+    assert(
+      dynamicList == _sentinel || dynamicListFieldValue == null,
+      "Cannot specify both dynamicList and dynamicListFieldValue",
+    );
+    assert(
+      boolSet == _sentinel || boolSetFieldValue == null,
+      "Cannot specify both boolSet and boolSetFieldValue",
+    );
+    assert(
+      enumValue == _sentinel || enumValueFieldValue == null,
+      "Cannot specify both enumValue and enumValueFieldValue",
+    );
+    assert(
+      nullableEnumValue == _sentinel || nullableEnumValueFieldValue == null,
+      "Cannot specify both nullableEnumValue and nullableEnumValueFieldValue",
+    );
+    assert(
+      enumList == _sentinel || enumListFieldValue == null,
+      "Cannot specify both enumList and enumListFieldValue",
+    );
+    assert(
+      nullableEnumList == _sentinel || nullableEnumListFieldValue == null,
+      "Cannot specify both nullableEnumList and nullableEnumListFieldValue",
+    );
+    final json = {
+      if (value != _sentinel)
+        _$NestedFieldMap['value']!:
+            _$NestedPerFieldToJson.value(value as Nested?),
+      if (valueFieldValue != null) _$NestedFieldMap['value']!: valueFieldValue,
+      if (simple != _sentinel)
+        _$NestedFieldMap['simple']!:
+            _$NestedPerFieldToJson.simple(simple as int?),
+      if (simpleFieldValue != null)
+        _$NestedFieldMap['simple']!: simpleFieldValue,
+      if (valueList != _sentinel)
+        _$NestedFieldMap['valueList']!:
+            _$NestedPerFieldToJson.valueList(valueList as List<Nested>?),
+      if (valueListFieldValue != null)
+        _$NestedFieldMap['valueList']!: valueListFieldValue,
+      if (boolList != _sentinel)
+        _$NestedFieldMap['boolList']!:
+            _$NestedPerFieldToJson.boolList(boolList as List<bool>?),
+      if (boolListFieldValue != null)
+        _$NestedFieldMap['boolList']!: boolListFieldValue,
+      if (stringList != _sentinel)
+        _$NestedFieldMap['stringList']!:
+            _$NestedPerFieldToJson.stringList(stringList as List<String>?),
+      if (stringListFieldValue != null)
+        _$NestedFieldMap['stringList']!: stringListFieldValue,
+      if (numList != _sentinel)
+        _$NestedFieldMap['numList']!:
+            _$NestedPerFieldToJson.numList(numList as List<num>?),
+      if (numListFieldValue != null)
+        _$NestedFieldMap['numList']!: numListFieldValue,
+      if (objectList != _sentinel)
+        _$NestedFieldMap['objectList']!:
+            _$NestedPerFieldToJson.objectList(objectList as List<Object?>?),
+      if (objectListFieldValue != null)
+        _$NestedFieldMap['objectList']!: objectListFieldValue,
+      if (dynamicList != _sentinel)
+        _$NestedFieldMap['dynamicList']!:
+            _$NestedPerFieldToJson.dynamicList(dynamicList as List<dynamic>?),
+      if (dynamicListFieldValue != null)
+        _$NestedFieldMap['dynamicList']!: dynamicListFieldValue,
+      if (boolSet != _sentinel)
+        _$NestedFieldMap['boolSet']!:
+            _$NestedPerFieldToJson.boolSet(boolSet as Set<bool>?),
+      if (boolSetFieldValue != null)
+        _$NestedFieldMap['boolSet']!: boolSetFieldValue,
+      if (enumValue != _sentinel)
+        _$NestedFieldMap['enumValue']!:
+            _$NestedPerFieldToJson.enumValue(enumValue as TestEnum),
+      if (enumValueFieldValue != null)
+        _$NestedFieldMap['enumValue']!: enumValueFieldValue,
+      if (nullableEnumValue != _sentinel)
+        _$NestedFieldMap['nullableEnumValue']!: _$NestedPerFieldToJson
+            .nullableEnumValue(nullableEnumValue as TestEnum?),
+      if (nullableEnumValueFieldValue != null)
+        _$NestedFieldMap['nullableEnumValue']!: nullableEnumValueFieldValue,
+      if (enumList != _sentinel)
+        _$NestedFieldMap['enumList']!:
+            _$NestedPerFieldToJson.enumList(enumList as List<TestEnum>),
+      if (enumListFieldValue != null)
+        _$NestedFieldMap['enumList']!: enumListFieldValue,
+      if (nullableEnumList != _sentinel)
+        _$NestedFieldMap['nullableEnumList']!: _$NestedPerFieldToJson
+            .nullableEnumList(nullableEnumList as List<TestEnum>?),
+      if (nullableEnumListFieldValue != null)
+        _$NestedFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -5230,6 +5470,15 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
     int value,
     FieldValue valueFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    int value,
+    FieldValue valueFieldValue,
+  });
 }
 
 class _$OptionalJsonDocumentReference extends FirestoreDocumentReference<
@@ -5297,6 +5546,26 @@ class _$OptionalJsonDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? value = _sentinel,
+    FieldValue? valueFieldValue,
+  }) {
+    assert(
+      value == _sentinel || valueFieldValue == null,
+      "Cannot specify both value and valueFieldValue",
+    );
+    final json = {
+      if (value != _sentinel)
+        _$OptionalJsonFieldMap['value']!:
+            _$OptionalJsonPerFieldToJson.value(value as int),
+      if (valueFieldValue != null)
+        _$OptionalJsonFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -6033,6 +6302,15 @@ abstract class MixedJsonDocumentReference
     int value,
     FieldValue valueFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    int value,
+    FieldValue valueFieldValue,
+  });
 }
 
 class _$MixedJsonDocumentReference
@@ -6100,6 +6378,26 @@ class _$MixedJsonDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? value = _sentinel,
+    FieldValue? valueFieldValue,
+  }) {
+    assert(
+      value == _sentinel || valueFieldValue == null,
+      "Cannot specify both value and valueFieldValue",
+    );
+    final json = {
+      if (value != _sentinel)
+        _$MixedJsonFieldMap['value']!:
+            _$MixedJsonPerFieldToJson.value(value as int),
+      if (valueFieldValue != null)
+        _$MixedJsonFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -6853,6 +7151,17 @@ abstract class RootDocumentReference
     int? nullable,
     FieldValue nullableFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    String nonNullable,
+    FieldValue nonNullableFieldValue,
+    int? nullable,
+    FieldValue nullableFieldValue,
+  });
 }
 
 class _$RootDocumentReference
@@ -6961,6 +7270,37 @@ class _$RootDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? nonNullable = _sentinel,
+    FieldValue? nonNullableFieldValue,
+    Object? nullable = _sentinel,
+    FieldValue? nullableFieldValue,
+  }) {
+    assert(
+      nonNullable == _sentinel || nonNullableFieldValue == null,
+      "Cannot specify both nonNullable and nonNullableFieldValue",
+    );
+    assert(
+      nullable == _sentinel || nullableFieldValue == null,
+      "Cannot specify both nullable and nullableFieldValue",
+    );
+    final json = {
+      if (nonNullable != _sentinel)
+        _$RootFieldMap['nonNullable']!:
+            _$RootPerFieldToJson.nonNullable(nonNullable as String),
+      if (nonNullableFieldValue != null)
+        _$RootFieldMap['nonNullable']!: nonNullableFieldValue,
+      if (nullable != _sentinel)
+        _$RootFieldMap['nullable']!:
+            _$RootPerFieldToJson.nullable(nullable as int?),
+      if (nullableFieldValue != null)
+        _$RootFieldMap['nullable']!: nullableFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -7842,6 +8182,17 @@ abstract class SubDocumentReference
     int? nullable,
     FieldValue nullableFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    String nonNullable,
+    FieldValue nonNullableFieldValue,
+    int? nullable,
+    FieldValue nullableFieldValue,
+  });
 }
 
 class _$SubDocumentReference
@@ -7936,6 +8287,37 @@ class _$SubDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? nonNullable = _sentinel,
+    FieldValue? nonNullableFieldValue,
+    Object? nullable = _sentinel,
+    FieldValue? nullableFieldValue,
+  }) {
+    assert(
+      nonNullable == _sentinel || nonNullableFieldValue == null,
+      "Cannot specify both nonNullable and nonNullableFieldValue",
+    );
+    assert(
+      nullable == _sentinel || nullableFieldValue == null,
+      "Cannot specify both nullable and nullableFieldValue",
+    );
+    final json = {
+      if (nonNullable != _sentinel)
+        _$SubFieldMap['nonNullable']!:
+            _$SubPerFieldToJson.nonNullable(nonNullable as String),
+      if (nonNullableFieldValue != null)
+        _$SubFieldMap['nonNullable']!: nonNullableFieldValue,
+      if (nullable != _sentinel)
+        _$SubFieldMap['nullable']!:
+            _$SubPerFieldToJson.nullable(nullable as int?),
+      if (nullableFieldValue != null)
+        _$SubFieldMap['nullable']!: nullableFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -8818,6 +9200,15 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
     num value,
     FieldValue valueFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    num value,
+    FieldValue valueFieldValue,
+  });
 }
 
 class _$AsCamelCaseDocumentReference
@@ -8890,6 +9281,26 @@ class _$AsCamelCaseDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? value = _sentinel,
+    FieldValue? valueFieldValue,
+  }) {
+    assert(
+      value == _sentinel || valueFieldValue == null,
+      "Cannot specify both value and valueFieldValue",
+    );
+    final json = {
+      if (value != _sentinel)
+        _$AsCamelCaseFieldMap['value']!:
+            _$AsCamelCasePerFieldToJson.value(value as num),
+      if (valueFieldValue != null)
+        _$AsCamelCaseFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -9643,6 +10054,15 @@ abstract class CustomSubNameDocumentReference
     num value,
     FieldValue valueFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    num value,
+    FieldValue valueFieldValue,
+  });
 }
 
 class _$CustomSubNameDocumentReference extends FirestoreDocumentReference<
@@ -9716,6 +10136,26 @@ class _$CustomSubNameDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? value = _sentinel,
+    FieldValue? valueFieldValue,
+  }) {
+    assert(
+      value == _sentinel || valueFieldValue == null,
+      "Cannot specify both value and valueFieldValue",
+    );
+    final json = {
+      if (value != _sentinel)
+        _$CustomSubNameFieldMap['value']!:
+            _$CustomSubNamePerFieldToJson.value(value as num),
+      if (valueFieldValue != null)
+        _$CustomSubNameFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -10471,6 +10911,15 @@ abstract class ThisIsACustomPrefixDocumentReference
     num value,
     FieldValue valueFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    num value,
+    FieldValue valueFieldValue,
+  });
 }
 
 class _$ThisIsACustomPrefixDocumentReference extends FirestoreDocumentReference<
@@ -10546,6 +10995,26 @@ class _$ThisIsACustomPrefixDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? value = _sentinel,
+    FieldValue? valueFieldValue,
+  }) {
+    assert(
+      value == _sentinel || valueFieldValue == null,
+      "Cannot specify both value and valueFieldValue",
+    );
+    final json = {
+      if (value != _sentinel)
+        _$CustomClassPrefixFieldMap['value']!:
+            _$CustomClassPrefixPerFieldToJson.value(value as num),
+      if (valueFieldValue != null)
+        _$CustomClassPrefixFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -11298,6 +11767,15 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
     num value,
     FieldValue valueFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    num value,
+    FieldValue valueFieldValue,
+  });
 }
 
 class _$ExplicitPathDocumentReference extends FirestoreDocumentReference<
@@ -11370,6 +11848,26 @@ class _$ExplicitPathDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? value = _sentinel,
+    FieldValue? valueFieldValue,
+  }) {
+    assert(
+      value == _sentinel || valueFieldValue == null,
+      "Cannot specify both value and valueFieldValue",
+    );
+    final json = {
+      if (value != _sentinel)
+        _$ExplicitPathFieldMap['value']!:
+            _$ExplicitPathPerFieldToJson.value(value as num),
+      if (valueFieldValue != null)
+        _$ExplicitPathFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -12124,6 +12622,15 @@ abstract class ExplicitSubPathDocumentReference
     num value,
     FieldValue valueFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    num value,
+    FieldValue valueFieldValue,
+  });
 }
 
 class _$ExplicitSubPathDocumentReference extends FirestoreDocumentReference<
@@ -12197,6 +12704,26 @@ class _$ExplicitSubPathDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? value = _sentinel,
+    FieldValue? valueFieldValue,
+  }) {
+    assert(
+      value == _sentinel || valueFieldValue == null,
+      "Cannot specify both value and valueFieldValue",
+    );
+    final json = {
+      if (value != _sentinel)
+        _$ExplicitSubPathFieldMap['value']!:
+            _$ExplicitSubPathPerFieldToJson.value(value as num),
+      if (valueFieldValue != null)
+        _$ExplicitSubPathFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override

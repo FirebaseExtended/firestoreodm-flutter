@@ -150,6 +150,17 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
     String? lastName,
     FieldValue lastNameFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    String? firstName,
+    FieldValue firstNameFieldValue,
+    String? lastName,
+    FieldValue lastNameFieldValue,
+  });
 }
 
 class _$AdvancedJsonDocumentReference extends FirestoreDocumentReference<
@@ -239,6 +250,37 @@ class _$AdvancedJsonDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? firstName = _sentinel,
+    FieldValue? firstNameFieldValue,
+    Object? lastName = _sentinel,
+    FieldValue? lastNameFieldValue,
+  }) {
+    assert(
+      firstName == _sentinel || firstNameFieldValue == null,
+      "Cannot specify both firstName and firstNameFieldValue",
+    );
+    assert(
+      lastName == _sentinel || lastNameFieldValue == null,
+      "Cannot specify both lastName and lastNameFieldValue",
+    );
+    final json = {
+      if (firstName != _sentinel)
+        _$AdvancedJsonFieldMap['firstName']!:
+            _$AdvancedJsonPerFieldToJson.firstName(firstName as String?),
+      if (firstNameFieldValue != null)
+        _$AdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastName != _sentinel)
+        _$AdvancedJsonFieldMap['lastName']!:
+            _$AdvancedJsonPerFieldToJson.lastName(lastName as String?),
+      if (lastNameFieldValue != null)
+        _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -1136,6 +1178,17 @@ abstract class _PrivateAdvancedJsonDocumentReference
     String? lastName,
     FieldValue lastNameFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    String? firstName,
+    FieldValue firstNameFieldValue,
+    String? lastName,
+    FieldValue lastNameFieldValue,
+  });
 }
 
 class _$_PrivateAdvancedJsonDocumentReference
@@ -1229,6 +1282,37 @@ class _$_PrivateAdvancedJsonDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? firstName = _sentinel,
+    FieldValue? firstNameFieldValue,
+    Object? lastName = _sentinel,
+    FieldValue? lastNameFieldValue,
+  }) {
+    assert(
+      firstName == _sentinel || firstNameFieldValue == null,
+      "Cannot specify both firstName and firstNameFieldValue",
+    );
+    assert(
+      lastName == _sentinel || lastNameFieldValue == null,
+      "Cannot specify both lastName and lastNameFieldValue",
+    );
+    final json = {
+      if (firstName != _sentinel)
+        _$PrivateAdvancedJsonFieldMap['firstName']!:
+            _$PrivateAdvancedJsonPerFieldToJson.firstName(firstName as String?),
+      if (firstNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastName != _sentinel)
+        _$PrivateAdvancedJsonFieldMap['lastName']!:
+            _$PrivateAdvancedJsonPerFieldToJson.lastName(lastName as String?),
+      if (lastNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override

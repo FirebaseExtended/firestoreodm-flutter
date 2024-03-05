@@ -50,6 +50,50 @@ void main() {
         );
       });
 
+      test('batch', () async {
+        final collection = await initializeTest(MovieCollectionReference());
+
+        const movieToUpdate = '123';
+        const movieToSet = '456';
+        const movieToDelete = '789';
+
+        await collection.doc(movieToUpdate).set(createMovie(title: 'title1'));
+        await collection.doc(movieToSet).set(createMovie(title: 'title2'));
+        await collection.doc(movieToDelete).set(createMovie(title: 'title3'));
+
+        expect(
+          await Future.wait([
+            collection.doc(movieToUpdate).get().then((e) => e.exists),
+            collection.doc(movieToSet).get().then((e) => e.exists),
+            collection.doc(movieToDelete).get().then((e) => e.exists),
+          ]),
+          [true, true, true],
+        );
+
+        const updatedTitle = 'updatedTitle';
+        const newTitle = 'newTitle';
+        final newMovie = createMovie(title: newTitle);
+
+        final batch = FirebaseFirestore.instance.batch();
+        collection.doc(movieToUpdate).batchUpdate(batch, title: updatedTitle);
+        collection.doc(movieToSet).batchSet(batch, newMovie);
+        collection.doc(movieToDelete).batchDelete(batch);
+        await batch.commit();
+
+        expect(
+          await Future.wait([
+            collection.doc(movieToUpdate).get().then((e) => e.data?.title),
+            collection.doc(movieToSet).get().then((e) => e.data),
+            collection.doc(movieToDelete).get().then((e) => e.exists),
+          ]),
+          [
+            updatedTitle,
+            isA<Movie>().having((e) => e.title, newTitle, newTitle),
+            false,
+          ],
+        );
+      });
+
       test('delete', () async {
         final collection = await initializeTest(MovieCollectionReference());
 

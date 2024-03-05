@@ -148,6 +148,15 @@ abstract class DurationQueryDocumentReference
     Duration duration,
     FieldValue durationFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    Duration duration,
+    FieldValue durationFieldValue,
+  });
 }
 
 class _$DurationQueryDocumentReference extends FirestoreDocumentReference<
@@ -216,6 +225,26 @@ class _$DurationQueryDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? duration = _sentinel,
+    FieldValue? durationFieldValue,
+  }) {
+    assert(
+      duration == _sentinel || durationFieldValue == null,
+      "Cannot specify both duration and durationFieldValue",
+    );
+    final json = {
+      if (duration != _sentinel)
+        _$DurationQueryFieldMap['duration']!:
+            _$DurationQueryPerFieldToJson.duration(duration as Duration),
+      if (durationFieldValue != null)
+        _$DurationQueryFieldMap['duration']!: durationFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -959,6 +988,15 @@ abstract class DateTimeQueryDocumentReference
     DateTime time,
     FieldValue timeFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    DateTime time,
+    FieldValue timeFieldValue,
+  });
 }
 
 class _$DateTimeQueryDocumentReference extends FirestoreDocumentReference<
@@ -1027,6 +1065,26 @@ class _$DateTimeQueryDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? time = _sentinel,
+    FieldValue? timeFieldValue,
+  }) {
+    assert(
+      time == _sentinel || timeFieldValue == null,
+      "Cannot specify both time and timeFieldValue",
+    );
+    final json = {
+      if (time != _sentinel)
+        _$DateTimeQueryFieldMap['time']!:
+            _$DateTimeQueryPerFieldToJson.time(time as DateTime),
+      if (timeFieldValue != null)
+        _$DateTimeQueryFieldMap['time']!: timeFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -1772,6 +1830,15 @@ abstract class TimestampQueryDocumentReference
     Timestamp time,
     FieldValue timeFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    Timestamp time,
+    FieldValue timeFieldValue,
+  });
 }
 
 class _$TimestampQueryDocumentReference extends FirestoreDocumentReference<
@@ -1840,6 +1907,26 @@ class _$TimestampQueryDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? time = _sentinel,
+    FieldValue? timeFieldValue,
+  }) {
+    assert(
+      time == _sentinel || timeFieldValue == null,
+      "Cannot specify both time and timeFieldValue",
+    );
+    final json = {
+      if (time != _sentinel)
+        _$TimestampQueryFieldMap['time']!:
+            _$TimestampQueryPerFieldToJson.time(time as Timestamp),
+      if (timeFieldValue != null)
+        _$TimestampQueryFieldMap['time']!: timeFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -2586,6 +2673,15 @@ abstract class GeoPointQueryDocumentReference
     GeoPoint point,
     FieldValue pointFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    GeoPoint point,
+    FieldValue pointFieldValue,
+  });
 }
 
 class _$GeoPointQueryDocumentReference extends FirestoreDocumentReference<
@@ -2654,6 +2750,26 @@ class _$GeoPointQueryDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? point = _sentinel,
+    FieldValue? pointFieldValue,
+  }) {
+    assert(
+      point == _sentinel || pointFieldValue == null,
+      "Cannot specify both point and pointFieldValue",
+    );
+    final json = {
+      if (point != _sentinel)
+        _$GeoPointQueryFieldMap['point']!:
+            _$GeoPointQueryPerFieldToJson.point(point as GeoPoint),
+      if (pointFieldValue != null)
+        _$GeoPointQueryFieldMap['point']!: pointFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -3402,6 +3518,15 @@ abstract class DocumentReferenceQueryDocumentReference
     DocumentReference<Map<String, dynamic>> ref,
     FieldValue refFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    DocumentReference<Map<String, dynamic>> ref,
+    FieldValue refFieldValue,
+  });
 }
 
 class _$DocumentReferenceQueryDocumentReference
@@ -3477,6 +3602,27 @@ class _$DocumentReferenceQueryDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? ref = _sentinel,
+    FieldValue? refFieldValue,
+  }) {
+    assert(
+      ref == _sentinel || refFieldValue == null,
+      "Cannot specify both ref and refFieldValue",
+    );
+    final json = {
+      if (ref != _sentinel)
+        _$DocumentReferenceQueryFieldMap['ref']!:
+            _$DocumentReferenceQueryPerFieldToJson
+                .ref(ref as DocumentReference<Map<String, dynamic>>),
+      if (refFieldValue != null)
+        _$DocumentReferenceQueryFieldMap['ref']!: refFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override

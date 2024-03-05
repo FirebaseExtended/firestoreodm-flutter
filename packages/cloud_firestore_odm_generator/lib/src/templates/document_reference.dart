@@ -89,6 +89,11 @@ Future<void> update({${parameters.join()}});
 ///
 /// The update will fail if applied to a document that does not exist.
 void transactionUpdate(Transaction transaction, {${parameters.join()}});
+
+/// Updates fields in the current document using the batch API.
+///
+/// The update will fail if applied to a document that does not exist.
+void batchUpdate(WriteBatch batch, {${parameters.join()}});
 ''';
   }
 
@@ -138,6 +143,13 @@ void transactionUpdate(Transaction transaction, {${parameters.join()}}) {
   final json = {${json.join()}};
 
   transaction.update(reference, json);
+}
+
+void batchUpdate(WriteBatch batch, {${parameters.join()}}) {
+  $asserts
+  final json = {${json.join()}};
+
+  batch.update(reference, json);
 }
 ''';
   }
