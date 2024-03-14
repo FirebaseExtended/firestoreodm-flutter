@@ -12,14 +12,14 @@ Within the root of your project, run the following command to run code
 generation against the defined models:
 
 ```bash
-flutter pub run build_runner build --delete-conflicting-outputs
+dart run build_runner build --delete-conflicting-outputs
 ```
 
 During development, you can watch for changes and automatically update the
 generated code:
 
 ```bash
-flutter pub run build_runner watch --delete-conflicting-outputs
+dart run build_runner watch --delete-conflicting-outputs
 ```
 
 This will generate files with the postfix of `.g.dart`, corresponding to the
