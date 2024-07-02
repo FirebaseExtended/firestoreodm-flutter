@@ -1,3 +1,7 @@
+## 1.0.0-dev.86 - 2024-06-09
+
+- Bumped cloud_firestore_odm dependency to 1.0.0-dev.85
+
 ## 1.0.0-dev.85 - 2024-03-04
 
 - Fixed the ODM incorrectly passing `isNull` to Firestore `where` queries.
