@@ -1,4 +1,4 @@
-## 1.0.0-dev.85 - 2024-06-09
+## 1.0.0-dev.86 - 2024-06-09
 
 - Bumped minimum cloud_firestore version to `5.0.0`
 
