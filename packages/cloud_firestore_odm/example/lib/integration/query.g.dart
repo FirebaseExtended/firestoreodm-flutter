@@ -457,8 +457,8 @@ class _$DurationQueryQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -489,8 +489,8 @@ class _$DurationQueryQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -536,8 +536,8 @@ class _$DurationQueryQuery
         whereNotIn:
             whereNotIn?.map((e) => _$DurationQueryPerFieldToJson.duration(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1297,8 +1297,8 @@ class _$DateTimeQueryQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1329,8 +1329,8 @@ class _$DateTimeQueryQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1376,8 +1376,8 @@ class _$DateTimeQueryQuery
         whereNotIn:
             whereNotIn?.map((e) => _$DateTimeQueryPerFieldToJson.time(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -2139,8 +2139,8 @@ class _$TimestampQueryQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -2171,8 +2171,8 @@ class _$TimestampQueryQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -2218,8 +2218,8 @@ class _$TimestampQueryQuery
         whereNotIn:
             whereNotIn?.map((e) => _$TimestampQueryPerFieldToJson.time(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -2982,8 +2982,8 @@ class _$GeoPointQueryQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -3014,8 +3014,8 @@ class _$GeoPointQueryQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -3061,8 +3061,8 @@ class _$GeoPointQueryQuery
         whereNotIn:
             whereNotIn?.map((e) => _$GeoPointQueryPerFieldToJson.point(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -3838,8 +3838,8 @@ class _$DocumentReferenceQueryQuery extends QueryReference<
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -3870,8 +3870,8 @@ class _$DocumentReferenceQueryQuery extends QueryReference<
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -3922,8 +3922,8 @@ class _$DocumentReferenceQueryQuery extends QueryReference<
         whereNotIn: whereNotIn
             ?.map((e) => _$DocumentReferenceQueryPerFieldToJson.ref(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );

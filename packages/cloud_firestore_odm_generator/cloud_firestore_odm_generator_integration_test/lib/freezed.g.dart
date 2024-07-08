@@ -507,8 +507,8 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -539,8 +539,8 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -586,8 +586,8 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
         whereNotIn:
             whereNotIn?.map((e) => _$$PersonImplPerFieldToJson.firstName(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -633,8 +633,8 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
         whereNotIn:
             whereNotIn?.map((e) => _$$PersonImplPerFieldToJson.lastName(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1465,8 +1465,8 @@ class _$PublicRedirectedQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1497,8 +1497,8 @@ class _$PublicRedirectedQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1547,8 +1547,8 @@ class _$PublicRedirectedQuery
         whereNotIn: whereNotIn
             ?.map((e) => _$$PublicRedirected2ImplPerFieldToJson.value(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );

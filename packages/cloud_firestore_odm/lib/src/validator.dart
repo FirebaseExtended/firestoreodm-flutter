@@ -5,6 +5,7 @@
 /// A class used to assert that a value respects some rules.
 ///
 /// As opposed to `assert`, this class works in release mode too.
+// ignore: one_member_abstracts
 abstract class Validator {
   /// A class used to assert that a value respects some rules.
   ///

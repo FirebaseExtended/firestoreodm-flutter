@@ -517,8 +517,8 @@ class _$AdvancedJsonQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -549,8 +549,8 @@ class _$AdvancedJsonQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -596,8 +596,8 @@ class _$AdvancedJsonQuery
         whereNotIn:
             whereNotIn?.map((e) => _$AdvancedJsonPerFieldToJson.firstName(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -643,8 +643,8 @@ class _$AdvancedJsonQuery
         whereNotIn:
             whereNotIn?.map((e) => _$AdvancedJsonPerFieldToJson.lastName(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1551,8 +1551,8 @@ class _$_PrivateAdvancedJsonQuery extends QueryReference<_PrivateAdvancedJson,
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1583,8 +1583,8 @@ class _$_PrivateAdvancedJsonQuery extends QueryReference<_PrivateAdvancedJson,
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1635,8 +1635,8 @@ class _$_PrivateAdvancedJsonQuery extends QueryReference<_PrivateAdvancedJson,
         whereNotIn: whereNotIn
             ?.map((e) => _$PrivateAdvancedJsonPerFieldToJson.firstName(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -1686,8 +1686,8 @@ class _$_PrivateAdvancedJsonQuery extends QueryReference<_PrivateAdvancedJson,
         whereNotIn: whereNotIn
             ?.map((e) => _$PrivateAdvancedJsonPerFieldToJson.lastName(e)),
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -2410,8 +2410,8 @@ class _$EmptyModelQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
@@ -2442,8 +2442,8 @@ class _$EmptyModelQuery
         whereIn: whereIn,
         whereNotIn: whereNotIn,
         isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
       ),
       $queryCursor: $queryCursor,
     );
