@@ -175,6 +175,29 @@ abstract class MovieDocumentReference
     Set<String>? tags,
     FieldValue tagsFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    String poster,
+    FieldValue posterFieldValue,
+    int likes,
+    FieldValue likesFieldValue,
+    String title,
+    FieldValue titleFieldValue,
+    int year,
+    FieldValue yearFieldValue,
+    String runtime,
+    FieldValue runtimeFieldValue,
+    String rated,
+    FieldValue ratedFieldValue,
+    List<String>? genre,
+    FieldValue genreFieldValue,
+    Set<String>? tags,
+    FieldValue tagsFieldValue,
+  });
 }
 
 class _$MovieDocumentReference
@@ -380,6 +403,93 @@ class _$MovieDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? poster = _sentinel,
+    FieldValue? posterFieldValue,
+    Object? likes = _sentinel,
+    FieldValue? likesFieldValue,
+    Object? title = _sentinel,
+    FieldValue? titleFieldValue,
+    Object? year = _sentinel,
+    FieldValue? yearFieldValue,
+    Object? runtime = _sentinel,
+    FieldValue? runtimeFieldValue,
+    Object? rated = _sentinel,
+    FieldValue? ratedFieldValue,
+    Object? genre = _sentinel,
+    FieldValue? genreFieldValue,
+    Object? tags = _sentinel,
+    FieldValue? tagsFieldValue,
+  }) {
+    assert(
+      poster == _sentinel || posterFieldValue == null,
+      "Cannot specify both poster and posterFieldValue",
+    );
+    assert(
+      likes == _sentinel || likesFieldValue == null,
+      "Cannot specify both likes and likesFieldValue",
+    );
+    assert(
+      title == _sentinel || titleFieldValue == null,
+      "Cannot specify both title and titleFieldValue",
+    );
+    assert(
+      year == _sentinel || yearFieldValue == null,
+      "Cannot specify both year and yearFieldValue",
+    );
+    assert(
+      runtime == _sentinel || runtimeFieldValue == null,
+      "Cannot specify both runtime and runtimeFieldValue",
+    );
+    assert(
+      rated == _sentinel || ratedFieldValue == null,
+      "Cannot specify both rated and ratedFieldValue",
+    );
+    assert(
+      genre == _sentinel || genreFieldValue == null,
+      "Cannot specify both genre and genreFieldValue",
+    );
+    assert(
+      tags == _sentinel || tagsFieldValue == null,
+      "Cannot specify both tags and tagsFieldValue",
+    );
+    final json = {
+      if (poster != _sentinel)
+        _$MovieFieldMap['poster']!:
+            _$MoviePerFieldToJson.poster(poster as String),
+      if (posterFieldValue != null)
+        _$MovieFieldMap['poster']!: posterFieldValue,
+      if (likes != _sentinel)
+        _$MovieFieldMap['likes']!: _$MoviePerFieldToJson.likes(likes as int),
+      if (likesFieldValue != null) _$MovieFieldMap['likes']!: likesFieldValue,
+      if (title != _sentinel)
+        _$MovieFieldMap['title']!: _$MoviePerFieldToJson.title(title as String),
+      if (titleFieldValue != null) _$MovieFieldMap['title']!: titleFieldValue,
+      if (year != _sentinel)
+        _$MovieFieldMap['year']!: _$MoviePerFieldToJson.year(year as int),
+      if (yearFieldValue != null) _$MovieFieldMap['year']!: yearFieldValue,
+      if (runtime != _sentinel)
+        _$MovieFieldMap['runtime']!:
+            _$MoviePerFieldToJson.runtime(runtime as String),
+      if (runtimeFieldValue != null)
+        _$MovieFieldMap['runtime']!: runtimeFieldValue,
+      if (rated != _sentinel)
+        _$MovieFieldMap['rated']!: _$MoviePerFieldToJson.rated(rated as String),
+      if (ratedFieldValue != null) _$MovieFieldMap['rated']!: ratedFieldValue,
+      if (genre != _sentinel)
+        _$MovieFieldMap['genre']!:
+            _$MoviePerFieldToJson.genre(genre as List<String>?),
+      if (genreFieldValue != null) _$MovieFieldMap['genre']!: genreFieldValue,
+      if (tags != _sentinel)
+        _$MovieFieldMap['tags']!:
+            _$MoviePerFieldToJson.tags(tags as Set<String>?),
+      if (tagsFieldValue != null) _$MovieFieldMap['tags']!: tagsFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -2121,6 +2231,17 @@ abstract class CommentDocumentReference
     String message,
     FieldValue messageFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    String authorName,
+    FieldValue authorNameFieldValue,
+    String message,
+    FieldValue messageFieldValue,
+  });
 }
 
 class _$CommentDocumentReference
@@ -2215,6 +2336,37 @@ class _$CommentDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? authorName = _sentinel,
+    FieldValue? authorNameFieldValue,
+    Object? message = _sentinel,
+    FieldValue? messageFieldValue,
+  }) {
+    assert(
+      authorName == _sentinel || authorNameFieldValue == null,
+      "Cannot specify both authorName and authorNameFieldValue",
+    );
+    assert(
+      message == _sentinel || messageFieldValue == null,
+      "Cannot specify both message and messageFieldValue",
+    );
+    final json = {
+      if (authorName != _sentinel)
+        _$CommentFieldMap['authorName']!:
+            _$CommentPerFieldToJson.authorName(authorName as String),
+      if (authorNameFieldValue != null)
+        _$CommentFieldMap['authorName']!: authorNameFieldValue,
+      if (message != _sentinel)
+        _$CommentFieldMap['message']!:
+            _$CommentPerFieldToJson.message(message as String),
+      if (messageFieldValue != null)
+        _$CommentFieldMap['message']!: messageFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override

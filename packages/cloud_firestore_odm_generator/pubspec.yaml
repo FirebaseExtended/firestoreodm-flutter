@@ -2,7 +2,7 @@ name: cloud_firestore_odm_generator
 description: A code generator for cloud_firestore_odm.
 homepage: https://firebase.flutter.dev/docs/firestore/odm
 repository: https://github.com/firebaseextended/firestoreodm-flutter
-version: 1.0.0-dev.86
+version: 1.0.0-dev.87
 
 environment:
   sdk: ">=2.18.0 <4.0.0"

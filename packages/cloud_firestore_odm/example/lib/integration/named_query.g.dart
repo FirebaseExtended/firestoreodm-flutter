@@ -162,6 +162,15 @@ abstract class ConflictDocumentReference
     num number,
     FieldValue numberFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    num number,
+    FieldValue numberFieldValue,
+  });
 }
 
 class _$ConflictDocumentReference
@@ -229,6 +238,26 @@ class _$ConflictDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? number = _sentinel,
+    FieldValue? numberFieldValue,
+  }) {
+    assert(
+      number == _sentinel || numberFieldValue == null,
+      "Cannot specify both number and numberFieldValue",
+    );
+    final json = {
+      if (number != _sentinel)
+        _$ConflictFieldMap['number']!:
+            _$ConflictPerFieldToJson.number(number as num),
+      if (numberFieldValue != null)
+        _$ConflictFieldMap['number']!: numberFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override

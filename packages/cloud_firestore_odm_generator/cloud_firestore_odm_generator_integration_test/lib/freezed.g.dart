@@ -145,6 +145,17 @@ abstract class PersonDocumentReference
     String lastName,
     FieldValue lastNameFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    String firstName,
+    FieldValue firstNameFieldValue,
+    String lastName,
+    FieldValue lastNameFieldValue,
+  });
 }
 
 class _$PersonDocumentReference
@@ -234,6 +245,37 @@ class _$PersonDocumentReference
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? firstName = _sentinel,
+    FieldValue? firstNameFieldValue,
+    Object? lastName = _sentinel,
+    FieldValue? lastNameFieldValue,
+  }) {
+    assert(
+      firstName == _sentinel || firstNameFieldValue == null,
+      "Cannot specify both firstName and firstNameFieldValue",
+    );
+    assert(
+      lastName == _sentinel || lastNameFieldValue == null,
+      "Cannot specify both lastName and lastNameFieldValue",
+    );
+    final json = {
+      if (firstName != _sentinel)
+        _$$PersonImplFieldMap['firstName']!:
+            _$$PersonImplPerFieldToJson.firstName(firstName as String),
+      if (firstNameFieldValue != null)
+        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+      if (lastName != _sentinel)
+        _$$PersonImplFieldMap['lastName']!:
+            _$$PersonImplPerFieldToJson.lastName(lastName as String),
+      if (lastNameFieldValue != null)
+        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
@@ -1114,6 +1156,15 @@ abstract class PublicRedirectedDocumentReference
     String value,
     FieldValue valueFieldValue,
   });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    String value,
+    FieldValue valueFieldValue,
+  });
 }
 
 class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
@@ -1182,6 +1233,26 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     };
 
     transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? value = _sentinel,
+    FieldValue? valueFieldValue,
+  }) {
+    assert(
+      value == _sentinel || valueFieldValue == null,
+      "Cannot specify both value and valueFieldValue",
+    );
+    final json = {
+      if (value != _sentinel)
+        _$$PublicRedirected2ImplFieldMap['value']!:
+            _$$PublicRedirected2ImplPerFieldToJson.value(value as String),
+      if (valueFieldValue != null)
+        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.update(reference, json);
   }
 
   @override
