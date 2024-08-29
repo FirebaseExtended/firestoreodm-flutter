@@ -138,14 +138,14 @@ abstract class MovieDocumentReference
   Future<void> set(
     Movie model, {
     SetOptions? setOptions,
-    FieldValue? posterFieldValue,
-    FieldValue? likesFieldValue,
-    FieldValue? titleFieldValue,
-    FieldValue? yearFieldValue,
-    FieldValue? runtimeFieldValue,
-    FieldValue? ratedFieldValue,
-    FieldValue? genreFieldValue,
-    FieldValue? tagsFieldValue,
+    FieldValue posterFieldValue,
+    FieldValue likesFieldValue,
+    FieldValue titleFieldValue,
+    FieldValue yearFieldValue,
+    FieldValue runtimeFieldValue,
+    FieldValue ratedFieldValue,
+    FieldValue genreFieldValue,
+    FieldValue tagsFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -155,14 +155,14 @@ abstract class MovieDocumentReference
   void transactionSet(
     Transaction transaction,
     Movie model, {
-    FieldValue? posterFieldValue,
-    FieldValue? likesFieldValue,
-    FieldValue? titleFieldValue,
-    FieldValue? yearFieldValue,
-    FieldValue? runtimeFieldValue,
-    FieldValue? ratedFieldValue,
-    FieldValue? genreFieldValue,
-    FieldValue? tagsFieldValue,
+    FieldValue posterFieldValue,
+    FieldValue likesFieldValue,
+    FieldValue titleFieldValue,
+    FieldValue yearFieldValue,
+    FieldValue runtimeFieldValue,
+    FieldValue ratedFieldValue,
+    FieldValue genreFieldValue,
+    FieldValue tagsFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -172,14 +172,14 @@ abstract class MovieDocumentReference
   void batchSet(
     WriteBatch batch,
     Movie model, {
-    FieldValue? posterFieldValue,
-    FieldValue? likesFieldValue,
-    FieldValue? titleFieldValue,
-    FieldValue? yearFieldValue,
-    FieldValue? runtimeFieldValue,
-    FieldValue? ratedFieldValue,
-    FieldValue? genreFieldValue,
-    FieldValue? tagsFieldValue,
+    FieldValue posterFieldValue,
+    FieldValue likesFieldValue,
+    FieldValue titleFieldValue,
+    FieldValue yearFieldValue,
+    FieldValue runtimeFieldValue,
+    FieldValue ratedFieldValue,
+    FieldValue genreFieldValue,
+    FieldValue tagsFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -188,21 +188,21 @@ abstract class MovieDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String poster,
-    FieldValue? posterFieldValue,
+    FieldValue posterFieldValue,
     int likes,
-    FieldValue? likesFieldValue,
+    FieldValue likesFieldValue,
     String title,
-    FieldValue? titleFieldValue,
+    FieldValue titleFieldValue,
     int year,
-    FieldValue? yearFieldValue,
+    FieldValue yearFieldValue,
     String runtime,
-    FieldValue? runtimeFieldValue,
+    FieldValue runtimeFieldValue,
     String rated,
-    FieldValue? ratedFieldValue,
+    FieldValue ratedFieldValue,
     List<String>? genre,
-    FieldValue? genreFieldValue,
+    FieldValue genreFieldValue,
     Set<String>? tags,
-    FieldValue? tagsFieldValue,
+    FieldValue tagsFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -211,21 +211,21 @@ abstract class MovieDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     String poster,
-    FieldValue? posterFieldValue,
+    FieldValue posterFieldValue,
     int likes,
-    FieldValue? likesFieldValue,
+    FieldValue likesFieldValue,
     String title,
-    FieldValue? titleFieldValue,
+    FieldValue titleFieldValue,
     int year,
-    FieldValue? yearFieldValue,
+    FieldValue yearFieldValue,
     String runtime,
-    FieldValue? runtimeFieldValue,
+    FieldValue runtimeFieldValue,
     String rated,
-    FieldValue? ratedFieldValue,
+    FieldValue ratedFieldValue,
     List<String>? genre,
-    FieldValue? genreFieldValue,
+    FieldValue genreFieldValue,
     Set<String>? tags,
-    FieldValue? tagsFieldValue,
+    FieldValue tagsFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -234,21 +234,21 @@ abstract class MovieDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     String poster,
-    FieldValue? posterFieldValue,
+    FieldValue posterFieldValue,
     int likes,
-    FieldValue? likesFieldValue,
+    FieldValue likesFieldValue,
     String title,
-    FieldValue? titleFieldValue,
+    FieldValue titleFieldValue,
     int year,
-    FieldValue? yearFieldValue,
+    FieldValue yearFieldValue,
     String runtime,
-    FieldValue? runtimeFieldValue,
+    FieldValue runtimeFieldValue,
     String rated,
-    FieldValue? ratedFieldValue,
+    FieldValue ratedFieldValue,
     List<String>? genre,
-    FieldValue? genreFieldValue,
+    FieldValue genreFieldValue,
     Set<String>? tags,
-    FieldValue? tagsFieldValue,
+    FieldValue tagsFieldValue,
   });
 }
 
@@ -2357,8 +2357,8 @@ abstract class CommentDocumentReference
   Future<void> set(
     Comment model, {
     SetOptions? setOptions,
-    FieldValue? authorNameFieldValue,
-    FieldValue? messageFieldValue,
+    FieldValue authorNameFieldValue,
+    FieldValue messageFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -2368,8 +2368,8 @@ abstract class CommentDocumentReference
   void transactionSet(
     Transaction transaction,
     Comment model, {
-    FieldValue? authorNameFieldValue,
-    FieldValue? messageFieldValue,
+    FieldValue authorNameFieldValue,
+    FieldValue messageFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -2379,8 +2379,8 @@ abstract class CommentDocumentReference
   void batchSet(
     WriteBatch batch,
     Comment model, {
-    FieldValue? authorNameFieldValue,
-    FieldValue? messageFieldValue,
+    FieldValue authorNameFieldValue,
+    FieldValue messageFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -2389,9 +2389,9 @@ abstract class CommentDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String authorName,
-    FieldValue? authorNameFieldValue,
+    FieldValue authorNameFieldValue,
     String message,
-    FieldValue? messageFieldValue,
+    FieldValue messageFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -2400,9 +2400,9 @@ abstract class CommentDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     String authorName,
-    FieldValue? authorNameFieldValue,
+    FieldValue authorNameFieldValue,
     String message,
-    FieldValue? messageFieldValue,
+    FieldValue messageFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -2411,9 +2411,9 @@ abstract class CommentDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     String authorName,
-    FieldValue? authorNameFieldValue,
+    FieldValue authorNameFieldValue,
     String message,
-    FieldValue? messageFieldValue,
+    FieldValue messageFieldValue,
   });
 }
 

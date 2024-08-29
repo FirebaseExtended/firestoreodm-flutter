@@ -153,7 +153,7 @@ abstract class ConflictDocumentReference
   Future<void> set(
     Conflict model, {
     SetOptions? setOptions,
-    FieldValue? numberFieldValue,
+    FieldValue numberFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -163,7 +163,7 @@ abstract class ConflictDocumentReference
   void transactionSet(
     Transaction transaction,
     Conflict model, {
-    FieldValue? numberFieldValue,
+    FieldValue numberFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -173,7 +173,7 @@ abstract class ConflictDocumentReference
   void batchSet(
     WriteBatch batch,
     Conflict model, {
-    FieldValue? numberFieldValue,
+    FieldValue numberFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -182,7 +182,7 @@ abstract class ConflictDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     num number,
-    FieldValue? numberFieldValue,
+    FieldValue numberFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -191,7 +191,7 @@ abstract class ConflictDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     num number,
-    FieldValue? numberFieldValue,
+    FieldValue numberFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -200,7 +200,7 @@ abstract class ConflictDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     num number,
-    FieldValue? numberFieldValue,
+    FieldValue numberFieldValue,
   });
 }
 

@@ -134,11 +134,11 @@ abstract class EnumsDocumentReference
   Future<void> set(
     Enums model, {
     SetOptions? setOptions,
-    FieldValue? idFieldValue,
-    FieldValue? enumValueFieldValue,
-    FieldValue? nullableEnumValueFieldValue,
-    FieldValue? enumListFieldValue,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue idFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -148,11 +148,11 @@ abstract class EnumsDocumentReference
   void transactionSet(
     Transaction transaction,
     Enums model, {
-    FieldValue? idFieldValue,
-    FieldValue? enumValueFieldValue,
-    FieldValue? nullableEnumValueFieldValue,
-    FieldValue? enumListFieldValue,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue idFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -162,11 +162,11 @@ abstract class EnumsDocumentReference
   void batchSet(
     WriteBatch batch,
     Enums model, {
-    FieldValue? idFieldValue,
-    FieldValue? enumValueFieldValue,
-    FieldValue? nullableEnumValueFieldValue,
-    FieldValue? enumListFieldValue,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue idFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -175,15 +175,15 @@ abstract class EnumsDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String id,
-    FieldValue? idFieldValue,
+    FieldValue idFieldValue,
     TestEnum enumValue,
-    FieldValue? enumValueFieldValue,
+    FieldValue enumValueFieldValue,
     TestEnum? nullableEnumValue,
-    FieldValue? nullableEnumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
     List<TestEnum> enumList,
-    FieldValue? enumListFieldValue,
+    FieldValue enumListFieldValue,
     List<TestEnum>? nullableEnumList,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -192,15 +192,15 @@ abstract class EnumsDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     String id,
-    FieldValue? idFieldValue,
+    FieldValue idFieldValue,
     TestEnum enumValue,
-    FieldValue? enumValueFieldValue,
+    FieldValue enumValueFieldValue,
     TestEnum? nullableEnumValue,
-    FieldValue? nullableEnumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
     List<TestEnum> enumList,
-    FieldValue? enumListFieldValue,
+    FieldValue enumListFieldValue,
     List<TestEnum>? nullableEnumList,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -209,15 +209,15 @@ abstract class EnumsDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     String id,
-    FieldValue? idFieldValue,
+    FieldValue idFieldValue,
     TestEnum enumValue,
-    FieldValue? enumValueFieldValue,
+    FieldValue enumValueFieldValue,
     TestEnum? nullableEnumValue,
-    FieldValue? nullableEnumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
     List<TestEnum> enumList,
-    FieldValue? enumListFieldValue,
+    FieldValue enumListFieldValue,
     List<TestEnum>? nullableEnumList,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 }
 

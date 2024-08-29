@@ -134,8 +134,8 @@ abstract class PersonDocumentReference
   Future<void> set(
     Person model, {
     SetOptions? setOptions,
-    FieldValue? firstNameFieldValue,
-    FieldValue? lastNameFieldValue,
+    FieldValue firstNameFieldValue,
+    FieldValue lastNameFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -145,8 +145,8 @@ abstract class PersonDocumentReference
   void transactionSet(
     Transaction transaction,
     Person model, {
-    FieldValue? firstNameFieldValue,
-    FieldValue? lastNameFieldValue,
+    FieldValue firstNameFieldValue,
+    FieldValue lastNameFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -156,8 +156,8 @@ abstract class PersonDocumentReference
   void batchSet(
     WriteBatch batch,
     Person model, {
-    FieldValue? firstNameFieldValue,
-    FieldValue? lastNameFieldValue,
+    FieldValue firstNameFieldValue,
+    FieldValue lastNameFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -166,9 +166,9 @@ abstract class PersonDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String firstName,
-    FieldValue? firstNameFieldValue,
+    FieldValue firstNameFieldValue,
     String lastName,
-    FieldValue? lastNameFieldValue,
+    FieldValue lastNameFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -177,9 +177,9 @@ abstract class PersonDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     String firstName,
-    FieldValue? firstNameFieldValue,
+    FieldValue firstNameFieldValue,
     String lastName,
-    FieldValue? lastNameFieldValue,
+    FieldValue lastNameFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -188,9 +188,9 @@ abstract class PersonDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     String firstName,
-    FieldValue? firstNameFieldValue,
+    FieldValue firstNameFieldValue,
     String lastName,
-    FieldValue? lastNameFieldValue,
+    FieldValue lastNameFieldValue,
   });
 }
 
@@ -1234,7 +1234,7 @@ abstract class PublicRedirectedDocumentReference
   Future<void> set(
     PublicRedirected model, {
     SetOptions? setOptions,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -1244,7 +1244,7 @@ abstract class PublicRedirectedDocumentReference
   void transactionSet(
     Transaction transaction,
     PublicRedirected model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -1254,7 +1254,7 @@ abstract class PublicRedirectedDocumentReference
   void batchSet(
     WriteBatch batch,
     PublicRedirected model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -1263,7 +1263,7 @@ abstract class PublicRedirectedDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -1272,7 +1272,7 @@ abstract class PublicRedirectedDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     String value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -1281,7 +1281,7 @@ abstract class PublicRedirectedDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     String value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 }
 

@@ -137,7 +137,7 @@ abstract class IgnoredGetterDocumentReference
   Future<void> set(
     IgnoredGetter model, {
     SetOptions? setOptions,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -147,7 +147,7 @@ abstract class IgnoredGetterDocumentReference
   void transactionSet(
     Transaction transaction,
     IgnoredGetter model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -157,7 +157,7 @@ abstract class IgnoredGetterDocumentReference
   void batchSet(
     WriteBatch batch,
     IgnoredGetter model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -166,7 +166,7 @@ abstract class IgnoredGetterDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     int value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -175,7 +175,7 @@ abstract class IgnoredGetterDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     int value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -184,7 +184,7 @@ abstract class IgnoredGetterDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     int value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 }
 
@@ -1043,7 +1043,7 @@ abstract class ModelDocumentReference
   Future<void> set(
     Model model, {
     SetOptions? setOptions,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -1053,7 +1053,7 @@ abstract class ModelDocumentReference
   void transactionSet(
     Transaction transaction,
     Model model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -1063,7 +1063,7 @@ abstract class ModelDocumentReference
   void batchSet(
     WriteBatch batch,
     Model model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -1072,7 +1072,7 @@ abstract class ModelDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -1081,7 +1081,7 @@ abstract class ModelDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     String value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -1090,7 +1090,7 @@ abstract class ModelDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     String value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 }
 
@@ -1929,19 +1929,19 @@ abstract class NestedDocumentReference
   Future<void> set(
     Nested model, {
     SetOptions? setOptions,
-    FieldValue? valueFieldValue,
-    FieldValue? simpleFieldValue,
-    FieldValue? valueListFieldValue,
-    FieldValue? boolListFieldValue,
-    FieldValue? stringListFieldValue,
-    FieldValue? numListFieldValue,
-    FieldValue? objectListFieldValue,
-    FieldValue? dynamicListFieldValue,
-    FieldValue? boolSetFieldValue,
-    FieldValue? enumValueFieldValue,
-    FieldValue? nullableEnumValueFieldValue,
-    FieldValue? enumListFieldValue,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue valueFieldValue,
+    FieldValue simpleFieldValue,
+    FieldValue valueListFieldValue,
+    FieldValue boolListFieldValue,
+    FieldValue stringListFieldValue,
+    FieldValue numListFieldValue,
+    FieldValue objectListFieldValue,
+    FieldValue dynamicListFieldValue,
+    FieldValue boolSetFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -1951,19 +1951,19 @@ abstract class NestedDocumentReference
   void transactionSet(
     Transaction transaction,
     Nested model, {
-    FieldValue? valueFieldValue,
-    FieldValue? simpleFieldValue,
-    FieldValue? valueListFieldValue,
-    FieldValue? boolListFieldValue,
-    FieldValue? stringListFieldValue,
-    FieldValue? numListFieldValue,
-    FieldValue? objectListFieldValue,
-    FieldValue? dynamicListFieldValue,
-    FieldValue? boolSetFieldValue,
-    FieldValue? enumValueFieldValue,
-    FieldValue? nullableEnumValueFieldValue,
-    FieldValue? enumListFieldValue,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue valueFieldValue,
+    FieldValue simpleFieldValue,
+    FieldValue valueListFieldValue,
+    FieldValue boolListFieldValue,
+    FieldValue stringListFieldValue,
+    FieldValue numListFieldValue,
+    FieldValue objectListFieldValue,
+    FieldValue dynamicListFieldValue,
+    FieldValue boolSetFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -1973,19 +1973,19 @@ abstract class NestedDocumentReference
   void batchSet(
     WriteBatch batch,
     Nested model, {
-    FieldValue? valueFieldValue,
-    FieldValue? simpleFieldValue,
-    FieldValue? valueListFieldValue,
-    FieldValue? boolListFieldValue,
-    FieldValue? stringListFieldValue,
-    FieldValue? numListFieldValue,
-    FieldValue? objectListFieldValue,
-    FieldValue? dynamicListFieldValue,
-    FieldValue? boolSetFieldValue,
-    FieldValue? enumValueFieldValue,
-    FieldValue? nullableEnumValueFieldValue,
-    FieldValue? enumListFieldValue,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue valueFieldValue,
+    FieldValue simpleFieldValue,
+    FieldValue valueListFieldValue,
+    FieldValue boolListFieldValue,
+    FieldValue stringListFieldValue,
+    FieldValue numListFieldValue,
+    FieldValue objectListFieldValue,
+    FieldValue dynamicListFieldValue,
+    FieldValue boolSetFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -1994,31 +1994,31 @@ abstract class NestedDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     Nested? value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
     int? simple,
-    FieldValue? simpleFieldValue,
+    FieldValue simpleFieldValue,
     List<Nested>? valueList,
-    FieldValue? valueListFieldValue,
+    FieldValue valueListFieldValue,
     List<bool>? boolList,
-    FieldValue? boolListFieldValue,
+    FieldValue boolListFieldValue,
     List<String>? stringList,
-    FieldValue? stringListFieldValue,
+    FieldValue stringListFieldValue,
     List<num>? numList,
-    FieldValue? numListFieldValue,
+    FieldValue numListFieldValue,
     List<Object?>? objectList,
-    FieldValue? objectListFieldValue,
+    FieldValue objectListFieldValue,
     List<dynamic>? dynamicList,
-    FieldValue? dynamicListFieldValue,
+    FieldValue dynamicListFieldValue,
     Set<bool>? boolSet,
-    FieldValue? boolSetFieldValue,
+    FieldValue boolSetFieldValue,
     TestEnum enumValue,
-    FieldValue? enumValueFieldValue,
+    FieldValue enumValueFieldValue,
     TestEnum? nullableEnumValue,
-    FieldValue? nullableEnumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
     List<TestEnum> enumList,
-    FieldValue? enumListFieldValue,
+    FieldValue enumListFieldValue,
     List<TestEnum>? nullableEnumList,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -2027,31 +2027,31 @@ abstract class NestedDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     Nested? value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
     int? simple,
-    FieldValue? simpleFieldValue,
+    FieldValue simpleFieldValue,
     List<Nested>? valueList,
-    FieldValue? valueListFieldValue,
+    FieldValue valueListFieldValue,
     List<bool>? boolList,
-    FieldValue? boolListFieldValue,
+    FieldValue boolListFieldValue,
     List<String>? stringList,
-    FieldValue? stringListFieldValue,
+    FieldValue stringListFieldValue,
     List<num>? numList,
-    FieldValue? numListFieldValue,
+    FieldValue numListFieldValue,
     List<Object?>? objectList,
-    FieldValue? objectListFieldValue,
+    FieldValue objectListFieldValue,
     List<dynamic>? dynamicList,
-    FieldValue? dynamicListFieldValue,
+    FieldValue dynamicListFieldValue,
     Set<bool>? boolSet,
-    FieldValue? boolSetFieldValue,
+    FieldValue boolSetFieldValue,
     TestEnum enumValue,
-    FieldValue? enumValueFieldValue,
+    FieldValue enumValueFieldValue,
     TestEnum? nullableEnumValue,
-    FieldValue? nullableEnumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
     List<TestEnum> enumList,
-    FieldValue? enumListFieldValue,
+    FieldValue enumListFieldValue,
     List<TestEnum>? nullableEnumList,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -2060,31 +2060,31 @@ abstract class NestedDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     Nested? value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
     int? simple,
-    FieldValue? simpleFieldValue,
+    FieldValue simpleFieldValue,
     List<Nested>? valueList,
-    FieldValue? valueListFieldValue,
+    FieldValue valueListFieldValue,
     List<bool>? boolList,
-    FieldValue? boolListFieldValue,
+    FieldValue boolListFieldValue,
     List<String>? stringList,
-    FieldValue? stringListFieldValue,
+    FieldValue stringListFieldValue,
     List<num>? numList,
-    FieldValue? numListFieldValue,
+    FieldValue numListFieldValue,
     List<Object?>? objectList,
-    FieldValue? objectListFieldValue,
+    FieldValue objectListFieldValue,
     List<dynamic>? dynamicList,
-    FieldValue? dynamicListFieldValue,
+    FieldValue dynamicListFieldValue,
     Set<bool>? boolSet,
-    FieldValue? boolSetFieldValue,
+    FieldValue boolSetFieldValue,
     TestEnum enumValue,
-    FieldValue? enumValueFieldValue,
+    FieldValue enumValueFieldValue,
     TestEnum? nullableEnumValue,
-    FieldValue? nullableEnumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
     List<TestEnum> enumList,
-    FieldValue? enumListFieldValue,
+    FieldValue enumListFieldValue,
     List<TestEnum>? nullableEnumList,
-    FieldValue? nullableEnumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
   });
 }
 
@@ -5818,7 +5818,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   Future<void> set(
     OptionalJson model, {
     SetOptions? setOptions,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -5828,7 +5828,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   void transactionSet(
     Transaction transaction,
     OptionalJson model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -5838,7 +5838,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   void batchSet(
     WriteBatch batch,
     OptionalJson model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -5847,7 +5847,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   /// If no document exists yet, the update will fail.
   Future<void> update({
     int value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -5856,7 +5856,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   void transactionUpdate(
     Transaction transaction, {
     int value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -5865,7 +5865,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   void batchUpdate(
     WriteBatch batch, {
     int value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 }
 
@@ -6723,7 +6723,7 @@ abstract class MixedJsonDocumentReference
   Future<void> set(
     MixedJson model, {
     SetOptions? setOptions,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -6733,7 +6733,7 @@ abstract class MixedJsonDocumentReference
   void transactionSet(
     Transaction transaction,
     MixedJson model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -6743,7 +6743,7 @@ abstract class MixedJsonDocumentReference
   void batchSet(
     WriteBatch batch,
     MixedJson model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -6752,7 +6752,7 @@ abstract class MixedJsonDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     int value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -6761,7 +6761,7 @@ abstract class MixedJsonDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     int value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -6770,7 +6770,7 @@ abstract class MixedJsonDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     int value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 }
 
@@ -7641,8 +7641,8 @@ abstract class RootDocumentReference
   Future<void> set(
     Root model, {
     SetOptions? setOptions,
-    FieldValue? nonNullableFieldValue,
-    FieldValue? nullableFieldValue,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -7652,8 +7652,8 @@ abstract class RootDocumentReference
   void transactionSet(
     Transaction transaction,
     Root model, {
-    FieldValue? nonNullableFieldValue,
-    FieldValue? nullableFieldValue,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -7663,8 +7663,8 @@ abstract class RootDocumentReference
   void batchSet(
     WriteBatch batch,
     Root model, {
-    FieldValue? nonNullableFieldValue,
-    FieldValue? nullableFieldValue,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -7673,9 +7673,9 @@ abstract class RootDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String nonNullable,
-    FieldValue? nonNullableFieldValue,
+    FieldValue nonNullableFieldValue,
     int? nullable,
-    FieldValue? nullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -7684,9 +7684,9 @@ abstract class RootDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     String nonNullable,
-    FieldValue? nonNullableFieldValue,
+    FieldValue nonNullableFieldValue,
     int? nullable,
-    FieldValue? nullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -7695,9 +7695,9 @@ abstract class RootDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     String nonNullable,
-    FieldValue? nonNullableFieldValue,
+    FieldValue nonNullableFieldValue,
     int? nullable,
-    FieldValue? nullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 }
 
@@ -8757,8 +8757,8 @@ abstract class SubDocumentReference
   Future<void> set(
     Sub model, {
     SetOptions? setOptions,
-    FieldValue? nonNullableFieldValue,
-    FieldValue? nullableFieldValue,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -8768,8 +8768,8 @@ abstract class SubDocumentReference
   void transactionSet(
     Transaction transaction,
     Sub model, {
-    FieldValue? nonNullableFieldValue,
-    FieldValue? nullableFieldValue,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -8779,8 +8779,8 @@ abstract class SubDocumentReference
   void batchSet(
     WriteBatch batch,
     Sub model, {
-    FieldValue? nonNullableFieldValue,
-    FieldValue? nullableFieldValue,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -8789,9 +8789,9 @@ abstract class SubDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String nonNullable,
-    FieldValue? nonNullableFieldValue,
+    FieldValue nonNullableFieldValue,
     int? nullable,
-    FieldValue? nullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -8800,9 +8800,9 @@ abstract class SubDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     String nonNullable,
-    FieldValue? nonNullableFieldValue,
+    FieldValue nonNullableFieldValue,
     int? nullable,
-    FieldValue? nullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -8811,9 +8811,9 @@ abstract class SubDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     String nonNullable,
-    FieldValue? nonNullableFieldValue,
+    FieldValue nonNullableFieldValue,
     int? nullable,
-    FieldValue? nullableFieldValue,
+    FieldValue nullableFieldValue,
   });
 }
 
@@ -9864,7 +9864,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   Future<void> set(
     AsCamelCase model, {
     SetOptions? setOptions,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -9874,7 +9874,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   void transactionSet(
     Transaction transaction,
     AsCamelCase model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -9884,7 +9884,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   void batchSet(
     WriteBatch batch,
     AsCamelCase model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -9893,7 +9893,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   /// If no document exists yet, the update will fail.
   Future<void> update({
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -9902,7 +9902,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   void transactionUpdate(
     Transaction transaction, {
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -9911,7 +9911,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   void batchUpdate(
     WriteBatch batch, {
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 }
 
@@ -10791,7 +10791,7 @@ abstract class CustomSubNameDocumentReference
   Future<void> set(
     CustomSubName model, {
     SetOptions? setOptions,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -10801,7 +10801,7 @@ abstract class CustomSubNameDocumentReference
   void transactionSet(
     Transaction transaction,
     CustomSubName model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -10811,7 +10811,7 @@ abstract class CustomSubNameDocumentReference
   void batchSet(
     WriteBatch batch,
     CustomSubName model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -10820,7 +10820,7 @@ abstract class CustomSubNameDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -10829,7 +10829,7 @@ abstract class CustomSubNameDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -10838,7 +10838,7 @@ abstract class CustomSubNameDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 }
 
@@ -11721,7 +11721,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   Future<void> set(
     CustomClassPrefix model, {
     SetOptions? setOptions,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -11731,7 +11731,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   void transactionSet(
     Transaction transaction,
     CustomClassPrefix model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -11741,7 +11741,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   void batchSet(
     WriteBatch batch,
     CustomClassPrefix model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -11750,7 +11750,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -11759,7 +11759,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -11768,7 +11768,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 }
 
@@ -12650,7 +12650,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   Future<void> set(
     ExplicitPath model, {
     SetOptions? setOptions,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -12660,7 +12660,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   void transactionSet(
     Transaction transaction,
     ExplicitPath model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -12670,7 +12670,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   void batchSet(
     WriteBatch batch,
     ExplicitPath model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -12679,7 +12679,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   /// If no document exists yet, the update will fail.
   Future<void> update({
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -12688,7 +12688,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   void transactionUpdate(
     Transaction transaction, {
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -12697,7 +12697,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   void batchUpdate(
     WriteBatch batch, {
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 }
 
@@ -13578,7 +13578,7 @@ abstract class ExplicitSubPathDocumentReference
   Future<void> set(
     ExplicitSubPath model, {
     SetOptions? setOptions,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -13588,7 +13588,7 @@ abstract class ExplicitSubPathDocumentReference
   void transactionSet(
     Transaction transaction,
     ExplicitSubPath model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -13598,7 +13598,7 @@ abstract class ExplicitSubPathDocumentReference
   void batchSet(
     WriteBatch batch,
     ExplicitSubPath model, {
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -13607,7 +13607,7 @@ abstract class ExplicitSubPathDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -13616,7 +13616,7 @@ abstract class ExplicitSubPathDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -13625,7 +13625,7 @@ abstract class ExplicitSubPathDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     num value,
-    FieldValue? valueFieldValue,
+    FieldValue valueFieldValue,
   });
 }
 

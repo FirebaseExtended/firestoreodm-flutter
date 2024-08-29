@@ -139,7 +139,7 @@ abstract class DurationQueryDocumentReference
   Future<void> set(
     DurationQuery model, {
     SetOptions? setOptions,
-    FieldValue? durationFieldValue,
+    FieldValue durationFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -149,7 +149,7 @@ abstract class DurationQueryDocumentReference
   void transactionSet(
     Transaction transaction,
     DurationQuery model, {
-    FieldValue? durationFieldValue,
+    FieldValue durationFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -159,7 +159,7 @@ abstract class DurationQueryDocumentReference
   void batchSet(
     WriteBatch batch,
     DurationQuery model, {
-    FieldValue? durationFieldValue,
+    FieldValue durationFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -168,7 +168,7 @@ abstract class DurationQueryDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     Duration duration,
-    FieldValue? durationFieldValue,
+    FieldValue durationFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -177,7 +177,7 @@ abstract class DurationQueryDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     Duration duration,
-    FieldValue? durationFieldValue,
+    FieldValue durationFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -186,7 +186,7 @@ abstract class DurationQueryDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     Duration duration,
-    FieldValue? durationFieldValue,
+    FieldValue durationFieldValue,
   });
 }
 
@@ -1052,7 +1052,7 @@ abstract class DateTimeQueryDocumentReference
   Future<void> set(
     DateTimeQuery model, {
     SetOptions? setOptions,
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -1062,7 +1062,7 @@ abstract class DateTimeQueryDocumentReference
   void transactionSet(
     Transaction transaction,
     DateTimeQuery model, {
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -1072,7 +1072,7 @@ abstract class DateTimeQueryDocumentReference
   void batchSet(
     WriteBatch batch,
     DateTimeQuery model, {
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -1081,7 +1081,7 @@ abstract class DateTimeQueryDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     DateTime time,
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -1090,7 +1090,7 @@ abstract class DateTimeQueryDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     DateTime time,
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -1099,7 +1099,7 @@ abstract class DateTimeQueryDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     DateTime time,
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 }
 
@@ -1967,7 +1967,7 @@ abstract class TimestampQueryDocumentReference
   Future<void> set(
     TimestampQuery model, {
     SetOptions? setOptions,
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -1977,7 +1977,7 @@ abstract class TimestampQueryDocumentReference
   void transactionSet(
     Transaction transaction,
     TimestampQuery model, {
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -1987,7 +1987,7 @@ abstract class TimestampQueryDocumentReference
   void batchSet(
     WriteBatch batch,
     TimestampQuery model, {
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -1996,7 +1996,7 @@ abstract class TimestampQueryDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     Timestamp time,
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -2005,7 +2005,7 @@ abstract class TimestampQueryDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     Timestamp time,
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -2014,7 +2014,7 @@ abstract class TimestampQueryDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     Timestamp time,
-    FieldValue? timeFieldValue,
+    FieldValue timeFieldValue,
   });
 }
 
@@ -2883,7 +2883,7 @@ abstract class GeoPointQueryDocumentReference
   Future<void> set(
     GeoPointQuery model, {
     SetOptions? setOptions,
-    FieldValue? pointFieldValue,
+    FieldValue pointFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -2893,7 +2893,7 @@ abstract class GeoPointQueryDocumentReference
   void transactionSet(
     Transaction transaction,
     GeoPointQuery model, {
-    FieldValue? pointFieldValue,
+    FieldValue pointFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -2903,7 +2903,7 @@ abstract class GeoPointQueryDocumentReference
   void batchSet(
     WriteBatch batch,
     GeoPointQuery model, {
-    FieldValue? pointFieldValue,
+    FieldValue pointFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -2912,7 +2912,7 @@ abstract class GeoPointQueryDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     GeoPoint point,
-    FieldValue? pointFieldValue,
+    FieldValue pointFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -2921,7 +2921,7 @@ abstract class GeoPointQueryDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     GeoPoint point,
-    FieldValue? pointFieldValue,
+    FieldValue pointFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -2930,7 +2930,7 @@ abstract class GeoPointQueryDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     GeoPoint point,
-    FieldValue? pointFieldValue,
+    FieldValue pointFieldValue,
   });
 }
 
@@ -3801,7 +3801,7 @@ abstract class DocumentReferenceQueryDocumentReference
   Future<void> set(
     DocumentReferenceQuery model, {
     SetOptions? setOptions,
-    FieldValue? refFieldValue,
+    FieldValue refFieldValue,
   });
 
   /// Writes to the document using the transaction API.
@@ -3811,7 +3811,7 @@ abstract class DocumentReferenceQueryDocumentReference
   void transactionSet(
     Transaction transaction,
     DocumentReferenceQuery model, {
-    FieldValue? refFieldValue,
+    FieldValue refFieldValue,
   });
 
   /// Writes to the document using the batch API.
@@ -3821,7 +3821,7 @@ abstract class DocumentReferenceQueryDocumentReference
   void batchSet(
     WriteBatch batch,
     DocumentReferenceQuery model, {
-    FieldValue? refFieldValue,
+    FieldValue refFieldValue,
   });
 
   /// Updates data on the document. Data will be merged with any existing
@@ -3830,7 +3830,7 @@ abstract class DocumentReferenceQueryDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     DocumentReference<Map<String, dynamic>> ref,
-    FieldValue? refFieldValue,
+    FieldValue refFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -3839,7 +3839,7 @@ abstract class DocumentReferenceQueryDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     DocumentReference<Map<String, dynamic>> ref,
-    FieldValue? refFieldValue,
+    FieldValue refFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -3848,7 +3848,7 @@ abstract class DocumentReferenceQueryDocumentReference
   void batchUpdate(
     WriteBatch batch, {
     DocumentReference<Map<String, dynamic>> ref,
-    FieldValue? refFieldValue,
+    FieldValue refFieldValue,
   });
 }
 
