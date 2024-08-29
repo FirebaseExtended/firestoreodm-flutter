@@ -245,7 +245,11 @@ class _$PersonDocumentReference
         _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -1347,7 +1351,11 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
         _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(

@@ -239,7 +239,11 @@ class _$IgnoredGetterDocumentReference extends FirestoreDocumentReference<
         _$IgnoredGetterFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -1156,7 +1160,11 @@ class _$ModelDocumentReference
       if (valueFieldValue != null) _$ModelFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -2199,7 +2207,11 @@ class _$NestedDocumentReference
         _$NestedFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -5958,7 +5970,11 @@ class _$OptionalJsonDocumentReference extends FirestoreDocumentReference<
         _$OptionalJsonFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -6876,7 +6892,11 @@ class _$MixedJsonDocumentReference
         _$MixedJsonFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -7838,7 +7858,11 @@ class _$RootDocumentReference
         _$RootFieldMap['nullable']!: nullableFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -8953,7 +8977,11 @@ class _$SubDocumentReference
         _$SubFieldMap['nullable']!: nullableFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -10061,7 +10089,11 @@ class _$AsCamelCaseDocumentReference
         _$AsCamelCaseFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -11002,7 +11034,11 @@ class _$CustomSubNameDocumentReference extends FirestoreDocumentReference<
         _$CustomSubNameFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -11947,7 +11983,11 @@ class _$ThisIsACustomPrefixDocumentReference extends FirestoreDocumentReference<
         _$CustomClassPrefixFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -12886,7 +12926,11 @@ class _$ExplicitPathDocumentReference extends FirestoreDocumentReference<
         _$ExplicitPathFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -13828,7 +13872,11 @@ class _$ExplicitSubPathDocumentReference extends FirestoreDocumentReference<
         _$ExplicitSubPathFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(

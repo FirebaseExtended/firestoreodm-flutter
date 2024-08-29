@@ -241,7 +241,11 @@ class _$DurationQueryDocumentReference extends FirestoreDocumentReference<
         _$DurationQueryFieldMap['duration']!: durationFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -1167,7 +1171,11 @@ class _$DateTimeQueryDocumentReference extends FirestoreDocumentReference<
         _$DateTimeQueryFieldMap['time']!: timeFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -2095,7 +2103,11 @@ class _$TimestampQueryDocumentReference extends FirestoreDocumentReference<
         _$TimestampQueryFieldMap['time']!: timeFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -3024,7 +3036,11 @@ class _$GeoPointQueryDocumentReference extends FirestoreDocumentReference<
         _$GeoPointQueryFieldMap['point']!: pointFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -3960,7 +3976,11 @@ class _$DocumentReferenceQueryDocumentReference
         _$DocumentReferenceQueryFieldMap['ref']!: refFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(

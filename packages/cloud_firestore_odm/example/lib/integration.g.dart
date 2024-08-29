@@ -250,7 +250,11 @@ class _$AdvancedJsonDocumentReference extends FirestoreDocumentReference<
         _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -1380,7 +1384,11 @@ class _$_PrivateAdvancedJsonDocumentReference
         _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(

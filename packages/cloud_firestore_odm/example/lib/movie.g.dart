@@ -321,7 +321,11 @@ class _$MovieDocumentReference
       if (tagsFieldValue != null) _$MovieFieldMap['tags']!: tagsFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
@@ -2488,7 +2492,11 @@ class _$CommentDocumentReference
         _$CommentFieldMap['message']!: messageFieldValue,
     };
 
-    return (reference as DocumentReference).set(json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
   }
 
   void transactionSet(
