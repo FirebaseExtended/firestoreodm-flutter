@@ -121,7 +121,7 @@ class _\$${data.documentReferenceName}
   String _setPrototype(CollectionData data) {
     if (data.updatableFields.isEmpty) return '';
 
-    final type = data.type.getDisplayString(withNullability: true);
+    final type = data.type.getDisplayString();
     final parameters = _parameters(data, includeFields: false);
 
     return '''
@@ -161,7 +161,7 @@ void batchSet(
   String _set(CollectionData data) {
     if (data.updatableFields.isEmpty) return '';
 
-    final type = data.type.getDisplayString(withNullability: true);
+    final type = data.type.getDisplayString();
     final parameters = _parameters(data, includeFields: false);
     final fieldValuesJson = _json(data, includeFields: false);
     final json = '''
