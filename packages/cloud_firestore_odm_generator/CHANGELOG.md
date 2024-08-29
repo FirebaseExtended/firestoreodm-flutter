@@ -1,3 +1,7 @@
+## 1.0.0-dev.89
+
+- Adds generated `set` methods with `FieldValue` parameters
+
 ## 1.0.0-dev.88 - 2024-07-08
 
 - **FEAT**: Add batch API ([#12](https://github.com/FirebaseExtended/firestoreodm-flutter/issues/12)). ([4dd8a9a8](https://github.com/FirebaseExtended/firestoreodm-flutter/commit/4dd8a9a893bf6ababa5e9d52de95bacc549ad21b))
