@@ -76,6 +76,7 @@ class _\$${data.documentReferenceName}
     bool includeFields = true,
     bool useSentinel = false,
     bool includeFieldValues = true,
+    bool fieldValuesNullable = false,
   }) {
     final parameters = <String>[];
 
@@ -89,7 +90,8 @@ class _\$${data.documentReferenceName}
         parameters.add('$type ${field.name}$defaultValue,');
       }
       if (includeFieldValues) {
-        parameters.add('FieldValue? ${field.name}FieldValue,');
+        final suffix = fieldValuesNullable ? '?' : '';
+        parameters.add('FieldValue$suffix ${field.name}FieldValue,');
       }
     }
 
@@ -173,7 +175,11 @@ void batchSet(
     if (data.updatableFields.isEmpty) return '';
 
     final type = data.type.getDisplayString();
-    final parameters = _parameters(data, includeFields: false);
+    final parameters = _parameters(
+      data,
+      includeFields: false,
+      fieldValuesNullable: true,
+    );
     final fieldValuesJson = _json(data, includeFields: false);
     final json = '''
 {
@@ -241,7 +247,11 @@ void batchUpdate(WriteBatch batch, {$parameters});
   String _update(CollectionData data) {
     if (data.updatableFields.isEmpty) return '';
 
-    final parameters = _parameters(data, useSentinel: true);
+    final parameters = _parameters(
+      data,
+      useSentinel: true,
+      fieldValuesNullable: true,
+    );
     final json = _json(data);
     final asserts = _asserts(data);
 
