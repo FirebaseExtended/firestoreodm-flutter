@@ -74,15 +74,26 @@ class _\$${data.documentReferenceName}
   String _parameters(
     CollectionData data, {
     bool includeFields = true,
+    bool useSentinel = false,
     bool includeFieldValues = true,
   }) {
-    return [
-      for (final field in data.updatableFields)
-        if (field.updatable) ...[
-          if (includeFields) 'Object? ${field.name} = _sentinel,',
-          if (includeFieldValues) 'FieldValue? ${field.name}FieldValue,',
-        ],
-    ].join('\n');
+    final parameters = <String>[];
+
+    for (final field in data.updatableFields) {
+      if (!field.updatable) continue;
+
+      final fieldType = field.type.getDisplayString();
+      if (includeFields) {
+        final type = useSentinel ? 'Object?' : fieldType;
+        final defaultValue = useSentinel ? ' = _sentinel' : '';
+        parameters.add('$type ${field.name}$defaultValue,');
+      }
+      if (includeFieldValues) {
+        parameters.add('FieldValue? ${field.name}FieldValue,');
+      }
+    }
+
+    return parameters.join('\n');
   }
 
   // TODO support nested objects
@@ -230,7 +241,7 @@ void batchUpdate(WriteBatch batch, {$parameters});
   String _update(CollectionData data) {
     if (data.updatableFields.isEmpty) return '';
 
-    final parameters = _parameters(data);
+    final parameters = _parameters(data, useSentinel: true);
     final json = _json(data);
     final asserts = _asserts(data);
 
