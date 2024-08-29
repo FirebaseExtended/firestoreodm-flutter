@@ -181,7 +181,7 @@ abstract class ConflictDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? number = _sentinel,
+    num number,
     FieldValue? numberFieldValue,
   });
 
@@ -190,7 +190,7 @@ abstract class ConflictDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? number = _sentinel,
+    num number,
     FieldValue? numberFieldValue,
   });
 
@@ -199,7 +199,7 @@ abstract class ConflictDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? number = _sentinel,
+    num number,
     FieldValue? numberFieldValue,
   });
 }

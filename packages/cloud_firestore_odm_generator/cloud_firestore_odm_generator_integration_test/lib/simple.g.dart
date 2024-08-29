@@ -165,7 +165,7 @@ abstract class IgnoredGetterDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? value = _sentinel,
+    int value,
     FieldValue? valueFieldValue,
   });
 
@@ -174,7 +174,7 @@ abstract class IgnoredGetterDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? value = _sentinel,
+    int value,
     FieldValue? valueFieldValue,
   });
 
@@ -183,7 +183,7 @@ abstract class IgnoredGetterDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? value = _sentinel,
+    int value,
     FieldValue? valueFieldValue,
   });
 }
@@ -1071,7 +1071,7 @@ abstract class ModelDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? value = _sentinel,
+    String value,
     FieldValue? valueFieldValue,
   });
 
@@ -1080,7 +1080,7 @@ abstract class ModelDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? value = _sentinel,
+    String value,
     FieldValue? valueFieldValue,
   });
 
@@ -1089,7 +1089,7 @@ abstract class ModelDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? value = _sentinel,
+    String value,
     FieldValue? valueFieldValue,
   });
 }
@@ -1993,31 +1993,31 @@ abstract class NestedDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? value = _sentinel,
+    Nested? value,
     FieldValue? valueFieldValue,
-    Object? simple = _sentinel,
+    int? simple,
     FieldValue? simpleFieldValue,
-    Object? valueList = _sentinel,
+    List<Nested>? valueList,
     FieldValue? valueListFieldValue,
-    Object? boolList = _sentinel,
+    List<bool>? boolList,
     FieldValue? boolListFieldValue,
-    Object? stringList = _sentinel,
+    List<String>? stringList,
     FieldValue? stringListFieldValue,
-    Object? numList = _sentinel,
+    List<num>? numList,
     FieldValue? numListFieldValue,
-    Object? objectList = _sentinel,
+    List<Object?>? objectList,
     FieldValue? objectListFieldValue,
-    Object? dynamicList = _sentinel,
+    List<dynamic>? dynamicList,
     FieldValue? dynamicListFieldValue,
-    Object? boolSet = _sentinel,
+    Set<bool>? boolSet,
     FieldValue? boolSetFieldValue,
-    Object? enumValue = _sentinel,
+    TestEnum enumValue,
     FieldValue? enumValueFieldValue,
-    Object? nullableEnumValue = _sentinel,
+    TestEnum? nullableEnumValue,
     FieldValue? nullableEnumValueFieldValue,
-    Object? enumList = _sentinel,
+    List<TestEnum> enumList,
     FieldValue? enumListFieldValue,
-    Object? nullableEnumList = _sentinel,
+    List<TestEnum>? nullableEnumList,
     FieldValue? nullableEnumListFieldValue,
   });
 
@@ -2026,31 +2026,31 @@ abstract class NestedDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? value = _sentinel,
+    Nested? value,
     FieldValue? valueFieldValue,
-    Object? simple = _sentinel,
+    int? simple,
     FieldValue? simpleFieldValue,
-    Object? valueList = _sentinel,
+    List<Nested>? valueList,
     FieldValue? valueListFieldValue,
-    Object? boolList = _sentinel,
+    List<bool>? boolList,
     FieldValue? boolListFieldValue,
-    Object? stringList = _sentinel,
+    List<String>? stringList,
     FieldValue? stringListFieldValue,
-    Object? numList = _sentinel,
+    List<num>? numList,
     FieldValue? numListFieldValue,
-    Object? objectList = _sentinel,
+    List<Object?>? objectList,
     FieldValue? objectListFieldValue,
-    Object? dynamicList = _sentinel,
+    List<dynamic>? dynamicList,
     FieldValue? dynamicListFieldValue,
-    Object? boolSet = _sentinel,
+    Set<bool>? boolSet,
     FieldValue? boolSetFieldValue,
-    Object? enumValue = _sentinel,
+    TestEnum enumValue,
     FieldValue? enumValueFieldValue,
-    Object? nullableEnumValue = _sentinel,
+    TestEnum? nullableEnumValue,
     FieldValue? nullableEnumValueFieldValue,
-    Object? enumList = _sentinel,
+    List<TestEnum> enumList,
     FieldValue? enumListFieldValue,
-    Object? nullableEnumList = _sentinel,
+    List<TestEnum>? nullableEnumList,
     FieldValue? nullableEnumListFieldValue,
   });
 
@@ -2059,31 +2059,31 @@ abstract class NestedDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? value = _sentinel,
+    Nested? value,
     FieldValue? valueFieldValue,
-    Object? simple = _sentinel,
+    int? simple,
     FieldValue? simpleFieldValue,
-    Object? valueList = _sentinel,
+    List<Nested>? valueList,
     FieldValue? valueListFieldValue,
-    Object? boolList = _sentinel,
+    List<bool>? boolList,
     FieldValue? boolListFieldValue,
-    Object? stringList = _sentinel,
+    List<String>? stringList,
     FieldValue? stringListFieldValue,
-    Object? numList = _sentinel,
+    List<num>? numList,
     FieldValue? numListFieldValue,
-    Object? objectList = _sentinel,
+    List<Object?>? objectList,
     FieldValue? objectListFieldValue,
-    Object? dynamicList = _sentinel,
+    List<dynamic>? dynamicList,
     FieldValue? dynamicListFieldValue,
-    Object? boolSet = _sentinel,
+    Set<bool>? boolSet,
     FieldValue? boolSetFieldValue,
-    Object? enumValue = _sentinel,
+    TestEnum enumValue,
     FieldValue? enumValueFieldValue,
-    Object? nullableEnumValue = _sentinel,
+    TestEnum? nullableEnumValue,
     FieldValue? nullableEnumValueFieldValue,
-    Object? enumList = _sentinel,
+    List<TestEnum> enumList,
     FieldValue? enumListFieldValue,
-    Object? nullableEnumList = _sentinel,
+    List<TestEnum>? nullableEnumList,
     FieldValue? nullableEnumListFieldValue,
   });
 }
@@ -5846,7 +5846,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? value = _sentinel,
+    int value,
     FieldValue? valueFieldValue,
   });
 
@@ -5855,7 +5855,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? value = _sentinel,
+    int value,
     FieldValue? valueFieldValue,
   });
 
@@ -5864,7 +5864,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? value = _sentinel,
+    int value,
     FieldValue? valueFieldValue,
   });
 }
@@ -6751,7 +6751,7 @@ abstract class MixedJsonDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? value = _sentinel,
+    int value,
     FieldValue? valueFieldValue,
   });
 
@@ -6760,7 +6760,7 @@ abstract class MixedJsonDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? value = _sentinel,
+    int value,
     FieldValue? valueFieldValue,
   });
 
@@ -6769,7 +6769,7 @@ abstract class MixedJsonDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? value = _sentinel,
+    int value,
     FieldValue? valueFieldValue,
   });
 }
@@ -7672,9 +7672,9 @@ abstract class RootDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? nonNullable = _sentinel,
+    String nonNullable,
     FieldValue? nonNullableFieldValue,
-    Object? nullable = _sentinel,
+    int? nullable,
     FieldValue? nullableFieldValue,
   });
 
@@ -7683,9 +7683,9 @@ abstract class RootDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? nonNullable = _sentinel,
+    String nonNullable,
     FieldValue? nonNullableFieldValue,
-    Object? nullable = _sentinel,
+    int? nullable,
     FieldValue? nullableFieldValue,
   });
 
@@ -7694,9 +7694,9 @@ abstract class RootDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? nonNullable = _sentinel,
+    String nonNullable,
     FieldValue? nonNullableFieldValue,
-    Object? nullable = _sentinel,
+    int? nullable,
     FieldValue? nullableFieldValue,
   });
 }
@@ -8788,9 +8788,9 @@ abstract class SubDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? nonNullable = _sentinel,
+    String nonNullable,
     FieldValue? nonNullableFieldValue,
-    Object? nullable = _sentinel,
+    int? nullable,
     FieldValue? nullableFieldValue,
   });
 
@@ -8799,9 +8799,9 @@ abstract class SubDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? nonNullable = _sentinel,
+    String nonNullable,
     FieldValue? nonNullableFieldValue,
-    Object? nullable = _sentinel,
+    int? nullable,
     FieldValue? nullableFieldValue,
   });
 
@@ -8810,9 +8810,9 @@ abstract class SubDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? nonNullable = _sentinel,
+    String nonNullable,
     FieldValue? nonNullableFieldValue,
-    Object? nullable = _sentinel,
+    int? nullable,
     FieldValue? nullableFieldValue,
   });
 }
@@ -9892,7 +9892,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 
@@ -9901,7 +9901,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 
@@ -9910,7 +9910,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 }
@@ -10819,7 +10819,7 @@ abstract class CustomSubNameDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 
@@ -10828,7 +10828,7 @@ abstract class CustomSubNameDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 
@@ -10837,7 +10837,7 @@ abstract class CustomSubNameDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 }
@@ -11749,7 +11749,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 
@@ -11758,7 +11758,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 
@@ -11767,7 +11767,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 }
@@ -12678,7 +12678,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 
@@ -12687,7 +12687,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 
@@ -12696,7 +12696,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 }
@@ -13606,7 +13606,7 @@ abstract class ExplicitSubPathDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 
@@ -13615,7 +13615,7 @@ abstract class ExplicitSubPathDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 
@@ -13624,7 +13624,7 @@ abstract class ExplicitSubPathDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? value = _sentinel,
+    num value,
     FieldValue? valueFieldValue,
   });
 }

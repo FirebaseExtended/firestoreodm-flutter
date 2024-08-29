@@ -163,9 +163,9 @@ abstract class PersonDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? firstName = _sentinel,
+    String firstName,
     FieldValue? firstNameFieldValue,
-    Object? lastName = _sentinel,
+    String lastName,
     FieldValue? lastNameFieldValue,
   });
 
@@ -174,9 +174,9 @@ abstract class PersonDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? firstName = _sentinel,
+    String firstName,
     FieldValue? firstNameFieldValue,
-    Object? lastName = _sentinel,
+    String lastName,
     FieldValue? lastNameFieldValue,
   });
 
@@ -185,9 +185,9 @@ abstract class PersonDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? firstName = _sentinel,
+    String firstName,
     FieldValue? firstNameFieldValue,
-    Object? lastName = _sentinel,
+    String lastName,
     FieldValue? lastNameFieldValue,
   });
 }
@@ -1260,7 +1260,7 @@ abstract class PublicRedirectedDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? value = _sentinel,
+    String value,
     FieldValue? valueFieldValue,
   });
 
@@ -1269,7 +1269,7 @@ abstract class PublicRedirectedDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? value = _sentinel,
+    String value,
     FieldValue? valueFieldValue,
   });
 
@@ -1278,7 +1278,7 @@ abstract class PublicRedirectedDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? value = _sentinel,
+    String value,
     FieldValue? valueFieldValue,
   });
 }

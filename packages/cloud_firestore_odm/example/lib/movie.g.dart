@@ -187,21 +187,21 @@ abstract class MovieDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? poster = _sentinel,
+    String poster,
     FieldValue? posterFieldValue,
-    Object? likes = _sentinel,
+    int likes,
     FieldValue? likesFieldValue,
-    Object? title = _sentinel,
+    String title,
     FieldValue? titleFieldValue,
-    Object? year = _sentinel,
+    int year,
     FieldValue? yearFieldValue,
-    Object? runtime = _sentinel,
+    String runtime,
     FieldValue? runtimeFieldValue,
-    Object? rated = _sentinel,
+    String rated,
     FieldValue? ratedFieldValue,
-    Object? genre = _sentinel,
+    List<String>? genre,
     FieldValue? genreFieldValue,
-    Object? tags = _sentinel,
+    Set<String>? tags,
     FieldValue? tagsFieldValue,
   });
 
@@ -210,21 +210,21 @@ abstract class MovieDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? poster = _sentinel,
+    String poster,
     FieldValue? posterFieldValue,
-    Object? likes = _sentinel,
+    int likes,
     FieldValue? likesFieldValue,
-    Object? title = _sentinel,
+    String title,
     FieldValue? titleFieldValue,
-    Object? year = _sentinel,
+    int year,
     FieldValue? yearFieldValue,
-    Object? runtime = _sentinel,
+    String runtime,
     FieldValue? runtimeFieldValue,
-    Object? rated = _sentinel,
+    String rated,
     FieldValue? ratedFieldValue,
-    Object? genre = _sentinel,
+    List<String>? genre,
     FieldValue? genreFieldValue,
-    Object? tags = _sentinel,
+    Set<String>? tags,
     FieldValue? tagsFieldValue,
   });
 
@@ -233,21 +233,21 @@ abstract class MovieDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? poster = _sentinel,
+    String poster,
     FieldValue? posterFieldValue,
-    Object? likes = _sentinel,
+    int likes,
     FieldValue? likesFieldValue,
-    Object? title = _sentinel,
+    String title,
     FieldValue? titleFieldValue,
-    Object? year = _sentinel,
+    int year,
     FieldValue? yearFieldValue,
-    Object? runtime = _sentinel,
+    String runtime,
     FieldValue? runtimeFieldValue,
-    Object? rated = _sentinel,
+    String rated,
     FieldValue? ratedFieldValue,
-    Object? genre = _sentinel,
+    List<String>? genre,
     FieldValue? genreFieldValue,
-    Object? tags = _sentinel,
+    Set<String>? tags,
     FieldValue? tagsFieldValue,
   });
 }
@@ -2388,9 +2388,9 @@ abstract class CommentDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? authorName = _sentinel,
+    String authorName,
     FieldValue? authorNameFieldValue,
-    Object? message = _sentinel,
+    String message,
     FieldValue? messageFieldValue,
   });
 
@@ -2399,9 +2399,9 @@ abstract class CommentDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? authorName = _sentinel,
+    String authorName,
     FieldValue? authorNameFieldValue,
-    Object? message = _sentinel,
+    String message,
     FieldValue? messageFieldValue,
   });
 
@@ -2410,9 +2410,9 @@ abstract class CommentDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? authorName = _sentinel,
+    String authorName,
     FieldValue? authorNameFieldValue,
-    Object? message = _sentinel,
+    String message,
     FieldValue? messageFieldValue,
   });
 }

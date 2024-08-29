@@ -167,7 +167,7 @@ abstract class DurationQueryDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? duration = _sentinel,
+    Duration duration,
     FieldValue? durationFieldValue,
   });
 
@@ -176,7 +176,7 @@ abstract class DurationQueryDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? duration = _sentinel,
+    Duration duration,
     FieldValue? durationFieldValue,
   });
 
@@ -185,7 +185,7 @@ abstract class DurationQueryDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? duration = _sentinel,
+    Duration duration,
     FieldValue? durationFieldValue,
   });
 }
@@ -1080,7 +1080,7 @@ abstract class DateTimeQueryDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? time = _sentinel,
+    DateTime time,
     FieldValue? timeFieldValue,
   });
 
@@ -1089,7 +1089,7 @@ abstract class DateTimeQueryDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? time = _sentinel,
+    DateTime time,
     FieldValue? timeFieldValue,
   });
 
@@ -1098,7 +1098,7 @@ abstract class DateTimeQueryDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? time = _sentinel,
+    DateTime time,
     FieldValue? timeFieldValue,
   });
 }
@@ -1995,7 +1995,7 @@ abstract class TimestampQueryDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? time = _sentinel,
+    Timestamp time,
     FieldValue? timeFieldValue,
   });
 
@@ -2004,7 +2004,7 @@ abstract class TimestampQueryDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? time = _sentinel,
+    Timestamp time,
     FieldValue? timeFieldValue,
   });
 
@@ -2013,7 +2013,7 @@ abstract class TimestampQueryDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? time = _sentinel,
+    Timestamp time,
     FieldValue? timeFieldValue,
   });
 }
@@ -2911,7 +2911,7 @@ abstract class GeoPointQueryDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? point = _sentinel,
+    GeoPoint point,
     FieldValue? pointFieldValue,
   });
 
@@ -2920,7 +2920,7 @@ abstract class GeoPointQueryDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? point = _sentinel,
+    GeoPoint point,
     FieldValue? pointFieldValue,
   });
 
@@ -2929,7 +2929,7 @@ abstract class GeoPointQueryDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? point = _sentinel,
+    GeoPoint point,
     FieldValue? pointFieldValue,
   });
 }
@@ -3829,7 +3829,7 @@ abstract class DocumentReferenceQueryDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? ref = _sentinel,
+    DocumentReference<Map<String, dynamic>> ref,
     FieldValue? refFieldValue,
   });
 
@@ -3838,7 +3838,7 @@ abstract class DocumentReferenceQueryDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? ref = _sentinel,
+    DocumentReference<Map<String, dynamic>> ref,
     FieldValue? refFieldValue,
   });
 
@@ -3847,7 +3847,7 @@ abstract class DocumentReferenceQueryDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? ref = _sentinel,
+    DocumentReference<Map<String, dynamic>> ref,
     FieldValue? refFieldValue,
   });
 }

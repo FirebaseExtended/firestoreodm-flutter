@@ -174,15 +174,15 @@ abstract class EnumsDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? id = _sentinel,
+    String id,
     FieldValue? idFieldValue,
-    Object? enumValue = _sentinel,
+    TestEnum enumValue,
     FieldValue? enumValueFieldValue,
-    Object? nullableEnumValue = _sentinel,
+    TestEnum? nullableEnumValue,
     FieldValue? nullableEnumValueFieldValue,
-    Object? enumList = _sentinel,
+    List<TestEnum> enumList,
     FieldValue? enumListFieldValue,
-    Object? nullableEnumList = _sentinel,
+    List<TestEnum>? nullableEnumList,
     FieldValue? nullableEnumListFieldValue,
   });
 
@@ -191,15 +191,15 @@ abstract class EnumsDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? id = _sentinel,
+    String id,
     FieldValue? idFieldValue,
-    Object? enumValue = _sentinel,
+    TestEnum enumValue,
     FieldValue? enumValueFieldValue,
-    Object? nullableEnumValue = _sentinel,
+    TestEnum? nullableEnumValue,
     FieldValue? nullableEnumValueFieldValue,
-    Object? enumList = _sentinel,
+    List<TestEnum> enumList,
     FieldValue? enumListFieldValue,
-    Object? nullableEnumList = _sentinel,
+    List<TestEnum>? nullableEnumList,
     FieldValue? nullableEnumListFieldValue,
   });
 
@@ -208,15 +208,15 @@ abstract class EnumsDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? id = _sentinel,
+    String id,
     FieldValue? idFieldValue,
-    Object? enumValue = _sentinel,
+    TestEnum enumValue,
     FieldValue? enumValueFieldValue,
-    Object? nullableEnumValue = _sentinel,
+    TestEnum? nullableEnumValue,
     FieldValue? nullableEnumValueFieldValue,
-    Object? enumList = _sentinel,
+    List<TestEnum> enumList,
     FieldValue? enumListFieldValue,
-    Object? nullableEnumList = _sentinel,
+    List<TestEnum>? nullableEnumList,
     FieldValue? nullableEnumListFieldValue,
   });
 }

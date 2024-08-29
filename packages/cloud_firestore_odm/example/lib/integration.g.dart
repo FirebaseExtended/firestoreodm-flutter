@@ -168,9 +168,9 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? firstName = _sentinel,
+    String? firstName,
     FieldValue? firstNameFieldValue,
-    Object? lastName = _sentinel,
+    String? lastName,
     FieldValue? lastNameFieldValue,
   });
 
@@ -179,9 +179,9 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? firstName = _sentinel,
+    String? firstName,
     FieldValue? firstNameFieldValue,
-    Object? lastName = _sentinel,
+    String? lastName,
     FieldValue? lastNameFieldValue,
   });
 
@@ -190,9 +190,9 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? firstName = _sentinel,
+    String? firstName,
     FieldValue? firstNameFieldValue,
-    Object? lastName = _sentinel,
+    String? lastName,
     FieldValue? lastNameFieldValue,
   });
 }
@@ -1281,9 +1281,9 @@ abstract class _PrivateAdvancedJsonDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    Object? firstName = _sentinel,
+    String? firstName,
     FieldValue? firstNameFieldValue,
-    Object? lastName = _sentinel,
+    String? lastName,
     FieldValue? lastNameFieldValue,
   });
 
@@ -1292,9 +1292,9 @@ abstract class _PrivateAdvancedJsonDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    Object? firstName = _sentinel,
+    String? firstName,
     FieldValue? firstNameFieldValue,
-    Object? lastName = _sentinel,
+    String? lastName,
     FieldValue? lastNameFieldValue,
   });
 
@@ -1303,9 +1303,9 @@ abstract class _PrivateAdvancedJsonDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    Object? firstName = _sentinel,
+    String? firstName,
     FieldValue? firstNameFieldValue,
-    Object? lastName = _sentinel,
+    String? lastName,
     FieldValue? lastNameFieldValue,
   });
 }
