@@ -81,39 +81,6 @@ abstract class FirestoreDocumentReference<Model,
     batch.delete(reference);
   }
 
-  /// Sets data on the document, overwriting any existing data. If the document
-  /// does not yet exist, it will be created.
-  ///
-  /// If [SetOptions] are provided, the data can be merged into an existing
-  /// document instead of overwriting.
-  Future<void> set(Model model, [SetOptions? setOptions]) {
-    return reference.set(model, setOptions);
-  }
-
-  /// Writes to the document using the transaction API.
-  ///
-  /// If the document does not exist yet, it will be created. If you pass
-  /// [SetOptions], the provided data can be merged into the existing document.
-  void transactionSet(
-    Transaction transaction,
-    Model model, [
-    SetOptions? setOptions,
-  ]) {
-    transaction.set(reference, model, setOptions);
-  }
-
-  /// Writes to the document using the batch API.
-  ///
-  /// If the document does not exist yet, it will be created. If you pass
-  /// [SetOptions], the provided data can be merged into the existing document.
-  void batchSet(
-    WriteBatch batch,
-    Model model, [
-    SetOptions? setOptions,
-  ]) {
-    batch.set(reference, model, setOptions);
-  }
-
   /// Reads the document referred to by this DocumentReference.
   ///
   /// Note:

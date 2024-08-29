@@ -79,9 +79,8 @@ class _\$${data.documentReferenceName}
     return [
       for (final field in data.updatableFields)
         if (field.updatable) ...[
-          if (includeFields)
-            '${field.type.getDisplayString(withNullability: true)} ${field.name},',
-          if (includeFieldValues) 'FieldValue ${field.name}FieldValue,',
+          if (includeFields) 'Object? ${field.name} = _sentinel,',
+          if (includeFieldValues) 'FieldValue? ${field.name}FieldValue,',
         ],
     ].join('\n');
   }
@@ -103,7 +102,7 @@ class _\$${data.documentReferenceName}
           '''
         if (${field.name}FieldValue != null)
           ${field.field}: ${field.name}FieldValue ,
-        '''
+        ''',
       ],
     ].join('\n');
   }
@@ -131,8 +130,8 @@ class _\$${data.documentReferenceName}
 ///
 /// If [SetOptions] are provided, the data can be merged into an existing
 /// document instead of overwriting.
-Future<void> set({
-  $type model,
+Future<void> set(
+  $type model, {
   SetOptions? setOptions,
   $parameters
 });
@@ -164,17 +163,22 @@ void batchSet(
 
     final type = data.type.getDisplayString(withNullability: true);
     final parameters = _parameters(data, includeFields: false);
-    final json = _json(data, includeFields: false);
+    final fieldValuesJson = _json(data, includeFields: false);
+    final json = '''
+{
+  ...${data.toJson('model')},
+  $fieldValuesJson
+}''';
 
     return '''
-Future<void> set({
-  $type model,
+Future<void> set(
+  $type model, {
   SetOptions? setOptions,
   $parameters
 }) async {
-  final json = {$json};
+  final json = $json;
 
-  return reference.set(json);
+  return (reference as DocumentReference).set(json);
 }
 
 void transactionSet(
@@ -182,7 +186,7 @@ void transactionSet(
   $type model, {
   $parameters
 }) {
-  final json = {$json};
+  final json = $json;
 
   transaction.set(reference, json);
 }
@@ -192,7 +196,7 @@ void batchSet(
   $type model, {
   $parameters
 }) {
-  final json = {$json)};
+  final json = $json;
 
   batch.set(reference, json);
 }
