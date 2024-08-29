@@ -136,7 +136,7 @@ abstract class EnumsDocumentReference
   /// [model] during serialization.
   Future<void> set(
     Enums model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue idFieldValue,
     FieldValue enumValueFieldValue,
     FieldValue nullableEnumValueFieldValue,
@@ -154,6 +154,7 @@ abstract class EnumsDocumentReference
   void transactionSet(
     Transaction transaction,
     Enums model, {
+    SetOptions? options,
     FieldValue idFieldValue,
     FieldValue enumValueFieldValue,
     FieldValue nullableEnumValueFieldValue,
@@ -171,6 +172,7 @@ abstract class EnumsDocumentReference
   void batchSet(
     WriteBatch batch,
     Enums model, {
+    SetOptions? options,
     FieldValue idFieldValue,
     FieldValue enumValueFieldValue,
     FieldValue nullableEnumValueFieldValue,
@@ -260,7 +262,7 @@ class _$EnumsDocumentReference
 
   Future<void> set(
     Enums model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? idFieldValue,
     FieldValue? enumValueFieldValue,
     FieldValue? nullableEnumValueFieldValue,
@@ -280,12 +282,13 @@ class _$EnumsDocumentReference
         _$EnumsFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     Enums model, {
+    SetOptions? options,
     FieldValue? idFieldValue,
     FieldValue? enumValueFieldValue,
     FieldValue? nullableEnumValueFieldValue,
@@ -305,12 +308,13 @@ class _$EnumsDocumentReference
         _$EnumsFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     Enums model, {
+    SetOptions? options,
     FieldValue? idFieldValue,
     FieldValue? enumValueFieldValue,
     FieldValue? nullableEnumValueFieldValue,
@@ -330,7 +334,7 @@ class _$EnumsDocumentReference
         _$EnumsFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({

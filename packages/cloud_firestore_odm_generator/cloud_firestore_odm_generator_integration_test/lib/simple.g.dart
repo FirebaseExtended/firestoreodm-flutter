@@ -139,7 +139,7 @@ abstract class IgnoredGetterDocumentReference
   /// [model] during serialization.
   Future<void> set(
     IgnoredGetter model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -153,6 +153,7 @@ abstract class IgnoredGetterDocumentReference
   void transactionSet(
     Transaction transaction,
     IgnoredGetter model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -166,6 +167,7 @@ abstract class IgnoredGetterDocumentReference
   void batchSet(
     WriteBatch batch,
     IgnoredGetter model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -228,7 +230,7 @@ class _$IgnoredGetterDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     IgnoredGetter model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) async {
     final json = {
@@ -237,12 +239,13 @@ class _$IgnoredGetterDocumentReference extends FirestoreDocumentReference<
         _$IgnoredGetterFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     IgnoredGetter model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -251,12 +254,13 @@ class _$IgnoredGetterDocumentReference extends FirestoreDocumentReference<
         _$IgnoredGetterFieldMap['value']!: valueFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     IgnoredGetter model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -265,7 +269,7 @@ class _$IgnoredGetterDocumentReference extends FirestoreDocumentReference<
         _$IgnoredGetterFieldMap['value']!: valueFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -1054,7 +1058,7 @@ abstract class ModelDocumentReference
   /// [model] during serialization.
   Future<void> set(
     Model model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -1068,6 +1072,7 @@ abstract class ModelDocumentReference
   void transactionSet(
     Transaction transaction,
     Model model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -1081,6 +1086,7 @@ abstract class ModelDocumentReference
   void batchSet(
     WriteBatch batch,
     Model model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -1142,7 +1148,7 @@ class _$ModelDocumentReference
 
   Future<void> set(
     Model model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) async {
     final json = {
@@ -1150,12 +1156,13 @@ class _$ModelDocumentReference
       if (valueFieldValue != null) _$ModelFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     Model model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -1163,12 +1170,13 @@ class _$ModelDocumentReference
       if (valueFieldValue != null) _$ModelFieldMap['value']!: valueFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     Model model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -1176,7 +1184,7 @@ class _$ModelDocumentReference
       if (valueFieldValue != null) _$ModelFieldMap['value']!: valueFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -1949,7 +1957,7 @@ abstract class NestedDocumentReference
   /// [model] during serialization.
   Future<void> set(
     Nested model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue valueFieldValue,
     FieldValue simpleFieldValue,
     FieldValue valueListFieldValue,
@@ -1975,6 +1983,7 @@ abstract class NestedDocumentReference
   void transactionSet(
     Transaction transaction,
     Nested model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
     FieldValue simpleFieldValue,
     FieldValue valueListFieldValue,
@@ -2000,6 +2009,7 @@ abstract class NestedDocumentReference
   void batchSet(
     WriteBatch batch,
     Nested model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
     FieldValue simpleFieldValue,
     FieldValue valueListFieldValue,
@@ -2145,7 +2155,7 @@ class _$NestedDocumentReference
 
   Future<void> set(
     Nested model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? valueFieldValue,
     FieldValue? simpleFieldValue,
     FieldValue? valueListFieldValue,
@@ -2189,12 +2199,13 @@ class _$NestedDocumentReference
         _$NestedFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     Nested model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
     FieldValue? simpleFieldValue,
     FieldValue? valueListFieldValue,
@@ -2238,12 +2249,13 @@ class _$NestedDocumentReference
         _$NestedFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     Nested model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
     FieldValue? simpleFieldValue,
     FieldValue? valueListFieldValue,
@@ -2287,7 +2299,7 @@ class _$NestedDocumentReference
         _$NestedFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -5847,7 +5859,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   /// [model] during serialization.
   Future<void> set(
     OptionalJson model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -5861,6 +5873,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   void transactionSet(
     Transaction transaction,
     OptionalJson model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -5874,6 +5887,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   void batchSet(
     WriteBatch batch,
     OptionalJson model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -5935,7 +5949,7 @@ class _$OptionalJsonDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     OptionalJson model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) async {
     final json = {
@@ -5944,12 +5958,13 @@ class _$OptionalJsonDocumentReference extends FirestoreDocumentReference<
         _$OptionalJsonFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     OptionalJson model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -5958,12 +5973,13 @@ class _$OptionalJsonDocumentReference extends FirestoreDocumentReference<
         _$OptionalJsonFieldMap['value']!: valueFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     OptionalJson model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -5972,7 +5988,7 @@ class _$OptionalJsonDocumentReference extends FirestoreDocumentReference<
         _$OptionalJsonFieldMap['value']!: valueFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -6761,7 +6777,7 @@ abstract class MixedJsonDocumentReference
   /// [model] during serialization.
   Future<void> set(
     MixedJson model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -6775,6 +6791,7 @@ abstract class MixedJsonDocumentReference
   void transactionSet(
     Transaction transaction,
     MixedJson model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -6788,6 +6805,7 @@ abstract class MixedJsonDocumentReference
   void batchSet(
     WriteBatch batch,
     MixedJson model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -6849,7 +6867,7 @@ class _$MixedJsonDocumentReference
 
   Future<void> set(
     MixedJson model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) async {
     final json = {
@@ -6858,12 +6876,13 @@ class _$MixedJsonDocumentReference
         _$MixedJsonFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     MixedJson model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -6872,12 +6891,13 @@ class _$MixedJsonDocumentReference
         _$MixedJsonFieldMap['value']!: valueFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     MixedJson model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -6886,7 +6906,7 @@ class _$MixedJsonDocumentReference
         _$MixedJsonFieldMap['value']!: valueFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -7688,7 +7708,7 @@ abstract class RootDocumentReference
   /// [model] during serialization.
   Future<void> set(
     Root model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue nonNullableFieldValue,
     FieldValue nullableFieldValue,
   });
@@ -7703,6 +7723,7 @@ abstract class RootDocumentReference
   void transactionSet(
     Transaction transaction,
     Root model, {
+    SetOptions? options,
     FieldValue nonNullableFieldValue,
     FieldValue nullableFieldValue,
   });
@@ -7717,6 +7738,7 @@ abstract class RootDocumentReference
   void batchSet(
     WriteBatch batch,
     Root model, {
+    SetOptions? options,
     FieldValue nonNullableFieldValue,
     FieldValue nullableFieldValue,
   });
@@ -7804,7 +7826,7 @@ class _$RootDocumentReference
 
   Future<void> set(
     Root model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? nonNullableFieldValue,
     FieldValue? nullableFieldValue,
   }) async {
@@ -7816,12 +7838,13 @@ class _$RootDocumentReference
         _$RootFieldMap['nullable']!: nullableFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     Root model, {
+    SetOptions? options,
     FieldValue? nonNullableFieldValue,
     FieldValue? nullableFieldValue,
   }) {
@@ -7833,12 +7856,13 @@ class _$RootDocumentReference
         _$RootFieldMap['nullable']!: nullableFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     Root model, {
+    SetOptions? options,
     FieldValue? nonNullableFieldValue,
     FieldValue? nullableFieldValue,
   }) {
@@ -7850,7 +7874,7 @@ class _$RootDocumentReference
         _$RootFieldMap['nullable']!: nullableFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -8813,7 +8837,7 @@ abstract class SubDocumentReference
   /// [model] during serialization.
   Future<void> set(
     Sub model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue nonNullableFieldValue,
     FieldValue nullableFieldValue,
   });
@@ -8828,6 +8852,7 @@ abstract class SubDocumentReference
   void transactionSet(
     Transaction transaction,
     Sub model, {
+    SetOptions? options,
     FieldValue nonNullableFieldValue,
     FieldValue nullableFieldValue,
   });
@@ -8842,6 +8867,7 @@ abstract class SubDocumentReference
   void batchSet(
     WriteBatch batch,
     Sub model, {
+    SetOptions? options,
     FieldValue nonNullableFieldValue,
     FieldValue nullableFieldValue,
   });
@@ -8915,7 +8941,7 @@ class _$SubDocumentReference
 
   Future<void> set(
     Sub model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? nonNullableFieldValue,
     FieldValue? nullableFieldValue,
   }) async {
@@ -8927,12 +8953,13 @@ class _$SubDocumentReference
         _$SubFieldMap['nullable']!: nullableFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     Sub model, {
+    SetOptions? options,
     FieldValue? nonNullableFieldValue,
     FieldValue? nullableFieldValue,
   }) {
@@ -8944,12 +8971,13 @@ class _$SubDocumentReference
         _$SubFieldMap['nullable']!: nullableFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     Sub model, {
+    SetOptions? options,
     FieldValue? nonNullableFieldValue,
     FieldValue? nullableFieldValue,
   }) {
@@ -8961,7 +8989,7 @@ class _$SubDocumentReference
         _$SubFieldMap['nullable']!: nullableFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -9929,7 +9957,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   /// [model] during serialization.
   Future<void> set(
     AsCamelCase model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -9943,6 +9971,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   void transactionSet(
     Transaction transaction,
     AsCamelCase model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -9956,6 +9985,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   void batchSet(
     WriteBatch batch,
     AsCamelCase model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -10022,7 +10052,7 @@ class _$AsCamelCaseDocumentReference
 
   Future<void> set(
     AsCamelCase model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) async {
     final json = {
@@ -10031,12 +10061,13 @@ class _$AsCamelCaseDocumentReference
         _$AsCamelCaseFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     AsCamelCase model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -10045,12 +10076,13 @@ class _$AsCamelCaseDocumentReference
         _$AsCamelCaseFieldMap['value']!: valueFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     AsCamelCase model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -10059,7 +10091,7 @@ class _$AsCamelCaseDocumentReference
         _$AsCamelCaseFieldMap['value']!: valueFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -10865,7 +10897,7 @@ abstract class CustomSubNameDocumentReference
   /// [model] during serialization.
   Future<void> set(
     CustomSubName model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -10879,6 +10911,7 @@ abstract class CustomSubNameDocumentReference
   void transactionSet(
     Transaction transaction,
     CustomSubName model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -10892,6 +10925,7 @@ abstract class CustomSubNameDocumentReference
   void batchSet(
     WriteBatch batch,
     CustomSubName model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -10959,7 +10993,7 @@ class _$CustomSubNameDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     CustomSubName model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) async {
     final json = {
@@ -10968,12 +11002,13 @@ class _$CustomSubNameDocumentReference extends FirestoreDocumentReference<
         _$CustomSubNameFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     CustomSubName model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -10982,12 +11017,13 @@ class _$CustomSubNameDocumentReference extends FirestoreDocumentReference<
         _$CustomSubNameFieldMap['value']!: valueFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     CustomSubName model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -10996,7 +11032,7 @@ class _$CustomSubNameDocumentReference extends FirestoreDocumentReference<
         _$CustomSubNameFieldMap['value']!: valueFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -11804,7 +11840,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   /// [model] during serialization.
   Future<void> set(
     CustomClassPrefix model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -11818,6 +11854,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   void transactionSet(
     Transaction transaction,
     CustomClassPrefix model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -11831,6 +11868,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   void batchSet(
     WriteBatch batch,
     CustomClassPrefix model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -11900,7 +11938,7 @@ class _$ThisIsACustomPrefixDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     CustomClassPrefix model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) async {
     final json = {
@@ -11909,12 +11947,13 @@ class _$ThisIsACustomPrefixDocumentReference extends FirestoreDocumentReference<
         _$CustomClassPrefixFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     CustomClassPrefix model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -11923,12 +11962,13 @@ class _$ThisIsACustomPrefixDocumentReference extends FirestoreDocumentReference<
         _$CustomClassPrefixFieldMap['value']!: valueFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     CustomClassPrefix model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -11937,7 +11977,7 @@ class _$ThisIsACustomPrefixDocumentReference extends FirestoreDocumentReference<
         _$CustomClassPrefixFieldMap['value']!: valueFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -12742,7 +12782,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   /// [model] during serialization.
   Future<void> set(
     ExplicitPath model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -12756,6 +12796,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   void transactionSet(
     Transaction transaction,
     ExplicitPath model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -12769,6 +12810,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   void batchSet(
     WriteBatch batch,
     ExplicitPath model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -12835,7 +12877,7 @@ class _$ExplicitPathDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     ExplicitPath model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) async {
     final json = {
@@ -12844,12 +12886,13 @@ class _$ExplicitPathDocumentReference extends FirestoreDocumentReference<
         _$ExplicitPathFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     ExplicitPath model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -12858,12 +12901,13 @@ class _$ExplicitPathDocumentReference extends FirestoreDocumentReference<
         _$ExplicitPathFieldMap['value']!: valueFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     ExplicitPath model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -12872,7 +12916,7 @@ class _$ExplicitPathDocumentReference extends FirestoreDocumentReference<
         _$ExplicitPathFieldMap['value']!: valueFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -13679,7 +13723,7 @@ abstract class ExplicitSubPathDocumentReference
   /// [model] during serialization.
   Future<void> set(
     ExplicitSubPath model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -13693,6 +13737,7 @@ abstract class ExplicitSubPathDocumentReference
   void transactionSet(
     Transaction transaction,
     ExplicitSubPath model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -13706,6 +13751,7 @@ abstract class ExplicitSubPathDocumentReference
   void batchSet(
     WriteBatch batch,
     ExplicitSubPath model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -13773,7 +13819,7 @@ class _$ExplicitSubPathDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     ExplicitSubPath model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) async {
     final json = {
@@ -13782,12 +13828,13 @@ class _$ExplicitSubPathDocumentReference extends FirestoreDocumentReference<
         _$ExplicitSubPathFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     ExplicitSubPath model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -13796,12 +13843,13 @@ class _$ExplicitSubPathDocumentReference extends FirestoreDocumentReference<
         _$ExplicitSubPathFieldMap['value']!: valueFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     ExplicitSubPath model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -13810,7 +13858,7 @@ class _$ExplicitSubPathDocumentReference extends FirestoreDocumentReference<
         _$ExplicitSubPathFieldMap['value']!: valueFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({

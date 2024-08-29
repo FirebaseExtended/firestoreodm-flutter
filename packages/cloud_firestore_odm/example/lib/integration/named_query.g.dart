@@ -155,7 +155,7 @@ abstract class ConflictDocumentReference
   /// [model] during serialization.
   Future<void> set(
     Conflict model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue numberFieldValue,
   });
 
@@ -169,6 +169,7 @@ abstract class ConflictDocumentReference
   void transactionSet(
     Transaction transaction,
     Conflict model, {
+    SetOptions? options,
     FieldValue numberFieldValue,
   });
 
@@ -182,6 +183,7 @@ abstract class ConflictDocumentReference
   void batchSet(
     WriteBatch batch,
     Conflict model, {
+    SetOptions? options,
     FieldValue numberFieldValue,
   });
 
@@ -243,7 +245,7 @@ class _$ConflictDocumentReference
 
   Future<void> set(
     Conflict model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? numberFieldValue,
   }) async {
     final json = {
@@ -252,12 +254,13 @@ class _$ConflictDocumentReference
         _$ConflictFieldMap['number']!: numberFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     Conflict model, {
+    SetOptions? options,
     FieldValue? numberFieldValue,
   }) {
     final json = {
@@ -266,12 +269,13 @@ class _$ConflictDocumentReference
         _$ConflictFieldMap['number']!: numberFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     Conflict model, {
+    SetOptions? options,
     FieldValue? numberFieldValue,
   }) {
     final json = {
@@ -280,7 +284,7 @@ class _$ConflictDocumentReference
         _$ConflictFieldMap['number']!: numberFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({

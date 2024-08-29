@@ -141,7 +141,7 @@ abstract class DurationQueryDocumentReference
   /// [model] during serialization.
   Future<void> set(
     DurationQuery model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue durationFieldValue,
   });
 
@@ -155,6 +155,7 @@ abstract class DurationQueryDocumentReference
   void transactionSet(
     Transaction transaction,
     DurationQuery model, {
+    SetOptions? options,
     FieldValue durationFieldValue,
   });
 
@@ -168,6 +169,7 @@ abstract class DurationQueryDocumentReference
   void batchSet(
     WriteBatch batch,
     DurationQuery model, {
+    SetOptions? options,
     FieldValue durationFieldValue,
   });
 
@@ -230,7 +232,7 @@ class _$DurationQueryDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     DurationQuery model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? durationFieldValue,
   }) async {
     final json = {
@@ -239,12 +241,13 @@ class _$DurationQueryDocumentReference extends FirestoreDocumentReference<
         _$DurationQueryFieldMap['duration']!: durationFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     DurationQuery model, {
+    SetOptions? options,
     FieldValue? durationFieldValue,
   }) {
     final json = {
@@ -253,12 +256,13 @@ class _$DurationQueryDocumentReference extends FirestoreDocumentReference<
         _$DurationQueryFieldMap['duration']!: durationFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     DurationQuery model, {
+    SetOptions? options,
     FieldValue? durationFieldValue,
   }) {
     final json = {
@@ -267,7 +271,7 @@ class _$DurationQueryDocumentReference extends FirestoreDocumentReference<
         _$DurationQueryFieldMap['duration']!: durationFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -1063,7 +1067,7 @@ abstract class DateTimeQueryDocumentReference
   /// [model] during serialization.
   Future<void> set(
     DateTimeQuery model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue timeFieldValue,
   });
 
@@ -1077,6 +1081,7 @@ abstract class DateTimeQueryDocumentReference
   void transactionSet(
     Transaction transaction,
     DateTimeQuery model, {
+    SetOptions? options,
     FieldValue timeFieldValue,
   });
 
@@ -1090,6 +1095,7 @@ abstract class DateTimeQueryDocumentReference
   void batchSet(
     WriteBatch batch,
     DateTimeQuery model, {
+    SetOptions? options,
     FieldValue timeFieldValue,
   });
 
@@ -1152,7 +1158,7 @@ class _$DateTimeQueryDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     DateTimeQuery model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? timeFieldValue,
   }) async {
     final json = {
@@ -1161,12 +1167,13 @@ class _$DateTimeQueryDocumentReference extends FirestoreDocumentReference<
         _$DateTimeQueryFieldMap['time']!: timeFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     DateTimeQuery model, {
+    SetOptions? options,
     FieldValue? timeFieldValue,
   }) {
     final json = {
@@ -1175,12 +1182,13 @@ class _$DateTimeQueryDocumentReference extends FirestoreDocumentReference<
         _$DateTimeQueryFieldMap['time']!: timeFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     DateTimeQuery model, {
+    SetOptions? options,
     FieldValue? timeFieldValue,
   }) {
     final json = {
@@ -1189,7 +1197,7 @@ class _$DateTimeQueryDocumentReference extends FirestoreDocumentReference<
         _$DateTimeQueryFieldMap['time']!: timeFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -1987,7 +1995,7 @@ abstract class TimestampQueryDocumentReference
   /// [model] during serialization.
   Future<void> set(
     TimestampQuery model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue timeFieldValue,
   });
 
@@ -2001,6 +2009,7 @@ abstract class TimestampQueryDocumentReference
   void transactionSet(
     Transaction transaction,
     TimestampQuery model, {
+    SetOptions? options,
     FieldValue timeFieldValue,
   });
 
@@ -2014,6 +2023,7 @@ abstract class TimestampQueryDocumentReference
   void batchSet(
     WriteBatch batch,
     TimestampQuery model, {
+    SetOptions? options,
     FieldValue timeFieldValue,
   });
 
@@ -2076,7 +2086,7 @@ class _$TimestampQueryDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     TimestampQuery model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? timeFieldValue,
   }) async {
     final json = {
@@ -2085,12 +2095,13 @@ class _$TimestampQueryDocumentReference extends FirestoreDocumentReference<
         _$TimestampQueryFieldMap['time']!: timeFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     TimestampQuery model, {
+    SetOptions? options,
     FieldValue? timeFieldValue,
   }) {
     final json = {
@@ -2099,12 +2110,13 @@ class _$TimestampQueryDocumentReference extends FirestoreDocumentReference<
         _$TimestampQueryFieldMap['time']!: timeFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     TimestampQuery model, {
+    SetOptions? options,
     FieldValue? timeFieldValue,
   }) {
     final json = {
@@ -2113,7 +2125,7 @@ class _$TimestampQueryDocumentReference extends FirestoreDocumentReference<
         _$TimestampQueryFieldMap['time']!: timeFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -2912,7 +2924,7 @@ abstract class GeoPointQueryDocumentReference
   /// [model] during serialization.
   Future<void> set(
     GeoPointQuery model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue pointFieldValue,
   });
 
@@ -2926,6 +2938,7 @@ abstract class GeoPointQueryDocumentReference
   void transactionSet(
     Transaction transaction,
     GeoPointQuery model, {
+    SetOptions? options,
     FieldValue pointFieldValue,
   });
 
@@ -2939,6 +2952,7 @@ abstract class GeoPointQueryDocumentReference
   void batchSet(
     WriteBatch batch,
     GeoPointQuery model, {
+    SetOptions? options,
     FieldValue pointFieldValue,
   });
 
@@ -3001,7 +3015,7 @@ class _$GeoPointQueryDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     GeoPointQuery model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? pointFieldValue,
   }) async {
     final json = {
@@ -3010,12 +3024,13 @@ class _$GeoPointQueryDocumentReference extends FirestoreDocumentReference<
         _$GeoPointQueryFieldMap['point']!: pointFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     GeoPointQuery model, {
+    SetOptions? options,
     FieldValue? pointFieldValue,
   }) {
     final json = {
@@ -3024,12 +3039,13 @@ class _$GeoPointQueryDocumentReference extends FirestoreDocumentReference<
         _$GeoPointQueryFieldMap['point']!: pointFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     GeoPointQuery model, {
+    SetOptions? options,
     FieldValue? pointFieldValue,
   }) {
     final json = {
@@ -3038,7 +3054,7 @@ class _$GeoPointQueryDocumentReference extends FirestoreDocumentReference<
         _$GeoPointQueryFieldMap['point']!: pointFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -3839,7 +3855,7 @@ abstract class DocumentReferenceQueryDocumentReference
   /// [model] during serialization.
   Future<void> set(
     DocumentReferenceQuery model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue refFieldValue,
   });
 
@@ -3853,6 +3869,7 @@ abstract class DocumentReferenceQueryDocumentReference
   void transactionSet(
     Transaction transaction,
     DocumentReferenceQuery model, {
+    SetOptions? options,
     FieldValue refFieldValue,
   });
 
@@ -3866,6 +3883,7 @@ abstract class DocumentReferenceQueryDocumentReference
   void batchSet(
     WriteBatch batch,
     DocumentReferenceQuery model, {
+    SetOptions? options,
     FieldValue refFieldValue,
   });
 
@@ -3933,7 +3951,7 @@ class _$DocumentReferenceQueryDocumentReference
 
   Future<void> set(
     DocumentReferenceQuery model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? refFieldValue,
   }) async {
     final json = {
@@ -3942,12 +3960,13 @@ class _$DocumentReferenceQueryDocumentReference
         _$DocumentReferenceQueryFieldMap['ref']!: refFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     DocumentReferenceQuery model, {
+    SetOptions? options,
     FieldValue? refFieldValue,
   }) {
     final json = {
@@ -3956,12 +3975,13 @@ class _$DocumentReferenceQueryDocumentReference
         _$DocumentReferenceQueryFieldMap['ref']!: refFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     DocumentReferenceQuery model, {
+    SetOptions? options,
     FieldValue? refFieldValue,
   }) {
     final json = {
@@ -3970,7 +3990,7 @@ class _$DocumentReferenceQueryDocumentReference
         _$DocumentReferenceQueryFieldMap['ref']!: refFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({

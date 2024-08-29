@@ -134,7 +134,7 @@ abstract class PersonDocumentReference
   /// [model] during serialization.
   Future<void> set(
     Person model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue firstNameFieldValue,
     FieldValue lastNameFieldValue,
   });
@@ -149,6 +149,7 @@ abstract class PersonDocumentReference
   void transactionSet(
     Transaction transaction,
     Person model, {
+    SetOptions? options,
     FieldValue firstNameFieldValue,
     FieldValue lastNameFieldValue,
   });
@@ -163,6 +164,7 @@ abstract class PersonDocumentReference
   void batchSet(
     WriteBatch batch,
     Person model, {
+    SetOptions? options,
     FieldValue firstNameFieldValue,
     FieldValue lastNameFieldValue,
   });
@@ -231,7 +233,7 @@ class _$PersonDocumentReference
 
   Future<void> set(
     Person model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? firstNameFieldValue,
     FieldValue? lastNameFieldValue,
   }) async {
@@ -243,12 +245,13 @@ class _$PersonDocumentReference
         _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     Person model, {
+    SetOptions? options,
     FieldValue? firstNameFieldValue,
     FieldValue? lastNameFieldValue,
   }) {
@@ -260,12 +263,13 @@ class _$PersonDocumentReference
         _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     Person model, {
+    SetOptions? options,
     FieldValue? firstNameFieldValue,
     FieldValue? lastNameFieldValue,
   }) {
@@ -277,7 +281,7 @@ class _$PersonDocumentReference
         _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -1243,7 +1247,7 @@ abstract class PublicRedirectedDocumentReference
   /// [model] during serialization.
   Future<void> set(
     PublicRedirected model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -1257,6 +1261,7 @@ abstract class PublicRedirectedDocumentReference
   void transactionSet(
     Transaction transaction,
     PublicRedirected model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -1270,6 +1275,7 @@ abstract class PublicRedirectedDocumentReference
   void batchSet(
     WriteBatch batch,
     PublicRedirected model, {
+    SetOptions? options,
     FieldValue valueFieldValue,
   });
 
@@ -1332,7 +1338,7 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     PublicRedirected model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) async {
     final json = {
@@ -1341,12 +1347,13 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
         _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     PublicRedirected model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -1355,12 +1362,13 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
         _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     PublicRedirected model, {
+    SetOptions? options,
     FieldValue? valueFieldValue,
   }) {
     final json = {
@@ -1369,7 +1377,7 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
         _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({

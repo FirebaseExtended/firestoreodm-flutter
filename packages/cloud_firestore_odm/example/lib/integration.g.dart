@@ -139,7 +139,7 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   /// [model] during serialization.
   Future<void> set(
     AdvancedJson model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue firstNameFieldValue,
     FieldValue lastNameFieldValue,
   });
@@ -154,6 +154,7 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   void transactionSet(
     Transaction transaction,
     AdvancedJson model, {
+    SetOptions? options,
     FieldValue firstNameFieldValue,
     FieldValue lastNameFieldValue,
   });
@@ -168,6 +169,7 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   void batchSet(
     WriteBatch batch,
     AdvancedJson model, {
+    SetOptions? options,
     FieldValue firstNameFieldValue,
     FieldValue lastNameFieldValue,
   });
@@ -236,7 +238,7 @@ class _$AdvancedJsonDocumentReference extends FirestoreDocumentReference<
 
   Future<void> set(
     AdvancedJson model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? firstNameFieldValue,
     FieldValue? lastNameFieldValue,
   }) async {
@@ -248,12 +250,13 @@ class _$AdvancedJsonDocumentReference extends FirestoreDocumentReference<
         _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     AdvancedJson model, {
+    SetOptions? options,
     FieldValue? firstNameFieldValue,
     FieldValue? lastNameFieldValue,
   }) {
@@ -265,12 +268,13 @@ class _$AdvancedJsonDocumentReference extends FirestoreDocumentReference<
         _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     AdvancedJson model, {
+    SetOptions? options,
     FieldValue? firstNameFieldValue,
     FieldValue? lastNameFieldValue,
   }) {
@@ -282,7 +286,7 @@ class _$AdvancedJsonDocumentReference extends FirestoreDocumentReference<
         _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -1261,7 +1265,7 @@ abstract class _PrivateAdvancedJsonDocumentReference
   /// [model] during serialization.
   Future<void> set(
     _PrivateAdvancedJson model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue firstNameFieldValue,
     FieldValue lastNameFieldValue,
   });
@@ -1276,6 +1280,7 @@ abstract class _PrivateAdvancedJsonDocumentReference
   void transactionSet(
     Transaction transaction,
     _PrivateAdvancedJson model, {
+    SetOptions? options,
     FieldValue firstNameFieldValue,
     FieldValue lastNameFieldValue,
   });
@@ -1290,6 +1295,7 @@ abstract class _PrivateAdvancedJsonDocumentReference
   void batchSet(
     WriteBatch batch,
     _PrivateAdvancedJson model, {
+    SetOptions? options,
     FieldValue firstNameFieldValue,
     FieldValue lastNameFieldValue,
   });
@@ -1362,7 +1368,7 @@ class _$_PrivateAdvancedJsonDocumentReference
 
   Future<void> set(
     _PrivateAdvancedJson model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? firstNameFieldValue,
     FieldValue? lastNameFieldValue,
   }) async {
@@ -1374,12 +1380,13 @@ class _$_PrivateAdvancedJsonDocumentReference
         _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     _PrivateAdvancedJson model, {
+    SetOptions? options,
     FieldValue? firstNameFieldValue,
     FieldValue? lastNameFieldValue,
   }) {
@@ -1391,12 +1398,13 @@ class _$_PrivateAdvancedJsonDocumentReference
         _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     _PrivateAdvancedJson model, {
+    SetOptions? options,
     FieldValue? firstNameFieldValue,
     FieldValue? lastNameFieldValue,
   }) {
@@ -1408,7 +1416,7 @@ class _$_PrivateAdvancedJsonDocumentReference
         _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({

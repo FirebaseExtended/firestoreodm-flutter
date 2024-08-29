@@ -140,7 +140,7 @@ abstract class MovieDocumentReference
   /// [model] during serialization.
   Future<void> set(
     Movie model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue posterFieldValue,
     FieldValue likesFieldValue,
     FieldValue titleFieldValue,
@@ -161,6 +161,7 @@ abstract class MovieDocumentReference
   void transactionSet(
     Transaction transaction,
     Movie model, {
+    SetOptions? options,
     FieldValue posterFieldValue,
     FieldValue likesFieldValue,
     FieldValue titleFieldValue,
@@ -181,6 +182,7 @@ abstract class MovieDocumentReference
   void batchSet(
     WriteBatch batch,
     Movie model, {
+    SetOptions? options,
     FieldValue posterFieldValue,
     FieldValue likesFieldValue,
     FieldValue titleFieldValue,
@@ -295,7 +297,7 @@ class _$MovieDocumentReference
 
   Future<void> set(
     Movie model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? posterFieldValue,
     FieldValue? likesFieldValue,
     FieldValue? titleFieldValue,
@@ -319,12 +321,13 @@ class _$MovieDocumentReference
       if (tagsFieldValue != null) _$MovieFieldMap['tags']!: tagsFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     Movie model, {
+    SetOptions? options,
     FieldValue? posterFieldValue,
     FieldValue? likesFieldValue,
     FieldValue? titleFieldValue,
@@ -348,12 +351,13 @@ class _$MovieDocumentReference
       if (tagsFieldValue != null) _$MovieFieldMap['tags']!: tagsFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     Movie model, {
+    SetOptions? options,
     FieldValue? posterFieldValue,
     FieldValue? likesFieldValue,
     FieldValue? titleFieldValue,
@@ -377,7 +381,7 @@ class _$MovieDocumentReference
       if (tagsFieldValue != null) _$MovieFieldMap['tags']!: tagsFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -2368,7 +2372,7 @@ abstract class CommentDocumentReference
   /// [model] during serialization.
   Future<void> set(
     Comment model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue authorNameFieldValue,
     FieldValue messageFieldValue,
   });
@@ -2383,6 +2387,7 @@ abstract class CommentDocumentReference
   void transactionSet(
     Transaction transaction,
     Comment model, {
+    SetOptions? options,
     FieldValue authorNameFieldValue,
     FieldValue messageFieldValue,
   });
@@ -2397,6 +2402,7 @@ abstract class CommentDocumentReference
   void batchSet(
     WriteBatch batch,
     Comment model, {
+    SetOptions? options,
     FieldValue authorNameFieldValue,
     FieldValue messageFieldValue,
   });
@@ -2470,7 +2476,7 @@ class _$CommentDocumentReference
 
   Future<void> set(
     Comment model, {
-    SetOptions? setOptions,
+    SetOptions? options,
     FieldValue? authorNameFieldValue,
     FieldValue? messageFieldValue,
   }) async {
@@ -2482,12 +2488,13 @@ class _$CommentDocumentReference
         _$CommentFieldMap['message']!: messageFieldValue,
     };
 
-    return (reference as DocumentReference).set(json);
+    return (reference as DocumentReference).set(json, options);
   }
 
   void transactionSet(
     Transaction transaction,
     Comment model, {
+    SetOptions? options,
     FieldValue? authorNameFieldValue,
     FieldValue? messageFieldValue,
   }) {
@@ -2499,12 +2506,13 @@ class _$CommentDocumentReference
         _$CommentFieldMap['message']!: messageFieldValue,
     };
 
-    transaction.set(reference, json);
+    transaction.set(reference, json, options);
   }
 
   void batchSet(
     WriteBatch batch,
     Comment model, {
+    SetOptions? options,
     FieldValue? authorNameFieldValue,
     FieldValue? messageFieldValue,
   }) {
@@ -2516,7 +2524,7 @@ class _$CommentDocumentReference
         _$CommentFieldMap['message']!: messageFieldValue,
     };
 
-    batch.set(reference, json);
+    batch.set(reference, json, options);
   }
 
   Future<void> update({

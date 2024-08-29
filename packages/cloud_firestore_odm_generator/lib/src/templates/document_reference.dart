@@ -151,7 +151,7 @@ class _\$${data.documentReferenceName}
 $fieldValueDoc
 Future<void> set(
   $type model, {
-  SetOptions? setOptions,
+  SetOptions? options,
   $parameters
 });
 
@@ -164,6 +164,7 @@ $fieldValueDoc
 void transactionSet(
   Transaction transaction,
   $type model, {
+  SetOptions? options,
   $parameters
 });
 
@@ -176,6 +177,7 @@ $fieldValueDoc
 void batchSet(
   WriteBatch batch,
   $type model, {
+  SetOptions? options,
   $parameters
 });
 ''';
@@ -200,32 +202,34 @@ void batchSet(
     return '''
 Future<void> set(
   $type model, {
-  SetOptions? setOptions,
+  SetOptions? options,
   $parameters
 }) async {
   final json = $json;
 
-  return (reference as DocumentReference).set(json);
+  return (reference as DocumentReference).set(json, options);
 }
 
 void transactionSet(
   Transaction transaction,
   $type model, {
+  SetOptions? options,
   $parameters
 }) {
   final json = $json;
 
-  transaction.set(reference, json);
+  transaction.set(reference, json, options);
 }
 
 void batchSet(
   WriteBatch batch,
   $type model, {
+  SetOptions? options,
   $parameters
 }) {
   final json = $json;
 
-  batch.set(reference, json);
+  batch.set(reference, json, options);
 }
 ''';
   }
