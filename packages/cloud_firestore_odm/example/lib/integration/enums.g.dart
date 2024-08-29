@@ -131,6 +131,9 @@ abstract class EnumsDocumentReference
   ///
   /// If [SetOptions] are provided, the data can be merged into an existing
   /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   Future<void> set(
     Enums model, {
     SetOptions? setOptions,
@@ -145,6 +148,9 @@ abstract class EnumsDocumentReference
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void transactionSet(
     Transaction transaction,
     Enums model, {
@@ -159,6 +165,9 @@ abstract class EnumsDocumentReference
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void batchSet(
     WriteBatch batch,
     Enums model, {

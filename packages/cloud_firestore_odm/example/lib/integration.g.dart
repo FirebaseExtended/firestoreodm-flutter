@@ -134,6 +134,9 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   ///
   /// If [SetOptions] are provided, the data can be merged into an existing
   /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   Future<void> set(
     AdvancedJson model, {
     SetOptions? setOptions,
@@ -145,6 +148,9 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void transactionSet(
     Transaction transaction,
     AdvancedJson model, {
@@ -156,6 +162,9 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void batchSet(
     WriteBatch batch,
     AdvancedJson model, {
@@ -1247,6 +1256,9 @@ abstract class _PrivateAdvancedJsonDocumentReference
   ///
   /// If [SetOptions] are provided, the data can be merged into an existing
   /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   Future<void> set(
     _PrivateAdvancedJson model, {
     SetOptions? setOptions,
@@ -1258,6 +1270,9 @@ abstract class _PrivateAdvancedJsonDocumentReference
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void transactionSet(
     Transaction transaction,
     _PrivateAdvancedJson model, {
@@ -1269,6 +1284,9 @@ abstract class _PrivateAdvancedJsonDocumentReference
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void batchSet(
     WriteBatch batch,
     _PrivateAdvancedJson model, {

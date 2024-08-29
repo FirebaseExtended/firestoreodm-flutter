@@ -135,6 +135,9 @@ abstract class MovieDocumentReference
   ///
   /// If [SetOptions] are provided, the data can be merged into an existing
   /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   Future<void> set(
     Movie model, {
     SetOptions? setOptions,
@@ -152,6 +155,9 @@ abstract class MovieDocumentReference
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void transactionSet(
     Transaction transaction,
     Movie model, {
@@ -169,6 +175,9 @@ abstract class MovieDocumentReference
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void batchSet(
     WriteBatch batch,
     Movie model, {
@@ -2354,6 +2363,9 @@ abstract class CommentDocumentReference
   ///
   /// If [SetOptions] are provided, the data can be merged into an existing
   /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   Future<void> set(
     Comment model, {
     SetOptions? setOptions,
@@ -2365,6 +2377,9 @@ abstract class CommentDocumentReference
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void transactionSet(
     Transaction transaction,
     Comment model, {
@@ -2376,6 +2391,9 @@ abstract class CommentDocumentReference
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void batchSet(
     WriteBatch batch,
     Comment model, {

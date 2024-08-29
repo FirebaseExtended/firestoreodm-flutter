@@ -150,6 +150,9 @@ abstract class ConflictDocumentReference
   ///
   /// If [SetOptions] are provided, the data can be merged into an existing
   /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   Future<void> set(
     Conflict model, {
     SetOptions? setOptions,
@@ -160,6 +163,9 @@ abstract class ConflictDocumentReference
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void transactionSet(
     Transaction transaction,
     Conflict model, {
@@ -170,6 +176,9 @@ abstract class ConflictDocumentReference
   ///
   /// If the document does not exist yet, it will be created. If you pass
   /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// model during serialization.
   void batchSet(
     WriteBatch batch,
     Conflict model, {
