@@ -138,7 +138,7 @@ abstract class DurationQueryDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     DurationQuery model, {
     SetOptions? setOptions,
@@ -151,7 +151,7 @@ abstract class DurationQueryDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     DurationQuery model, {
@@ -164,7 +164,7 @@ abstract class DurationQueryDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     DurationQuery model, {
@@ -1060,7 +1060,7 @@ abstract class DateTimeQueryDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     DateTimeQuery model, {
     SetOptions? setOptions,
@@ -1073,7 +1073,7 @@ abstract class DateTimeQueryDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     DateTimeQuery model, {
@@ -1086,7 +1086,7 @@ abstract class DateTimeQueryDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     DateTimeQuery model, {
@@ -1984,7 +1984,7 @@ abstract class TimestampQueryDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     TimestampQuery model, {
     SetOptions? setOptions,
@@ -1997,7 +1997,7 @@ abstract class TimestampQueryDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     TimestampQuery model, {
@@ -2010,7 +2010,7 @@ abstract class TimestampQueryDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     TimestampQuery model, {
@@ -2909,7 +2909,7 @@ abstract class GeoPointQueryDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     GeoPointQuery model, {
     SetOptions? setOptions,
@@ -2922,7 +2922,7 @@ abstract class GeoPointQueryDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     GeoPointQuery model, {
@@ -2935,7 +2935,7 @@ abstract class GeoPointQueryDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     GeoPointQuery model, {
@@ -3836,7 +3836,7 @@ abstract class DocumentReferenceQueryDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     DocumentReferenceQuery model, {
     SetOptions? setOptions,
@@ -3849,7 +3849,7 @@ abstract class DocumentReferenceQueryDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     DocumentReferenceQuery model, {
@@ -3862,7 +3862,7 @@ abstract class DocumentReferenceQueryDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     DocumentReferenceQuery model, {

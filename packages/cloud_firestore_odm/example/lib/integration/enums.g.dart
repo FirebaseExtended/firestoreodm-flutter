@@ -133,7 +133,7 @@ abstract class EnumsDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     Enums model, {
     SetOptions? setOptions,
@@ -150,7 +150,7 @@ abstract class EnumsDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     Enums model, {
@@ -167,7 +167,7 @@ abstract class EnumsDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     Enums model, {

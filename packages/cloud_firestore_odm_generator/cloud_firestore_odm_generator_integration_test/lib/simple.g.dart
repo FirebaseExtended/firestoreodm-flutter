@@ -136,7 +136,7 @@ abstract class IgnoredGetterDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     IgnoredGetter model, {
     SetOptions? setOptions,
@@ -149,7 +149,7 @@ abstract class IgnoredGetterDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     IgnoredGetter model, {
@@ -162,7 +162,7 @@ abstract class IgnoredGetterDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     IgnoredGetter model, {
@@ -1051,7 +1051,7 @@ abstract class ModelDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     Model model, {
     SetOptions? setOptions,
@@ -1064,7 +1064,7 @@ abstract class ModelDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     Model model, {
@@ -1077,7 +1077,7 @@ abstract class ModelDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     Model model, {
@@ -1946,7 +1946,7 @@ abstract class NestedDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     Nested model, {
     SetOptions? setOptions,
@@ -1971,7 +1971,7 @@ abstract class NestedDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     Nested model, {
@@ -1996,7 +1996,7 @@ abstract class NestedDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     Nested model, {
@@ -5844,7 +5844,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     OptionalJson model, {
     SetOptions? setOptions,
@@ -5857,7 +5857,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     OptionalJson model, {
@@ -5870,7 +5870,7 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     OptionalJson model, {
@@ -6758,7 +6758,7 @@ abstract class MixedJsonDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     MixedJson model, {
     SetOptions? setOptions,
@@ -6771,7 +6771,7 @@ abstract class MixedJsonDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     MixedJson model, {
@@ -6784,7 +6784,7 @@ abstract class MixedJsonDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     MixedJson model, {
@@ -7685,7 +7685,7 @@ abstract class RootDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     Root model, {
     SetOptions? setOptions,
@@ -7699,7 +7699,7 @@ abstract class RootDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     Root model, {
@@ -7713,7 +7713,7 @@ abstract class RootDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     Root model, {
@@ -8810,7 +8810,7 @@ abstract class SubDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     Sub model, {
     SetOptions? setOptions,
@@ -8824,7 +8824,7 @@ abstract class SubDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     Sub model, {
@@ -8838,7 +8838,7 @@ abstract class SubDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     Sub model, {
@@ -9926,7 +9926,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     AsCamelCase model, {
     SetOptions? setOptions,
@@ -9939,7 +9939,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     AsCamelCase model, {
@@ -9952,7 +9952,7 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     AsCamelCase model, {
@@ -10862,7 +10862,7 @@ abstract class CustomSubNameDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     CustomSubName model, {
     SetOptions? setOptions,
@@ -10875,7 +10875,7 @@ abstract class CustomSubNameDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     CustomSubName model, {
@@ -10888,7 +10888,7 @@ abstract class CustomSubNameDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     CustomSubName model, {
@@ -11801,7 +11801,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     CustomClassPrefix model, {
     SetOptions? setOptions,
@@ -11814,7 +11814,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     CustomClassPrefix model, {
@@ -11827,7 +11827,7 @@ abstract class ThisIsACustomPrefixDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     CustomClassPrefix model, {
@@ -12739,7 +12739,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     ExplicitPath model, {
     SetOptions? setOptions,
@@ -12752,7 +12752,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     ExplicitPath model, {
@@ -12765,7 +12765,7 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     ExplicitPath model, {
@@ -13676,7 +13676,7 @@ abstract class ExplicitSubPathDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     ExplicitSubPath model, {
     SetOptions? setOptions,
@@ -13689,7 +13689,7 @@ abstract class ExplicitSubPathDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     ExplicitSubPath model, {
@@ -13702,7 +13702,7 @@ abstract class ExplicitSubPathDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     ExplicitSubPath model, {

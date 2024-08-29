@@ -137,7 +137,7 @@ abstract class MovieDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     Movie model, {
     SetOptions? setOptions,
@@ -157,7 +157,7 @@ abstract class MovieDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     Movie model, {
@@ -177,7 +177,7 @@ abstract class MovieDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     Movie model, {
@@ -2365,7 +2365,7 @@ abstract class CommentDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     Comment model, {
     SetOptions? setOptions,
@@ -2379,7 +2379,7 @@ abstract class CommentDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     Comment model, {
@@ -2393,7 +2393,7 @@ abstract class CommentDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     Comment model, {

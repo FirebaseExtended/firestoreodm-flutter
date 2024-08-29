@@ -137,15 +137,18 @@ class _\$${data.documentReferenceName}
     final type = data.type.getDisplayString();
     final parameters = _parameters(data, includeFields: false);
 
+    const fieldValueDoc = '''
+/// Any [FieldValue]s provided will replace the corresponding fields in the
+/// [model] during serialization.''';
+
     return '''
 /// Sets data on the document, overwriting any existing data. If the document
 /// does not yet exist, it will be created.
 ///
 /// If [SetOptions] are provided, the data can be merged into an existing
 /// document instead of overwriting.
-/// 
-/// Any [FieldValue]s provided will replace the corresponding fields in the
-/// model during serialization.
+///
+$fieldValueDoc
 Future<void> set(
   $type model, {
   SetOptions? setOptions,
@@ -156,9 +159,8 @@ Future<void> set(
 ///
 /// If the document does not exist yet, it will be created. If you pass
 /// [SetOptions], the provided data can be merged into the existing document.
-/// 
-/// Any [FieldValue]s provided will replace the corresponding fields in the
-/// model during serialization.
+///
+$fieldValueDoc
 void transactionSet(
   Transaction transaction,
   $type model, {
@@ -169,9 +171,8 @@ void transactionSet(
 ///
 /// If the document does not exist yet, it will be created. If you pass
 /// [SetOptions], the provided data can be merged into the existing document.
-/// 
-/// Any [FieldValue]s provided will replace the corresponding fields in the
-/// model during serialization.
+///
+$fieldValueDoc
 void batchSet(
   WriteBatch batch,
   $type model, {

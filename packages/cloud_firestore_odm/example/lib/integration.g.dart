@@ -136,7 +136,7 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     AdvancedJson model, {
     SetOptions? setOptions,
@@ -150,7 +150,7 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     AdvancedJson model, {
@@ -164,7 +164,7 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     AdvancedJson model, {
@@ -1258,7 +1258,7 @@ abstract class _PrivateAdvancedJsonDocumentReference
   /// document instead of overwriting.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   Future<void> set(
     _PrivateAdvancedJson model, {
     SetOptions? setOptions,
@@ -1272,7 +1272,7 @@ abstract class _PrivateAdvancedJsonDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void transactionSet(
     Transaction transaction,
     _PrivateAdvancedJson model, {
@@ -1286,7 +1286,7 @@ abstract class _PrivateAdvancedJsonDocumentReference
   /// [SetOptions], the provided data can be merged into the existing document.
   ///
   /// Any [FieldValue]s provided will replace the corresponding fields in the
-  /// model during serialization.
+  /// [model] during serialization.
   void batchSet(
     WriteBatch batch,
     _PrivateAdvancedJson model, {
