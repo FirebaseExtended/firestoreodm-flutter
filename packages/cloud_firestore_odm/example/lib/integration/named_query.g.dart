@@ -145,13 +145,44 @@ abstract class ConflictDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  Future<void> set(
+    Conflict model, {
+    SetOptions? setOptions,
+    FieldValue? numberFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  void transactionSet(
+    Transaction transaction,
+    Conflict model, {
+    FieldValue? numberFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  void batchSet(
+    WriteBatch batch,
+    Conflict model, {
+    FieldValue? numberFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    num number,
-    FieldValue numberFieldValue,
+    Object? number = _sentinel,
+    FieldValue? numberFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -159,8 +190,8 @@ abstract class ConflictDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    num number,
-    FieldValue numberFieldValue,
+    Object? number = _sentinel,
+    FieldValue? numberFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -168,8 +199,8 @@ abstract class ConflictDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    num number,
-    FieldValue numberFieldValue,
+    Object? number = _sentinel,
+    FieldValue? numberFieldValue,
   });
 }
 
@@ -199,6 +230,48 @@ class _$ConflictDocumentReference
   @override
   Future<ConflictDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(ConflictDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    Conflict model, {
+    SetOptions? setOptions,
+    FieldValue? numberFieldValue,
+  }) async {
+    final json = {
+      ..._$ConflictToJson(model),
+      if (numberFieldValue != null)
+        _$ConflictFieldMap['number']!: numberFieldValue,
+    };
+
+    return (reference as DocumentReference).set(json);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    Conflict model, {
+    FieldValue? numberFieldValue,
+  }) {
+    final json = {
+      ..._$ConflictToJson(model),
+      if (numberFieldValue != null)
+        _$ConflictFieldMap['number']!: numberFieldValue,
+    };
+
+    transaction.set(reference, json);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    Conflict model, {
+    FieldValue? numberFieldValue,
+  }) {
+    final json = {
+      ..._$ConflictToJson(model),
+      if (numberFieldValue != null)
+        _$ConflictFieldMap['number']!: numberFieldValue,
+    };
+
+    batch.set(reference, json);
   }
 
   Future<void> update({

@@ -129,15 +129,49 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  Future<void> set(
+    AdvancedJson model, {
+    SetOptions? setOptions,
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  void transactionSet(
+    Transaction transaction,
+    AdvancedJson model, {
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  void batchSet(
+    WriteBatch batch,
+    AdvancedJson model, {
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    String? firstName,
-    FieldValue firstNameFieldValue,
-    String? lastName,
-    FieldValue lastNameFieldValue,
+    Object? firstName = _sentinel,
+    FieldValue? firstNameFieldValue,
+    Object? lastName = _sentinel,
+    FieldValue? lastNameFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -145,10 +179,10 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    String? firstName,
-    FieldValue firstNameFieldValue,
-    String? lastName,
-    FieldValue lastNameFieldValue,
+    Object? firstName = _sentinel,
+    FieldValue? firstNameFieldValue,
+    Object? lastName = _sentinel,
+    FieldValue? lastNameFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -156,10 +190,10 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    String? firstName,
-    FieldValue firstNameFieldValue,
-    String? lastName,
-    FieldValue lastNameFieldValue,
+    Object? firstName = _sentinel,
+    FieldValue? firstNameFieldValue,
+    Object? lastName = _sentinel,
+    FieldValue? lastNameFieldValue,
   });
 }
 
@@ -189,6 +223,57 @@ class _$AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   @override
   Future<AdvancedJsonDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(AdvancedJsonDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    AdvancedJson model, {
+    SetOptions? setOptions,
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$AdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    return (reference as DocumentReference).set(json);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    AdvancedJson model, {
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$AdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    transaction.set(reference, json);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    AdvancedJson model, {
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$AdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    batch.set(reference, json);
   }
 
   Future<void> update({
@@ -1157,15 +1242,49 @@ abstract class _PrivateAdvancedJsonDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  Future<void> set(
+    _PrivateAdvancedJson model, {
+    SetOptions? setOptions,
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  void transactionSet(
+    Transaction transaction,
+    _PrivateAdvancedJson model, {
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  void batchSet(
+    WriteBatch batch,
+    _PrivateAdvancedJson model, {
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    String? firstName,
-    FieldValue firstNameFieldValue,
-    String? lastName,
-    FieldValue lastNameFieldValue,
+    Object? firstName = _sentinel,
+    FieldValue? firstNameFieldValue,
+    Object? lastName = _sentinel,
+    FieldValue? lastNameFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -1173,10 +1292,10 @@ abstract class _PrivateAdvancedJsonDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    String? firstName,
-    FieldValue firstNameFieldValue,
-    String? lastName,
-    FieldValue lastNameFieldValue,
+    Object? firstName = _sentinel,
+    FieldValue? firstNameFieldValue,
+    Object? lastName = _sentinel,
+    FieldValue? lastNameFieldValue,
   });
 
   /// Updates fields in the current document using the batch API.
@@ -1184,10 +1303,10 @@ abstract class _PrivateAdvancedJsonDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void batchUpdate(
     WriteBatch batch, {
-    String? firstName,
-    FieldValue firstNameFieldValue,
-    String? lastName,
-    FieldValue lastNameFieldValue,
+    Object? firstName = _sentinel,
+    FieldValue? firstNameFieldValue,
+    Object? lastName = _sentinel,
+    FieldValue? lastNameFieldValue,
   });
 }
 
@@ -1221,6 +1340,57 @@ class _$_PrivateAdvancedJsonDocumentReference
     return transaction
         .get(reference)
         .then(_PrivateAdvancedJsonDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    _PrivateAdvancedJson model, {
+    SetOptions? setOptions,
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    return (reference as DocumentReference).set(json);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    _PrivateAdvancedJson model, {
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    transaction.set(reference, json);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    _PrivateAdvancedJson model, {
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    batch.set(reference, json);
   }
 
   Future<void> update({
