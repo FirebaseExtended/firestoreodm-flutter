@@ -36,6 +36,7 @@ const List<JsonConverter<Object?, Object?>> firestoreJsonConverters = [
 ];
 
 /// A [JsonConverter] that adds support for [Timestamp] objects within ODM models.
+@JsonSerializable()
 class FirestoreTimestampConverter extends JsonConverter<Timestamp, Timestamp> {
   const FirestoreTimestampConverter();
   @override
