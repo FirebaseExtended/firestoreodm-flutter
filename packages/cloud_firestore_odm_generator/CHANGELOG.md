@@ -1,5 +1,6 @@
 ## 1.0.0-dev.89
 
+- **Breaking**: `set` options are not a named parameter.
 - Adds generated `set` methods with `FieldValue` parameters
 
 ## 1.0.0-dev.88 - 2024-07-08
