@@ -126,6 +126,60 @@ abstract class EnumsDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    Enums model, {
+    SetOptions? options,
+    FieldValue idFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    Enums model, {
+    SetOptions? options,
+    FieldValue idFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    Enums model, {
+    SetOptions? options,
+    FieldValue idFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -204,6 +258,87 @@ class _$EnumsDocumentReference
   @override
   Future<EnumsDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(EnumsDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    Enums model, {
+    SetOptions? options,
+    FieldValue? idFieldValue,
+    FieldValue? enumValueFieldValue,
+    FieldValue? nullableEnumValueFieldValue,
+    FieldValue? enumListFieldValue,
+    FieldValue? nullableEnumListFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (idFieldValue != null) _$EnumsFieldMap['id']!: idFieldValue,
+      if (enumValueFieldValue != null)
+        _$EnumsFieldMap['enumValue']!: enumValueFieldValue,
+      if (nullableEnumValueFieldValue != null)
+        _$EnumsFieldMap['nullableEnumValue']!: nullableEnumValueFieldValue,
+      if (enumListFieldValue != null)
+        _$EnumsFieldMap['enumList']!: enumListFieldValue,
+      if (nullableEnumListFieldValue != null)
+        _$EnumsFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    Enums model, {
+    SetOptions? options,
+    FieldValue? idFieldValue,
+    FieldValue? enumValueFieldValue,
+    FieldValue? nullableEnumValueFieldValue,
+    FieldValue? enumListFieldValue,
+    FieldValue? nullableEnumListFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (idFieldValue != null) _$EnumsFieldMap['id']!: idFieldValue,
+      if (enumValueFieldValue != null)
+        _$EnumsFieldMap['enumValue']!: enumValueFieldValue,
+      if (nullableEnumValueFieldValue != null)
+        _$EnumsFieldMap['nullableEnumValue']!: nullableEnumValueFieldValue,
+      if (enumListFieldValue != null)
+        _$EnumsFieldMap['enumList']!: enumListFieldValue,
+      if (nullableEnumListFieldValue != null)
+        _$EnumsFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    Enums model, {
+    SetOptions? options,
+    FieldValue? idFieldValue,
+    FieldValue? enumValueFieldValue,
+    FieldValue? nullableEnumValueFieldValue,
+    FieldValue? enumListFieldValue,
+    FieldValue? nullableEnumListFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (idFieldValue != null) _$EnumsFieldMap['id']!: idFieldValue,
+      if (enumValueFieldValue != null)
+        _$EnumsFieldMap['enumValue']!: enumValueFieldValue,
+      if (nullableEnumValueFieldValue != null)
+        _$EnumsFieldMap['nullableEnumValue']!: nullableEnumValueFieldValue,
+      if (enumListFieldValue != null)
+        _$EnumsFieldMap['enumList']!: enumListFieldValue,
+      if (nullableEnumListFieldValue != null)
+        _$EnumsFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({

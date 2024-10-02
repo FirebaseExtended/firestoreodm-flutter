@@ -129,6 +129,48 @@ abstract class IgnoredGetterDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    IgnoredGetter model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    IgnoredGetter model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    IgnoredGetter model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -184,6 +226,54 @@ class _$IgnoredGetterDocumentReference extends FirestoreDocumentReference<
   Future<IgnoredGetterDocumentSnapshot> transactionGet(
       Transaction transaction) {
     return transaction.get(reference).then(IgnoredGetterDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    IgnoredGetter model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) async {
+    final json = {
+      ..._$IgnoredGetterToJson(model),
+      if (valueFieldValue != null)
+        _$IgnoredGetterFieldMap['value']!: valueFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    IgnoredGetter model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ..._$IgnoredGetterToJson(model),
+      if (valueFieldValue != null)
+        _$IgnoredGetterFieldMap['value']!: valueFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    IgnoredGetter model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ..._$IgnoredGetterToJson(model),
+      if (valueFieldValue != null)
+        _$IgnoredGetterFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -962,6 +1052,48 @@ abstract class ModelDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    Model model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    Model model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    Model model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -1016,6 +1148,51 @@ class _$ModelDocumentReference
   @override
   Future<ModelDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(ModelDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    Model model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) async {
+    final json = {
+      ..._$ModelToJson(model),
+      if (valueFieldValue != null) _$ModelFieldMap['value']!: valueFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    Model model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ..._$ModelToJson(model),
+      if (valueFieldValue != null) _$ModelFieldMap['value']!: valueFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    Model model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ..._$ModelToJson(model),
+      if (valueFieldValue != null) _$ModelFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -1778,6 +1955,84 @@ abstract class NestedDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    Nested model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+    FieldValue simpleFieldValue,
+    FieldValue valueListFieldValue,
+    FieldValue boolListFieldValue,
+    FieldValue stringListFieldValue,
+    FieldValue numListFieldValue,
+    FieldValue objectListFieldValue,
+    FieldValue dynamicListFieldValue,
+    FieldValue boolSetFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    Nested model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+    FieldValue simpleFieldValue,
+    FieldValue valueListFieldValue,
+    FieldValue boolListFieldValue,
+    FieldValue stringListFieldValue,
+    FieldValue numListFieldValue,
+    FieldValue objectListFieldValue,
+    FieldValue dynamicListFieldValue,
+    FieldValue boolSetFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    Nested model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+    FieldValue simpleFieldValue,
+    FieldValue valueListFieldValue,
+    FieldValue boolListFieldValue,
+    FieldValue stringListFieldValue,
+    FieldValue numListFieldValue,
+    FieldValue objectListFieldValue,
+    FieldValue dynamicListFieldValue,
+    FieldValue boolSetFieldValue,
+    FieldValue enumValueFieldValue,
+    FieldValue nullableEnumValueFieldValue,
+    FieldValue enumListFieldValue,
+    FieldValue nullableEnumListFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -1904,6 +2159,159 @@ class _$NestedDocumentReference
   @override
   Future<NestedDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(NestedDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    Nested model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+    FieldValue? simpleFieldValue,
+    FieldValue? valueListFieldValue,
+    FieldValue? boolListFieldValue,
+    FieldValue? stringListFieldValue,
+    FieldValue? numListFieldValue,
+    FieldValue? objectListFieldValue,
+    FieldValue? dynamicListFieldValue,
+    FieldValue? boolSetFieldValue,
+    FieldValue? enumValueFieldValue,
+    FieldValue? nullableEnumValueFieldValue,
+    FieldValue? enumListFieldValue,
+    FieldValue? nullableEnumListFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null) _$NestedFieldMap['value']!: valueFieldValue,
+      if (simpleFieldValue != null)
+        _$NestedFieldMap['simple']!: simpleFieldValue,
+      if (valueListFieldValue != null)
+        _$NestedFieldMap['valueList']!: valueListFieldValue,
+      if (boolListFieldValue != null)
+        _$NestedFieldMap['boolList']!: boolListFieldValue,
+      if (stringListFieldValue != null)
+        _$NestedFieldMap['stringList']!: stringListFieldValue,
+      if (numListFieldValue != null)
+        _$NestedFieldMap['numList']!: numListFieldValue,
+      if (objectListFieldValue != null)
+        _$NestedFieldMap['objectList']!: objectListFieldValue,
+      if (dynamicListFieldValue != null)
+        _$NestedFieldMap['dynamicList']!: dynamicListFieldValue,
+      if (boolSetFieldValue != null)
+        _$NestedFieldMap['boolSet']!: boolSetFieldValue,
+      if (enumValueFieldValue != null)
+        _$NestedFieldMap['enumValue']!: enumValueFieldValue,
+      if (nullableEnumValueFieldValue != null)
+        _$NestedFieldMap['nullableEnumValue']!: nullableEnumValueFieldValue,
+      if (enumListFieldValue != null)
+        _$NestedFieldMap['enumList']!: enumListFieldValue,
+      if (nullableEnumListFieldValue != null)
+        _$NestedFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    Nested model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+    FieldValue? simpleFieldValue,
+    FieldValue? valueListFieldValue,
+    FieldValue? boolListFieldValue,
+    FieldValue? stringListFieldValue,
+    FieldValue? numListFieldValue,
+    FieldValue? objectListFieldValue,
+    FieldValue? dynamicListFieldValue,
+    FieldValue? boolSetFieldValue,
+    FieldValue? enumValueFieldValue,
+    FieldValue? nullableEnumValueFieldValue,
+    FieldValue? enumListFieldValue,
+    FieldValue? nullableEnumListFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null) _$NestedFieldMap['value']!: valueFieldValue,
+      if (simpleFieldValue != null)
+        _$NestedFieldMap['simple']!: simpleFieldValue,
+      if (valueListFieldValue != null)
+        _$NestedFieldMap['valueList']!: valueListFieldValue,
+      if (boolListFieldValue != null)
+        _$NestedFieldMap['boolList']!: boolListFieldValue,
+      if (stringListFieldValue != null)
+        _$NestedFieldMap['stringList']!: stringListFieldValue,
+      if (numListFieldValue != null)
+        _$NestedFieldMap['numList']!: numListFieldValue,
+      if (objectListFieldValue != null)
+        _$NestedFieldMap['objectList']!: objectListFieldValue,
+      if (dynamicListFieldValue != null)
+        _$NestedFieldMap['dynamicList']!: dynamicListFieldValue,
+      if (boolSetFieldValue != null)
+        _$NestedFieldMap['boolSet']!: boolSetFieldValue,
+      if (enumValueFieldValue != null)
+        _$NestedFieldMap['enumValue']!: enumValueFieldValue,
+      if (nullableEnumValueFieldValue != null)
+        _$NestedFieldMap['nullableEnumValue']!: nullableEnumValueFieldValue,
+      if (enumListFieldValue != null)
+        _$NestedFieldMap['enumList']!: enumListFieldValue,
+      if (nullableEnumListFieldValue != null)
+        _$NestedFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    Nested model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+    FieldValue? simpleFieldValue,
+    FieldValue? valueListFieldValue,
+    FieldValue? boolListFieldValue,
+    FieldValue? stringListFieldValue,
+    FieldValue? numListFieldValue,
+    FieldValue? objectListFieldValue,
+    FieldValue? dynamicListFieldValue,
+    FieldValue? boolSetFieldValue,
+    FieldValue? enumValueFieldValue,
+    FieldValue? nullableEnumValueFieldValue,
+    FieldValue? enumListFieldValue,
+    FieldValue? nullableEnumListFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null) _$NestedFieldMap['value']!: valueFieldValue,
+      if (simpleFieldValue != null)
+        _$NestedFieldMap['simple']!: simpleFieldValue,
+      if (valueListFieldValue != null)
+        _$NestedFieldMap['valueList']!: valueListFieldValue,
+      if (boolListFieldValue != null)
+        _$NestedFieldMap['boolList']!: boolListFieldValue,
+      if (stringListFieldValue != null)
+        _$NestedFieldMap['stringList']!: stringListFieldValue,
+      if (numListFieldValue != null)
+        _$NestedFieldMap['numList']!: numListFieldValue,
+      if (objectListFieldValue != null)
+        _$NestedFieldMap['objectList']!: objectListFieldValue,
+      if (dynamicListFieldValue != null)
+        _$NestedFieldMap['dynamicList']!: dynamicListFieldValue,
+      if (boolSetFieldValue != null)
+        _$NestedFieldMap['boolSet']!: boolSetFieldValue,
+      if (enumValueFieldValue != null)
+        _$NestedFieldMap['enumValue']!: enumValueFieldValue,
+      if (nullableEnumValueFieldValue != null)
+        _$NestedFieldMap['nullableEnumValue']!: nullableEnumValueFieldValue,
+      if (enumListFieldValue != null)
+        _$NestedFieldMap['enumList']!: enumListFieldValue,
+      if (nullableEnumListFieldValue != null)
+        _$NestedFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -5453,6 +5861,48 @@ abstract class OptionalJsonDocumentReference extends FirestoreDocumentReference<
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    OptionalJson model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    OptionalJson model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    OptionalJson model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -5507,6 +5957,54 @@ class _$OptionalJsonDocumentReference extends FirestoreDocumentReference<
   @override
   Future<OptionalJsonDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(OptionalJsonDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    OptionalJson model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) async {
+    final json = {
+      ..._$OptionalJsonToJson(model),
+      if (valueFieldValue != null)
+        _$OptionalJsonFieldMap['value']!: valueFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    OptionalJson model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ..._$OptionalJsonToJson(model),
+      if (valueFieldValue != null)
+        _$OptionalJsonFieldMap['value']!: valueFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    OptionalJson model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ..._$OptionalJsonToJson(model),
+      if (valueFieldValue != null)
+        _$OptionalJsonFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -6285,6 +6783,48 @@ abstract class MixedJsonDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    MixedJson model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    MixedJson model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    MixedJson model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -6339,6 +6879,54 @@ class _$MixedJsonDocumentReference
   @override
   Future<MixedJsonDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(MixedJsonDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    MixedJson model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$MixedJsonFieldMap['value']!: valueFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    MixedJson model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$MixedJsonFieldMap['value']!: valueFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    MixedJson model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$MixedJsonFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -7130,6 +7718,51 @@ abstract class RootDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    Root model, {
+    SetOptions? options,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    Root model, {
+    SetOptions? options,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    Root model, {
+    SetOptions? options,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -7209,6 +7842,63 @@ class _$RootDocumentReference
   @override
   Future<RootDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(RootDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    Root model, {
+    SetOptions? options,
+    FieldValue? nonNullableFieldValue,
+    FieldValue? nullableFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (nonNullableFieldValue != null)
+        _$RootFieldMap['nonNullable']!: nonNullableFieldValue,
+      if (nullableFieldValue != null)
+        _$RootFieldMap['nullable']!: nullableFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    Root model, {
+    SetOptions? options,
+    FieldValue? nonNullableFieldValue,
+    FieldValue? nullableFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (nonNullableFieldValue != null)
+        _$RootFieldMap['nonNullable']!: nonNullableFieldValue,
+      if (nullableFieldValue != null)
+        _$RootFieldMap['nullable']!: nullableFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    Root model, {
+    SetOptions? options,
+    FieldValue? nonNullableFieldValue,
+    FieldValue? nullableFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (nonNullableFieldValue != null)
+        _$RootFieldMap['nonNullable']!: nonNullableFieldValue,
+      if (nullableFieldValue != null)
+        _$RootFieldMap['nullable']!: nullableFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -8161,6 +8851,51 @@ abstract class SubDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    Sub model, {
+    SetOptions? options,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    Sub model, {
+    SetOptions? options,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    Sub model, {
+    SetOptions? options,
+    FieldValue nonNullableFieldValue,
+    FieldValue nullableFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -8226,6 +8961,63 @@ class _$SubDocumentReference
   @override
   Future<SubDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(SubDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    Sub model, {
+    SetOptions? options,
+    FieldValue? nonNullableFieldValue,
+    FieldValue? nullableFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (nonNullableFieldValue != null)
+        _$SubFieldMap['nonNullable']!: nonNullableFieldValue,
+      if (nullableFieldValue != null)
+        _$SubFieldMap['nullable']!: nullableFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    Sub model, {
+    SetOptions? options,
+    FieldValue? nonNullableFieldValue,
+    FieldValue? nullableFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (nonNullableFieldValue != null)
+        _$SubFieldMap['nonNullable']!: nonNullableFieldValue,
+      if (nullableFieldValue != null)
+        _$SubFieldMap['nullable']!: nullableFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    Sub model, {
+    SetOptions? options,
+    FieldValue? nonNullableFieldValue,
+    FieldValue? nullableFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (nonNullableFieldValue != null)
+        _$SubFieldMap['nonNullable']!: nonNullableFieldValue,
+      if (nullableFieldValue != null)
+        _$SubFieldMap['nullable']!: nullableFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -9183,6 +9975,48 @@ abstract class AsCamelCaseDocumentReference extends FirestoreDocumentReference<
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    AsCamelCase model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    AsCamelCase model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    AsCamelCase model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -9242,6 +10076,54 @@ class _$AsCamelCaseDocumentReference
   @override
   Future<AsCamelCaseDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(AsCamelCaseDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    AsCamelCase model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$AsCamelCaseFieldMap['value']!: valueFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    AsCamelCase model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$AsCamelCaseFieldMap['value']!: valueFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    AsCamelCase model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$AsCamelCaseFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -10037,6 +10919,48 @@ abstract class CustomSubNameDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    CustomSubName model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    CustomSubName model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    CustomSubName model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -10097,6 +11021,54 @@ class _$CustomSubNameDocumentReference extends FirestoreDocumentReference<
   Future<CustomSubNameDocumentSnapshot> transactionGet(
       Transaction transaction) {
     return transaction.get(reference).then(CustomSubNameDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    CustomSubName model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$CustomSubNameFieldMap['value']!: valueFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    CustomSubName model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$CustomSubNameFieldMap['value']!: valueFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    CustomSubName model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$CustomSubNameFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -10894,6 +11866,48 @@ abstract class ThisIsACustomPrefixDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    CustomClassPrefix model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    CustomClassPrefix model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    CustomClassPrefix model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -10956,6 +11970,54 @@ class _$ThisIsACustomPrefixDocumentReference extends FirestoreDocumentReference<
     return transaction
         .get(reference)
         .then(ThisIsACustomPrefixDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    CustomClassPrefix model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$CustomClassPrefixFieldMap['value']!: valueFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    CustomClassPrefix model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$CustomClassPrefixFieldMap['value']!: valueFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    CustomClassPrefix model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$CustomClassPrefixFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -11750,6 +12812,48 @@ abstract class ExplicitPathDocumentReference extends FirestoreDocumentReference<
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    ExplicitPath model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    ExplicitPath model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    ExplicitPath model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -11809,6 +12913,54 @@ class _$ExplicitPathDocumentReference extends FirestoreDocumentReference<
   @override
   Future<ExplicitPathDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(ExplicitPathDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    ExplicitPath model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$ExplicitPathFieldMap['value']!: valueFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    ExplicitPath model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$ExplicitPathFieldMap['value']!: valueFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    ExplicitPath model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$ExplicitPathFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -12605,6 +13757,48 @@ abstract class ExplicitSubPathDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    ExplicitSubPath model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    ExplicitSubPath model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    ExplicitSubPath model, {
+    SetOptions? options,
+    FieldValue valueFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -12665,6 +13859,54 @@ class _$ExplicitSubPathDocumentReference extends FirestoreDocumentReference<
   Future<ExplicitSubPathDocumentSnapshot> transactionGet(
       Transaction transaction) {
     return transaction.get(reference).then(ExplicitSubPathDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    ExplicitSubPath model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$ExplicitSubPathFieldMap['value']!: valueFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    ExplicitSubPath model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$ExplicitSubPathFieldMap['value']!: valueFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    ExplicitSubPath model, {
+    SetOptions? options,
+    FieldValue? valueFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (valueFieldValue != null)
+        _$ExplicitSubPathFieldMap['value']!: valueFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -13356,7 +14598,7 @@ void _$assertMinValidation(MinValidation instance) {
 
 IgnoredGetter _$IgnoredGetterFromJson(Map<String, dynamic> json) =>
     IgnoredGetter(
-      json['value'] as int,
+      (json['value'] as num).toInt(),
     );
 
 const _$IgnoredGetterFieldMap = <String, String>{
@@ -13400,7 +14642,7 @@ Nested _$NestedFromJson(Map<String, dynamic> json) => Nested(
       value: json['value'] == null
           ? null
           : Nested.fromJson(json['value'] as Map<String, dynamic>),
-      simple: json['simple'] as int?,
+      simple: (json['simple'] as num?)?.toInt(),
       valueList: (json['valueList'] as List<dynamic>?)
           ?.map((e) => Nested.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -13510,7 +14752,7 @@ Map<String, dynamic> _$EmptyModelToJson(EmptyModel instance) =>
 
 MinValidation _$MinValidationFromJson(Map<String, dynamic> json) =>
     MinValidation(
-      json['intNbr'] as int,
+      (json['intNbr'] as num).toInt(),
       (json['doubleNbr'] as num).toDouble(),
       json['numNbr'] as num,
     );
@@ -13540,7 +14782,7 @@ Map<String, dynamic> _$MinValidationToJson(MinValidation instance) =>
 
 Root _$RootFromJson(Map<String, dynamic> json) => Root(
       json['nonNullable'] as String,
-      json['nullable'] as int?,
+      (json['nullable'] as num?)?.toInt(),
     );
 
 const _$RootFieldMap = <String, String>{
@@ -13562,7 +14804,7 @@ Map<String, dynamic> _$RootToJson(Root instance) => <String, dynamic>{
     };
 
 OptionalJson _$OptionalJsonFromJson(Map<String, dynamic> json) => OptionalJson(
-      json['value'] as int,
+      (json['value'] as num).toInt(),
     );
 
 const _$OptionalJsonFieldMap = <String, String>{
@@ -13581,7 +14823,7 @@ Map<String, dynamic> _$OptionalJsonToJson(OptionalJson instance) =>
     };
 
 MixedJson _$MixedJsonFromJson(Map<String, dynamic> json) => MixedJson(
-      json['value'] as int,
+      (json['value'] as num).toInt(),
     );
 
 const _$MixedJsonFieldMap = <String, String>{
@@ -13600,7 +14842,7 @@ Map<String, dynamic> _$MixedJsonToJson(MixedJson instance) => <String, dynamic>{
 
 Sub _$SubFromJson(Map<String, dynamic> json) => Sub(
       json['nonNullable'] as String,
-      json['nullable'] as int?,
+      (json['nullable'] as num?)?.toInt(),
     );
 
 const _$SubFieldMap = <String, String>{

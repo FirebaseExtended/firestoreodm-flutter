@@ -29,5 +29,9 @@ dev_dependencies:
   json_serializable: ^6.6.1
   mockito: ^5.0.0
 
+dependency_overrides:
+  cloud_firestore_odm:
+    path: ../
+
 flutter:
   uses-material-design: true

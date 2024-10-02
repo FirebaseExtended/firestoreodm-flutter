@@ -120,10 +120,10 @@ class ${data.queryReferenceImplName}
   ${field.orderByDoc}
   ${data.queryReferenceInterfaceName} orderBy$titledNamed($positionalFields {
     bool descending = false,
-    ${field.type.getDisplayString(withNullability: true)} startAt,
-    ${field.type.getDisplayString(withNullability: true)} startAfter,
-    ${field.type.getDisplayString(withNullability: true)} endAt,
-    ${field.type.getDisplayString(withNullability: true)} endBefore,
+    ${field.type.getDisplayString()} startAt,
+    ${field.type.getDisplayString()} startAfter,
+    ${field.type.getDisplayString()} endAt,
+    ${field.type.getDisplayString()} endBefore,
     ${data.documentSnapshotName}? startAtDocument,
     ${data.documentSnapshotName}? endAtDocument,
     ${data.documentSnapshotName}? endBeforeDocument,

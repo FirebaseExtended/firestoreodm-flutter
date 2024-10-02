@@ -129,6 +129,51 @@ abstract class AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    AdvancedJson model, {
+    SetOptions? options,
+    FieldValue firstNameFieldValue,
+    FieldValue lastNameFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    AdvancedJson model, {
+    SetOptions? options,
+    FieldValue firstNameFieldValue,
+    FieldValue lastNameFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    AdvancedJson model, {
+    SetOptions? options,
+    FieldValue firstNameFieldValue,
+    FieldValue lastNameFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -189,6 +234,63 @@ class _$AdvancedJsonDocumentReference extends FirestoreDocumentReference<
   @override
   Future<AdvancedJsonDocumentSnapshot> transactionGet(Transaction transaction) {
     return transaction.get(reference).then(AdvancedJsonDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    AdvancedJson model, {
+    SetOptions? options,
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$AdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    AdvancedJson model, {
+    SetOptions? options,
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$AdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    AdvancedJson model, {
+    SetOptions? options,
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$AdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({
@@ -1157,6 +1259,51 @@ abstract class _PrivateAdvancedJsonDocumentReference
   @override
   Future<void> delete();
 
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    _PrivateAdvancedJson model, {
+    SetOptions? options,
+    FieldValue firstNameFieldValue,
+    FieldValue lastNameFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    _PrivateAdvancedJson model, {
+    SetOptions? options,
+    FieldValue firstNameFieldValue,
+    FieldValue lastNameFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    _PrivateAdvancedJson model, {
+    SetOptions? options,
+    FieldValue firstNameFieldValue,
+    FieldValue lastNameFieldValue,
+  });
+
   /// Updates data on the document. Data will be merged with any existing
   /// document data.
   ///
@@ -1221,6 +1368,63 @@ class _$_PrivateAdvancedJsonDocumentReference
     return transaction
         .get(reference)
         .then(_PrivateAdvancedJsonDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    _PrivateAdvancedJson model, {
+    SetOptions? options,
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    _PrivateAdvancedJson model, {
+    SetOptions? options,
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    _PrivateAdvancedJson model, {
+    SetOptions? options,
+    FieldValue? firstNameFieldValue,
+    FieldValue? lastNameFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (firstNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastNameFieldValue != null)
+        _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
+    };
+
+    batch.set(reference, json, options);
   }
 
   Future<void> update({

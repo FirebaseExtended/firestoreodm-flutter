@@ -11,7 +11,7 @@ mixin Names {
   DartType get type;
 
   late final String classPrefix = collectionPrefix ??
-      type.getDisplayString(withNullability: false).replaceFirstMapped(
+      type.getDisplayString().replaceFirstMapped(
             RegExp('[a-zA-Z]'),
             (match) => match.group(0)!.toUpperCase(),
           );

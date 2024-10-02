@@ -30,6 +30,8 @@ abstract class ${data.documentReferenceName} extends FirestoreDocumentReference<
   @override
   Future<void> delete();
 
+  ${_setPrototype(data)}
+
   ${_updatePrototype(data)}
 }
 
@@ -60,6 +62,8 @@ class _\$${data.documentReferenceName}
     return transaction.get(reference).then(${data.documentSnapshotName}._);
   }
 
+  ${_set(data)}
+
   ${_update(data)} 
 
   ${_equalAndHashCode(data)}
@@ -67,87 +71,226 @@ class _\$${data.documentReferenceName}
 ''';
   }
 
-  String _updatePrototype(CollectionData data) {
-    if (data.updatableFields.isEmpty) return '';
+  String _parameters(
+    CollectionData data, {
+    bool includeFields = true,
+    bool useSentinel = false,
+    bool includeFieldValues = true,
+    bool fieldValuesNullable = false,
+  }) {
+    final parameters = <String>[];
 
-    final parameters = [
-      for (final field in data.updatableFields)
-        if (field.updatable) ...[
-          '${field.type.getDisplayString(withNullability: true)} ${field.name},',
-          'FieldValue ${field.name}FieldValue,',
-        ],
-    ];
+    for (final field in data.updatableFields) {
+      if (!field.updatable) continue;
 
-    return '''
-/// Updates data on the document. Data will be merged with any existing
-/// document data.
-///
-/// If no document exists yet, the update will fail.
-Future<void> update({${parameters.join()}});
+      final fieldType = field.type.getDisplayString();
+      if (includeFields) {
+        final type = useSentinel ? 'Object?' : fieldType;
+        final defaultValue = useSentinel ? ' = _sentinel' : '';
+        parameters.add('$type ${field.name}$defaultValue,');
+      }
+      if (includeFieldValues) {
+        final suffix = fieldValuesNullable ? '?' : '';
+        parameters.add('FieldValue$suffix ${field.name}FieldValue,');
+      }
+    }
 
-/// Updates fields in the current document using the transaction API.
-///
-/// The update will fail if applied to a document that does not exist.
-void transactionUpdate(Transaction transaction, {${parameters.join()}});
-
-/// Updates fields in the current document using the batch API.
-///
-/// The update will fail if applied to a document that does not exist.
-void batchUpdate(WriteBatch batch, {${parameters.join()}});
-''';
+    return parameters.join('\n');
   }
 
-  String _update(CollectionData data) {
-    if (data.updatableFields.isEmpty) return '';
-
-    final parameters = [
+  // TODO support nested objects
+  String _json(
+    CollectionData data, {
+    bool includeFields = true,
+    bool includeFieldValues = true,
+  }) {
+    return [
       for (final field in data.updatableFields) ...[
-        'Object? ${field.name} = _sentinel,',
-        'FieldValue? ${field.name}FieldValue,',
-      ],
-    ];
-
-    // TODO support nested objects
-    final json = [
-      for (final field in data.updatableFields) ...[
-        '''
+        if (includeFields)
+          '''
         if (${field.name} != _sentinel)
           ${field.field}: ${data.perFieldToJson(field.name)}(${field.name} as ${field.type}),
         ''',
-        '''
+        if (includeFieldValues)
+          '''
         if (${field.name}FieldValue != null)
           ${field.field}: ${field.name}FieldValue ,
-        '''
+        ''',
       ],
-    ];
+    ].join('\n');
+  }
 
-    final asserts = [
+  String _asserts(CollectionData dat) {
+    return [
       for (final field in data.updatableFields)
         '''
         assert(
           ${field.name} == _sentinel || ${field.name}FieldValue == null,
           "Cannot specify both ${field.name} and ${field.name}FieldValue",
         );''',
-    ].join();
+    ].join('\n');
+  }
+
+  String _setPrototype(CollectionData data) {
+    if (data.updatableFields.isEmpty) return '';
+
+    final type = data.type.getDisplayString();
+    final parameters = _parameters(data, includeFields: false);
+
+    const fieldValueDoc = '''
+/// Any [FieldValue]s provided will replace the corresponding fields in the
+/// [model] during serialization.''';
 
     return '''
-Future<void> update({${parameters.join()}}) async {
+/// Sets data on the document, overwriting any existing data. If the document
+/// does not yet exist, it will be created.
+///
+/// If [SetOptions] are provided, the data can be merged into an existing
+/// document instead of overwriting.
+///
+$fieldValueDoc
+Future<void> set(
+  $type model, {
+  SetOptions? options,
+  $parameters
+});
+
+/// Writes to the document using the transaction API.
+///
+/// If the document does not exist yet, it will be created. If you pass
+/// [SetOptions], the provided data can be merged into the existing document.
+///
+$fieldValueDoc
+void transactionSet(
+  Transaction transaction,
+  $type model, {
+  SetOptions? options,
+  $parameters
+});
+
+/// Writes to the document using the batch API.
+///
+/// If the document does not exist yet, it will be created. If you pass
+/// [SetOptions], the provided data can be merged into the existing document.
+///
+$fieldValueDoc
+void batchSet(
+  WriteBatch batch,
+  $type model, {
+  SetOptions? options,
+  $parameters
+});
+''';
+  }
+
+  String _set(CollectionData data) {
+    if (data.updatableFields.isEmpty) return '';
+
+    final type = data.type.getDisplayString();
+    final parameters = _parameters(
+      data,
+      includeFields: false,
+      fieldValuesNullable: true,
+    );
+    final fieldValuesJson = _json(data, includeFields: false);
+    final json = '''
+{
+  ...${data.toJson('model')},
+  $fieldValuesJson
+}''';
+
+    return '''
+Future<void> set(
+  $type model, {
+  SetOptions? options,
+  $parameters
+}) async {
+  final json = $json;
+
+  final castedReference = reference.withConverter<Map<String, dynamic>>(
+    fromFirestore: (snapshot, options) => throw UnimplementedError(),
+    toFirestore: (value, options) => value,
+  );
+  return castedReference.set(json, options);
+}
+
+void transactionSet(
+  Transaction transaction,
+  $type model, {
+  SetOptions? options,
+  $parameters
+}) {
+  final json = $json;
+
+  transaction.set(reference, json, options);
+}
+
+void batchSet(
+  WriteBatch batch,
+  $type model, {
+  SetOptions? options,
+  $parameters
+}) {
+  final json = $json;
+
+  batch.set(reference, json, options);
+}
+''';
+  }
+
+  String _updatePrototype(CollectionData data) {
+    if (data.updatableFields.isEmpty) return '';
+
+    final parameters = _parameters(data);
+
+    return '''
+/// Updates data on the document. Data will be merged with any existing
+/// document data.
+///
+/// If no document exists yet, the update will fail.
+Future<void> update({$parameters});
+
+/// Updates fields in the current document using the transaction API.
+///
+/// The update will fail if applied to a document that does not exist.
+void transactionUpdate(Transaction transaction, {$parameters});
+
+/// Updates fields in the current document using the batch API.
+///
+/// The update will fail if applied to a document that does not exist.
+void batchUpdate(WriteBatch batch, {$parameters});
+''';
+  }
+
+  String _update(CollectionData data) {
+    if (data.updatableFields.isEmpty) return '';
+
+    final parameters = _parameters(
+      data,
+      useSentinel: true,
+      fieldValuesNullable: true,
+    );
+    final json = _json(data);
+    final asserts = _asserts(data);
+
+    return '''
+Future<void> update({$parameters}) async {
   $asserts
-  final json = {${json.join()}};
+  final json = {$json};
 
   return reference.update(json);
 }
 
-void transactionUpdate(Transaction transaction, {${parameters.join()}}) {
+void transactionUpdate(Transaction transaction, {$parameters}) {
   $asserts
-  final json = {${json.join()}};
+  final json = {$json};
 
   transaction.update(reference, json);
 }
 
-void batchUpdate(WriteBatch batch, {${parameters.join()}}) {
+void batchUpdate(WriteBatch batch, {$parameters}) {
   $asserts
-  final json = {${json.join()}};
+  final json = {$json};
 
   batch.update(reference, json);
 }

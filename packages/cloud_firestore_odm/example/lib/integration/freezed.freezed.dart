@@ -26,8 +26,12 @@ mixin _$Person {
   @JsonKey(includeFromJson: false, includeToJson: false)
   int? get ignored => throw _privateConstructorUsedError;
 
+  /// Serializes this Person to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Person
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PersonCopyWith<Person> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -52,6 +56,8 @@ class _$PersonCopyWithImpl<$Res, $Val extends Person>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Person
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$PersonImplCopyWithImpl<$Res>
       _$PersonImpl _value, $Res Function(_$PersonImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Person
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,11 +167,13 @@ class _$PersonImpl implements _Person {
             (identical(other.ignored, ignored) || other.ignored == ignored));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, firstName, lastName, ignored);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Person
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PersonImplCopyWith<_$PersonImpl> get copyWith =>
@@ -194,8 +204,11 @@ abstract class _Person implements Person {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   int? get ignored;
+
+  /// Create a copy of Person
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PersonImplCopyWith<_$PersonImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -208,8 +221,12 @@ PublicRedirected _$PublicRedirectedFromJson(Map<String, dynamic> json) {
 mixin _$PublicRedirected {
   String get value => throw _privateConstructorUsedError;
 
+  /// Serializes this PublicRedirected to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PublicRedirected
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PublicRedirectedCopyWith<PublicRedirected> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -233,6 +250,8 @@ class _$PublicRedirectedCopyWithImpl<$Res, $Val extends PublicRedirected>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PublicRedirected
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -266,6 +285,8 @@ class __$$PublicRedirected2ImplCopyWithImpl<$Res>
       $Res Function(_$PublicRedirected2Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PublicRedirected
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -304,11 +325,13 @@ class _$PublicRedirected2Impl implements PublicRedirected2 {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PublicRedirected
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PublicRedirected2ImplCopyWith<_$PublicRedirected2Impl> get copyWith =>
@@ -332,8 +355,11 @@ abstract class PublicRedirected2 implements PublicRedirected {
 
   @override
   String get value;
+
+  /// Create a copy of PublicRedirected
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PublicRedirected2ImplCopyWith<_$PublicRedirected2Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }
