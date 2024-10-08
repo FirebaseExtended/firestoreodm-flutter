@@ -204,8 +204,8 @@ class EmailAddressValidator implements Validator {
   const EmailAddressValidator();
 
   @override
-  void validate(Object? value, String propertyName) {
-    if (value is String && !value.endsWith("@google.com")) {
+  void validate(covariant String value, String propertyName) {
+    if (!value.endsWith("@google.com")) {
       throw ArgumentError.value(value, propertyName);
     }
   }
