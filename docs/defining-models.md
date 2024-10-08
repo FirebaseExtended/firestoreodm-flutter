@@ -200,12 +200,12 @@ ensure the string value provided to `email` is in-fact a valid email address.
 To define a custom validator, create a class which implements `Validator`:
 
 ```dart
-class EmailAddressValidator implements Validator<String> {
+class EmailAddressValidator implements Validator {
   const EmailAddressValidator();
 
   @override
-  void validate(String value) {
-    if (!value.endsWith("@google.com")) {
+  void validate(Object? value, String propertyName) {
+    if (value is String && !value.endsWith("@google.com")) {
       throw Exception("Email address is not valid!");
     }
   }
