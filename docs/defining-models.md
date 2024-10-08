@@ -206,7 +206,7 @@ class EmailAddressValidator implements Validator {
   @override
   void validate(Object? value, String propertyName) {
     if (value is String && !value.endsWith("@google.com")) {
-      throw Exception("Email address is not valid!");
+      throw ArgumentError.value(value, propertyName);
     }
   }
 }
