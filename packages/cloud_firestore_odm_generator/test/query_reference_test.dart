@@ -92,5 +92,22 @@ void main() {
         compiles,
       );
     });
+
+    test('does not generate for static getters', () {
+      expect(
+        library.withCode(
+          '''
+import 'simple.dart';
+
+void main() {
+  // expect-error: UNDEFINED_METHOD
+  staticGetterRef.whereStaticGetter();
+  staticGetterRef.whereInstanceGetter();
+}
+''',
+        ),
+        compiles,
+      );
+    });
   });
 }

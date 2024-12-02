@@ -230,3 +230,14 @@ class ExplicitSubPath {
 @Collection<ExplicitPath>('root/doc/path')
 @Collection<ExplicitSubPath>('root/doc/path/*/sub')
 final explicitRef = ExplicitPathCollectionReference();
+
+@JsonSerializable()
+class StaticGetter {
+  const StaticGetter(this.instanceGetter);
+
+  static const num staticGetter = 42;
+  final num instanceGetter;
+}
+
+@Collection<StaticGetter>('root')
+final staticGetterRef = StaticGetterCollectionReference();
