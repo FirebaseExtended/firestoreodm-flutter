@@ -29,6 +29,8 @@ void main() {
   ignoredGetterRef.whereCount3();
   // expect-error: UNDEFINED_METHOD
   ignoredGetterRef.whereHashCode();
+  // expect-error: UNDEFINED_METHOD
+  ignoredGetterRef.whereStaticGetter();
 }
 ''',
         ),
@@ -86,23 +88,6 @@ void main() {
   personRef.orderByIgnored();
   // expect-error: UNDEFINED_METHOD
   personRef.whereIgnored();
-}
-''',
-        ),
-        compiles,
-      );
-    });
-
-    test('does not generate for static getters', () {
-      expect(
-        library.withCode(
-          '''
-import 'simple.dart';
-
-void main() {
-  // expect-error: UNDEFINED_METHOD
-  staticGetterRef.whereStaticGetter();
-  staticGetterRef.whereInstanceGetter();
 }
 ''',
         ),

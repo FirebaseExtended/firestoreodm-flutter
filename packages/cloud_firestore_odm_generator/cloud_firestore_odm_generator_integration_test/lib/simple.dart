@@ -24,6 +24,8 @@ class IgnoredGetter {
 
   @JsonKey(includeFromJson: true, includeToJson: true)
   int get count3 => 42;
+
+  static const staticGetter = 42;
 }
 
 @Collection<Model>('root')
@@ -230,14 +232,3 @@ class ExplicitSubPath {
 @Collection<ExplicitPath>('root/doc/path')
 @Collection<ExplicitSubPath>('root/doc/path/*/sub')
 final explicitRef = ExplicitPathCollectionReference();
-
-@JsonSerializable()
-class StaticGetter {
-  const StaticGetter(this.instanceGetter);
-
-  static const num staticGetter = 42;
-  final num instanceGetter;
-}
-
-@Collection<StaticGetter>('root')
-final staticGetterRef = StaticGetterCollectionReference();
