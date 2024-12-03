@@ -31,6 +31,10 @@ void main() {
   ignoredGetterRef.whereHashCode();
   // expect-error: UNDEFINED_METHOD
   ignoredGetterRef.whereStaticGetter();
+
+  subClassRef.whereInstanceGetter();
+  // expect-error: UNDEFINED_METHOD
+  subClassRef.whereStaticGetter();
 }
 ''',
         ),

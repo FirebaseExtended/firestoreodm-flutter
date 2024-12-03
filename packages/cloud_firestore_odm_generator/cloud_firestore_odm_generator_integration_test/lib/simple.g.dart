@@ -14581,6 +14581,926 @@ class ExplicitSubPathQueryDocumentSnapshot
   }
 }
 
+/// A collection reference object can be used for adding documents,
+/// getting document references, and querying for documents
+/// (using the methods inherited from Query).
+abstract class SubClassCollectionReference
+    implements
+        SubClassQuery,
+        FirestoreCollectionReference<SubClass, SubClassQuerySnapshot> {
+  factory SubClassCollectionReference([
+    FirebaseFirestore? firestore,
+  ]) = _$SubClassCollectionReference;
+
+  static SubClass fromFirestore(
+    DocumentSnapshot<Map<String, Object?>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    return SubClass.fromJson(snapshot.data()!);
+  }
+
+  static Map<String, Object?> toFirestore(
+    SubClass value,
+    SetOptions? options,
+  ) {
+    return value.toJson();
+  }
+
+  @override
+  CollectionReference<SubClass> get reference;
+
+  @override
+  SubClassDocumentReference doc([String? id]);
+
+  /// Add a new document to this collection with the specified data,
+  /// assigning it a document ID automatically.
+  Future<SubClassDocumentReference> add(SubClass value);
+}
+
+class _$SubClassCollectionReference extends _$SubClassQuery
+    implements SubClassCollectionReference {
+  factory _$SubClassCollectionReference([FirebaseFirestore? firestore]) {
+    firestore ??= FirebaseFirestore.instance;
+
+    return _$SubClassCollectionReference._(
+      firestore.collection('root').withConverter(
+            fromFirestore: SubClassCollectionReference.fromFirestore,
+            toFirestore: SubClassCollectionReference.toFirestore,
+          ),
+    );
+  }
+
+  _$SubClassCollectionReference._(
+    CollectionReference<SubClass> reference,
+  ) : super(reference, $referenceWithoutCursor: reference);
+
+  String get path => reference.path;
+
+  @override
+  CollectionReference<SubClass> get reference =>
+      super.reference as CollectionReference<SubClass>;
+
+  @override
+  SubClassDocumentReference doc([String? id]) {
+    assert(
+      id == null || id.split('/').length == 1,
+      'The document ID cannot be from a different collection',
+    );
+    return SubClassDocumentReference(
+      reference.doc(id),
+    );
+  }
+
+  @override
+  Future<SubClassDocumentReference> add(SubClass value) {
+    return reference.add(value).then((ref) => SubClassDocumentReference(ref));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$SubClassCollectionReference &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+abstract class SubClassDocumentReference
+    extends FirestoreDocumentReference<SubClass, SubClassDocumentSnapshot> {
+  factory SubClassDocumentReference(DocumentReference<SubClass> reference) =
+      _$SubClassDocumentReference;
+
+  DocumentReference<SubClass> get reference;
+
+  /// A reference to the [SubClassCollectionReference] containing this document.
+  SubClassCollectionReference get parent {
+    return _$SubClassCollectionReference(reference.firestore);
+  }
+
+  @override
+  Stream<SubClassDocumentSnapshot> snapshots();
+
+  @override
+  Future<SubClassDocumentSnapshot> get([GetOptions? options]);
+
+  @override
+  Future<void> delete();
+
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    SubClass model, {
+    SetOptions? options,
+    FieldValue instanceGetterFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    SubClass model, {
+    SetOptions? options,
+    FieldValue instanceGetterFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    SubClass model, {
+    SetOptions? options,
+    FieldValue instanceGetterFieldValue,
+  });
+
+  /// Updates data on the document. Data will be merged with any existing
+  /// document data.
+  ///
+  /// If no document exists yet, the update will fail.
+  Future<void> update({
+    int instanceGetter,
+    FieldValue instanceGetterFieldValue,
+  });
+
+  /// Updates fields in the current document using the transaction API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void transactionUpdate(
+    Transaction transaction, {
+    int instanceGetter,
+    FieldValue instanceGetterFieldValue,
+  });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    int instanceGetter,
+    FieldValue instanceGetterFieldValue,
+  });
+}
+
+class _$SubClassDocumentReference
+    extends FirestoreDocumentReference<SubClass, SubClassDocumentSnapshot>
+    implements SubClassDocumentReference {
+  _$SubClassDocumentReference(this.reference);
+
+  @override
+  final DocumentReference<SubClass> reference;
+
+  /// A reference to the [SubClassCollectionReference] containing this document.
+  SubClassCollectionReference get parent {
+    return _$SubClassCollectionReference(reference.firestore);
+  }
+
+  @override
+  Stream<SubClassDocumentSnapshot> snapshots() {
+    return reference.snapshots().map(SubClassDocumentSnapshot._);
+  }
+
+  @override
+  Future<SubClassDocumentSnapshot> get([GetOptions? options]) {
+    return reference.get(options).then(SubClassDocumentSnapshot._);
+  }
+
+  @override
+  Future<SubClassDocumentSnapshot> transactionGet(Transaction transaction) {
+    return transaction.get(reference).then(SubClassDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    SubClass model, {
+    SetOptions? options,
+    FieldValue? instanceGetterFieldValue,
+  }) async {
+    final json = {
+      ...model.toJson(),
+      if (instanceGetterFieldValue != null)
+        _$SubClassFieldMap['instanceGetter']!: instanceGetterFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    SubClass model, {
+    SetOptions? options,
+    FieldValue? instanceGetterFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (instanceGetterFieldValue != null)
+        _$SubClassFieldMap['instanceGetter']!: instanceGetterFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    SubClass model, {
+    SetOptions? options,
+    FieldValue? instanceGetterFieldValue,
+  }) {
+    final json = {
+      ...model.toJson(),
+      if (instanceGetterFieldValue != null)
+        _$SubClassFieldMap['instanceGetter']!: instanceGetterFieldValue,
+    };
+
+    batch.set(reference, json, options);
+  }
+
+  Future<void> update({
+    Object? instanceGetter = _sentinel,
+    FieldValue? instanceGetterFieldValue,
+  }) async {
+    assert(
+      instanceGetter == _sentinel || instanceGetterFieldValue == null,
+      "Cannot specify both instanceGetter and instanceGetterFieldValue",
+    );
+    final json = {
+      if (instanceGetter != _sentinel)
+        _$SubClassFieldMap['instanceGetter']!:
+            _$SubClassPerFieldToJson.instanceGetter(instanceGetter as int),
+      if (instanceGetterFieldValue != null)
+        _$SubClassFieldMap['instanceGetter']!: instanceGetterFieldValue,
+    };
+
+    return reference.update(json);
+  }
+
+  void transactionUpdate(
+    Transaction transaction, {
+    Object? instanceGetter = _sentinel,
+    FieldValue? instanceGetterFieldValue,
+  }) {
+    assert(
+      instanceGetter == _sentinel || instanceGetterFieldValue == null,
+      "Cannot specify both instanceGetter and instanceGetterFieldValue",
+    );
+    final json = {
+      if (instanceGetter != _sentinel)
+        _$SubClassFieldMap['instanceGetter']!:
+            _$SubClassPerFieldToJson.instanceGetter(instanceGetter as int),
+      if (instanceGetterFieldValue != null)
+        _$SubClassFieldMap['instanceGetter']!: instanceGetterFieldValue,
+    };
+
+    transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? instanceGetter = _sentinel,
+    FieldValue? instanceGetterFieldValue,
+  }) {
+    assert(
+      instanceGetter == _sentinel || instanceGetterFieldValue == null,
+      "Cannot specify both instanceGetter and instanceGetterFieldValue",
+    );
+    final json = {
+      if (instanceGetter != _sentinel)
+        _$SubClassFieldMap['instanceGetter']!:
+            _$SubClassPerFieldToJson.instanceGetter(instanceGetter as int),
+      if (instanceGetterFieldValue != null)
+        _$SubClassFieldMap['instanceGetter']!: instanceGetterFieldValue,
+    };
+
+    batch.update(reference, json);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is SubClassDocumentReference &&
+        other.runtimeType == runtimeType &&
+        other.parent == parent &&
+        other.id == id;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, parent, id);
+}
+
+abstract class SubClassQuery
+    implements QueryReference<SubClass, SubClassQuerySnapshot> {
+  @override
+  SubClassQuery limit(int limit);
+
+  @override
+  SubClassQuery limitToLast(int limit);
+
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  SubClassQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  SubClassQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  SubClassQuery whereInstanceGetter({
+    int? isEqualTo,
+    int? isNotEqualTo,
+    int? isLessThan,
+    int? isLessThanOrEqualTo,
+    int? isGreaterThan,
+    int? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  });
+
+  /// Perform an order query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of order queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.orderByFieldPath(
+  ///   FieldPath.fromString('title'),
+  ///   startAt: 'title',
+  /// );
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.orderByTitle(startAt: 'title');
+  /// ```
+  SubClassQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
+    SubClassDocumentSnapshot? startAtDocument,
+    SubClassDocumentSnapshot? endAtDocument,
+    SubClassDocumentSnapshot? endBeforeDocument,
+    SubClassDocumentSnapshot? startAfterDocument,
+  });
+
+  SubClassQuery orderByDocumentId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    SubClassDocumentSnapshot? startAtDocument,
+    SubClassDocumentSnapshot? endAtDocument,
+    SubClassDocumentSnapshot? endBeforeDocument,
+    SubClassDocumentSnapshot? startAfterDocument,
+  });
+
+  SubClassQuery orderByInstanceGetter({
+    bool descending = false,
+    int startAt,
+    int startAfter,
+    int endAt,
+    int endBefore,
+    SubClassDocumentSnapshot? startAtDocument,
+    SubClassDocumentSnapshot? endAtDocument,
+    SubClassDocumentSnapshot? endBeforeDocument,
+    SubClassDocumentSnapshot? startAfterDocument,
+  });
+}
+
+class _$SubClassQuery extends QueryReference<SubClass, SubClassQuerySnapshot>
+    implements SubClassQuery {
+  _$SubClassQuery(
+    this._collection, {
+    required Query<SubClass> $referenceWithoutCursor,
+    $QueryCursor $queryCursor = const $QueryCursor(),
+  }) : super(
+          $referenceWithoutCursor: $referenceWithoutCursor,
+          $queryCursor: $queryCursor,
+        );
+
+  final CollectionReference<Object?> _collection;
+
+  @override
+  Stream<SubClassQuerySnapshot> snapshots([SnapshotOptions? options]) {
+    return reference.snapshots().map(SubClassQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  Future<SubClassQuerySnapshot> get([GetOptions? options]) {
+    return reference
+        .get(options)
+        .then(SubClassQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  SubClassQuery limit(int limit) {
+    return _$SubClassQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limit(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SubClassQuery limitToLast(int limit) {
+    return _$SubClassQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limitToLast(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SubClassQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$SubClassQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SubClassQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$SubClassQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SubClassQuery whereInstanceGetter({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$SubClassQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SubClassFieldMap['instanceGetter']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$SubClassPerFieldToJson.instanceGetter(isEqualTo as int)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$SubClassPerFieldToJson.instanceGetter(isNotEqualTo as int)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$SubClassPerFieldToJson.instanceGetter(isLessThan as int)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$SubClassPerFieldToJson
+                .instanceGetter(isLessThanOrEqualTo as int)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$SubClassPerFieldToJson.instanceGetter(isGreaterThan as int)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$SubClassPerFieldToJson
+                .instanceGetter(isGreaterThanOrEqualTo as int)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$SubClassPerFieldToJson.instanceGetter(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$SubClassPerFieldToJson.instanceGetter(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SubClassQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SubClassDocumentSnapshot? startAtDocument,
+    SubClassDocumentSnapshot? endAtDocument,
+    SubClassDocumentSnapshot? endBeforeDocument,
+    SubClassDocumentSnapshot? startAfterDocument,
+  }) {
+    final query =
+        $referenceWithoutCursor.orderBy(fieldPath, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SubClassQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  SubClassQuery orderByDocumentId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SubClassDocumentSnapshot? startAtDocument,
+    SubClassDocumentSnapshot? endAtDocument,
+    SubClassDocumentSnapshot? endBeforeDocument,
+    SubClassDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(FieldPath.documentId,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SubClassQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  SubClassQuery orderByInstanceGetter({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SubClassDocumentSnapshot? startAtDocument,
+    SubClassDocumentSnapshot? endAtDocument,
+    SubClassDocumentSnapshot? endBeforeDocument,
+    SubClassDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$SubClassFieldMap['instanceGetter']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SubClassQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$SubClassQuery &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+class SubClassDocumentSnapshot extends FirestoreDocumentSnapshot<SubClass> {
+  SubClassDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<SubClass> snapshot;
+
+  @override
+  SubClassDocumentReference get reference {
+    return SubClassDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final SubClass? data;
+}
+
+class SubClassQuerySnapshot
+    extends FirestoreQuerySnapshot<SubClass, SubClassQueryDocumentSnapshot> {
+  SubClassQuerySnapshot._(
+    this.snapshot,
+    this.docs,
+    this.docChanges,
+  );
+
+  factory SubClassQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<SubClass> snapshot,
+  ) {
+    final docs = snapshot.docs.map(SubClassQueryDocumentSnapshot._).toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        SubClassDocumentSnapshot._,
+      );
+    }).toList();
+
+    return SubClassQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<SubClassDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    SubClassDocumentSnapshot Function(DocumentSnapshot<T> doc) decodeDoc,
+  ) {
+    return FirestoreDocumentChange<SubClassDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
+
+  final QuerySnapshot<SubClass> snapshot;
+
+  @override
+  final List<SubClassQueryDocumentSnapshot> docs;
+
+  @override
+  final List<FirestoreDocumentChange<SubClassDocumentSnapshot>> docChanges;
+}
+
+class SubClassQueryDocumentSnapshot
+    extends FirestoreQueryDocumentSnapshot<SubClass>
+    implements SubClassDocumentSnapshot {
+  SubClassQueryDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final QueryDocumentSnapshot<SubClass> snapshot;
+
+  @override
+  final SubClass data;
+
+  @override
+  SubClassDocumentReference get reference {
+    return SubClassDocumentReference(snapshot.reference);
+  }
+}
+
 // **************************************************************************
 // ValidatorGenerator
 // **************************************************************************
@@ -14959,4 +15879,22 @@ abstract class _$ExplicitSubPathPerFieldToJson {
 Map<String, dynamic> _$ExplicitSubPathToJson(ExplicitSubPath instance) =>
     <String, dynamic>{
       'value': instance.value,
+    };
+
+SubClass _$SubClassFromJson(Map<String, dynamic> json) => SubClass(
+      (json['instanceGetter'] as num).toInt(),
+    );
+
+const _$SubClassFieldMap = <String, String>{
+  'instanceGetter': 'instanceGetter',
+};
+
+// ignore: unused_element
+abstract class _$SubClassPerFieldToJson {
+  // ignore: unused_element
+  static Object? instanceGetter(int instance) => instance;
+}
+
+Map<String, dynamic> _$SubClassToJson(SubClass instance) => <String, dynamic>{
+      'instanceGetter': instance.instanceGetter,
     };

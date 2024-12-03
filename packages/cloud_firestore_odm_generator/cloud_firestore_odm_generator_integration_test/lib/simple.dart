@@ -232,3 +232,23 @@ class ExplicitSubPath {
 @Collection<ExplicitPath>('root/doc/path')
 @Collection<ExplicitSubPath>('root/doc/path/*/sub')
 final explicitRef = ExplicitPathCollectionReference();
+
+abstract class BaseClass {
+  const BaseClass(this.instanceGetter);
+
+  static const staticGetter = 42;
+  final int instanceGetter;
+}
+
+@JsonSerializable()
+class SubClass extends BaseClass {
+  SubClass(super.instanceGetter);
+
+  factory SubClass.fromJson(Map<String, Object?> json) =>
+      _$SubClassFromJson(json);
+
+  Map<String, Object?> toJson() => _$SubClassToJson(this);
+}
+
+@Collection<SubClass>('root')
+final subClassRef = SubClassCollectionReference();
