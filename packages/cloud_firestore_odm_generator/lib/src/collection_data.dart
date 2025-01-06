@@ -431,12 +431,11 @@ extension on ClassElement {
     } else {
       final uniqueFields = <String, FieldElement>{};
 
-      final allFields = [
-        ...fields,
-        ...allSupertypes
-            .where((e) => !e.isDartCoreObject)
-            .expand((e) => e.element.fields),
-      ];
+      final allFields = const <FieldElement>[].followedBy(fields).followedBy(
+            allSupertypes
+                .where((e) => !e.isDartCoreObject)
+                .expand((e) => e.element.fields),
+          );
 
       for (final field in allFields) {
         if (field.getter != null && !field.getter!.isSynthetic) continue;
