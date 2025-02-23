@@ -1,3 +1,7 @@
+## 1.0.0-dev.90 - 2025-02-23
+
+- Ignore static getters on annotated classes (thanks to @Rexios80)
+
 ## 1.0.0-dev.89
 
 - **Breaking**: `set` options are not a named parameter.
