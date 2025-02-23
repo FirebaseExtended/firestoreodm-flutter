@@ -55,7 +55,7 @@ class _PrivateAdvancedJson {
   _PrivateAdvancedJson({
     this.firstName,
     this.lastName,
-    // ignore: unused_element
+    // ignore: unused_element, unused_element_parameter
     this.ignored,
   });
 
