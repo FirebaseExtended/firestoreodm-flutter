@@ -425,30 +425,24 @@ extension on ClassElement {
   Iterable<VariableElement> allFields({
     required bool hasFreezed,
     required List<ConstructorElement> freezedConstructors,
-  }) sync* {
+  }) {
     if (hasFreezed) {
-      yield* freezedConstructors.single.parameters;
+      return freezedConstructors.single.parameters;
     } else {
       final uniqueFields = <String, FieldElement>{};
 
-      for (final field in fields) {
-        if (field.getter != null && !field.getter!.isSynthetic) {
-          continue;
-        }
+      final allFields = const <FieldElement>[].followedBy(fields).followedBy(
+            allSupertypes
+                .where((e) => !e.isDartCoreObject)
+                .expand((e) => e.element.fields),
+          );
+
+      for (final field in allFields) {
+        if (field.getter != null && !field.getter!.isSynthetic) continue;
+        if (field.isStatic) continue;
         uniqueFields[field.name] ??= field;
       }
-
-      for (final supertype in allSupertypes) {
-        if (supertype.isDartCoreObject) continue;
-
-        for (final field in supertype.element.fields) {
-          if (field.getter != null && !field.getter!.isSynthetic) {
-            continue;
-          }
-          uniqueFields[field.name] ??= field;
-        }
-      }
-      yield* uniqueFields.values;
+      return uniqueFields.values;
     }
   }
 }
