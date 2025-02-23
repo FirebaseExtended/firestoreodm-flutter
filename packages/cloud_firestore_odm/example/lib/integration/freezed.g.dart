@@ -269,7 +269,12 @@ class _$PersonDocumentReference
         _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    transaction.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    transaction.set(castedReference, json, options);
   }
 
   void batchSet(
@@ -287,7 +292,12 @@ class _$PersonDocumentReference
         _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    batch.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    batch.set(castedReference, json, options);
   }
 
   Future<void> update({
@@ -1372,7 +1382,12 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
         _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
     };
 
-    transaction.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    transaction.set(castedReference, json, options);
   }
 
   void batchSet(
@@ -1387,7 +1402,12 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
         _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
     };
 
-    batch.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    batch.set(castedReference, json, options);
   }
 
   Future<void> update({

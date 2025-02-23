@@ -272,7 +272,12 @@ class _$AdvancedJsonDocumentReference extends FirestoreDocumentReference<
         _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    transaction.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    transaction.set(castedReference, json, options);
   }
 
   void batchSet(
@@ -290,7 +295,12 @@ class _$AdvancedJsonDocumentReference extends FirestoreDocumentReference<
         _$AdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    batch.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    batch.set(castedReference, json, options);
   }
 
   Future<void> update({
@@ -1406,7 +1416,12 @@ class _$_PrivateAdvancedJsonDocumentReference
         _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    transaction.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    transaction.set(castedReference, json, options);
   }
 
   void batchSet(
@@ -1424,7 +1439,12 @@ class _$_PrivateAdvancedJsonDocumentReference
         _$PrivateAdvancedJsonFieldMap['lastName']!: lastNameFieldValue,
     };
 
-    batch.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    batch.set(castedReference, json, options);
   }
 
   Future<void> update({

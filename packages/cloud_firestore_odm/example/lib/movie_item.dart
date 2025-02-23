@@ -149,16 +149,16 @@ class _LikesState extends State<Likes> {
       // count on the server.
       final newLikes = await FirebaseFirestore.instance
           .runTransaction<int>((transaction) async {
-        final movie = await transaction.get<Movie>(widget.reference.reference);
+        final movie = await widget.reference.transactionGet(transaction);
 
         if (!movie.exists) {
           throw Exception('Document does not exist!');
         }
 
-        final updatedLikes = movie.data()!.likes + 1;
-        transaction.update(
-          widget.reference.reference,
-          <String, Object?>{'likes': updatedLikes},
+        final updatedLikes = movie.data!.likes + 1;
+        widget.reference.transactionUpdate(
+          transaction,
+          likes: updatedLikes,
         );
         return updatedLikes;
       });

@@ -260,7 +260,12 @@ class _$DurationQueryDocumentReference extends FirestoreDocumentReference<
         _$DurationQueryFieldMap['duration']!: durationFieldValue,
     };
 
-    transaction.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    transaction.set(castedReference, json, options);
   }
 
   void batchSet(
@@ -275,7 +280,12 @@ class _$DurationQueryDocumentReference extends FirestoreDocumentReference<
         _$DurationQueryFieldMap['duration']!: durationFieldValue,
     };
 
-    batch.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    batch.set(castedReference, json, options);
   }
 
   Future<void> update({
@@ -1190,7 +1200,12 @@ class _$DateTimeQueryDocumentReference extends FirestoreDocumentReference<
         _$DateTimeQueryFieldMap['time']!: timeFieldValue,
     };
 
-    transaction.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    transaction.set(castedReference, json, options);
   }
 
   void batchSet(
@@ -1205,7 +1220,12 @@ class _$DateTimeQueryDocumentReference extends FirestoreDocumentReference<
         _$DateTimeQueryFieldMap['time']!: timeFieldValue,
     };
 
-    batch.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    batch.set(castedReference, json, options);
   }
 
   Future<void> update({
@@ -2122,7 +2142,12 @@ class _$TimestampQueryDocumentReference extends FirestoreDocumentReference<
         _$TimestampQueryFieldMap['time']!: timeFieldValue,
     };
 
-    transaction.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    transaction.set(castedReference, json, options);
   }
 
   void batchSet(
@@ -2137,7 +2162,12 @@ class _$TimestampQueryDocumentReference extends FirestoreDocumentReference<
         _$TimestampQueryFieldMap['time']!: timeFieldValue,
     };
 
-    batch.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    batch.set(castedReference, json, options);
   }
 
   Future<void> update({
@@ -3055,7 +3085,12 @@ class _$GeoPointQueryDocumentReference extends FirestoreDocumentReference<
         _$GeoPointQueryFieldMap['point']!: pointFieldValue,
     };
 
-    transaction.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    transaction.set(castedReference, json, options);
   }
 
   void batchSet(
@@ -3070,7 +3105,12 @@ class _$GeoPointQueryDocumentReference extends FirestoreDocumentReference<
         _$GeoPointQueryFieldMap['point']!: pointFieldValue,
     };
 
-    batch.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    batch.set(castedReference, json, options);
   }
 
   Future<void> update({
@@ -3995,7 +4035,12 @@ class _$DocumentReferenceQueryDocumentReference
         _$DocumentReferenceQueryFieldMap['ref']!: refFieldValue,
     };
 
-    transaction.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    transaction.set(castedReference, json, options);
   }
 
   void batchSet(
@@ -4010,7 +4055,12 @@ class _$DocumentReferenceQueryDocumentReference
         _$DocumentReferenceQueryFieldMap['ref']!: refFieldValue,
     };
 
-    batch.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    batch.set(castedReference, json, options);
   }
 
   Future<void> update({

@@ -312,7 +312,12 @@ class _$EnumsDocumentReference
         _$EnumsFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
     };
 
-    transaction.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    transaction.set(castedReference, json, options);
   }
 
   void batchSet(
@@ -338,7 +343,12 @@ class _$EnumsDocumentReference
         _$EnumsFieldMap['nullableEnumList']!: nullableEnumListFieldValue,
     };
 
-    batch.set(reference, json, options);
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+
+    batch.set(castedReference, json, options);
   }
 
   Future<void> update({

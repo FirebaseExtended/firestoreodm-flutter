@@ -221,8 +221,13 @@ void transactionSet(
   $parameters
 }) {
   final json = $json;
+  
+  final castedReference = reference.withConverter<Map<String, dynamic>>(
+    fromFirestore: (snapshot, options) => throw UnimplementedError(),
+    toFirestore: (value, options) => value,
+  );
 
-  transaction.set(reference, json, options);
+  transaction.set(castedReference, json, options);
 }
 
 void batchSet(
@@ -233,7 +238,12 @@ void batchSet(
 }) {
   final json = $json;
 
-  batch.set(reference, json, options);
+  final castedReference = reference.withConverter<Map<String, dynamic>>(
+    fromFirestore: (snapshot, options) => throw UnimplementedError(),
+    toFirestore: (value, options) => value,
+  );
+
+  batch.set(castedReference, json, options);
 }
 ''';
   }
