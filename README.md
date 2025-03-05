@@ -23,6 +23,12 @@ The ODM allows data schemas to be defined which represent the data structure of 
 - 🎯 Data selectors to help avoid unnecessary Widget rebuilds.
 - 💻 Full API code completion.
 
+## Compatibility
+
+- **Freezed**: Compatible with Freezed 3.0.0 and above
+- **Analyzer**: Supports analyzer 7.0.0 and above
+- **Source Gen**: Compatible with source_gen 2.0.0 and above
+
 ## Installation
 
 ### 1. Use a recent Dart version
@@ -34,7 +40,7 @@ That is done by adding the following to your `pubspec.yaml`:
 
 ```yaml
 environment:
-  sdk: ">=2.18.0 <4.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 ```
 
 ### 2. FlutterFire Initialization

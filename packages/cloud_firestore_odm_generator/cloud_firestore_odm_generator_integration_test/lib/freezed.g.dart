@@ -240,9 +240,9 @@ class _$PersonDocumentReference
     final json = {
       ...model.toJson(),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     final castedReference = reference.withConverter<Map<String, dynamic>>(
@@ -262,9 +262,9 @@ class _$PersonDocumentReference
     final json = {
       ...model.toJson(),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     transaction.set(reference, json, options);
@@ -280,9 +280,9 @@ class _$PersonDocumentReference
     final json = {
       ...model.toJson(),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     batch.set(reference, json, options);
@@ -304,15 +304,15 @@ class _$PersonDocumentReference
     );
     final json = {
       if (firstName != _sentinel)
-        _$$PersonImplFieldMap['firstName']!:
-            _$$PersonImplPerFieldToJson.firstName(firstName as String),
+        _$PersonFieldMap['firstName']!:
+            _$PersonPerFieldToJson.firstName(firstName as String),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastName != _sentinel)
-        _$$PersonImplFieldMap['lastName']!:
-            _$$PersonImplPerFieldToJson.lastName(lastName as String),
+        _$PersonFieldMap['lastName']!:
+            _$PersonPerFieldToJson.lastName(lastName as String),
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     return reference.update(json);
@@ -335,15 +335,15 @@ class _$PersonDocumentReference
     );
     final json = {
       if (firstName != _sentinel)
-        _$$PersonImplFieldMap['firstName']!:
-            _$$PersonImplPerFieldToJson.firstName(firstName as String),
+        _$PersonFieldMap['firstName']!:
+            _$PersonPerFieldToJson.firstName(firstName as String),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastName != _sentinel)
-        _$$PersonImplFieldMap['lastName']!:
-            _$$PersonImplPerFieldToJson.lastName(lastName as String),
+        _$PersonFieldMap['lastName']!:
+            _$PersonPerFieldToJson.lastName(lastName as String),
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     transaction.update(reference, json);
@@ -366,15 +366,15 @@ class _$PersonDocumentReference
     );
     final json = {
       if (firstName != _sentinel)
-        _$$PersonImplFieldMap['firstName']!:
-            _$$PersonImplPerFieldToJson.firstName(firstName as String),
+        _$PersonFieldMap['firstName']!:
+            _$PersonPerFieldToJson.firstName(firstName as String),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastName != _sentinel)
-        _$$PersonImplFieldMap['lastName']!:
-            _$$PersonImplPerFieldToJson.lastName(lastName as String),
+        _$PersonFieldMap['lastName']!:
+            _$PersonPerFieldToJson.lastName(lastName as String),
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     batch.update(reference, json);
@@ -663,30 +663,27 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
     return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$PersonImplFieldMap['firstName']!,
+        _$PersonFieldMap['firstName']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$$PersonImplPerFieldToJson.firstName(isEqualTo as String)
+            ? _$PersonPerFieldToJson.firstName(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$$PersonImplPerFieldToJson.firstName(isNotEqualTo as String)
+            ? _$PersonPerFieldToJson.firstName(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$$PersonImplPerFieldToJson.firstName(isLessThan as String)
+            ? _$PersonPerFieldToJson.firstName(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$PersonImplPerFieldToJson
-                .firstName(isLessThanOrEqualTo as String)
+            ? _$PersonPerFieldToJson.firstName(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$$PersonImplPerFieldToJson.firstName(isGreaterThan as String)
+            ? _$PersonPerFieldToJson.firstName(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$PersonImplPerFieldToJson
-                .firstName(isGreaterThanOrEqualTo as String)
+            ? _$PersonPerFieldToJson.firstName(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$$PersonImplPerFieldToJson.firstName(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$PersonImplPerFieldToJson.firstName(e)),
+        whereIn: whereIn?.map((e) => _$PersonPerFieldToJson.firstName(e)),
+        whereNotIn: whereNotIn?.map((e) => _$PersonPerFieldToJson.firstName(e)),
         isNull: isNull ??
             (isEqualTo == null ? false : null) ??
             (isNotEqualTo == null ? true : null),
@@ -710,30 +707,27 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
     return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$PersonImplFieldMap['lastName']!,
+        _$PersonFieldMap['lastName']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$$PersonImplPerFieldToJson.lastName(isEqualTo as String)
+            ? _$PersonPerFieldToJson.lastName(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$$PersonImplPerFieldToJson.lastName(isNotEqualTo as String)
+            ? _$PersonPerFieldToJson.lastName(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$$PersonImplPerFieldToJson.lastName(isLessThan as String)
+            ? _$PersonPerFieldToJson.lastName(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$PersonImplPerFieldToJson
-                .lastName(isLessThanOrEqualTo as String)
+            ? _$PersonPerFieldToJson.lastName(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$$PersonImplPerFieldToJson.lastName(isGreaterThan as String)
+            ? _$PersonPerFieldToJson.lastName(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$PersonImplPerFieldToJson
-                .lastName(isGreaterThanOrEqualTo as String)
+            ? _$PersonPerFieldToJson.lastName(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$$PersonImplPerFieldToJson.lastName(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$PersonImplPerFieldToJson.lastName(e)),
+        whereIn: whereIn?.map((e) => _$PersonPerFieldToJson.lastName(e)),
+        whereNotIn: whereNotIn?.map((e) => _$PersonPerFieldToJson.lastName(e)),
         isNull: isNull ??
             (isEqualTo == null ? false : null) ??
             (isNotEqualTo == null ? true : null),
@@ -902,7 +896,7 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
     PersonDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor
-        .orderBy(_$$PersonImplFieldMap['firstName']!, descending: descending);
+        .orderBy(_$PersonFieldMap['firstName']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -974,8 +968,8 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
     PersonDocumentSnapshot? endBeforeDocument,
     PersonDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$$PersonImplFieldMap['lastName']!, descending: descending);
+    final query = $referenceWithoutCursor.orderBy(_$PersonFieldMap['lastName']!,
+        descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -1348,7 +1342,7 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     final json = {
       ...model.toJson(),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     final castedReference = reference.withConverter<Map<String, dynamic>>(
@@ -1367,7 +1361,7 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     final json = {
       ...model.toJson(),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     transaction.set(reference, json, options);
@@ -1382,7 +1376,7 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     final json = {
       ...model.toJson(),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     batch.set(reference, json, options);
@@ -1398,10 +1392,10 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     );
     final json = {
       if (value != _sentinel)
-        _$$PublicRedirected2ImplFieldMap['value']!:
-            _$$PublicRedirected2ImplPerFieldToJson.value(value as String),
+        _$PublicRedirected2FieldMap['value']!:
+            _$PublicRedirected2PerFieldToJson.value(value as String),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     return reference.update(json);
@@ -1418,10 +1412,10 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     );
     final json = {
       if (value != _sentinel)
-        _$$PublicRedirected2ImplFieldMap['value']!:
-            _$$PublicRedirected2ImplPerFieldToJson.value(value as String),
+        _$PublicRedirected2FieldMap['value']!:
+            _$PublicRedirected2PerFieldToJson.value(value as String),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     transaction.update(reference, json);
@@ -1438,10 +1432,10 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     );
     final json = {
       if (value != _sentinel)
-        _$$PublicRedirected2ImplFieldMap['value']!:
-            _$$PublicRedirected2ImplPerFieldToJson.value(value as String),
+        _$PublicRedirected2FieldMap['value']!:
+            _$PublicRedirected2PerFieldToJson.value(value as String),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     batch.update(reference, json);
@@ -1711,33 +1705,31 @@ class _$PublicRedirectedQuery
     return _$PublicRedirectedQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$PublicRedirected2ImplFieldMap['value']!,
+        _$PublicRedirected2FieldMap['value']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$$PublicRedirected2ImplPerFieldToJson.value(isEqualTo as String)
+            ? _$PublicRedirected2PerFieldToJson.value(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$$PublicRedirected2ImplPerFieldToJson
-                .value(isNotEqualTo as String)
+            ? _$PublicRedirected2PerFieldToJson.value(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$$PublicRedirected2ImplPerFieldToJson.value(isLessThan as String)
+            ? _$PublicRedirected2PerFieldToJson.value(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$PublicRedirected2ImplPerFieldToJson
+            ? _$PublicRedirected2PerFieldToJson
                 .value(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$$PublicRedirected2ImplPerFieldToJson
-                .value(isGreaterThan as String)
+            ? _$PublicRedirected2PerFieldToJson.value(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$PublicRedirected2ImplPerFieldToJson
+            ? _$PublicRedirected2PerFieldToJson
                 .value(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn
-            ?.map((e) => _$$PublicRedirected2ImplPerFieldToJson.value(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$PublicRedirected2ImplPerFieldToJson.value(e)),
+        whereIn:
+            whereIn?.map((e) => _$PublicRedirected2PerFieldToJson.value(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$PublicRedirected2PerFieldToJson.value(e)),
         isNull: isNull ??
             (isEqualTo == null ? false : null) ??
             (isNotEqualTo == null ? true : null),
@@ -1905,9 +1897,8 @@ class _$PublicRedirectedQuery
     PublicRedirectedDocumentSnapshot? endBeforeDocument,
     PublicRedirectedDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor.orderBy(
-        _$$PublicRedirected2ImplFieldMap['value']!,
-        descending: descending);
+    final query = $referenceWithoutCursor
+        .orderBy(_$PublicRedirected2FieldMap['value']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -2066,52 +2057,990 @@ class PublicRedirectedQueryDocumentSnapshot
   }
 }
 
+/// A collection reference object can be used for adding documents,
+/// getting document references, and querying for documents
+/// (using the methods inherited from Query).
+abstract class SimpleFreezedCollectionReference
+    implements
+        SimpleFreezedQuery,
+        FirestoreCollectionReference<SimpleFreezed,
+            SimpleFreezedQuerySnapshot> {
+  factory SimpleFreezedCollectionReference([
+    FirebaseFirestore? firestore,
+  ]) = _$SimpleFreezedCollectionReference;
+
+  static SimpleFreezed fromFirestore(
+    DocumentSnapshot<Map<String, Object?>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    return SimpleFreezed.fromJson(snapshot.data()!);
+  }
+
+  static Map<String, Object?> toFirestore(
+    SimpleFreezed value,
+    SetOptions? options,
+  ) {
+    return _$SimpleFreezedToJson(value);
+  }
+
+  @override
+  CollectionReference<SimpleFreezed> get reference;
+
+  @override
+  SimpleFreezedDocumentReference doc([String? id]);
+
+  /// Add a new document to this collection with the specified data,
+  /// assigning it a document ID automatically.
+  Future<SimpleFreezedDocumentReference> add(SimpleFreezed value);
+}
+
+class _$SimpleFreezedCollectionReference extends _$SimpleFreezedQuery
+    implements SimpleFreezedCollectionReference {
+  factory _$SimpleFreezedCollectionReference([FirebaseFirestore? firestore]) {
+    firestore ??= FirebaseFirestore.instance;
+
+    return _$SimpleFreezedCollectionReference._(
+      firestore.collection('freezed-test').withConverter(
+            fromFirestore: SimpleFreezedCollectionReference.fromFirestore,
+            toFirestore: SimpleFreezedCollectionReference.toFirestore,
+          ),
+    );
+  }
+
+  _$SimpleFreezedCollectionReference._(
+    CollectionReference<SimpleFreezed> reference,
+  ) : super(reference, $referenceWithoutCursor: reference);
+
+  String get path => reference.path;
+
+  @override
+  CollectionReference<SimpleFreezed> get reference =>
+      super.reference as CollectionReference<SimpleFreezed>;
+
+  @override
+  SimpleFreezedDocumentReference doc([String? id]) {
+    assert(
+      id == null || id.split('/').length == 1,
+      'The document ID cannot be from a different collection',
+    );
+    return SimpleFreezedDocumentReference(
+      reference.doc(id),
+    );
+  }
+
+  @override
+  Future<SimpleFreezedDocumentReference> add(SimpleFreezed value) {
+    return reference
+        .add(value)
+        .then((ref) => SimpleFreezedDocumentReference(ref));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$SimpleFreezedCollectionReference &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+abstract class SimpleFreezedDocumentReference
+    extends FirestoreDocumentReference<SimpleFreezed,
+        SimpleFreezedDocumentSnapshot> {
+  factory SimpleFreezedDocumentReference(
+          DocumentReference<SimpleFreezed> reference) =
+      _$SimpleFreezedDocumentReference;
+
+  DocumentReference<SimpleFreezed> get reference;
+
+  /// A reference to the [SimpleFreezedCollectionReference] containing this document.
+  SimpleFreezedCollectionReference get parent {
+    return _$SimpleFreezedCollectionReference(reference.firestore);
+  }
+
+  @override
+  Stream<SimpleFreezedDocumentSnapshot> snapshots();
+
+  @override
+  Future<SimpleFreezedDocumentSnapshot> get([GetOptions? options]);
+
+  @override
+  Future<void> delete();
+
+  /// Sets data on the document, overwriting any existing data. If the document
+  /// does not yet exist, it will be created.
+  ///
+  /// If [SetOptions] are provided, the data can be merged into an existing
+  /// document instead of overwriting.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  Future<void> set(
+    SimpleFreezed model, {
+    SetOptions? options,
+    FieldValue aFieldValue,
+  });
+
+  /// Writes to the document using the transaction API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void transactionSet(
+    Transaction transaction,
+    SimpleFreezed model, {
+    SetOptions? options,
+    FieldValue aFieldValue,
+  });
+
+  /// Writes to the document using the batch API.
+  ///
+  /// If the document does not exist yet, it will be created. If you pass
+  /// [SetOptions], the provided data can be merged into the existing document.
+  ///
+  /// Any [FieldValue]s provided will replace the corresponding fields in the
+  /// [model] during serialization.
+  void batchSet(
+    WriteBatch batch,
+    SimpleFreezed model, {
+    SetOptions? options,
+    FieldValue aFieldValue,
+  });
+
+  /// Updates data on the document. Data will be merged with any existing
+  /// document data.
+  ///
+  /// If no document exists yet, the update will fail.
+  Future<void> update({
+    int a,
+    FieldValue aFieldValue,
+  });
+
+  /// Updates fields in the current document using the transaction API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void transactionUpdate(
+    Transaction transaction, {
+    int a,
+    FieldValue aFieldValue,
+  });
+
+  /// Updates fields in the current document using the batch API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void batchUpdate(
+    WriteBatch batch, {
+    int a,
+    FieldValue aFieldValue,
+  });
+}
+
+class _$SimpleFreezedDocumentReference extends FirestoreDocumentReference<
+    SimpleFreezed,
+    SimpleFreezedDocumentSnapshot> implements SimpleFreezedDocumentReference {
+  _$SimpleFreezedDocumentReference(this.reference);
+
+  @override
+  final DocumentReference<SimpleFreezed> reference;
+
+  /// A reference to the [SimpleFreezedCollectionReference] containing this document.
+  SimpleFreezedCollectionReference get parent {
+    return _$SimpleFreezedCollectionReference(reference.firestore);
+  }
+
+  @override
+  Stream<SimpleFreezedDocumentSnapshot> snapshots() {
+    return reference.snapshots().map(SimpleFreezedDocumentSnapshot._);
+  }
+
+  @override
+  Future<SimpleFreezedDocumentSnapshot> get([GetOptions? options]) {
+    return reference.get(options).then(SimpleFreezedDocumentSnapshot._);
+  }
+
+  @override
+  Future<SimpleFreezedDocumentSnapshot> transactionGet(
+      Transaction transaction) {
+    return transaction.get(reference).then(SimpleFreezedDocumentSnapshot._);
+  }
+
+  Future<void> set(
+    SimpleFreezed model, {
+    SetOptions? options,
+    FieldValue? aFieldValue,
+  }) async {
+    final json = {
+      ..._$SimpleFreezedToJson(model),
+      if (aFieldValue != null) _$SimpleFreezedFieldMap['a']!: aFieldValue,
+    };
+
+    final castedReference = reference.withConverter<Map<String, dynamic>>(
+      fromFirestore: (snapshot, options) => throw UnimplementedError(),
+      toFirestore: (value, options) => value,
+    );
+    return castedReference.set(json, options);
+  }
+
+  void transactionSet(
+    Transaction transaction,
+    SimpleFreezed model, {
+    SetOptions? options,
+    FieldValue? aFieldValue,
+  }) {
+    final json = {
+      ..._$SimpleFreezedToJson(model),
+      if (aFieldValue != null) _$SimpleFreezedFieldMap['a']!: aFieldValue,
+    };
+
+    transaction.set(reference, json, options);
+  }
+
+  void batchSet(
+    WriteBatch batch,
+    SimpleFreezed model, {
+    SetOptions? options,
+    FieldValue? aFieldValue,
+  }) {
+    final json = {
+      ..._$SimpleFreezedToJson(model),
+      if (aFieldValue != null) _$SimpleFreezedFieldMap['a']!: aFieldValue,
+    };
+
+    batch.set(reference, json, options);
+  }
+
+  Future<void> update({
+    Object? a = _sentinel,
+    FieldValue? aFieldValue,
+  }) async {
+    assert(
+      a == _sentinel || aFieldValue == null,
+      "Cannot specify both a and aFieldValue",
+    );
+    final json = {
+      if (a != _sentinel)
+        _$SimpleFreezedFieldMap['a']!:
+            _$SimpleFreezedPerFieldToJson.a(a as int),
+      if (aFieldValue != null) _$SimpleFreezedFieldMap['a']!: aFieldValue,
+    };
+
+    return reference.update(json);
+  }
+
+  void transactionUpdate(
+    Transaction transaction, {
+    Object? a = _sentinel,
+    FieldValue? aFieldValue,
+  }) {
+    assert(
+      a == _sentinel || aFieldValue == null,
+      "Cannot specify both a and aFieldValue",
+    );
+    final json = {
+      if (a != _sentinel)
+        _$SimpleFreezedFieldMap['a']!:
+            _$SimpleFreezedPerFieldToJson.a(a as int),
+      if (aFieldValue != null) _$SimpleFreezedFieldMap['a']!: aFieldValue,
+    };
+
+    transaction.update(reference, json);
+  }
+
+  void batchUpdate(
+    WriteBatch batch, {
+    Object? a = _sentinel,
+    FieldValue? aFieldValue,
+  }) {
+    assert(
+      a == _sentinel || aFieldValue == null,
+      "Cannot specify both a and aFieldValue",
+    );
+    final json = {
+      if (a != _sentinel)
+        _$SimpleFreezedFieldMap['a']!:
+            _$SimpleFreezedPerFieldToJson.a(a as int),
+      if (aFieldValue != null) _$SimpleFreezedFieldMap['a']!: aFieldValue,
+    };
+
+    batch.update(reference, json);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is SimpleFreezedDocumentReference &&
+        other.runtimeType == runtimeType &&
+        other.parent == parent &&
+        other.id == id;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, parent, id);
+}
+
+abstract class SimpleFreezedQuery
+    implements QueryReference<SimpleFreezed, SimpleFreezedQuerySnapshot> {
+  @override
+  SimpleFreezedQuery limit(int limit);
+
+  @override
+  SimpleFreezedQuery limitToLast(int limit);
+
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  SimpleFreezedQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  SimpleFreezedQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  SimpleFreezedQuery whereA({
+    int? isEqualTo,
+    int? isNotEqualTo,
+    int? isLessThan,
+    int? isLessThanOrEqualTo,
+    int? isGreaterThan,
+    int? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  });
+
+  /// Perform an order query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of order queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.orderByFieldPath(
+  ///   FieldPath.fromString('title'),
+  ///   startAt: 'title',
+  /// );
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.orderByTitle(startAt: 'title');
+  /// ```
+  SimpleFreezedQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
+    SimpleFreezedDocumentSnapshot? startAtDocument,
+    SimpleFreezedDocumentSnapshot? endAtDocument,
+    SimpleFreezedDocumentSnapshot? endBeforeDocument,
+    SimpleFreezedDocumentSnapshot? startAfterDocument,
+  });
+
+  SimpleFreezedQuery orderByDocumentId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    SimpleFreezedDocumentSnapshot? startAtDocument,
+    SimpleFreezedDocumentSnapshot? endAtDocument,
+    SimpleFreezedDocumentSnapshot? endBeforeDocument,
+    SimpleFreezedDocumentSnapshot? startAfterDocument,
+  });
+
+  SimpleFreezedQuery orderByA({
+    bool descending = false,
+    int startAt,
+    int startAfter,
+    int endAt,
+    int endBefore,
+    SimpleFreezedDocumentSnapshot? startAtDocument,
+    SimpleFreezedDocumentSnapshot? endAtDocument,
+    SimpleFreezedDocumentSnapshot? endBeforeDocument,
+    SimpleFreezedDocumentSnapshot? startAfterDocument,
+  });
+}
+
+class _$SimpleFreezedQuery
+    extends QueryReference<SimpleFreezed, SimpleFreezedQuerySnapshot>
+    implements SimpleFreezedQuery {
+  _$SimpleFreezedQuery(
+    this._collection, {
+    required Query<SimpleFreezed> $referenceWithoutCursor,
+    $QueryCursor $queryCursor = const $QueryCursor(),
+  }) : super(
+          $referenceWithoutCursor: $referenceWithoutCursor,
+          $queryCursor: $queryCursor,
+        );
+
+  final CollectionReference<Object?> _collection;
+
+  @override
+  Stream<SimpleFreezedQuerySnapshot> snapshots([SnapshotOptions? options]) {
+    return reference
+        .snapshots()
+        .map(SimpleFreezedQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  Future<SimpleFreezedQuerySnapshot> get([GetOptions? options]) {
+    return reference
+        .get(options)
+        .then(SimpleFreezedQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  SimpleFreezedQuery limit(int limit) {
+    return _$SimpleFreezedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limit(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SimpleFreezedQuery limitToLast(int limit) {
+    return _$SimpleFreezedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limitToLast(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SimpleFreezedQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$SimpleFreezedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SimpleFreezedQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$SimpleFreezedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SimpleFreezedQuery whereA({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$SimpleFreezedQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SimpleFreezedFieldMap['a']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$SimpleFreezedPerFieldToJson.a(isEqualTo as int)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$SimpleFreezedPerFieldToJson.a(isNotEqualTo as int)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$SimpleFreezedPerFieldToJson.a(isLessThan as int)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$SimpleFreezedPerFieldToJson.a(isLessThanOrEqualTo as int)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$SimpleFreezedPerFieldToJson.a(isGreaterThan as int)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$SimpleFreezedPerFieldToJson.a(isGreaterThanOrEqualTo as int)
+            : null,
+        whereIn: whereIn?.map((e) => _$SimpleFreezedPerFieldToJson.a(e)),
+        whereNotIn: whereNotIn?.map((e) => _$SimpleFreezedPerFieldToJson.a(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  SimpleFreezedQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SimpleFreezedDocumentSnapshot? startAtDocument,
+    SimpleFreezedDocumentSnapshot? endAtDocument,
+    SimpleFreezedDocumentSnapshot? endBeforeDocument,
+    SimpleFreezedDocumentSnapshot? startAfterDocument,
+  }) {
+    final query =
+        $referenceWithoutCursor.orderBy(fieldPath, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SimpleFreezedQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  SimpleFreezedQuery orderByDocumentId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SimpleFreezedDocumentSnapshot? startAtDocument,
+    SimpleFreezedDocumentSnapshot? endAtDocument,
+    SimpleFreezedDocumentSnapshot? endBeforeDocument,
+    SimpleFreezedDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(FieldPath.documentId,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SimpleFreezedQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  SimpleFreezedQuery orderByA({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SimpleFreezedDocumentSnapshot? startAtDocument,
+    SimpleFreezedDocumentSnapshot? endAtDocument,
+    SimpleFreezedDocumentSnapshot? endBeforeDocument,
+    SimpleFreezedDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(_$SimpleFreezedFieldMap['a']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SimpleFreezedQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$SimpleFreezedQuery &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+class SimpleFreezedDocumentSnapshot
+    extends FirestoreDocumentSnapshot<SimpleFreezed> {
+  SimpleFreezedDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<SimpleFreezed> snapshot;
+
+  @override
+  SimpleFreezedDocumentReference get reference {
+    return SimpleFreezedDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final SimpleFreezed? data;
+}
+
+class SimpleFreezedQuerySnapshot extends FirestoreQuerySnapshot<SimpleFreezed,
+    SimpleFreezedQueryDocumentSnapshot> {
+  SimpleFreezedQuerySnapshot._(
+    this.snapshot,
+    this.docs,
+    this.docChanges,
+  );
+
+  factory SimpleFreezedQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<SimpleFreezed> snapshot,
+  ) {
+    final docs =
+        snapshot.docs.map(SimpleFreezedQueryDocumentSnapshot._).toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        SimpleFreezedDocumentSnapshot._,
+      );
+    }).toList();
+
+    return SimpleFreezedQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<SimpleFreezedDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    SimpleFreezedDocumentSnapshot Function(DocumentSnapshot<T> doc) decodeDoc,
+  ) {
+    return FirestoreDocumentChange<SimpleFreezedDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
+
+  final QuerySnapshot<SimpleFreezed> snapshot;
+
+  @override
+  final List<SimpleFreezedQueryDocumentSnapshot> docs;
+
+  @override
+  final List<FirestoreDocumentChange<SimpleFreezedDocumentSnapshot>> docChanges;
+}
+
+class SimpleFreezedQueryDocumentSnapshot
+    extends FirestoreQueryDocumentSnapshot<SimpleFreezed>
+    implements SimpleFreezedDocumentSnapshot {
+  SimpleFreezedQueryDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final QueryDocumentSnapshot<SimpleFreezed> snapshot;
+
+  @override
+  final SimpleFreezed data;
+
+  @override
+  SimpleFreezedDocumentReference get reference {
+    return SimpleFreezedDocumentReference(snapshot.reference);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PersonImpl _$$PersonImplFromJson(Map<String, dynamic> json) => _$PersonImpl(
+SimpleFreezed _$SimpleFreezedFromJson(Map<String, dynamic> json) =>
+    SimpleFreezed(
+      a: (json['a'] as num).toInt(),
+    );
+
+const _$SimpleFreezedFieldMap = <String, String>{
+  'a': 'a',
+};
+
+// ignore: unused_element
+abstract class _$SimpleFreezedPerFieldToJson {
+  // ignore: unused_element
+  static Object? a(int instance) => instance;
+}
+
+Map<String, dynamic> _$SimpleFreezedToJson(SimpleFreezed instance) =>
+    <String, dynamic>{
+      'a': instance.a,
+    };
+
+_Person _$PersonFromJson(Map<String, dynamic> json) => _Person(
       firstName: json['first_name'] as String,
       lastName: json['LAST_NAME'] as String,
     );
 
-const _$$PersonImplFieldMap = <String, String>{
+const _$PersonFieldMap = <String, String>{
   'firstName': 'first_name',
   'lastName': 'LAST_NAME',
 };
 
 // ignore: unused_element
-abstract class _$$PersonImplPerFieldToJson {
+abstract class _$PersonPerFieldToJson {
   // ignore: unused_element
   static Object? firstName(String instance) => instance;
   // ignore: unused_element
   static Object? lastName(String instance) => instance;
 }
 
-Map<String, dynamic> _$$PersonImplToJson(_$PersonImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$PersonToJson(_Person instance) => <String, dynamic>{
       'first_name': instance.firstName,
       'LAST_NAME': instance.lastName,
     };
 
-_$PublicRedirected2Impl _$$PublicRedirected2ImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PublicRedirected2Impl(
+PublicRedirected2 _$PublicRedirected2FromJson(Map<String, dynamic> json) =>
+    PublicRedirected2(
       value: json['value'] as String,
     );
 
-const _$$PublicRedirected2ImplFieldMap = <String, String>{
+const _$PublicRedirected2FieldMap = <String, String>{
   'value': 'value',
 };
 
 // ignore: unused_element
-abstract class _$$PublicRedirected2ImplPerFieldToJson {
+abstract class _$PublicRedirected2PerFieldToJson {
   // ignore: unused_element
   static Object? value(String instance) => instance;
 }
 
-Map<String, dynamic> _$$PublicRedirected2ImplToJson(
-        _$PublicRedirected2Impl instance) =>
+Map<String, dynamic> _$PublicRedirected2ToJson(PublicRedirected2 instance) =>
     <String, dynamic>{
       'value': instance.value,
     };

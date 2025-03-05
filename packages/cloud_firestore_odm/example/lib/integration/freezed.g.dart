@@ -242,9 +242,9 @@ class _$PersonDocumentReference
     final json = {
       ...model.toJson(),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     final castedReference = reference.withConverter<Map<String, dynamic>>(
@@ -264,9 +264,9 @@ class _$PersonDocumentReference
     final json = {
       ...model.toJson(),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     transaction.set(reference, json, options);
@@ -282,9 +282,9 @@ class _$PersonDocumentReference
     final json = {
       ...model.toJson(),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     batch.set(reference, json, options);
@@ -306,15 +306,15 @@ class _$PersonDocumentReference
     );
     final json = {
       if (firstName != _sentinel)
-        _$$PersonImplFieldMap['firstName']!:
-            _$$PersonImplPerFieldToJson.firstName(firstName as String),
+        _$PersonFieldMap['firstName']!:
+            _$PersonPerFieldToJson.firstName(firstName as String),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastName != _sentinel)
-        _$$PersonImplFieldMap['lastName']!:
-            _$$PersonImplPerFieldToJson.lastName(lastName as String),
+        _$PersonFieldMap['lastName']!:
+            _$PersonPerFieldToJson.lastName(lastName as String),
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     return reference.update(json);
@@ -337,15 +337,15 @@ class _$PersonDocumentReference
     );
     final json = {
       if (firstName != _sentinel)
-        _$$PersonImplFieldMap['firstName']!:
-            _$$PersonImplPerFieldToJson.firstName(firstName as String),
+        _$PersonFieldMap['firstName']!:
+            _$PersonPerFieldToJson.firstName(firstName as String),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastName != _sentinel)
-        _$$PersonImplFieldMap['lastName']!:
-            _$$PersonImplPerFieldToJson.lastName(lastName as String),
+        _$PersonFieldMap['lastName']!:
+            _$PersonPerFieldToJson.lastName(lastName as String),
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     transaction.update(reference, json);
@@ -368,15 +368,15 @@ class _$PersonDocumentReference
     );
     final json = {
       if (firstName != _sentinel)
-        _$$PersonImplFieldMap['firstName']!:
-            _$$PersonImplPerFieldToJson.firstName(firstName as String),
+        _$PersonFieldMap['firstName']!:
+            _$PersonPerFieldToJson.firstName(firstName as String),
       if (firstNameFieldValue != null)
-        _$$PersonImplFieldMap['firstName']!: firstNameFieldValue,
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
       if (lastName != _sentinel)
-        _$$PersonImplFieldMap['lastName']!:
-            _$$PersonImplPerFieldToJson.lastName(lastName as String),
+        _$PersonFieldMap['lastName']!:
+            _$PersonPerFieldToJson.lastName(lastName as String),
       if (lastNameFieldValue != null)
-        _$$PersonImplFieldMap['lastName']!: lastNameFieldValue,
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
     };
 
     batch.update(reference, json);
@@ -665,30 +665,27 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
     return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$PersonImplFieldMap['firstName']!,
+        _$PersonFieldMap['firstName']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$$PersonImplPerFieldToJson.firstName(isEqualTo as String)
+            ? _$PersonPerFieldToJson.firstName(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$$PersonImplPerFieldToJson.firstName(isNotEqualTo as String)
+            ? _$PersonPerFieldToJson.firstName(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$$PersonImplPerFieldToJson.firstName(isLessThan as String)
+            ? _$PersonPerFieldToJson.firstName(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$PersonImplPerFieldToJson
-                .firstName(isLessThanOrEqualTo as String)
+            ? _$PersonPerFieldToJson.firstName(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$$PersonImplPerFieldToJson.firstName(isGreaterThan as String)
+            ? _$PersonPerFieldToJson.firstName(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$PersonImplPerFieldToJson
-                .firstName(isGreaterThanOrEqualTo as String)
+            ? _$PersonPerFieldToJson.firstName(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$$PersonImplPerFieldToJson.firstName(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$PersonImplPerFieldToJson.firstName(e)),
+        whereIn: whereIn?.map((e) => _$PersonPerFieldToJson.firstName(e)),
+        whereNotIn: whereNotIn?.map((e) => _$PersonPerFieldToJson.firstName(e)),
         isNull: isNull ??
             (isEqualTo == null ? false : null) ??
             (isNotEqualTo == null ? true : null),
@@ -712,30 +709,27 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
     return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$PersonImplFieldMap['lastName']!,
+        _$PersonFieldMap['lastName']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$$PersonImplPerFieldToJson.lastName(isEqualTo as String)
+            ? _$PersonPerFieldToJson.lastName(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$$PersonImplPerFieldToJson.lastName(isNotEqualTo as String)
+            ? _$PersonPerFieldToJson.lastName(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$$PersonImplPerFieldToJson.lastName(isLessThan as String)
+            ? _$PersonPerFieldToJson.lastName(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$PersonImplPerFieldToJson
-                .lastName(isLessThanOrEqualTo as String)
+            ? _$PersonPerFieldToJson.lastName(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$$PersonImplPerFieldToJson.lastName(isGreaterThan as String)
+            ? _$PersonPerFieldToJson.lastName(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$PersonImplPerFieldToJson
-                .lastName(isGreaterThanOrEqualTo as String)
+            ? _$PersonPerFieldToJson.lastName(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$$PersonImplPerFieldToJson.lastName(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$PersonImplPerFieldToJson.lastName(e)),
+        whereIn: whereIn?.map((e) => _$PersonPerFieldToJson.lastName(e)),
+        whereNotIn: whereNotIn?.map((e) => _$PersonPerFieldToJson.lastName(e)),
         isNull: isNull ??
             (isEqualTo == null ? false : null) ??
             (isNotEqualTo == null ? true : null),
@@ -904,7 +898,7 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
     PersonDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor
-        .orderBy(_$$PersonImplFieldMap['firstName']!, descending: descending);
+        .orderBy(_$PersonFieldMap['firstName']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -976,8 +970,8 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
     PersonDocumentSnapshot? endBeforeDocument,
     PersonDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$$PersonImplFieldMap['lastName']!, descending: descending);
+    final query = $referenceWithoutCursor.orderBy(_$PersonFieldMap['lastName']!,
+        descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -1350,7 +1344,7 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     final json = {
       ...model.toJson(),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     final castedReference = reference.withConverter<Map<String, dynamic>>(
@@ -1369,7 +1363,7 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     final json = {
       ...model.toJson(),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     transaction.set(reference, json, options);
@@ -1384,7 +1378,7 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     final json = {
       ...model.toJson(),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     batch.set(reference, json, options);
@@ -1400,10 +1394,10 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     );
     final json = {
       if (value != _sentinel)
-        _$$PublicRedirected2ImplFieldMap['value']!:
-            _$$PublicRedirected2ImplPerFieldToJson.value(value as String),
+        _$PublicRedirected2FieldMap['value']!:
+            _$PublicRedirected2PerFieldToJson.value(value as String),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     return reference.update(json);
@@ -1420,10 +1414,10 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     );
     final json = {
       if (value != _sentinel)
-        _$$PublicRedirected2ImplFieldMap['value']!:
-            _$$PublicRedirected2ImplPerFieldToJson.value(value as String),
+        _$PublicRedirected2FieldMap['value']!:
+            _$PublicRedirected2PerFieldToJson.value(value as String),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     transaction.update(reference, json);
@@ -1440,10 +1434,10 @@ class _$PublicRedirectedDocumentReference extends FirestoreDocumentReference<
     );
     final json = {
       if (value != _sentinel)
-        _$$PublicRedirected2ImplFieldMap['value']!:
-            _$$PublicRedirected2ImplPerFieldToJson.value(value as String),
+        _$PublicRedirected2FieldMap['value']!:
+            _$PublicRedirected2PerFieldToJson.value(value as String),
       if (valueFieldValue != null)
-        _$$PublicRedirected2ImplFieldMap['value']!: valueFieldValue,
+        _$PublicRedirected2FieldMap['value']!: valueFieldValue,
     };
 
     batch.update(reference, json);
@@ -1713,33 +1707,31 @@ class _$PublicRedirectedQuery
     return _$PublicRedirectedQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$PublicRedirected2ImplFieldMap['value']!,
+        _$PublicRedirected2FieldMap['value']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$$PublicRedirected2ImplPerFieldToJson.value(isEqualTo as String)
+            ? _$PublicRedirected2PerFieldToJson.value(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$$PublicRedirected2ImplPerFieldToJson
-                .value(isNotEqualTo as String)
+            ? _$PublicRedirected2PerFieldToJson.value(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$$PublicRedirected2ImplPerFieldToJson.value(isLessThan as String)
+            ? _$PublicRedirected2PerFieldToJson.value(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$PublicRedirected2ImplPerFieldToJson
+            ? _$PublicRedirected2PerFieldToJson
                 .value(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$$PublicRedirected2ImplPerFieldToJson
-                .value(isGreaterThan as String)
+            ? _$PublicRedirected2PerFieldToJson.value(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$PublicRedirected2ImplPerFieldToJson
+            ? _$PublicRedirected2PerFieldToJson
                 .value(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn
-            ?.map((e) => _$$PublicRedirected2ImplPerFieldToJson.value(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$PublicRedirected2ImplPerFieldToJson.value(e)),
+        whereIn:
+            whereIn?.map((e) => _$PublicRedirected2PerFieldToJson.value(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$PublicRedirected2PerFieldToJson.value(e)),
         isNull: isNull ??
             (isEqualTo == null ? false : null) ??
             (isNotEqualTo == null ? true : null),
@@ -1907,9 +1899,8 @@ class _$PublicRedirectedQuery
     PublicRedirectedDocumentSnapshot? endBeforeDocument,
     PublicRedirectedDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor.orderBy(
-        _$$PublicRedirected2ImplFieldMap['value']!,
-        descending: descending);
+    final query = $referenceWithoutCursor
+        .orderBy(_$PublicRedirected2FieldMap['value']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -2072,48 +2063,45 @@ class PublicRedirectedQueryDocumentSnapshot
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PersonImpl _$$PersonImplFromJson(Map<String, dynamic> json) => _$PersonImpl(
+_Person _$PersonFromJson(Map<String, dynamic> json) => _Person(
       firstName: json['first_name'] as String,
       lastName: json['LAST_NAME'] as String,
     );
 
-const _$$PersonImplFieldMap = <String, String>{
+const _$PersonFieldMap = <String, String>{
   'firstName': 'first_name',
   'lastName': 'LAST_NAME',
 };
 
 // ignore: unused_element
-abstract class _$$PersonImplPerFieldToJson {
+abstract class _$PersonPerFieldToJson {
   // ignore: unused_element
   static Object? firstName(String instance) => instance;
   // ignore: unused_element
   static Object? lastName(String instance) => instance;
 }
 
-Map<String, dynamic> _$$PersonImplToJson(_$PersonImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$PersonToJson(_Person instance) => <String, dynamic>{
       'first_name': instance.firstName,
       'LAST_NAME': instance.lastName,
     };
 
-_$PublicRedirected2Impl _$$PublicRedirected2ImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PublicRedirected2Impl(
+PublicRedirected2 _$PublicRedirected2FromJson(Map<String, dynamic> json) =>
+    PublicRedirected2(
       value: json['value'] as String,
     );
 
-const _$$PublicRedirected2ImplFieldMap = <String, String>{
+const _$PublicRedirected2FieldMap = <String, String>{
   'value': 'value',
 };
 
 // ignore: unused_element
-abstract class _$$PublicRedirected2ImplPerFieldToJson {
+abstract class _$PublicRedirected2PerFieldToJson {
   // ignore: unused_element
   static Object? value(String instance) => instance;
 }
 
-Map<String, dynamic> _$$PublicRedirected2ImplToJson(
-        _$PublicRedirected2Impl instance) =>
+Map<String, dynamic> _$PublicRedirected2ToJson(PublicRedirected2 instance) =>
     <String, dynamic>{
       'value': instance.value,
     };

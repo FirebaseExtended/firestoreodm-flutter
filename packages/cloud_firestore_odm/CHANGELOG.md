@@ -1,3 +1,9 @@
+## 1.1.0
+
+- **FIX**: Resolve compatibility issues with Freezed 3.0.0 and above
+- **FEAT**: Support analyzer 7.0.0 and above
+- **CHORE**: Update dependencies to latest versions
+
 ## 1.0.0-dev.88
 
 - **BREAKING**: Removes `set` methods from `FirestoreDocumentReference` to make way for generated methods

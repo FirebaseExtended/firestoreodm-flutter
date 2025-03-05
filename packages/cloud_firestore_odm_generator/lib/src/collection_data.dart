@@ -196,7 +196,7 @@ represents the content of the collection must be in the same file.
         .allMethods
         .firstWhereOrNull((method) => method.name == 'toJson');
     final redirectedFreezedClass = redirectedFreezedConstructors
-        .singleOrNull?.redirectedConstructor!.enclosingElement.name;
+        .singleOrNull?.redirectedConstructor!.enclosingElement3.name;
     final generatedJsonTypePrefix = _generatedJsonTypePrefix(
       hasFreezed: hasFreezed,
       redirectedFreezedClass: redirectedFreezedClass,
@@ -377,7 +377,10 @@ represents the content of the collection must be in the same file.
     required String collectionTargetElementPublicType,
   }) {
     if (hasFreezed) {
-      return '_\$\$${redirectedFreezedClass?.public}Impl';
+      final className =
+          redirectedFreezedClass?.public ?? collectionTargetElementPublicType;
+      // Only support freezed 3.x or higher
+      return '_\$$className';
     } else {
       return '_\$$collectionTargetElementPublicType';
     }
@@ -427,7 +430,21 @@ extension on ClassElement {
     required List<ConstructorElement> freezedConstructors,
   }) {
     if (hasFreezed) {
-      return freezedConstructors.single.parameters;
+      /// For Freezed 3.x,  support mixed mode classes. There can be the classic freezed way with a factory,
+      /// or there can be simple regular classes with a normal constructor.
+      ///
+      /// We need to find the factory constructor, or the normal constructor if there is no factory.
+      final factoryConstructor = freezedConstructors.firstWhereOrNull(
+        (ctor) =>
+            ctor.isFactory &&
+            !ctor.name.startsWith('_') &&
+            ctor.name != 'fromJson',
+      );
+      if (factoryConstructor == null) {
+        // No factory constructor, use the normal constructor
+        return fields;
+      }
+      return factoryConstructor.parameters;
     } else {
       final uniqueFields = <String, FieldElement>{};
 

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,157 +10,32 @@ part of 'freezed.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Person _$PersonFromJson(Map<String, dynamic> json) {
-  return _Person.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Person {
-  String get firstName => throw _privateConstructorUsedError;
+  String get firstName;
   @JsonKey(name: 'LAST_NAME')
-  String get lastName => throw _privateConstructorUsedError;
+  String get lastName;
   @JsonKey(includeFromJson: false, includeToJson: false)
-  int? get ignored => throw _privateConstructorUsedError;
+  int? get ignored;
+
+  /// Create a copy of Person
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $PersonCopyWith<Person> get copyWith =>
+      _$PersonCopyWithImpl<Person>(this as Person, _$identity);
 
   /// Serializes this Person to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Person
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PersonCopyWith<Person> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PersonCopyWith<$Res> {
-  factory $PersonCopyWith(Person value, $Res Function(Person) then) =
-      _$PersonCopyWithImpl<$Res, Person>;
-  @useResult
-  $Res call(
-      {String firstName,
-      @JsonKey(name: 'LAST_NAME') String lastName,
-      @JsonKey(includeFromJson: false, includeToJson: false) int? ignored});
-}
-
-/// @nodoc
-class _$PersonCopyWithImpl<$Res, $Val extends Person>
-    implements $PersonCopyWith<$Res> {
-  _$PersonCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Person
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? firstName = null,
-    Object? lastName = null,
-    Object? ignored = freezed,
-  }) {
-    return _then(_value.copyWith(
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      ignored: freezed == ignored
-          ? _value.ignored
-          : ignored // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$PersonImplCopyWith<$Res> implements $PersonCopyWith<$Res> {
-  factory _$$PersonImplCopyWith(
-          _$PersonImpl value, $Res Function(_$PersonImpl) then) =
-      __$$PersonImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String firstName,
-      @JsonKey(name: 'LAST_NAME') String lastName,
-      @JsonKey(includeFromJson: false, includeToJson: false) int? ignored});
-}
-
-/// @nodoc
-class __$$PersonImplCopyWithImpl<$Res>
-    extends _$PersonCopyWithImpl<$Res, _$PersonImpl>
-    implements _$$PersonImplCopyWith<$Res> {
-  __$$PersonImplCopyWithImpl(
-      _$PersonImpl _value, $Res Function(_$PersonImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Person
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? firstName = null,
-    Object? lastName = null,
-    Object? ignored = freezed,
-  }) {
-    return _then(_$PersonImpl(
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      ignored: freezed == ignored
-          ? _value.ignored
-          : ignored // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-}
-
-/// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class _$PersonImpl implements _Person {
-  _$PersonImpl(
-      {required this.firstName,
-      @JsonKey(name: 'LAST_NAME') required this.lastName,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.ignored});
-
-  factory _$PersonImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PersonImplFromJson(json);
-
-  @override
-  final String firstName;
-  @override
-  @JsonKey(name: 'LAST_NAME')
-  final String lastName;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final int? ignored;
-
-  @override
-  String toString() {
-    return 'Person(firstName: $firstName, lastName: $lastName, ignored: $ignored)';
-  }
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersonImpl &&
+            other is Person &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -171,46 +47,155 @@ class _$PersonImpl implements _Person {
   @override
   int get hashCode => Object.hash(runtimeType, firstName, lastName, ignored);
 
-  /// Create a copy of Person
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$PersonImplCopyWith<_$PersonImpl> get copyWith =>
-      __$$PersonImplCopyWithImpl<_$PersonImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PersonImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Person(firstName: $firstName, lastName: $lastName, ignored: $ignored)';
   }
 }
 
-abstract class _Person implements Person {
-  factory _Person(
-      {required final String firstName,
-      @JsonKey(name: 'LAST_NAME') required final String lastName,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final int? ignored}) = _$PersonImpl;
+/// @nodoc
+abstract mixin class $PersonCopyWith<$Res> {
+  factory $PersonCopyWith(Person value, $Res Function(Person) _then) =
+      _$PersonCopyWithImpl;
+  @useResult
+  $Res call(
+      {String firstName,
+      @JsonKey(name: 'LAST_NAME') String lastName,
+      @JsonKey(includeFromJson: false, includeToJson: false) int? ignored});
+}
 
-  factory _Person.fromJson(Map<String, dynamic> json) = _$PersonImpl.fromJson;
+/// @nodoc
+class _$PersonCopyWithImpl<$Res> implements $PersonCopyWith<$Res> {
+  _$PersonCopyWithImpl(this._self, this._then);
+
+  final Person _self;
+  final $Res Function(Person) _then;
+
+  /// Create a copy of Person
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? ignored = freezed,
+  }) {
+    return _then(_self.copyWith(
+      firstName: null == firstName
+          ? _self.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: null == lastName
+          ? _self.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+      ignored: freezed == ignored
+          ? _self.ignored
+          : ignored // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class _Person implements Person {
+  _Person(
+      {required this.firstName,
+      @JsonKey(name: 'LAST_NAME') required this.lastName,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.ignored});
+  factory _Person.fromJson(Map<String, dynamic> json) => _$PersonFromJson(json);
 
   @override
-  String get firstName;
+  final String firstName;
   @override
   @JsonKey(name: 'LAST_NAME')
-  String get lastName;
+  final String lastName;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  int? get ignored;
+  final int? ignored;
 
   /// Create a copy of Person
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PersonImplCopyWith<_$PersonImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$PersonCopyWith<_Person> get copyWith =>
+      __$PersonCopyWithImpl<_Person>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PersonToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Person &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.ignored, ignored) || other.ignored == ignored));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, ignored);
+
+  @override
+  String toString() {
+    return 'Person(firstName: $firstName, lastName: $lastName, ignored: $ignored)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PersonCopyWith<$Res> implements $PersonCopyWith<$Res> {
+  factory _$PersonCopyWith(_Person value, $Res Function(_Person) _then) =
+      __$PersonCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String firstName,
+      @JsonKey(name: 'LAST_NAME') String lastName,
+      @JsonKey(includeFromJson: false, includeToJson: false) int? ignored});
+}
+
+/// @nodoc
+class __$PersonCopyWithImpl<$Res> implements _$PersonCopyWith<$Res> {
+  __$PersonCopyWithImpl(this._self, this._then);
+
+  final _Person _self;
+  final $Res Function(_Person) _then;
+
+  /// Create a copy of Person
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? ignored = freezed,
+  }) {
+    return _then(_Person(
+      firstName: null == firstName
+          ? _self.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: null == lastName
+          ? _self.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+      ignored: freezed == ignored
+          ? _self.ignored
+          : ignored // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
 }
 
 PublicRedirected _$PublicRedirectedFromJson(Map<String, dynamic> json) {
@@ -219,71 +204,53 @@ PublicRedirected _$PublicRedirectedFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PublicRedirected {
-  String get value => throw _privateConstructorUsedError;
-
-  /// Serializes this PublicRedirected to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get value;
 
   /// Create a copy of PublicRedirected
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PublicRedirectedCopyWith<PublicRedirected> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PublicRedirectedCopyWith<$Res> {
-  factory $PublicRedirectedCopyWith(
-          PublicRedirected value, $Res Function(PublicRedirected) then) =
-      _$PublicRedirectedCopyWithImpl<$Res, PublicRedirected>;
-  @useResult
-  $Res call({String value});
-}
-
-/// @nodoc
-class _$PublicRedirectedCopyWithImpl<$Res, $Val extends PublicRedirected>
-    implements $PublicRedirectedCopyWith<$Res> {
-  _$PublicRedirectedCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PublicRedirected
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PublicRedirectedCopyWith<PublicRedirected> get copyWith =>
+      _$PublicRedirectedCopyWithImpl<PublicRedirected>(
+          this as PublicRedirected, _$identity);
+
+  /// Serializes this PublicRedirected to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_value.copyWith(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PublicRedirected &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  String toString() {
+    return 'PublicRedirected(value: $value)';
   }
 }
 
 /// @nodoc
-abstract class _$$PublicRedirected2ImplCopyWith<$Res>
-    implements $PublicRedirectedCopyWith<$Res> {
-  factory _$$PublicRedirected2ImplCopyWith(_$PublicRedirected2Impl value,
-          $Res Function(_$PublicRedirected2Impl) then) =
-      __$$PublicRedirected2ImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PublicRedirectedCopyWith<$Res> {
+  factory $PublicRedirectedCopyWith(
+          PublicRedirected value, $Res Function(PublicRedirected) _then) =
+      _$PublicRedirectedCopyWithImpl;
   @useResult
   $Res call({String value});
 }
 
 /// @nodoc
-class __$$PublicRedirected2ImplCopyWithImpl<$Res>
-    extends _$PublicRedirectedCopyWithImpl<$Res, _$PublicRedirected2Impl>
-    implements _$$PublicRedirected2ImplCopyWith<$Res> {
-  __$$PublicRedirected2ImplCopyWithImpl(_$PublicRedirected2Impl _value,
-      $Res Function(_$PublicRedirected2Impl) _then)
-      : super(_value, _then);
+class _$PublicRedirectedCopyWithImpl<$Res>
+    implements $PublicRedirectedCopyWith<$Res> {
+  _$PublicRedirectedCopyWithImpl(this._self, this._then);
+
+  final PublicRedirected _self;
+  final $Res Function(PublicRedirected) _then;
 
   /// Create a copy of PublicRedirected
   /// with the given fields replaced by the non-null parameter values.
@@ -292,9 +259,9 @@ class __$$PublicRedirected2ImplCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$PublicRedirected2Impl(
+    return _then(_self.copyWith(
       value: null == value
-          ? _value.value
+          ? _self.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -303,25 +270,34 @@ class __$$PublicRedirected2ImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PublicRedirected2Impl implements PublicRedirected2 {
-  _$PublicRedirected2Impl({required this.value});
-
-  factory _$PublicRedirected2Impl.fromJson(Map<String, dynamic> json) =>
-      _$$PublicRedirected2ImplFromJson(json);
+class PublicRedirected2 implements PublicRedirected {
+  PublicRedirected2({required this.value});
+  factory PublicRedirected2.fromJson(Map<String, dynamic> json) =>
+      _$PublicRedirected2FromJson(json);
 
   @override
   final String value;
 
+  /// Create a copy of PublicRedirected
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PublicRedirected(value: $value)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $PublicRedirected2CopyWith<PublicRedirected2> get copyWith =>
+      _$PublicRedirected2CopyWithImpl<PublicRedirected2>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PublicRedirected2ToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PublicRedirected2Impl &&
+            other is PublicRedirected2 &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -329,37 +305,108 @@ class _$PublicRedirected2Impl implements PublicRedirected2 {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  /// Create a copy of PublicRedirected
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$PublicRedirected2ImplCopyWith<_$PublicRedirected2Impl> get copyWith =>
-      __$$PublicRedirected2ImplCopyWithImpl<_$PublicRedirected2Impl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PublicRedirected2ImplToJson(
-      this,
-    );
+  String toString() {
+    return 'PublicRedirected(value: $value)';
   }
 }
 
-abstract class PublicRedirected2 implements PublicRedirected {
-  factory PublicRedirected2({required final String value}) =
-      _$PublicRedirected2Impl;
-
-  factory PublicRedirected2.fromJson(Map<String, dynamic> json) =
-      _$PublicRedirected2Impl.fromJson;
-
+/// @nodoc
+abstract mixin class $PublicRedirected2CopyWith<$Res>
+    implements $PublicRedirectedCopyWith<$Res> {
+  factory $PublicRedirected2CopyWith(
+          PublicRedirected2 value, $Res Function(PublicRedirected2) _then) =
+      _$PublicRedirected2CopyWithImpl;
   @override
-  String get value;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class _$PublicRedirected2CopyWithImpl<$Res>
+    implements $PublicRedirected2CopyWith<$Res> {
+  _$PublicRedirected2CopyWithImpl(this._self, this._then);
+
+  final PublicRedirected2 _self;
+  final $Res Function(PublicRedirected2) _then;
 
   /// Create a copy of PublicRedirected
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PublicRedirected2ImplCopyWith<_$PublicRedirected2Impl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(PublicRedirected2(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
+
+/// @nodoc
+mixin _$SimpleFreezed {
+  int get a;
+
+  /// Create a copy of SimpleFreezed
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SimpleFreezedCopyWith<SimpleFreezed> get copyWith =>
+      _$SimpleFreezedCopyWithImpl<SimpleFreezed>(
+          this as SimpleFreezed, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SimpleFreezed &&
+            (identical(other.a, a) || other.a == a));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, a);
+
+  @override
+  String toString() {
+    return 'SimpleFreezed(a: $a)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $SimpleFreezedCopyWith<$Res> {
+  factory $SimpleFreezedCopyWith(
+          SimpleFreezed value, $Res Function(SimpleFreezed) _then) =
+      _$SimpleFreezedCopyWithImpl;
+  @useResult
+  $Res call({int a});
+}
+
+/// @nodoc
+class _$SimpleFreezedCopyWithImpl<$Res>
+    implements $SimpleFreezedCopyWith<$Res> {
+  _$SimpleFreezedCopyWithImpl(this._self, this._then);
+
+  final SimpleFreezed _self;
+  final $Res Function(SimpleFreezed) _then;
+
+  /// Create a copy of SimpleFreezed
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? a = null,
+  }) {
+    return _then(SimpleFreezed(
+      a: null == a
+          ? _self.a
+          : a // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+// dart format on
