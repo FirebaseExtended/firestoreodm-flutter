@@ -7,6 +7,12 @@ To learn more about Firebase Cloud Firestore, please visit the [Firebase website
 
 [![pub package](https://img.shields.io/pub/v/cloud_firestore_odm.svg)](https://pub.dev/packages/cloud_firestore_odm)
 
+## Compatibility
+
+- **Freezed**: Compatible with Freezed 3.0.0 and above
+- **Analyzer**: Supports analyzer 7.0.0 and above
+- **Source Gen**: Compatible with source_gen 2.0.0 and above
+
 ## Getting Started
 
 To get started with Cloud Firestore for Flutter, please [see the documentation](https://github.com/firebaseextended/firestoreodm-flutter/tree/main/docs).

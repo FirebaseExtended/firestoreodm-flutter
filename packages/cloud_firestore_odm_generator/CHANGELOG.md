@@ -1,3 +1,9 @@
+## 1.1.0
+
+- **FIX**: Resolve compatibility issues with Freezed 3.0.0 and above
+- **FEAT**: Support analyzer: ^7.0.0 and source_gen: ^2.0.0
+- **CHORE**: Update dependencies to latest versions
+
 ## 1.0.0-dev.90 - 2025-02-23
 
 - Ignore static getters on annotated classes (thanks to @Rexios80)
